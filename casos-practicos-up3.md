@@ -42,6 +42,7 @@ En Linux
 Para configurar la dirección IP en Linux desde la consola debemos seguir los siguientes pasos:
 
 1. Modificar el fichero Interfaces que se encuentra en la ruta /etc/network. Podemos modificarlo con cualquier editor de textos. En el ejemplo, utilizamos el nano:
+sudo nano /etc/network/interfaces
 
 2. Dentro del fichero, si queremos configurar IP dinámica, incluiríamos las siguientes líneas:
 3. En el ejemplo hemos utilizado la interfaz de red eth0, si bien podría ser cualquiera de las interfaces y tantas como se quieran. A continuación guardamos el archivo, reiniciamos la red y ya lo tenemos configurado.
@@ -52,7 +53,6 @@ Si queremos establecer una IP estática, también hemos de modificar el fichero 
 3. Vemos que los parámetros a configurar son la dirección IP (address), la puerta de enlace predeterminada (gateway), la máscara de subred (netmask), la dirección de cable (network) y la dirección de difusión.
 4. A continuación, guardando el archivo y volviendo a reiniciar los servicios de la red, la configuración debería resultar exitosa.
 
-sudo nano /etc/network/interfaces
 
 
 
