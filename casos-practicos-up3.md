@@ -53,3 +53,61 @@ Si queremos establecer una IP estática, también hemos de modificar el fichero 
 4. A continuación, guardando el archivo y volviendo a reiniciar los servicios de la red, la configuración debería resultar exitosa.
 
 sudo nano /etc/network/interfaces
+
+
+
+--> Dinámica 
+
+#Utrilizar DHCP para la configuración del adaptador
+auto eth0
+iface eth0 inet dhcp
+
+sudo /etc/init.d/networking restart
+
+--> Recibiremos mensaje que todo ok.
+
+Para IP estática:
+
+#Configuración de IP estática en eth0ç
+auto eth0
+iface eth0 inet static
+address 192.68.12.5
+gateway 192.168.12.1
+netmask 255.255.255.0
+network 192.168.12.0
+broadcast 192.168.12.255
+
+
+sudo /etc/init.d/networking restart
+
+
+	
+Configuración de una interfaz Gigabit Ethernet
+Acceder al modo de configuración global:
+
+bash
+Router> enable
+Router# configure terminal
+Configurar la interfaz:
+
+bash
+Router(config)# interface gigabitethernet 0/0
+Asignar una dirección IP y máscara de subred:
+
+bash
+Router(config-if)# ip address 192.168.1.1 255.255.255.0
+Habilitar la interfaz:
+
+bash
+Router(config-if)# no shutdown
+Salir del modo de configuración de la interfaz:
+
+bash
+Router(config-if)# exit
+Guardar la configuración:
+
+bash
+Router# write memory
+
+
+
