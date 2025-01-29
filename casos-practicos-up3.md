@@ -14,12 +14,20 @@ A continuación vemos un ejemplo de verificación de conectividad frente a googl
 
 ![Captura de pantalla del comando ping](assets/images/captura_ping1.png)
 
-Se observa cómo el dispositivo responde correctamente en 2 milisegundos al envío de paquetes de 32 bytes. El tamaño y el número de paquetes que se envían desde ping se puede configurar modificando los parámetros del comando.
-La otra herramienta de uso común es el traceroute, que nos permitirá seguir el itinerario que siguen nuestros paquetes y los routers por los que van saltando. Al igual que con ping, puede ocurrir que algunos routers no respondan a las solicitudes de eco entrantes.
-Realizamos una traza a www.google.com.
+Se observa cómo el dispositivo responde correctamente en unos 20-50 milisegundos al envío de paquetes de 32 bytes. El tamaño y el número de paquetes que se envían desde ping se puede configurar modificando los parámetros del comando.
 
-Se pueden observar todas las direcciones IP por donde pasan nuestros paquetes, en las que se nos indica el tiempo que se tarda en llegar a cada uno de los routers. Es importante notar que cada paquete tiene un máximo estipulado de 30 saltos. Si se sobrepasa este límite el paquete se descarta y aparece el error “Destino inalcanzable”.
-Existen herramientas visuales que indican incluso los países por donde están pasando nuestros paquetes y la ubicación final del servidor hacia donde se dirigía la traza.
+La otra herramienta típica es traceroute, que nos permite ver la ruta que sigue un paquete desde nuestro dispositivo hasta el destino. En el siguiente ejemplo se muestra la ruta que sigue un paquete desde un dispositivo hasta google.com:
+
+![Captura de pantalla del comando traceroute](assets/images/captura_traceroute1.png)
+
+```bash
+traceroute [opciones] <destino>  --> Linux
+tracert [opciones] <destino>  --> Windows
+```
+
+Se pueden observar todas las direcciones IP por donde pasan nuestros paquetes, en las que se nos indica el tiempo que se tarda en llegar a cada uno de los routers. Es importante notar que cada paquete tiene un máximo estipulado de 30 saltos (TTL=30). Si se sobrepasa este límite el paquete se descarta y aparece el error “Destino inalcanzable”.
+
+Existen herramientas visuales que muestran los países por los que pasan nuestros paquetes y la ubicación final del servidor al que se dirige la traza. Un ejemplo de estas herramientas es [Open Visual Traceroute](https://gsuite.tools/traceroute). Es una herramienta de código abierto que permite visualizar gráficamente los saltos que toman los paquetes de datos de nuestro ordenador, mostrando un mapa mundial en 3D o 2D. Esta herramienta es muy útil para entender cómo se mueven los datos a través de la red y para identificar la ubicación final del servidor.
 
 ## Configurar la dirección IP en Linux
 
