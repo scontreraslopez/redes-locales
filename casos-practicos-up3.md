@@ -12,7 +12,7 @@ Una cuestión importante es que si al utilizar ping no recibimos mensajes de res
 
 A continuación vemos un ejemplo de verificación de conectividad frente a google.com:
 
-![Captura de pantalla del comando ping](assets\images\captura_ping1.png)
+![Captura de pantalla del comando ping](assets/images/captura_ping1.png)
 
 Se observa cómo el dispositivo responde correctamente en 2 milisegundos al envío de paquetes de 32 bytes. El tamaño y el número de paquetes que se envían desde ping se puede configurar modificando los parámetros del comando.
 La otra herramienta de uso común es el traceroute, que nos permitirá seguir el itinerario que siguen nuestros paquetes y los routers por los que van saltando. Al igual que con ping, puede ocurrir que algunos routers no respondan a las solicitudes de eco entrantes.
