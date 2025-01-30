@@ -35,6 +35,8 @@ Existen herramientas visuales que muestran los países por los que pasan nuestro
 
 ## Configurar la dirección IP en Linux
 
+¡Cuidado que en debian based tiran del `nm-connection editor`!
+
 Existen dos tipos de asignaciones de direcciones IP.
 
 – IP dinámica: la dirección IP es asignada automáticamente por un servidor DHCP (Dynamic Host Configuration Protocol). Esta dirección puede variar cada vez que se inicia una nueva sesión en el sistema operativo.
