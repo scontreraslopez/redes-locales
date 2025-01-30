@@ -2,6 +2,8 @@
 
 ## Comprobar la conectividad entre máquinas
 
+### El comando ping
+
 Para comprobar la conexión entre redes la herramienta más utilizada es el comando `ping`. Este comando envía mensajes de echo reply esperando el correspondiente mensaje de echo request de vuelta. En su expresión más simple el comando ping sigue la siguiente estructura:
 
 ```bash
@@ -15,6 +17,8 @@ A continuación vemos un ejemplo de verificación de conectividad frente a googl
 ![Captura de pantalla del comando ping](assets/images/captura_ping1.png)
 
 Se observa cómo el dispositivo responde correctamente en unos 20-50 milisegundos al envío de paquetes de 32 bytes. El tamaño y el número de paquetes que se envían desde ping se puede configurar modificando los parámetros del comando.
+
+### El comando traceroute
 
 La otra herramienta típica es traceroute, que nos permite ver la ruta que sigue un paquete desde nuestro dispositivo hasta el destino. En el siguiente ejemplo se muestra la ruta que sigue un paquete desde un dispositivo hasta google.com:
 
@@ -33,81 +37,95 @@ Existen herramientas visuales que muestran los países por los que pasan nuestro
 
 Existen dos tipos de asignaciones de direcciones IP.
 
-– IP dinámica: la dirección IP es asignada por medio de un servidor DHCP (dynamic host control protocol). Esta dirección puede cambiar en función del momento en el que se ha iniciado la sesión en el sistema operativo.
+– IP dinámica: la dirección IP es asignada automáticamente por un servidor DHCP (Dynamic Host Configuration Protocol). Esta dirección puede variar cada vez que se inicia una nueva sesión en el sistema operativo.
 
-– IP fija: la dirección IP y la máscara de subred son asignadas manualmente por el administrador de red. En principio esta dirección es invariable, a no ser que el propio administrador vuelva a establecer una nueva configuración de red.
+– IP fija: la dirección IP y la máscara de subred son asignadas manualmente por el administrador de red. En principio, esta dirección es invariable, a no ser que el propio administrador vuelva a establecer una nueva configuración de red.
 
-En Linux
+Para configurar la dirección IP en Linux desde la consola, debemos seguir los siguientes pasos:
 
-Para configurar la dirección IP en Linux desde la consola debemos seguir los siguientes pasos:
+1. Modificar el archivo `interfaces` que se encuentra en la ruta `/etc/network`. Podemos modificarlo con cualquier editor de texto. En el ejemplo, utilizamos `nano`:
 
-1. Modificar el fichero Interfaces que se encuentra en la ruta /etc/network. Podemos modificarlo con cualquier editor de textos. En el ejemplo, utilizamos el nano:
+```bash
 sudo nano /etc/network/interfaces
+```
 
-2. Dentro del fichero, si queremos configurar IP dinámica, incluiríamos las siguientes líneas:
-3. En el ejemplo hemos utilizado la interfaz de red eth0, si bien podría ser cualquiera de las interfaces y tantas como se quieran. A continuación guardamos el archivo, reiniciamos la red y ya lo tenemos configurado.
-4. El sistema tiene que contestarnos con un mensaje parecido a este, donde nos indica que los paquetes de intercambio del protocolo DHCP han tenido éxito:
-Si queremos establecer una IP estática, también hemos de modificar el fichero /etc/network/interfaces:
-1. Si en el fichero existe alguna línea de configuración dinámica de la interfaz que queremos pasar a estática, deberemos borrarla o ponerla como un comentario (símbolo #).
-2. A continuación especificamos, en el fichero, nuestra configuración IP:
-3. Vemos que los parámetros a configurar son la dirección IP (address), la puerta de enlace predeterminada (gateway), la máscara de subred (netmask), la dirección de cable (network) y la dirección de difusión.
-4. A continuación, guardando el archivo y volviendo a reiniciar los servicios de la red, la configuración debería resultar exitosa.
+2. Dentro del archivo, si queremos configurar una IP dinámica, incluiríamos las siguientes líneas:
 
-
-
-
---> Dinámica 
-
-#Utrilizar DHCP para la configuración del adaptador
+```bash
+# Utilizar DHCP para la configuración del adaptador
 auto eth0
 iface eth0 inet dhcp
+```
 
+3. Guardamos el archivo y reiniciamos la red:
+
+```bash
 sudo /etc/init.d/networking restart
+```
 
---> Recibiremos mensaje que todo ok.
+4. El sistema debería responder con un mensaje indicando que los paquetes de intercambio del protocolo DHCP han tenido éxito.
 
-Para IP estática:
+Para establecer una IP estática, también debemos modificar el archivo `/etc/network/interfaces`:
 
-#Configuración de IP estática en eth0ç
+1. Si en el archivo existe alguna línea de configuración dinámica de la interfaz que queremos pasar a estática, deberemos borrarla o comentarla (símbolo `#`).
+
+2. A continuación, especificamos nuestra configuración IP:
+
+```bash
+# Configuración de IP estática en eth0
 auto eth0
 iface eth0 inet static
-address 192.68.12.5
+address 192.168.12.5
 gateway 192.168.12.1
 netmask 255.255.255.0
 network 192.168.12.0
 broadcast 192.168.12.255
+```
 
+3. Guardamos el archivo y reiniciamos los servicios de red:
 
+```bash
 sudo /etc/init.d/networking restart
+```
 
+### Configurar router mediante CISCO Cli - Gigabit Ethernet Interface
 
-	
-Configuración de una interfaz Gigabit Ethernet
-Acceder al modo de configuración global:
+Para configurar una interfaz Gigabit Ethernet en un router Cisco, siga estos pasos:
 
-bash
+1. Acceda al modo de configuración global:
+
+```bash
 Router> enable
 Router# configure terminal
-Configurar la interfaz:
+```
 
-bash
+2. Configure la interfaz:
+
+```bash
 Router(config)# interface gigabitethernet 0/0
-Asignar una dirección IP y máscara de subred:
+```
 
-bash
+3. Asigne una dirección IP y una máscara de subred:
+
+```bash
 Router(config-if)# ip address 192.168.1.1 255.255.255.0
-Habilitar la interfaz:
+```
 
-bash
+4. Habilite la interfaz:
+
+```bash
 Router(config-if)# no shutdown
-Salir del modo de configuración de la interfaz:
+```
 
-bash
+5. Salga del modo de configuración de la interfaz:
+
+```bash
 Router(config-if)# exit
-Guardar la configuración:
+```
 
-bash
-Router# write memory
+6. Guarde la configuración:
 
-
+```bash
+Router# copy running-config startup-config
+```
 
