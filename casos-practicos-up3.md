@@ -129,3 +129,4 @@ Router(config-if)# exit
 Router# copy running-config startup-config
 ```
 
+<https://www.netacad.com/es/courses/networking-basics?courseLang=es-XL>
