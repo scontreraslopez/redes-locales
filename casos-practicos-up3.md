@@ -98,6 +98,11 @@ broadcast 192.168.12.255
 sudo /etc/init.d/networking restart
 ```
 
+Lo mismo pero en ubuntu based distros:
+
+https://linuxconfig.org/setting-a-static-ip-address-in-ubuntu-24-04-via-the-command-line
+
+
 ### Configurar router mediante CISCO Cli - Gigabit Ethernet Interface
 
 Para configurar una interfaz Gigabit Ethernet en un router Cisco, siga estos pasos:
