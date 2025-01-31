@@ -35,8 +35,11 @@ Existen herramientas visuales que muestran los países por los que pasan nuestro
 
 ## Configurar la dirección IP en Linux
 
-¡Cuidado que en debian based tiran del `nm-connection editor`!
-Revisar porque en lubuntu virtualbox eso no lo está pillando....
+Esto lo vamos a hacer utilizando para ello la VM alpine que encontraréis en: smb://aquituuser@aulainfo2.local/share/Redes/
+
+Copiad alpine1.ova e importarla.
+
+https://www.linode.com/docs/guides/linux-mount-smb-share/
 
 Existen dos tipos de asignaciones de direcciones IP.
 
