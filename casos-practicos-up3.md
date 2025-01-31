@@ -103,6 +103,59 @@ Lo mismo pero en ubuntu based distros:
 https://linuxconfig.org/setting-a-static-ip-address-in-ubuntu-24-04-via-the-command-line
 
 
+También:
+
+You need to use Network Manger from the command line, this is nmcli.
+
+First, you can list the available connections Network Manager knows about with the following, this is important to find the name, as the device id isn't used:
+
+`nmcli con show`
+
+This will give you something like:
+
+NAME                UUID                                  TYPE            DEVICE 
+Wired connection 1  7a3b674a-f346-3cfb-8b30-ff70e6db1b60  802-3-ethernet  enp0s3
+You can then modify the connection with the following:
+
+```bash
+nmcli con mod "Wired connection 1"
+  ipv4.addresses "HOST_IP_ADDRESS/IP_NETMASK_BIT_COUNT"
+  ipv4.gateway "IP_GATEWAY"
+  ipv4.dns "PRIMARY_IP_DNS,SECONDARY_IP_DNS"
+  ipv4.dns-search "DOMAIN_NAME"
+  ipv4.method "manual" 
+```
+
+When you enter the above use one line, I've just split it into separate lines to make it more clear.
+
+If you want to set the connection to use DHCP, you can use the following:
+
+```bash
+nmcli con mod "Wired connection 1"
+  ipv4.addresses ""
+  ipv4.gateway ""
+  ipv4.dns ""
+  ipv4.dns-search ""
+  ipv4.method "auto"
+```
+
+You need all the empty quotes as they remove any settings they previously have.
+
+To add a network, use:
+
+```nmcli con add ...```
+With similar parameters.
+
+To make the settings active, reboot.
+
+Alternatively, you can selectively apply the changes to a single connection without reboot using
+
+``` nmcli con up "Wired connection 1" ```
+
+See here. (I could switch from DHCP to static IP on a running machine over ssh this way. The ssh session was even on the connection I changed.)
+
+[nmcli cheatsheet](https://www.golinuxcloud.com/nmcli-command-examples-cheatsheet-centos-rhel/)
+
 ### Configurar router mediante CISCO Cli - Gigabit Ethernet Interface
 
 Para configurar una interfaz Gigabit Ethernet en un router Cisco, siga estos pasos:
