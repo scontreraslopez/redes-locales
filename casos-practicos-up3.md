@@ -35,11 +35,15 @@ Existen herramientas visuales que muestran los países por los que pasan nuestro
 
 ## Configurar la dirección IP en Linux
 
-Esto lo vamos a hacer utilizando para ello la VM alpine que encontraréis en: smb://aquituuser@aulainfo2.local/share/Redes/
 
+### Tareas de setup para el ejercicio 
+
+Esto lo vamos a hacer utilizando para ello la VM alpine que encontraréis en: smb://aquituuser@aulainfo2.local/share/Redes/
 Copiad alpine1.ova e importarla.
 
 Información adicional para montar el directorio SAMBA: https://www.linode.com/docs/guides/linux-mount-smb-share/
+
+Ejecutar setup-alpine (la distribución por defecto del teclado es la en-us, por  lo que se espera un poco de pericia para escribir el símbolo del guión -) 
 
 Existen dos tipos de asignaciones de direcciones IP.
 
