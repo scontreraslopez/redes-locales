@@ -39,7 +39,7 @@ Esto lo vamos a hacer utilizando para ello la VM alpine que encontraréis en: sm
 
 Copiad alpine1.ova e importarla.
 
-https://www.linode.com/docs/guides/linux-mount-smb-share/
+Información adicional para montar el directorio SAMBA: https://www.linode.com/docs/guides/linux-mount-smb-share/
 
 Existen dos tipos de asignaciones de direcciones IP.
 
