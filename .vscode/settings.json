@@ -1,10 +1,14 @@
 {
     "cSpell.words": [
+        "cheatsheet",
+        "datagramas",
         "iface",
         "inet",
         "milisegundos",
         "nmcli",
+        "OSPF",
         "traceroute",
-        "Traceroute"
+        "Traceroute",
+        "tracert"
     ]
 }

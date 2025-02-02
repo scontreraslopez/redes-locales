@@ -8,9 +8,10 @@
 - [2. Configurar la dirección IP en Linux](#2-configurar-la-dirección-ip-en-linux)
   - [2.1. Tareas de setup para el ejercicio](#21-tareas-de-setup-para-el-ejercicio)
   - [2.2. Configuración de la dirección IP](#22-configuración-de-la-dirección-ip)
-    - [Configuración de la dirección IP dinámica (Alpine)](#221-configuración-de-la-dirección-ip-dinámica-alpine)
-    - [Configuración de la dirección IP estática (Alpine)](#222-configuración-de-la-dirección-ip-estática-alpine)
-3. [Configurar router mediante CISCO Cli - Gigabit Ethernet Interface](#3-configurar-router-mediante-cisco-cli---gigabit-ethernet-interface)
+    - [2.2.1. Configuración de la dirección IP dinámica (Alpine)](#221-configuración-de-la-dirección-ip-dinámica-alpine)
+    - [2.2.2. Configuración de la dirección IP estática (Alpine)](#222-configuración-de-la-dirección-ip-estática-alpine)
+    - [2.2.3 Configuración de la dirección IP en Ubuntu-based distros (TBD)](#223-configuración-de-la-dirección-ip-en-ubuntu-based-distros-tbd)
+- [3. Configurar router mediante CISCO Cli - Gigabit Ethernet Interface](#3-configurar-router-mediante-cisco-cli---gigabit-ethernet-interface)
 
 ## 1. Comprobar la conectividad entre máquinas
 
@@ -52,7 +53,7 @@ Existen herramientas visuales que muestran los países por los que pasan nuestro
 Esto lo vamos a hacer utilizando para ello la VM alpine que encontraréis en: smb://aquituuser@aulainfo2.local/share/Redes/
 Copiad alpine1.ova e importarla.
 
-Información adicional para montar el directorio SAMBA: https://www.linode.com/docs/guides/linux-mount-smb-share/
+[Información adicional para montar el directorio SAMBA](https://www.linode.com/docs/guides/linux-mount-smb-share/)
 
 Ejecutar setup-alpine (la distribución por defecto del teclado es la en-us, por lo que se espera un poco de pericia para escribir el símbolo del guión '-' ). Instalar con las opciones por defecto excepto para distribución del teclado _es_ y para zona horaria _Europe/Madrid_.
 
