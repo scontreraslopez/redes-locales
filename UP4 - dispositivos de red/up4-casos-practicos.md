@@ -69,7 +69,10 @@ ip route get 10.0.0.5
 
 Proporciona la ruta que el kernel elegirá para llegar a una dirección IP específica.
 
-## Configurando la tabla de enrutamiento de un router CISCO mediante el CLI
+## LAB: Configurando la tabla de enrutamiento de un router CISCO mediante el CLI
+
+- Dificultad: Baja
+- Tiempo estimado: 50 minutos
 
 Vamos a realizar la siguiente configuración en Cisco Packet Tracer. Aquí configuraremos las interfaces de los routers y las rutas estáticas para los routers. La topología de red es la siguiente:
 
@@ -157,4 +160,12 @@ Repetimos la operación con el resto de routers.
 - Ejecuta el comando `ip route show` en cada router para verificar que las rutas estáticas se han configurado correctamente.
 - Por último, intenta hacer ping desde el router R0 al R3 para comprobar que la configuración de la red es correcta.
 
+### Memoria a entregar
 
+Las capturas de pantalla contendrán toda la pantalla, incluida la hora del PC.
+
+- Generar un documento de texto, con nombre, curso, asignatura, fecha.
+- Incluir las siguientes capturas de pantalla:
+  - Capturas de pantalla de la configuración de las interfaces de los routers. Se deben ver las direcciones IP asignadas y el estado de las interfaces. Se puede ejecutar el comando `show ip interface brief` a este efecto.
+  - Capturas de pantalla de la configuración de las rutas estáticas. Se deben ver las rutas estáticas añadidas y la puerta de enlace. Se puede ejecutar el comando `show ip route` a este efecto.
+  - Captura de pantalla de la verificación de la conectividad entre los routers. Se debe ver el resultado del comando `ping` entre los routers.
