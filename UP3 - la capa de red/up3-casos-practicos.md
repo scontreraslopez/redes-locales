@@ -11,7 +11,7 @@
     - [2.2.1. Configuración de la dirección IP dinámica (Alpine)](#221-configuración-de-la-dirección-ip-dinámica-alpine)
     - [2.2.2. Configuración de la dirección IP estática (Alpine)](#222-configuración-de-la-dirección-ip-estática-alpine)
     - [2.2.3 Configuración de la dirección IP en Ubuntu-based distros (TBD)](#223-configuración-de-la-dirección-ip-en-ubuntu-based-distros-tbd)
-- [3. Configurar router mediante CISCO Cli - Gigabit Ethernet Interface](#3-configurar-router-mediante-cisco-cli---gigabit-ethernet-interface)
+- [3. Configurar router mediante CISCO Cli - Gigabit Ethernet Interface](#configurar-router-mediante-cisco-cli---gigabit-ethernet-interface)
 
 ## 1. Comprobar la conectividad entre máquinas
 
