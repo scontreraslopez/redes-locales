@@ -1,6 +1,5 @@
 # UP4. Dispositivos de la capa de red
 
-<<<<<<< HEAD:up4.md
 ## Índice
 
 - [1. El router](#1-el-router)
@@ -10,7 +9,6 @@
   - [1.4. Enrutamiento Estático y Dinámico](#14-enrutamiento-estático-y-dinámico)
     - [1.4.1. Enrutamiento Estático](#141-enrutamiento-estático)
     - [1.4.2. Enrutamiento Dinámico](#142-enrutamiento-dinámico)
-      - [1.4.2.1. Protocolos de Enrutamiento Dinámico](#1421-protocolos-de-enrutamiento-dinámico)
 - [2. Hosts y sus Tablas de Enrutamiento](#2-hosts-y-sus-tablas-de-enrutamiento)
   - [2.1. Tablas de Enrutamiento](#21-tablas-de-enrutamiento)
     - [2.1.1. Profundización: Servidor Proxy](#211-profundización-servidor-proxy)
@@ -22,10 +20,6 @@
 
 ## 1. El router
 
-=======
-## 1. El router
-
->>>>>>> 46b4e91a9125a43458c528fb6e6ae170d6b10282:UP4 - dispositivos de red/up4-teoria.md
 ### 1.1. Introducción
 
 El router es un dispositivo de red que opera en la capa de red del modelo OSI. Su función principal es la de encaminar paquetes de datos entre redes. Para ello, el router utiliza tablas de enrutamiento que le indican cómo encaminar los paquetes hacia su destino.
@@ -56,7 +50,6 @@ El trabajo del administrador de red es configurar la tabla de enrutamiento del r
 
 También podemos encontrar las tablas de enrutamiento en los propios dispositivos finales, como ordenadores o servidores. En estos casos, la tabla de enrutamiento se utiliza para determinar la ruta que deben seguir los paquetes de datos hacia su destino. Dependiendo del equipo en cuestión albergará unos valores u otros.
 
-<<<<<<< HEAD:up4.md
 ### 1.3. Dominando el comando 'ip route' en Linux
 
 Fuente original: <https://commandmasters.com/commands/ip-route-linux/>
@@ -129,15 +122,6 @@ Proporciona la ruta que el kernel elegirá para llegar a una dirección IP espec
 El enrutamiento estático es como trazar una ruta fija en un mapa que nunca cambia. Aquí, el administrador de red introduce manualmente las rutas en la tabla de enrutamiento de cada router. Es decir, se le indica explícitamente al router por dónde debe enviar los paquetes para llegar a su destino.
 
 Características principales:
-=======
-### 1.3. Enrutamiento Estático y Dinámico
-
-#### 1.3.1. Enrutamiento Estático
-
-El enrutamiento estático es como trazar una ruta fija en un mapa que nunca cambia. Aquí, el administrador de red introduce manualmente las rutas en la tabla de enrutamiento de cada router. Es decir, se le indica explícitamente al router por dónde debe enviar los paquetes para llegar a su destino.
-
-Características principales del enrutamiento estático:
->>>>>>> 46b4e91a9125a43458c528fb6e6ae170d6b10282:UP4 - dispositivos de red/up4-teoria.md
 
 - **Simplicidad en redes pequeñas:** Es fácil de configurar cuando la red es pequeña y no cambia con frecuencia.
 - **Reducción del tráfico de red:** Los routers no necesitan intercambiar información para descubrir nuevas rutas, lo que disminuye el tráfico en la red.
@@ -148,11 +132,7 @@ Características principales del enrutamiento estático:
 
 **Metáfora:** Imagina que siempre vas de tu casa al colegio por el mismo camino, sin importar si hay tráfico o si alguna calle está cerrada. Es sencillo pero poco flexible.
 
-<<<<<<< HEAD:up4.md
 #### 1.4.2. Enrutamiento Dinámico
-=======
-#### 1.3.2. Enrutamiento Dinámico
->>>>>>> 46b4e91a9125a43458c528fb6e6ae170d6b10282:UP4 - dispositivos de red/up4-teoria.md
 
 El enrutamiento dinámico es como usar un GPS en tiempo real que te guía por la mejor ruta según las condiciones actuales. Los routers utilizan protocolos de enrutamiento para descubrir automáticamente las mejores rutas hacia cada destino, adaptándose a los cambios en la red.
 
@@ -178,32 +158,19 @@ Características del enrutamiento dinámico:
 
 **Metáfora:** Es como en el Waze cuando los conductores que comparten información sobre el tráfico para encontrar la ruta más rápida en cada momento.
 
-<<<<<<< HEAD:up4.md
-##### 1.4.2.1. Protocolos de Enrutamiento Dinámico
-
-**RIP (Routing Information Protocol)**:
-=======
 Algunos Protocolos de Enrutamiento Dinámico son:
 
 - **RIP (Routing Information Protocol)**:
   - **Simplicidad:** Presente en muchos routers y fácil de configurar.
   - **Métrica basada en saltos:** Considera únicamente el número de saltos para determinar la mejor ruta.
   - **Limitaciones:** No es ideal para redes grandes debido a su límite de 15 saltos y convergencia lenta.
->>>>>>> 46b4e91a9125a43458c528fb6e6ae170d6b10282:UP4 - dispositivos de red/up4-teoria.md
 
 - **OSPF (Open Shortest Path First)**:
   - **Complejidad y eficiencia:** Más complejo pero ofrece una visión detallada de la red.
   - **Métrica basada en costo:** Tiene en cuenta factores como velocidad y calidad del enlace.
   - **Adaptabilidad:** Construye un mapa completo de la red para calcular rutas óptimas.
 
-<<<<<<< HEAD:up4.md
- **OSPF (Open Shortest Path First)**:
-
-- **Complejidad y eficiencia:** Más complejo pero ofrece una visión detallada de la red.
-- **Métrica basada en costo:** Tiene en cuenta factores como velocidad y calidad del enlace.
-- **Adaptabilidad:** Construye un mapa completo de la red para calcular rutas óptimas.
-
-Para profundizar más:
+ Para profundizar más:
 
 - **Explora otros protocolos dinámicos:** Como EIGRP (Enhanced Interior Gateway Routing Protocol) o IS-IS (Intermediate System to Intermediate System).
 - **Practica la configuración:** Utiliza simuladores de redes como Cisco Packet Tracer o GNS3 para experimentar con configuraciones estáticas y dinámicas.
@@ -349,15 +316,3 @@ El ADSL marcó un hito al permitir velocidades de varios Mbps utilizando las lí
 **ATM y Frame Relay**
 
 Fueron tecnologías utilizadas principalmente en entornos empresariales para la transmisión de datos sobre redes de área amplia. ATM (Modo de Transferencia Asíncrona) y Frame Relay permitieron mejorar la eficiencia y velocidad en las comunicaciones. No obstante, la evolución de los protocolos de Internet y las nuevas necesidades de flexibilidad y escalabilidad hicieron que estas tecnologías quedaran obsoletas.
-=======
-**Tareas de ampliación**:
-
-- **Explorar otros protocolos dinámicos:** Como EIGRP (Enhanced Interior Gateway Routing Protocol) o IS-IS (Intermediate System to Intermediate System).
-- **Practicar la configuración:** Utiliza simuladores de redes como Cisco Packet Tracer o GNS3 para experimentar con configuraciones estáticas y dinámicas.
-- **Análisis de casos reales:** Investiga cómo empresas grandes gestionan sus redes y qué protocolos utilizan.
-
-**¿Sabías que...?**
-
-- **BGP (Border Gateway Protocol):** Es el protocolo que mantiene unidas a todas las redes en Internet. Sin BGP, no podríamos navegar entre diferentes proveedores de servicios. [Vídeo interesante sobre las dificultades que arrastra el protocolo BGP: The Internet's most broken protocol](https://www.youtube.com/watch?v=cOE2miIh1_o)
-- **Enrutamiento híbrido:** Algunas redes utilizan una combinación de enrutamiento estático y dinámico para optimizar el rendimiento y la seguridad.
->>>>>>> 46b4e91a9125a43458c528fb6e6ae170d6b10282:UP4 - dispositivos de red/up4-teoria.md
