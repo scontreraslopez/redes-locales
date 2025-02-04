@@ -13,6 +13,11 @@
 - [2. Hosts y sus Tablas de Enrutamiento](#2-hosts-y-sus-tablas-de-enrutamiento)
   - [2.1. Tablas de Enrutamiento](#21-tablas-de-enrutamiento)
     - [2.1.1. Profundización: Servidor Proxy](#211-profundización-servidor-proxy)
+- [3. La conexión a Internet](#3-la-conexión-a-internet)
+  - [3.1. Proveedores de Servicios de Internet (ISP)](#31-proveedores-de-servicios-de-internet-isp)
+  - [3.2. Tecnologías de Acceso a Internet y Dispositivos Asociados](#32-tecnologías-de-acceso-a-internet-y-dispositivos-asociados)
+    - [3.2.1. Tecnologías Actuales](#321-tecnologías-actuales)
+    - [3.2.2. Breve Mención Histórica a Tecnologías Obsoletas](#322-breve-mención-histórica-a-tecnologías-obsoletas)
 
 ## 1. El router
 
@@ -255,3 +260,61 @@ Además, existen diferentes tipos de proxies:
 - Proxy Inverso: Se coloca frente a uno o varios servidores, gestionando las solicitudes entrantes y distribuyéndolas según la carga o disponibilidad. Es común en servicios web para balancear carga y añadir capas de seguridad.
 
 Con el creciente enfoque en la ciberseguridad y la privacidad en línea, los proxies juegan un papel crucial en la protección de datos y en el mantenimiento de redes robustas. Herramientas como las VPN (Redes Privadas Virtuales) también utilizan conceptos similares para crear túneles seguros entre dispositivos y redes.
+
+## 3. La conexión a Internet
+
+La conexión a Internet es el medio que permite a un ordenador o a una red de ordenadores acceder a la red global, facilitando la comunicación y el intercambio de información a nivel mundial.
+
+### 3.1. Proveedores de Servicios de Internet (ISP)
+
+Un Proveedor de Servicios de Internet (ISP) es una empresa que ofrece acceso a Internet a usuarios y organizaciones. El servicio se factura en función del ancho de banda contratado, es decir, de la velocidad y capacidad de transmisión de datos que el usuario necesita.
+
+Los ISP se organizan en una jerarquía de tres niveles:
+
+- **ISP de Nivel 1**: Constituyen la columna vertebral de Internet. Son empresas con infraestructura global que poseen enlaces troncales de alta velocidad, moviéndose en rangos desde 10 Gbps en adelante. Estos ISP tienen cobertura internacional y se conectan directamente entre sí y con numerosos ISP de nivel inferior, asegurando la interconectividad global.
+
+- **ISP de Nivel 2**: Ofrecen cobertura regional o nacional. Se conectan a los ISP de Nivel 1 para acceder a la red global y proveen servicios a grandes empresas y a ISP de Nivel 3. Actúan como intermediarios, ampliando el alcance de los servicios de Internet.
+
+- **ISP de Nivel 3**: Son los proveedores locales que ofrecen acceso directo a los usuarios finales, tanto hogares como pequeñas empresas. Se conectan a ISP de Nivel 2 para recibir el servicio y son los encargados de llevar Internet a la mayoría de los consumidores.
+
+La interconexión entre estos niveles se realiza a través de **POP** (Puntos de Presencia), que son instalaciones donde los ISP alojan sus equipos de red, y **NAP** (Puntos de Acceso a la Red) o **IXP** (Internet Exchange Point), que facilitan la interconexión entre ISP de mismo nivel, permitiendo el flujo eficiente de datos a gran velocidad.
+
+Internet es una red dinámica y en constante expansión. Gracias a la flexibilidad y escalabilidad de su arquitectura, continuamente se incorporan nuevos proveedores y tecnologías que enriquecen y mejoran la conectividad global.
+
+### 3.2. Tecnologías de Acceso a Internet y Dispositivos Asociados
+
+#### 3.2.1. Tecnologías Actuales
+
+**Fibra Óptica**
+
+La fibra óptica utiliza filamentos de vidrio o plástico para transmitir datos mediante pulsos de luz. Ofrece velocidades extremadamente altas, que pueden superar los 1 Gbps, baja latencia y gran estabilidad. Esta tecnología es ideal para soportar las crecientes demandas de ancho de banda en aplicaciones como streaming de alta definición, teletrabajo y servicios en la nube.
+
+**Conexiones de Cable**
+
+Utilizan la infraestructura de televisión por cable para proporcionar acceso a Internet de banda ancha. Ofrecen velocidades competitivas y son ampliamente utilizadas en zonas urbanas. La tecnología DOCSIS 3.1 permite velocidades que pueden alcanzar los 10 Gbps en condiciones óptimas.
+
+**Redes Móviles 4G/5G**
+
+Las redes móviles han evolucionado significativamente. La tecnología 4G LTE ofrece velocidades adecuadas para navegar, ver videos y usar aplicaciones en dispositivos móviles. Con la llegada del **5G**, se espera una revolución en la conectividad móvil, con velocidades que pueden superar los 20 Gbps, baja latencia y capacidad para conectar una gran cantidad de dispositivos simultáneamente, impulsando el Internet de las Cosas (IoT) y aplicaciones en tiempo real.
+
+**Acceso Inalámbrico Fijo**
+
+Esta tecnología proporciona acceso a Internet mediante señales inalámbricas desde una estación base fija a ubicaciones fijas (hogares, empresas). Es especialmente útil en áreas rurales o de difícil acceso donde las conexiones cableadas no son viables. Tecnologías como **WiMAX** y soluciones de radio enlace ofrecen alternativas eficientes para llevar conectividad a estas zonas.
+
+#### 3.2.2. Breve Mención Histórica a Tecnologías Obsoletas
+
+**Módem Analógico**
+
+En sus inicios, los módems analógicos permitieron a los usuarios conectarse a Internet a través de líneas telefónicas convencionales, alcanzando velocidades máximas de 56 Kbps. Fueron fundamentales para la masificación de Internet en los hogares, aunque sus limitaciones de velocidad y estabilidad los hicieron obsoletos con la llegada de tecnologías superiores.
+
+**RDSI (Red Digital de Servicios Integrados)**
+
+La RDSI proporcionó conexiones digitales sobre líneas telefónicas, mejorando la calidad y velocidad con respecto a los módems analógicos, alcanzando hasta 192 Kbps en el acceso básico. Aunque representó un avance significativo en su momento, fue superada por tecnologías de banda ancha más eficientes.
+
+**ADSL (Línea de Abonado Digital Asimétrica)**
+
+El ADSL marcó un hito al permitir velocidades de varios Mbps utilizando las líneas telefónicas existentes, separando las frecuencias de voz y datos. Su naturaleza asimétrica, con mayor velocidad de descarga que de subida, se ajustaba a las necesidades de los usuarios domésticos. Sin embargo, las crecientes demandas de ancho de banda y la aparición de nuevas tecnologías llevaron a su progresivo desuso.
+
+**ATM y Frame Relay**
+
+Fueron tecnologías utilizadas principalmente en entornos empresariales para la transmisión de datos sobre redes de área amplia. ATM (Modo de Transferencia Asíncrona) y Frame Relay permitieron mejorar la eficiencia y velocidad en las comunicaciones. No obstante, la evolución de los protocolos de Internet y las nuevas necesidades de flexibilidad y escalabilidad hicieron que estas tecnologías quedaran obsoletas.
