@@ -2,7 +2,9 @@
 
 ## Índice
 
---TODO
+- [1. Dominando el comando 'ip route' en Linux](#1-dominando-el-comando-ip-route-en-linux)
+- [2. LAB: Configurando la tabla de enrutamiento de un router CISCO mediante el CLI](#2-lab-configurando-la-tabla-de-enrutamiento-de-un-router-cisco-mediante-el-cli)
+  - [Memoria a entregar](#memoria-a-entregar)
 
 ## 1. Dominando el comando 'ip route' en Linux
 
@@ -69,7 +71,7 @@ ip route get 10.0.0.5
 
 Proporciona la ruta que el kernel elegirá para llegar a una dirección IP específica.
 
-## LAB: Configurando la tabla de enrutamiento de un router CISCO mediante el CLI
+## 2. LAB: Configurando la tabla de enrutamiento de un router CISCO mediante el CLI
 
 - Dificultad: Baja
 - Tiempo estimado: 50 minutos
