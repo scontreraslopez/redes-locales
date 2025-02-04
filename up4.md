@@ -1,8 +1,22 @@
 # UP4. Dispositivos de la capa de red
 
-## El router
+## Índice
 
-### Introducción
+- [1. El router](#1-el-router)
+  - [1.1. Introducción](#11-introducción)
+  - [1.2. Tablas de enrutamiento](#12-tablas-de-enrutamiento)
+  - [1.3. Dominando el comando 'ip route' en Linux](#13-dominando-el-comando-ip-route-en-linux)
+  - [1.4. Enrutamiento Estático y Dinámico](#14-enrutamiento-estático-y-dinámico)
+    - [1.4.1. Enrutamiento Estático](#141-enrutamiento-estático)
+    - [1.4.2. Enrutamiento Dinámico](#142-enrutamiento-dinámico)
+      - [1.4.2.1. Protocolos de Enrutamiento Dinámico](#1421-protocolos-de-enrutamiento-dinámico)
+- [2. Hosts y sus Tablas de Enrutamiento](#2-hosts-y-sus-tablas-de-enrutamiento)
+  - [2.1. Tablas de Enrutamiento](#21-tablas-de-enrutamiento)
+    - [2.1.1. Profundización: Servidor Proxy](#211-profundización-servidor-proxy)
+
+## 1. El router
+
+### 1.1. Introducción
 
 El router es un dispositivo de red que opera en la capa de red del modelo OSI. Su función principal es la de encaminar paquetes de datos entre redes. Para ello, el router utiliza tablas de enrutamiento que le indican cómo encaminar los paquetes hacia su destino.
 
@@ -10,7 +24,7 @@ En empresas grandes con varias redes locales, el router es un dispositivo esenci
 
 Otra característica de los routers es que crean un dominio de difusión para cada interfaz de red. Esto significa que los paquetes de difusión enviados por una interfaz no se transmiten a las demás interfaces del router. De esta forma, se evita la saturación de la red.
 
-### Tablas de enrutamiento
+### 1.2. Tablas de enrutamiento
 
 La tabla de enrutamiento es el mecanismo que utiliza el router para determinar la ruta que deben seguir los paquetes de datos. En la tabla de enrutamiento, el router almacena información sobre las redes a las que está conectado y las rutas que debe seguir para llegar a otras redes.
 
@@ -31,7 +45,7 @@ El trabajo del administrador de red es configurar la tabla de enrutamiento del r
 
 También podemos encontrar las tablas de enrutamiento en los propios dispositivos finales, como ordenadores o servidores. En estos casos, la tabla de enrutamiento se utiliza para determinar la ruta que deben seguir los paquetes de datos hacia su destino. Dependiendo del equipo en cuestión albergará unos valores u otros.
 
-#### Dominando el comando 'ip route' en Linux
+### 1.3. Dominando el comando 'ip route' en Linux
 
 Fuente original: <https://commandmasters.com/commands/ip-route-linux/>
 
@@ -96,13 +110,13 @@ ip route get 10.0.0.5
 
 Proporciona la ruta que el kernel elegirá para llegar a una dirección IP específica.
 
-### Enrutamiento Estático y Dinámico
+### 1.4. Enrutamiento Estático y Dinámico
 
-#### Enrutamiento Estático
+#### 1.4.1. Enrutamiento Estático
 
 El enrutamiento estático es como trazar una ruta fija en un mapa que nunca cambia. Aquí, el administrador de red introduce manualmente las rutas en la tabla de enrutamiento de cada router. Es decir, se le indica explícitamente al router por dónde debe enviar los paquetes para llegar a su destino.
 
-##### Características principales:
+Características principales:
 
 - **Simplicidad en redes pequeñas:** Es fácil de configurar cuando la red es pequeña y no cambia con frecuencia.
 - **Reducción del tráfico de red:** Los routers no necesitan intercambiar información para descubrir nuevas rutas, lo que disminuye el tráfico en la red.
@@ -113,23 +127,23 @@ El enrutamiento estático es como trazar una ruta fija en un mapa que nunca camb
 
 **Metáfora:** Imagina que siempre vas de tu casa al colegio por el mismo camino, sin importar si hay tráfico o si alguna calle está cerrada. Es sencillo pero poco flexible.
 
-##### Enrutamiento Dinámico
+#### 1.4.2. Enrutamiento Dinámico
 
 El enrutamiento dinámico es como usar un GPS en tiempo real que te guía por la mejor ruta según las condiciones actuales. Los routers utilizan protocolos de enrutamiento para descubrir automáticamente las mejores rutas hacia cada destino, adaptándose a los cambios en la red.
 
-### Tipos de protocolos según el algoritmo de enrutamiento:
+Tipos de protocolos según el algoritmo de enrutamiento:
 
-- ### **Vector-Distancia:**
+- **Vector-Distancia:**
   - **Funcionamiento:** Cada router calcula la ruta basada en el número de saltos (routers intermedios) hasta el destino.
   - **Métrica:** Se utiliza el conteo de saltos; menos saltos significa una ruta preferida.
   - **Ejemplo de protocolo:** **RIP (Routing Information Protocol).**
 
-- ### **Estado de Enlace:**
+- **Estado de Enlace:**
   - **Funcionamiento:** Los routers conocen el estado y costo de sus enlaces con routers vecinos y comparten esta información para construir un mapa completo de la red.
   - **Métrica:** Incluye factores como velocidad, capacidad y confiabilidad del enlace.
   - **Ejemplo de protocolo:** **OSPF (Open Shortest Path First).**
 
-### Características del enrutamiento dinámico:
+Características del enrutamiento dinámico:
 
 - **Actualización automática:** Las tablas de enrutamiento se ajustan en tiempo real sin intervención manual.
 - **Flexibilidad en las rutas:** Los datagramas pueden seguir rutas distintas hacia el mismo destino según las condiciones de la red.
@@ -139,21 +153,21 @@ El enrutamiento dinámico es como usar un GPS en tiempo real que te guía por la
 
 **Metáfora:** Es como conductores que comparten información sobre el tráfico para encontrar la ruta más rápida en cada momento.
 
-## **Protocolos de Enrutamiento Dinámico**
+##### 1.4.2.1. Protocolos de Enrutamiento Dinámico
 
-### **RIP (Routing Information Protocol)**
+**RIP (Routing Information Protocol)**:
 
 - **Simplicidad:** Presente en muchos routers y fácil de configurar.
 - **Métrica basada en saltos:** Considera únicamente el número de saltos para determinar la mejor ruta.
 - **Limitaciones:** No es ideal para redes grandes debido a su límite de 15 saltos y convergencia lenta.
 
-### **OSPF (Open Shortest Path First)**
+ **OSPF (Open Shortest Path First)**:
 
 - **Complejidad y eficiencia:** Más complejo pero ofrece una visión detallada de la red.
 - **Métrica basada en costo:** Tiene en cuenta factores como velocidad y calidad del enlace.
 - **Adaptabilidad:** Construye un mapa completo de la red para calcular rutas óptimas.
 
-## Para profundizar más:
+Para profundizar más:
 
 - **Explora otros protocolos dinámicos:** Como EIGRP (Enhanced Interior Gateway Routing Protocol) o IS-IS (Intermediate System to Intermediate System).
 - **Practica la configuración:** Utiliza simuladores de redes como Cisco Packet Tracer o GNS3 para experimentar con configuraciones estáticas y dinámicas.
@@ -163,3 +177,81 @@ El enrutamiento dinámico es como usar un GPS en tiempo real que te guía por la
 
 - **BGP (Border Gateway Protocol):** Es el protocolo que mantiene unidas a todas las redes en Internet. Sin BGP, no podríamos navegar entre diferentes proveedores de servicios.
 - **Enrutamiento híbrido:** Algunas redes utilizan una combinación de enrutamiento estático y dinámico para optimizar el rendimiento y la seguridad.
+
+## 2. Hosts y sus Tablas de Enrutamiento
+
+Los hosts también tienen una tabla de enrutamiento que les ayuda a determinar la mejor ruta para enviar paquetes.
+
+### 2.1. Tablas de Enrutamiento:
+
+Todos los dispositivos que usan TCP/IP tienen una tabla de enrutamiento con información básica para dirigir los paquetes. En los hosts, esta tabla suele ser más pequeña que en los routers, e incluye direcciones IP de la red local, la dirección de loopback y la puerta de enlace predeterminada.
+
+Podemos añadir, modificar o borrar rutas estáticas en estas tablas, pero no dinámicas, ya que los hosts no comparten información de rutas entre sí. El sistema operativo consulta la tabla de enrutamiento antes de enviar cualquier paquete a la red local o a Internet.
+
+Mención especial merece el concepto de **Puerta de Enlace Predeterminada**. La puerta de enlace predeterminada, o default gateway, es un nodo de red (como un router o servidor) que actúa como punto de acceso a redes externas. Los hosts envían los paquetes a la puerta de enlace cuando no encuentran una ruta en su tabla de enrutamiento, confiando en que esta encontrará la ruta correcta.
+
+En grandes corporaciones, la puerta de enlace dirige el tráfico entre diferentes segmentos de red y suele conectar las redes internas con Internet. En estos casos, tiene una IP privada para la red interna y una IP pública para la red externa. Además, puede ofrecer servicios de proxy y cortafuegos para mejorar la seguridad.
+
+Normalmente, la puerta de enlace tiene la dirección IP más baja disponible en la red, como 192.168.12.1 o 192.168.12.2 si la primera está ocupada. En hogares, el dispositivo que actúa como puerta de enlace suele ser el "router inalámbrico". A nivel doméstico este router es una combinación de router, switch, punto de acceso, cortafuegos y módem.
+
+### 2.1.1. Profundización: Servidor Proxy
+
+Un proxy actúa como un intermediario que intercepta tus solicitudes de comunicación y las gestiona de manera que parece que provienen de él mismo. Imagina al proxy como un agente secreto que recibe tus mensajes, los reescribe con su propia identidad y los envía al destino. Cuando el servidor de destino recibe la solicitud, cree que está interactuando directamente con el proxy, sin saber que tú eres el origen real de la comunicación.
+
+Este proceso implica que el proxy recibe tus paquetes originales, los analiza y luego genera nuevos paquetes que envía al servidor. De esta forma, se establece una conexión entre el proxy y el servidor, independiente de la conexión entre tú y el proxy. Cuando el servidor responde, el proxy realiza el proceso inverso: recibe la respuesta, la interpreta y te envía nuevos paquetes como si fueran originados desde él. Lo que el proxy modifica es la información en la capa de aplicación, como las cabeceras HTTP en una navegación web.
+
+- Recepción y Análisis: El proxy recibe los paquetes originales que envías desde tu dispositivo. En esta fase, el proxy analiza el contenido de estos paquetes para entender qué tipo de información contienen y hacia dónde se dirigen.
+- Generación de Nuevos Paquetes: Luego, el proxy crea nuevos paquetes con la información relevante y los envía al servidor de destino. Esta nueva conexión es independiente de la original entre tu dispositivo y el proxy.
+- Respuesta del Servidor: Cuando el servidor responde, devuelve los datos al proxy. El proxy entonces analiza esta respuesta y crea nuevos paquetes para enviártelos, haciendo parecer que estos paquetes se originaron desde el proxy.
+- Modificación en la Capa de Aplicación: Aquí es donde entra en juego la modificación de la información en la capa de aplicación. El proxy puede cambiar las cabeceras HTTP, que son parte de los datos que se envían en la capa de aplicación. Estas cabeceras pueden incluir información como detalles del navegador, cookies, lenguaje preferido, etc. Al modificar estas cabeceras, el proxy puede ajustar la manera en que se presentan los datos o incluso proporcionar anonimato.
+- Capa de Red: Efectivamente, el proxy también modifica la información en la capa de red al generar nuevos datagramas IP. Esto significa que el datagrama IP que llega al servidor parecerá haber sido enviado directamente desde el proxy, no desde tu dispositivo.
+
+Para ilustrarlo mejor, piensa en una comunicación web típica:
+
+Sin proxy:
+
+- Tu PC envía una solicitud al servidor.
+- El servidor ve tu dirección IP pública y responde directamente a ella.
+
+Con proxy:
+
+- Tu PC envía una solicitud al proxy.
+- El proxy crea una nueva solicitud desde su propia dirección IP y la envía al servidor.
+- El servidor responde al proxy, creyendo que es el origen.
+- El proxy recibe la respuesta y te la reenvía.
+
+Este esquema puede representarse así: [Tu PC] <---> [Proxy] <---> [Servidor]
+
+Un ejemplo de un proxy en acción lo podemos encontrar en los filtros web (web filters).Un filtro web actúa como un proxy que intercepta y analiza las solicitudes web que haces desde tu dispositivo hacia Internet. Aquí están los pasos esenciales del proceso:
+
+- Intercepción: Cuando intentas acceder a una página web, tu solicitud pasa primero por el filtro web.
+- Evaluación: El filtro web revisa la solicitud y la compara con una base de datos de categorías y reglas predefinidas. Estas categorías pueden incluir temas como redes sociales, entretenimiento, noticias, contenido para adultos, etc.
+- Acción: Basado en las reglas establecidas, el filtro web decide si permite o bloquea el acceso a la página solicitada. Si la página está en una categoría restringida, se bloquea y se te muestra un mensaje de bloqueo.
+
+**Ejemplo Práctico**: Supongamos que estás en una red corporativa donde se ha configurado un filtro web que bloquea el acceso a sitios de redes sociales durante el horario laboral:
+
+- Intentas acceder a Facebook.
+- Tu solicitud pasa por el filtro web.
+- El filtro detecta que Facebook pertenece a la categoría "Redes Sociales" y está bloqueado.
+- Se te muestra un mensaje informándote que el acceso a Facebook está restringido.
+
+**Proxy y Modificación de Datos**: En este caso, el filtro web actúa como un proxy, gestionando la conexión entre tu dispositivo y el servidor web de destino. También puede modificar las cabeceras HTTP u otros datos en la capa de aplicación para mejorar la seguridad, anonimato y cumplimiento de políticas internas de la organización.
+
+En resumen, los filtros web son un tipo de proxy especializado en filtrar y controlar el acceso a Internet basándose en categorías y políticas predefinidas.
+
+Beneficios de este enfoque:
+
+- Anonimato y Privacidad: Tu dirección IP real permanece oculta para el servidor final, protegiendo tu identidad y ubicación.
+- Control y Filtrado: Las organizaciones pueden implementar políticas de acceso, bloquear sitios no deseados y monitorear el uso de la red.
+- Optimización: Los proxies pueden almacenar en caché contenido frecuente, reduciendo tiempos de carga y ancho de banda utilizado.
+
+Un símil para entenderlo mejor: Imagina que quieres solicitar información a una empresa, pero en lugar de contactarlos directamente, le pides a un asistente que lo haga por ti. Tu asistente (el proxy) se comunica con la empresa, obtiene la información y luego te la entrega. La empresa solo interactúa con el asistente y no sabe que tú estás detrás de la petición.
+
+El uso de proxies puede influir en la seguridad y eficiencia de las redes. Al actuar como intermediarios, no solo protegen la identidad de los usuarios, sino que también ofrecen capacidades adicionales como la inspección de tráfico y protección contra amenazas.
+
+Además, existen diferentes tipos de proxies:
+
+- Proxy Directo: Actúa en nombre del cliente, como hemos descrito.
+- Proxy Inverso: Se coloca frente a uno o varios servidores, gestionando las solicitudes entrantes y distribuyéndolas según la carga o disponibilidad. Es común en servicios web para balancear carga y añadir capas de seguridad.
+
+Con el creciente enfoque en la ciberseguridad y la privacidad en línea, los proxies juegan un papel crucial en la protección de datos y en el mantenimiento de redes robustas. Herramientas como las VPN (Redes Privadas Virtuales) también utilizan conceptos similares para crear túneles seguros entre dispositivos y redes.
