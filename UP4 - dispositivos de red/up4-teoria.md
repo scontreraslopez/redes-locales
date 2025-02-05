@@ -316,3 +316,49 @@ El ADSL marcó un hito al permitir velocidades de varios Mbps utilizando las lí
 **ATM y Frame Relay**
 
 Fueron tecnologías utilizadas principalmente en entornos empresariales para la transmisión de datos sobre redes de área amplia. ATM (Modo de Transferencia Asíncrona) y Frame Relay permitieron mejorar la eficiencia y velocidad en las comunicaciones. No obstante, la evolución de los protocolos de Internet y las nuevas necesidades de flexibilidad y escalabilidad hicieron que estas tecnologías quedaran obsoletas.
+
+## 4. Redes Locales Virtuales (VLAN)
+
+Imagina que en una empresa todos los departamentos están conectados a la misma red física. Sin embargo, no es conveniente que todos los empleados tengan acceso a toda la información que circula por esa red. Por ejemplo, no queremos que el departamento de Ventas vea los datos confidenciales de Contabilidad. Hasta ahora habíamos visto la técnica de subnetting, pero ¿qué impide a alguien cambiar su dirección IP y saltar de una subred a otra? Aquí es donde entran en juego las Redes Locales Virtuales, o VLAN por sus siglas en inglés.
+
+Una VLAN es una forma de segmentar una red física en múltiples redes lógicas. Esto significa que, aunque todos los dispositivos estén conectados al mismo hardware físico, se comportan como si estuvieran en redes separadas. Así, la información que se genera dentro de una VLAN solo es accesible para los anfitriones (hosts) de esa misma VLAN, aumentando la seguridad y eficiencia de la red. A diferencia de con el subnetting, esta configuración se realiza a nivel de switch, asignando puertos a una VLAN específica.
+
+Este es uno de los motivos que justifica la sensibilidad de los cuartos de comunicaciones y racks de servidores, ya que un acceso no autorizado a estos dispositivos podría comprometer la seguridad de toda la red. También la necesidad de proteger con contraseña los switches, para evitar que alguien pueda cambiar la configuración de las VLAN.
+
+### 4.1 Características de las VLAN
+
+Las VLAN ofrecen varias ventajas que mejoran el funcionamiento y gestión de las redes locales:
+
+- Reducción de costos y facilidad administrativa: Al utilizar software para segmentar la red, eliminamos la necesidad de añadir routers físicos para crear dominios de difusión separados. Los switches VLAN permiten esta funcionalidad con un costo menor y una configuración más sencilla.
+- Aumento de la eficiencia del ancho de banda: Al controlar los dominios de difusión, se reduce la cantidad de tráfico innecesario en la red. Los paquetes solo se envían a los dispositivos que pertenecen a la misma VLAN, optimizando el uso del ancho de banda y mejorando el rendimiento general.
+- Mejora en la seguridad: Al separar la red en VLAN, podemos asegurarnos de que solo los usuarios autorizados tengan acceso a cierta información. Esto evita que datos sensibles estén al alcance de todos y facilita la implementación de políticas de seguridad específicas para cada segmento.
+- Flexibilidad y escalabilidad: Los hosts pueden pertenecer a diferentes VLAN sin importar a qué puerto del switch estén conectados. Además, es posible que hosts en switches distintos formen parte de la misma VLAN. Esto simplifica la reorganización y expansión de la red sin cambios drásticos en la infraestructura física.
+
+### 4.2 Configuración de Switches VLAN
+
+Los switches que soportan VLAN nos permiten configurar estas redes virtuales de dos maneras.
+
+#### 4.2.1. VLAN Estáticas
+
+En las VLAN estáticas, asignamos manualmente cada puerto del switch a una VLAN específica. Esta asignación permanece igual a menos que se modifique la configuración. Es una forma sencilla y directa de gestionar las VLAN, pero requiere que el administrador esté atento a qué dispositivos se conectan y dónde, especialmente si hay cambios físicos en la red.
+
+- Ventaja: Sencillez en la configuración y control directo sobre la asignación de puertos.
+- Desventaja: Menos flexibilidad ante cambios o movimientos de dispositivos en la red.
+
+#### 4.2.2. VLAN Dinámicas
+
+En las VLAN dinámicas, la asignación de puertos a VLAN se realiza automáticamente según ciertos parámetros, como la dirección MAC del dispositivo o la autenticación del usuario. Esto permite que, sin importar en qué puerto se conecte un dispositivo, siempre forme parte de su VLAN asignada.
+
+- Ventaja: Mayor flexibilidad y facilidad para usuarios móviles o dispositivos que cambian de ubicación.
+- Desventaja: Configuración más compleja, ya que requiere mantener una base de datos con las direcciones MAC o credenciales de los dispositivos y usuarios.
+
+#### 4.2.3. Comunicación entre VLANs
+
+Aunque las VLAN están diseñadas para aislar el tráfico, a veces es necesario que se comuniquen entre sí. Para permitir esta comunicación, podemos utilizar:
+
+- Routers: Conectamos las VLAN al router, que se encargará de dirigir el tráfico entre ellas. Cada VLAN se configura como una red independiente en el router, y se establecen reglas de enrutamiento para controlar el flujo de datos.
+- Switches con Trunking: Los switches pueden utilizar una técnica llamada trunking, que implica configurar uno o más puertos como troncales. Estos puertos pueden transportar tráfico de múltiples VLAN simultáneamente. Al conectar los puertos troncales a un router o a otros switches, facilitamos la comunicación entre VLANs sin necesidad de configurar rutas específicas en el router.
+
+#### 4.2.4. Otros beneficios de las VLAN
+
+Las VLAN no solo mejoran la seguridad y eficiencia en redes empresariales, sino que también son fundamentales en tecnologías modernas como la virtualización y las redes definidas por software (SDN). Permiten una gestión más dinámica y adaptable de los recursos de red, lo cual es esencial en entornos donde la escalabilidad y flexibilidad son clave.
