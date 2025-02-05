@@ -230,3 +230,10 @@ Las capturas de pantalla contendrán toda la pantalla, incluida la hora del PC.
   - Capturas de pantalla de la configuración de las interfaces de los routers. Se deben ver las direcciones IP asignadas y el estado de las interfaces. Se puede ejecutar el comando `show ip interface brief` a este efecto.
   - Capturas de pantalla de la configuración de las rutas estáticas. Se deben ver las rutas estáticas añadidas y la puerta de enlace. Se puede ejecutar el comando `show ip route` a este efecto.
   - Captura de pantalla de la verificación de la conectividad entre los routers. Se debe ver el resultado del comando `ping` entre los routers.
+
+## 3. LAB: Configuarando VLANs en un switch CISCO mediante el CLI
+
+- Dificultad: Moderada
+- Tiempo estimado: 60 minutos
+
+

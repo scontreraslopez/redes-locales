@@ -192,7 +192,7 @@ Algunos Protocolos de Enrutamiento Dinámico son:
 
 Los hosts también tienen una tabla de enrutamiento que les ayuda a determinar la mejor ruta para enviar paquetes.
 
-### 2.1. Tablas de Enrutamiento:
+### 2.1. Tablas de Enrutamiento
 
 Todos los dispositivos que usan TCP/IP tienen una tabla de enrutamiento con información básica para dirigir los paquetes. En los hosts, esta tabla suele ser más pequeña que en los routers, e incluye direcciones IP de la red local, la dirección de loopback y la puerta de enlace predeterminada.
 
@@ -290,39 +290,23 @@ Internet es una red dinámica y en constante expansión. Gracias a la flexibilid
 
 #### 3.2.1. Tecnologías Actuales
 
-**Fibra Óptica**
+**Fibra Óptica**: La fibra óptica utiliza filamentos de vidrio o plástico para transmitir datos mediante pulsos de luz. Ofrece velocidades extremadamente altas, que pueden superar los 1 Gbps, baja latencia y gran estabilidad. Esta tecnología es ideal para soportar las crecientes demandas de ancho de banda en aplicaciones como streaming de alta definición, teletrabajo y servicios en la nube.
 
-La fibra óptica utiliza filamentos de vidrio o plástico para transmitir datos mediante pulsos de luz. Ofrece velocidades extremadamente altas, que pueden superar los 1 Gbps, baja latencia y gran estabilidad. Esta tecnología es ideal para soportar las crecientes demandas de ancho de banda en aplicaciones como streaming de alta definición, teletrabajo y servicios en la nube.
+**Conexiones de Cable**: Utilizan la infraestructura de televisión por cable para proporcionar acceso a Internet de banda ancha. Ofrecen velocidades competitivas y son ampliamente utilizadas en zonas urbanas. La tecnología DOCSIS 3.1 permite velocidades que pueden alcanzar los 10 Gbps en condiciones óptimas.
 
-**Conexiones de Cable**
+**Redes Móviles 4G/5G**: Las redes móviles han evolucionado significativamente. La tecnología 4G LTE ofrece velocidades adecuadas para navegar, ver videos y usar aplicaciones en dispositivos móviles. Con la llegada del **5G**, se espera una revolución en la conectividad móvil, con velocidades que pueden superar los 20 Gbps, baja latencia y capacidad para conectar una gran cantidad de dispositivos simultáneamente, impulsando el Internet de las Cosas (IoT) y aplicaciones en tiempo real.
 
-Utilizan la infraestructura de televisión por cable para proporcionar acceso a Internet de banda ancha. Ofrecen velocidades competitivas y son ampliamente utilizadas en zonas urbanas. La tecnología DOCSIS 3.1 permite velocidades que pueden alcanzar los 10 Gbps en condiciones óptimas.
-
-**Redes Móviles 4G/5G**
-
-Las redes móviles han evolucionado significativamente. La tecnología 4G LTE ofrece velocidades adecuadas para navegar, ver videos y usar aplicaciones en dispositivos móviles. Con la llegada del **5G**, se espera una revolución en la conectividad móvil, con velocidades que pueden superar los 20 Gbps, baja latencia y capacidad para conectar una gran cantidad de dispositivos simultáneamente, impulsando el Internet de las Cosas (IoT) y aplicaciones en tiempo real.
-
-**Acceso Inalámbrico Fijo**
-
-Esta tecnología proporciona acceso a Internet mediante señales inalámbricas desde una estación base fija a ubicaciones fijas (hogares, empresas). Es especialmente útil en áreas rurales o de difícil acceso donde las conexiones cableadas no son viables. Tecnologías como **WiMAX** y soluciones de radio enlace ofrecen alternativas eficientes para llevar conectividad a estas zonas.
+**Acceso Inalámbrico Fijo**: Esta tecnología proporciona acceso a Internet mediante señales inalámbricas desde una estación base fija a ubicaciones fijas (hogares, empresas). Es especialmente útil en áreas rurales o de difícil acceso donde las conexiones cableadas no son viables. Tecnologías como **WiMAX** y soluciones de radio enlace ofrecen alternativas eficientes para llevar conectividad a estas zonas.
 
 #### 3.2.2. Breve Mención Histórica a Tecnologías Obsoletas
 
-**Módem Analógico**
+**Módem Analógico**: En sus inicios, los módems analógicos permitieron a los usuarios conectarse a Internet a través de líneas telefónicas convencionales, alcanzando velocidades máximas de 56 Kbps. Fueron fundamentales para la masificación de Internet en los hogares, aunque sus limitaciones de velocidad y estabilidad los hicieron obsoletos con la llegada de tecnologías superiores.
 
-En sus inicios, los módems analógicos permitieron a los usuarios conectarse a Internet a través de líneas telefónicas convencionales, alcanzando velocidades máximas de 56 Kbps. Fueron fundamentales para la masificación de Internet en los hogares, aunque sus limitaciones de velocidad y estabilidad los hicieron obsoletos con la llegada de tecnologías superiores.
+**RDSI (Red Digital de Servicios Integrados)**: La RDSI proporcionó conexiones digitales sobre líneas telefónicas, mejorando la calidad y velocidad con respecto a los módems analógicos, alcanzando hasta 192 Kbps en el acceso básico. Aunque representó un avance significativo en su momento, fue superada por tecnologías de banda ancha más eficientes.
 
-**RDSI (Red Digital de Servicios Integrados)**
+**ADSL (Línea de Abonado Digital Asimétrica)**: El ADSL marcó un hito al permitir velocidades de varios Mbps utilizando las líneas telefónicas existentes, separando las frecuencias de voz y datos. Su naturaleza asimétrica, con mayor velocidad de descarga que de subida, se ajustaba a las necesidades de los usuarios domésticos. Sin embargo, las crecientes demandas de ancho de banda y la aparición de nuevas tecnologías llevaron a su progresivo desuso.
 
-La RDSI proporcionó conexiones digitales sobre líneas telefónicas, mejorando la calidad y velocidad con respecto a los módems analógicos, alcanzando hasta 192 Kbps en el acceso básico. Aunque representó un avance significativo en su momento, fue superada por tecnologías de banda ancha más eficientes.
-
-**ADSL (Línea de Abonado Digital Asimétrica)**
-
-El ADSL marcó un hito al permitir velocidades de varios Mbps utilizando las líneas telefónicas existentes, separando las frecuencias de voz y datos. Su naturaleza asimétrica, con mayor velocidad de descarga que de subida, se ajustaba a las necesidades de los usuarios domésticos. Sin embargo, las crecientes demandas de ancho de banda y la aparición de nuevas tecnologías llevaron a su progresivo desuso.
-
-**ATM y Frame Relay**
-
-Fueron tecnologías utilizadas principalmente en entornos empresariales para la transmisión de datos sobre redes de área amplia. ATM (Modo de Transferencia Asíncrona) y Frame Relay permitieron mejorar la eficiencia y velocidad en las comunicaciones. No obstante, la evolución de los protocolos de Internet y las nuevas necesidades de flexibilidad y escalabilidad hicieron que estas tecnologías quedaran obsoletas.
+**ATM y Frame Relay**: Fueron tecnologías utilizadas principalmente en entornos empresariales para la transmisión de datos sobre redes de área amplia. ATM (Modo de Transferencia Asíncrona) y Frame Relay permitieron mejorar la eficiencia y velocidad en las comunicaciones. No obstante, la evolución de los protocolos de Internet y las nuevas necesidades de flexibilidad y escalabilidad hicieron que estas tecnologías quedaran obsoletas.
 
 ## 4. Redes Locales Virtuales (VLAN)
 
@@ -369,3 +353,6 @@ Aunque las VLAN están diseñadas para aislar el tráfico, a veces es necesario 
 #### 4.2.4. Otros beneficios de las VLAN
 
 Las VLAN no solo mejoran la seguridad y eficiencia en redes empresariales, sino que también son fundamentales en tecnologías modernas como la virtualización y las redes definidas por software (SDN). Permiten una gestión más dinámica y adaptable de los recursos de red, lo cual es esencial en entornos donde la escalabilidad y flexibilidad son clave.
+
+
+Las VLAN pueden estar asociadas a puertos específicos de un switch local o pueden extenderse lógicamente a través de toda la red conmutada mediante enlaces trunk. Estos enlaces troncales permiten que las VLAN se propaguen a través de múltiples switches, manteniendo la segmentación lógica sin importar la ubicación física de los dispositivos.
