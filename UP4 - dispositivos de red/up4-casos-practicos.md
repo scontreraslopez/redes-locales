@@ -221,6 +221,12 @@ Esto permite ir tachando según se vaya completando la configuración.
 
 - Por último, intenta hacer ping desde el router R0 al R3 para comprobar que la configuración de la red es correcta.
 
+> [!TIP]
+> Desde el modo de configuración interface `config-if` de dicha interfaz utiliza `no ip address` para borrar una dirección ip de una interfaz
+
+> [!TIP]
+> Desde el modo enable`Router#` o usuario `Router>` puedes ejecutar el comando `show ip interface brief` o `show ip interface`
+
 ### 2.4. Memoria a entregar
 
 Las capturas de pantalla contendrán toda la pantalla, incluida la hora del PC.
