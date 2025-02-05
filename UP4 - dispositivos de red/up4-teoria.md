@@ -17,6 +17,13 @@
   - [3.2. Tecnologías de Acceso a Internet y Dispositivos Asociados](#32-tecnologías-de-acceso-a-internet-y-dispositivos-asociados)
     - [3.2.1. Tecnologías Actuales](#321-tecnologías-actuales)
     - [3.2.2. Breve Mención Histórica a Tecnologías Obsoletas](#322-breve-mención-histórica-a-tecnologías-obsoletas)
+- [4. Redes Locales Virtuales (VLAN)](#4-redes-locales-virtuales-vlan)
+  - [4.1. Características de las VLAN](#41-características-de-las-vlan)
+  - [4.2. Configuración de Switches VLAN](#42-configuración-de-switches-vlan)
+    - [4.2.1. VLAN Estáticas](#421-vlan-estáticas)
+    - [4.2.2. VLAN Dinámicas](#422-vlan-dinámicas)
+    - [4.2.3. Comunicación entre VLANs](#423-comunicación-entre-vlans)
+    - [4.2.4. Otros beneficios de las VLAN](#424-otros-beneficios-de-las-vlan)
 
 ## 1. El router
 
