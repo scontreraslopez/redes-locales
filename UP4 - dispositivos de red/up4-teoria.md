@@ -354,5 +354,4 @@ Aunque las VLAN están diseñadas para aislar el tráfico, a veces es necesario 
 
 Las VLAN no solo mejoran la seguridad y eficiencia en redes empresariales, sino que también son fundamentales en tecnologías modernas como la virtualización y las redes definidas por software (SDN). Permiten una gestión más dinámica y adaptable de los recursos de red, lo cual es esencial en entornos donde la escalabilidad y flexibilidad son clave.
 
-
 Las VLAN pueden estar asociadas a puertos específicos de un switch local o pueden extenderse lógicamente a través de toda la red conmutada mediante enlaces trunk. Estos enlaces troncales permiten que las VLAN se propaguen a través de múltiples switches, manteniendo la segmentación lógica sin importar la ubicación física de los dispositivos.
