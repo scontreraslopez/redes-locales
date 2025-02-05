@@ -4,7 +4,10 @@
 
 - [1. Dominando el comando 'ip route' en Linux](#1-dominando-el-comando-ip-route-en-linux)
 - [2. LAB: Configurando la tabla de enrutamiento de un router CISCO mediante el CLI](#2-lab-configurando-la-tabla-de-enrutamiento-de-un-router-cisco-mediante-el-cli)
-  - [Memoria a entregar](#memoria-a-entregar)
+  - [2.1. Configurar las interfaces de los routers](#21-configurar-las-interfaces-de-los-routers)
+  - [2.2. Configurar las rutas estáticas para los routers](#22-configurar-las-rutas-estáticas-para-los-routers)
+  - [2.3. Comprobación de la conectividad](#23-comprobación-de-la-conectividad)
+  - [2.4. Memoria a entregar](#24-memoria-a-entregar)
 
 ## 1. Dominando el comando 'ip route' en Linux
 
@@ -73,14 +76,14 @@ Proporciona la ruta que el kernel elegirá para llegar a una dirección IP espec
 
 ## 2. LAB: Configurando la tabla de enrutamiento de un router CISCO mediante el CLI
 
-- Dificultad: Baja
-- Tiempo estimado: 50 minutos
+- Dificultad: Moderada
+- Tiempo estimado: 120 minutos
 
 Vamos a realizar la siguiente configuración en Cisco Packet Tracer. Aquí configuraremos las interfaces de los routers y las rutas estáticas para los routers. La topología de red es la siguiente:
 
 ![Router Configuration Exercise](/assets/images/router-config-up4-1.png)
 
-1. Configurar las interfaces de los routers:
+### 2.1. Configurar las interfaces de los routers
 
 - Ponemos los 4 routers 1841 en Cisco Packet Tracer y los conectamos entre sí con cables cruzados. Asegúrate de que las interfaces de los routers están conectadas de la siguiente manera:
   - R0: Fa0/0 a R1: Fa0/0
@@ -115,11 +118,34 @@ Router(config-if)# no shutdown
 
 Se deja la configuración de R2 y R3 como ejercicio para el lector.
 
-2. Configurar las rutas estáticas para los routers:
+**Checklist de configuración**:
+
+Esto permite ir tachando según se vaya completando la configuración.
+
+- [ ] Hostname de R0
+- [ ] ip address de R0 Fa0/0
+- [ ] no shutdown de R0 Fa0/0
+- [ ] Hostname de R1
+- [ ] ip address de R1 Fa0/0
+- [ ] no shutdown de R1 Fa0/0
+- [ ] ip address de R1 Fa0/1
+- [ ] no shutdown de R1 Fa0/1
+- [ ] Hostname de R2
+- [ ] ip address de R2 Fa0/0
+- [ ] no shutdown de R2 Fa0/0
+- [ ] ip address de R2 Fa0/1
+- [ ] no shutdown de R2 Fa0/1
+- [ ] Hostname de R3
+- [ ] ip address de R3 Fa0/0
+- [ ] no shutdown de R3 Fa0/0
+
+En este punto ya deberíamos ver todas las conexiones entre routers en verde.
+
+### 2.2. Configurar las rutas estáticas para los routers
 
 - Establecemos las rutas estáticas para permitir la comunicación entre los routers, comenzando con el router R0. Es fundamental que las tablas de enrutamiento de todos los routers sean coherentes. Esto implica que cada router debe contener la ruta adecuada para alcanzar la red adyacente en un solo salto. Una vez configuradas correctamente las tablas de enrutamiento de los routers, podremos acceder a cada uno de ellos desde los demás.
 
-No es preciso añadir entradas en las tablas de enrutamiento para las redes directamente conectadas. Por ejemplo, no necesitamos añadir una entrada para la conexión entre R0 y R1, ya que esta conexión es directa y se añade automáticamente a la tabla de enrutamiento.
+**No es preciso añadir entradas en las tablas de enrutamiento para las redes directamente conectadas**. Por ejemplo, no necesitamos añadir una entrada para la conexión entre R0 y R1, ya que esta conexión es directa y se añade automáticamente a la tabla de enrutamiento.
 
 ```bash
 Router> enable
@@ -157,12 +183,45 @@ Observamos como nos indica que una de las interfaces está directamente conectad
 
 Repetimos la operación con el resto de routers.
 
-3. Comprobación de la conectividad:
+Como puede ser un poco difícil de seguir, quizá resulte útil este cuadro resumen: 
 
-- Ejecuta el comando `ip route show` en cada router para verificar que las rutas estáticas se han configurado correctamente.
+| Segmento de red | Dirección de red |
+|-----------------|------------------|
+| A: R0 - R1         | 10.0.0.0/30      |
+| B: R1 - R2         | 10.0.1.0/30      |
+| C: R2 - R3         | 10.0.2.0/30      |
+
+Debemos configurar los siguientes saltos estáticos en cada router:
+
+| Router | Red destino | Máscara de red | Próximo salto |
+|--------|-------------|----------------|---------------|
+| R0     | Dirección IP de red B | 255.255.255.252 | Dirección IP de R1 Fa0/0 |
+| R0     | Dirección IP de red C | 255.255.255.252 | Dirección IP de R1 Fa0/0 |
+| R1     | Dirección IP de red C | 255.255.255.252 | Dirección IP de R2 Fa0/0 |
+| R2     | Dirección IP de red A | 255.255.255.252 | Dirección IP de R1 Fa0/1 |
+| R3     | Dirección IP de red B | 255.255.255.252 | Dirección IP de R2 Fa0/1 |
+| R3     | Dirección IP de red A | 255.255.255.252 | Dirección IP de R2 Fa0/1 |
+
+Nótese que en estos routers en lugar de las direcciones de red, podemos usar el default gateway ip route como en el ejemplo de R0 ```Router(config)# ip route 0.0.0.0 0.0.0.0 10.0.0.2```
+
+**Checklist de configuración**:
+
+Esto permite ir tachando según se vaya completando la configuración.
+
+- [ ] ip route de R0 a red B
+- [ ] ip route de R0 a red C
+- [ ] ip route de R1 a red C
+- [ ] ip route de R2 a red A
+- [ ] ip route de R3 a red B
+- [ ] ip route de R3 a red A
+
+### 2.3. Comprobación de la conectividad
+
+ Ejecuta el comando `show ip route` en cada router para verificar que las rutas estáticas se han configurado correctamente. Como son los routers en los extremos, funcionará si se ha configurado correctamente todos los saltos.
+
 - Por último, intenta hacer ping desde el router R0 al R3 para comprobar que la configuración de la red es correcta.
 
-### Memoria a entregar
+### 2.4. Memoria a entregar
 
 Las capturas de pantalla contendrán toda la pantalla, incluida la hora del PC.
 
