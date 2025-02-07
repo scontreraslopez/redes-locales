@@ -268,11 +268,17 @@ Enlaces Troncales (Trunk Links): Son conexiones especiales que transportan tráf
 
 En esta práctica, configuraremos VLANs en switches Cisco utilizando Packet Tracer, combinando conceptos básicos de subnetting. Además, utilizaremos el protocolo de trunking 802.1Q, que es un estándar ampliamente usado para permitir que múltiples VLANs compartan un enlace troncal. Aunque nos enfocaremos en 802.1Q, es importante saber que existen otros protocolos como ISL (Inter-Switch Link), propietario de Cisco.
 
-Imaginemos una empresa donde necesitamos segmentar la red en dos departamentos:
+Imaginemos una empresa donde necesitamos segmentar la red en dos departamentos. Por simplicidad, consideraremos que en cada departamento se necesita tener el mismo número de equipos conectados. Los departamentos son:
 
-- Departamento de Ventas (VLAN 10)
-- Departamento de Contabilidad (VLAN 20)
-- Queremos que los equipos de cada departamento solo se comuniquen entre sí y estén aislados del otro departamento.
+- Departamento de Ventas
+- Departamento de Contabilidad
+
+Queremos que los equipos de cada departamento solo se comuniquen entre sí y estén aislados del otro departamento. Para ello, asignaremos a cada departamento una VLAN diferente:
+
+- VLAN 10: Ventas
+- VLAN 20: Contabilidad
+
+Considera además que la Red Principal de la empresa es 192.168.0.0/24
 
 ### 3.5. Objetivos de la Práctica
 
@@ -289,20 +295,20 @@ Imaginemos una empresa donde necesitamos segmentar la red en dos departamentos:
 
 Primero, vamos a planificar nuestras subredes a partir de la Red Principal: 192.168.0.0/24
 
-Dividiremos esta red en subredes más pequeñas:
+Usando FLSM para subnetting, determinamos el rango de IP de cada una de las VLANs:
 
-| VLAN | Subred | Rango de IPs | Máscara de Subred |
-|------|--------|--------------|-------------------|
-| VLAN 10 (Ventas) | 192.168.10.0/24 | 192.168.10.1 - 192.168.10.254 | 255.255.255.0 |
-| VLAN 20 (Contabilidad) | 192.168.20.0/24 | 192.168.20.1 - 192.168.20.254 | 255.255.255.0 |
+| Departamento | VLAN | Dirección de red (CIDR) | Broadcast | Rango de IPs host |
+|--------------|--------|--------------|-------|------------|
+| Ventas | VLAN 10 | 192.168.0.0/25 | 192.168.0.127 | 192.168.0.1 - 192.168.0.126 |
+| Contabilidad | VLAN 20 | 192.168.0.128/25 | 192.168.0.255 | 192.168.0.129 - 192.168.0.254 |
 
 #### 3.6.2. Paso 2: Configuración en Packet Tracer
 
-1. Abre Packet Tracer y crea un nuevo proyecto.
-2. Añade los dispositivos necesarios:
-  2.1. 2 Switches 2960
-  2.2. 4 PCs
-3. Conecta los dispositivos:
+- Abre Packet Tracer y crea un nuevo proyecto.
+- Añade los dispositivos necesarios:
+  - 2x Switches 2960
+  - 4x PCs representando al primer y último host de cada departamento.
+- Conecta los dispositivos:
 
 Switch1:
 
@@ -316,34 +322,31 @@ Switch2:
 
 Enlace Troncal:
 
-Conecta el puerto Fa0/24 de Switch1 al puerto Fa0/24 de Switch2.
+- Conecta el puerto Gig0/1 de Switch1 al puerto Gig0/1 de Switch2.
 
-Diagrama de Red Simplificado:
+#### 3.6.3. Paso 3: Configurar VLANs en los Switches
 
-PC1 ----- Fa0/1      Switch1      Fa0/24 ----- Fa0/24      Switch2      Fa0/1 ----- PC3
-PC2 ----- Fa0/2                    |                             |                    Fa0/2 ----- PC4
-Paso 3: Configurar VLANs en los Switches
-Configuración en Switch1:
+##### Configuración en Switch1
 
-a. Accede a la CLI de Switch1.
-
-b. Entra en modo privilegiado y luego en modo de configuración global:
-
+- Accede a la CLI de Switch1.
+- Entra en modo privilegiado y luego en modo de configuración global:
+```bash
 Switch> enable
 Switch# configure terminal
-c. Crea las VLANs:
-
-VLAN 10 para Ventas:
-
+```
+- Crea la VLAN 10 para Ventas:
+```bash
 Switch(config)# vlan 10
 Switch(config-vlan)# name Ventas
 Switch(config-vlan)# exit
-VLAN 20 para Contabilidad:
-
+```
+- Crea la VLAN 20 para Contabilidad:
+```bash
 Switch(config)# vlan 20
 Switch(config-vlan)# name Contabilidad
 Switch(config-vlan)# exit
-d. Asigna los puertos a las VLANs:
+```
+- Asigna los puertos a las VLANs:
 
 Asignar PC1 a VLAN 10:
 
