@@ -348,7 +348,7 @@ En las VLAN dinámicas, la asignación de puertos a VLAN se realiza automáticam
 Aunque las VLAN están diseñadas para aislar el tráfico, a veces es necesario que se comuniquen entre sí. Para permitir esta comunicación, podemos utilizar:
 
 - Routers: Conectamos las VLAN al router, que se encargará de dirigir el tráfico entre ellas. Cada VLAN se configura como una red independiente en el router, y se establecen reglas de enrutamiento para controlar el flujo de datos.
-- Switches con Trunking: Los switches pueden utilizar una técnica llamada trunking, que implica configurar uno o más puertos como troncales. Estos puertos pueden transportar tráfico de múltiples VLAN simultáneamente. Al conectar los puertos troncales a un router o a otros switches, facilitamos la comunicación entre VLANs sin necesidad de configurar rutas específicas en el router.
+- Switches con Trunking: Los switches pueden utilizar una técnica llamada trunking, que implica configurar uno o más puertos como troncales. Estos puertos pueden transportar tráfico de múltiples VLAN simultáneamente. Al conectar los puertos troncales a un router o a otros switches, facilitamos la comunicación entre VLANs sin necesidad de configurar rutas específicas en el router. [Más detalles](https://www.networkacademy.io/ccna/ethernet/router-on-a-stick)
 
 #### 4.2.4. Otros beneficios de las VLAN
 
@@ -369,4 +369,4 @@ Adicionalente, deberemos contar con el mapa físico de la red, que especifica la
 - Etiquetado y organización: Implementar un sistema de etiquetado claro en cables y dispositivos para simplificar el mantenimiento.
 - Adopción de estándares internacionales: Utilizar normas como ANSI/TIA-606 para la gestión de infraestructura de telecomunicaciones.
 - Seguridad desde el diseño: Incorporar medidas de seguridad, como segmentación de redes y firewalls, desde el inicio del diseño.
-- Documentación dinámica: Mantener la documentación actualizada tras cada cambio o actualización en la red. En este sentido resulta especialmente útil si la documentación se mantiene en un repositorio compartido y accesible por todo el equipo como pudiera ser Confluence, SharePoint, google sites, etc.
+- Documentación dinámica: Mantener la documentación actualizada tras cada cambio o actualización en la red. En este sentido resulta especialmente útil si la documentación se mantiene en un repositorio compartido y accesible por todo el equipo como pudiera ser Confluence, SharePoint, Google Sites, etc.
