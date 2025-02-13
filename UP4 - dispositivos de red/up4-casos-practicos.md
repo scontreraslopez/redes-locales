@@ -1,13 +1,27 @@
 # Casos Prácticos UP4
 
 ## Índice
-
 - [1. Dominando el comando 'ip route' en Linux](#1-dominando-el-comando-ip-route-en-linux)
 - [2. LAB: Configurando la tabla de enrutamiento de un router CISCO mediante el CLI](#2-lab-configurando-la-tabla-de-enrutamiento-de-un-router-cisco-mediante-el-cli)
   - [2.1. Configurar las interfaces de los routers](#21-configurar-las-interfaces-de-los-routers)
   - [2.2. Configurar las rutas estáticas para los routers](#22-configurar-las-rutas-estáticas-para-los-routers)
   - [2.3. Comprobación de la conectividad](#23-comprobación-de-la-conectividad)
   - [2.4. Memoria a entregar](#24-memoria-a-entregar)
+- [3. LAB: Configuarando VLANs en un switch CISCO mediante el CLI](#3-lab-configuarando-vlans-en-un-switch-cisco-mediante-el-cli)
+  - [3.1. Configuración de VLANs en Switches](#31-configuración-de-vlans-en-switches)
+  - [3.2. Relación del diseño de VLANs con las Subredes IP](#32-relación-del-diseño-de-vlans-con-las-subredes-ip)
+  - [3.3. Enlaces Troncales (Trunk Links)](#33-enlaces-troncales-trunk-links)
+  - [3.4. Enunciado del Ejercicio](#34-enunciado-del-ejercicio)
+  - [3.5. Objetivos de la Práctica](#35-objetivos-de-la-práctica)
+  - [3.6. Pasos para la Práctica](#36-pasos-para-la-práctica)
+    - [3.6.1. Paso 1: Diseño y Subnetting](#361-paso-1-diseño-y-subnetting)
+    - [3.6.2. Paso 2: Configuración en Packet Tracer](#362-paso-2-configuración-en-packet-tracer)
+    - [3.6.3. Paso 3: Configurar VLANs en los Switches](#363-paso-3-configurar-vlans-en-los-switches)
+    - [3.6.4. Paso 4: Configurar Direcciones IP en los PCs](#364-paso-4-configurar-direcciones-ip-en-los-pcs)
+    - [3.6.5. Paso 5: Verificar la Conectividad](#365-paso-5-verificar-la-conectividad)
+    - [3.6.6. Paso 6: Explicación Breve del Protocolo 802.1Q](#366-paso-6-explicación-breve-del-protocolo-8021q)
+    - [3.6.7. Paso 7: Configuración Adicional para Enrutamiento entre VLANs (Opcional)](#367-paso-7-configuración-adicional-para-enrutamiento-entre-vlans-opcional)
+    - [3.6.8. Paso 8: Reflexión y Exploración Adicional](#368-paso-8-reflexión-y-exploración-adicional)
 
 ## 1. Dominando el comando 'ip route' en Linux
 
@@ -240,8 +254,7 @@ Las capturas de pantalla contendrán toda la pantalla, incluida la hora del PC.
 ## 3. LAB: Configuarando VLANs en un switch CISCO mediante el CLI
 
 - Dificultad: Moderada
-- Tiempo estimado: 60 minutos
-
+- Tiempo estimado: 90 minutos
 
 ### 3.1. Configuración de VLANs en Switches
 
@@ -257,7 +270,7 @@ Este proceso es fundamental para controlar quién puede comunicarse con quién d
 El diseño e implementación de las VLANs deben alinearse con el esquema de subredes IP de tu red. Aquí tienes principios clave a seguir:
 
 - Una Subred por VLAN: Cada VLAN debe tener su propia subred IP. Esto simplifica el enrutamiento y la gestión de direcciones.
-- Dispositivos Consistentes dentro de la VLAN: Todos los equipos en una VLAN deben pertenecer a la misma subred. Esto asegura una comunicación fluida y evita conflictos de direcciones.
+- Dispositivos consistentes dentro de la VLAN: Todos los equipos en una VLAN deben pertenecer a la misma subred. Esto asegura una comunicación fluida y evita conflictos de direcciones.
 - Comunicación entre VLANs: Para permitir que diferentes VLANs se comuniquen, necesitas un dispositivo de capa 3, como un router o un switch de capa 3 (Switch L3 o Switch Layer3). Este dispositivo actúa como intermediario, dirigiendo el tráfico entre las subredes asociadas a cada VLAN. Un switch de capa 3, nos permite definir interfaces virtuales para cada VLAN, asignarles rangos de subred específicos y gestionar el enrutamiento internamente.
 
 ### 3.3. Enlaces Troncales (Trunk Links)
@@ -333,6 +346,7 @@ Enlace Troncal:
 ```bash
 Switch> enable
 Switch# configure terminal
+Switch(config)# hostname Switch1
 ```
 - Crea la VLAN 10 para Ventas:
 ```bash
