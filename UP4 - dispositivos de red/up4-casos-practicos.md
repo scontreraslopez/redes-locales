@@ -18,11 +18,15 @@
     - [3.6.1. Paso 1: Diseño y Subnetting](#361-paso-1-diseño-y-subnetting)
     - [3.6.2. Paso 2: Configuración en Packet Tracer](#362-paso-2-configuración-en-packet-tracer)
     - [3.6.3. Paso 3: Configurar VLANs en los Switches](#363-paso-3-configurar-vlans-en-los-switches)
-    - [3.6.4. Paso 4: Configurar Direcciones IP en los PCs](#364-paso-4-configurar-las-ips-en-los-pcs)
-    - [3.6.5. Paso 5: Verificar la Conectividad](#365-paso-5-verificar-la-conectividad)
-    - [3.6.6. Paso 6: Explicación Breve del Protocolo 802.1Q](#366-paso-6-explicación-breve-del-protocolo-8021q)
-    - [3.6.7. Paso 7: Configuración Adicional para Enrutamiento entre VLANs](#367-paso-7-configuración-adicional-para-enrutamiento-entre-vlans)
-    - [3.6.8. Paso 8: Reflexión y Exploración Adicional](#368-paso-8-reflexión-y-exploración-adicional)
+      - [Configuración en Switch1](#configuración-en-switch1)
+      - [Configuración en Switch2](#configuración-en-switch2)
+      - [Configuración de las direcciones IP en los PCs](#configuración-de-las-direcciones-ip-en-los-pcs)
+      - [Verificar la Conectividad](#verificar-la-conectividad)
+      - [Explicación Breve del Protocolo 802.1Q](#explicación-breve-del-protocolo-8021q)
+      - [Paso 7: Configuración Adicional para Enrutamiento entre VLANs (Opcional)](#paso-7-configuración-adicional-para-enrutamiento-entre-vlans-opcional)
+      - [Paso 8: Reflexión y Exploración Adicional](#paso-8-reflexión-y-exploración-adicional)
+      - [Conclusión](#conclusión)
+      - [Para Profundizar](#para-profundizar)
 
 ## 1. Dominando el comando 'ip route' en Linux
 
@@ -578,10 +582,14 @@ Investiga otros protocolos y tecnologías como Private VLANs, Q-in-Q tunneling, 
 
 ¡Ahora es tu turno!
 
-Prueba modificar la topología añadiendo más switches y PCs.
+- Prueba modificar la topología añadiendo más switches y PCs.
+- Crea VLANs adicionales y practica el subnetting con diferentes máscaras.
+- Simula escenarios donde ciertos departamentos necesiten comunicarse y otros no, ajustando las ACLs en el router.
+- Recuerda: La práctica constante y la exploración son claves para dominar el mundo de las redes.
 
-Crea VLANs adicionales y practica el subnetting con diferentes máscaras.
+## 4. LAB: Configurando routing dinámico mediante RIP en un switch CISCO
 
-Simula escenarios donde ciertos departamentos necesiten comunicarse y otros no, ajustando las ACLs en el router.
+- Dificultad: Baja
+- Tiempo estimado: 60 minutos
 
-Recuerda: La práctica constante y la exploración son claves para dominar el mundo de las redes.
+TODO
