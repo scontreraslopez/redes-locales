@@ -363,41 +363,44 @@ Switch(config-vlan)# exit
 - Asigna los puertos a las VLANs:
 
 Asignar PC1 a VLAN 10:
-
+```bash
 Switch(config)# interface FastEthernet0/1
 Switch(config-if)# switchport mode access
 Switch(config-if)# switchport access vlan 10
 Switch(config-if)# exit
-Asignar PC2 a VLAN 20:
+```
 
+Asignar PC2 a VLAN 20:
+```bash
 Switch(config)# interface FastEthernet0/2
 Switch(config-if)# switchport mode access
 Switch(config-if)# switchport access vlan 20
 Switch(config-if)# exit
-e. Configura el puerto troncal:
+```
 
+Configura el puerto troncal:
+
+```bash
 Switch(config)# interface FastEthernet0/24
 Switch(config-if)# switchport mode trunk
 Switch(config-if)# switchport trunk native vlan 99
 Switch(config-if)# switchport trunk allowed vlan 10,20
 Switch(config-if)# exit
+```
+
 > Nota: Configuramos la VLAN nativa como VLAN 99 para mejorar la seguridad al evitar el uso de la VLAN predeterminada (VLAN 1) como nativa.
 
-Configuración en Switch2:
+##### Configuración en Switch2
 
 Repite los mismos pasos que hiciste en Switch1.
 
-a. Crea las VLANs 10 y 20.
+- Crea las VLANs 10 y 20.
+- Asigna los puertos:
+  - Asignar PC3 a VLAN 10 (puerto Fa0/1).
+  - Asignar PC4 a VLAN 20 (puerto Fa0/2).
+- Configura el puerto troncal en Fa0/24.
+- Configurar Direcciones IP en los PCs
 
-b. Asigna los puertos:
-
-Asignar PC3 a VLAN 10 (puerto Fa0/1).
-
-Asignar PC4 a VLAN 20 (puerto Fa0/2).
-
-c. Configura el puerto troncal en Fa0/24.
-
-Paso 4: Configurar Direcciones IP en los PCs
 Para los PCs en VLAN 10 (Ventas):
 
 PC1:
