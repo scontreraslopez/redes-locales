@@ -401,163 +401,157 @@ Repite los mismos pasos que hiciste en Switch1.
 - Configura el puerto troncal en Fa0/24.
 - Configurar Direcciones IP en los PCs
 
+#### 3.6.4. Paso 4: Configurar las IPs en los PCs
+
 Para los PCs en VLAN 10 (Ventas):
 
 PC1:
-
-IP Address: 192.168.10.2
-
-Subnet Mask: 255.255.255.0
-
-Gateway: 192.168.10.1 (lo configuraremos más adelante)
+- IP Address: 192.168.10.2
+- Subnet Mask: 255.255.255.0
+- Gateway: 192.168.10.1 (lo configuraremos más adelante)
 
 PC3:
-
-IP Address: 192.168.10.3
-
-Subnet Mask: 255.255.255.0
-
-Gateway: 192.168.10.1
+- IP Address: 192.168.10.3
+- Subnet Mask: 255.255.255.0
+- Gateway: 192.168.10.1
 
 Para los PCs en VLAN 20 (Contabilidad):
 
 PC2:
-
-IP Address: 192.168.20.2
-
-Subnet Mask: 255.255.255.0
-
-Gateway: 192.168.20.1
+- IP Address: 192.168.20.2
+- Subnet Mask: 255.255.255.0
+- Gateway: 192.168.20.1
 
 PC4:
-
-IP Address: 192.168.20.3
-
-Subnet Mask: 255.255.255.0
-
-Gateway: 192.168.20.1
+- IP Address: 192.168.20.3
+- Subnet Mask: 255.255.255.0
+- Gateway: 192.168.20.1
 
 Configuración en Packet Tracer:
 
-Abre cada PC, ve a la pestaña Desktop y selecciona IP Configuration.
+- Abre cada PC, ve a la pestaña Desktop y selecciona IP Configuration.
+- Introduce la IP Address y Subnet Mask correspondientes.
 
-Introduce la IP Address y Subnet Mask correspondientes.
+#### 3.6.5. Paso 5: Verificar la Conectividad
 
-Paso 5: Verificar la Conectividad
 1. Comunicación dentro de la misma VLAN:
 
 Desde PC1, realiza un ping a PC3:
 
+``` bash
 C:\> ping 192.168.10.3
+```
+
 Deberías recibir respuestas exitosas.
 
 Desde PC2, realiza un ping a PC4:
 
+``` bash
 C:\> ping 192.168.20.3
+```
+
 2. Aislamiento entre VLANs:
 
 Intenta hacer ping desde PC1 a PC2:
-
+```bash
 C:\> ping 192.168.20.2
+```
+
 No deberías recibir respuesta, ya que las VLANs están aisladas y no hay enrutamiento entre ellas.
 
-Paso 6: Explicación Breve del Protocolo 802.1Q
+#### 3.6.6. Paso 6: Explicación Breve del Protocolo 802.1Q
+
 El estándar 802.1Q es un protocolo de trunking que permite transmitir tráfico de múltiples VLANs a través de un único enlace físico. Esto se logra añadiendo una etiqueta (tag) a las tramas Ethernet, indicando a qué VLAN pertenece cada una.
 
 ¿Por qué 802.1Q?
 
-Compatibilidad: Es un estándar abierto, lo que significa que funciona entre dispositivos de diferentes fabricantes, no solo Cisco.
-
-Eficiencia: Permite un uso más eficiente de los enlaces físicos, al transportar múltiples VLANs sin necesidad de cables separados.
-
-Flexibilidad: Facilita la expansión y reconfiguración de la red sin cambios significativos en la infraestructura física.
+- Compatibilidad: Es un estándar abierto, lo que significa que funciona entre dispositivos de diferentes fabricantes, no solo Cisco.
+- Eficiencia: Permite un uso más eficiente de los enlaces físicos, al transportar múltiples VLANs sin necesidad de cables separados.
+- Flexibilidad: Facilita la expansión y reconfiguración de la red sin cambios significativos en la infraestructura física.
 
 Otros Protocolos de Trunking:
 
-ISL (Inter-Switch Link): Protocolo propietario de Cisco, ahora en desuso debido a la popularidad y adopción de 802.1Q.
+- ISL (Inter-Switch Link): Protocolo propietario de Cisco, ahora en desuso debido a la popularidad y adopción de 802.1Q.
+- VLAN Trunking Protocol (VTP): Aunque no es un protocolo de trunking per se, VTP es utilizado para propagar información de VLANs a través de la red conmutada. Es importante manejarlo con cuidado para evitar problemas de seguridad.
 
-VLAN Trunking Protocol (VTP): Aunque no es un protocolo de trunking per se, VTP es utilizado para propagar información de VLANs a través de la red conmutada. Es importante manejarlo con cuidado para evitar problemas de seguridad.
+#### 3.6.7. Paso 7: Configuración Adicional para Enrutamiento entre VLANs 
 
-Paso 7: Configuración Adicional para Enrutamiento entre VLANs (Opcional)
 Si se requiere comunicación entre VLANs, necesitamos un dispositivo de capa 3. Puedes utilizar un router o un switch multicapa (Capa 3).
 
-Usando Router-on-a-Stick:
+Usando Router-on-a-Stick (ROAS):
 
 1. Añade un Router al escenario.
-
-2. Conecta el puerto GigabitEthernet0/0 del router al Switch1 (puerto Fa0/23).
-
+2. Conecta el puerto GigabitEthernet0/0 del router al Switch1 (puerto Fa0/24).
 3. Configura subinterfaces en el router para cada VLAN:
 
+```bash
 Router> enable
 Router# configure terminal
 Router(config)# interface GigabitEthernet0/0
 Router(config-if)# no shutdown
 Router(config-if)# exit
+```
+
 Subinterfaz para VLAN 10:
 
+```bash
 Router(config)# interface GigabitEthernet0/0.10
 Router(config-subif)# encapsulation dot1Q 10
 Router(config-subif)# ip address 192.168.10.1 255.255.255.0
 Router(config-subif)# exit
+```
+
 Subinterfaz para VLAN 20:
 
+```bash
 Router(config)# interface GigabitEthernet0/0.20
 Router(config-subif)# encapsulation dot1Q 20
 Router(config-subif)# ip address 192.168.20.1 255.255.255.0
 Router(config-subif)# exit
+```
+
 4. Configura el puerto del switch conectado al router como troncal:
 
-Switch1(config)# interface FastEthernet0/23
+``` bash
+Switch1(config)# interface FastEthernet0/24
 Switch1(config-if)# switchport mode trunk
 Switch1(config-if)# switchport trunk allowed vlan 10,20
 Switch1(config-if)# exit
+```
+
 5. Actualiza la configuración de gateway en los PCs para que apunten a las IPs del router (ya establecidas en el Paso 4).
 
 6. Verifica la comunicación entre VLANs:
 
 Desde PC1, realiza un ping a PC2. Ahora deberías recibir respuestas, ya que el router está ruteando el tráfico entre las VLANs.
 
-Paso 8: Reflexión y Exploración Adicional
-Seguridad: Considera implementar ACLs (Listas de Control de Acceso) en el router para controlar qué tráfico puede pasar entre VLANs.
+#### 3.6.8. Paso 8: Reflexión y Exploración Adicional
 
-Subnetting Avanzado: Experimenta con diferentes máscaras de subred para optimizar el uso de direcciones IP.
+Es posible profundizar en este campo por los siguientes caminos:
 
-VTP (VLAN Trunking Protocol): Investiga cómo VTP puede ayudarte a gestionar las VLANs en múltiples switches de manera centralizada, pero ten en cuenta las implicaciones de seguridad.
-
-Prácticas de Mejores Configuraciones:
-
-Siempre documenta tus configuraciones.
-
-Cambia la VLAN nativa por defecto para evitar ataques VLAN hopping.
-
-Deshabilita puertos no utilizados y colócalos en una VLAN no utilizada.
-
-Conclusión
-En esta práctica, hemos aprendido a:
-
-Configurar VLANs estáticas y asignar puertos.
-
-Utilizar el protocolo 802.1Q para enlaces troncales.
-
-Implementar subnetting básico para segmentar la red.
-
-Configurar enrutamiento entre VLANs utilizando Router-on-a-Stick.
-
-Estas habilidades son fundamentales para diseñar redes seguras y eficientes. La segmentación mediante VLANs no solo mejora el rendimiento sino que también proporciona una capa adicional de seguridad al aislar diferentes tipos de tráfico.
-
-Para Profundizar
-
-Experimenta con VLANs dinámicas y ve cómo se pueden asignar dispositivos a VLANs basándose en criterios como direcciones MAC o autenticación de usuario.
-
-Investiga otros protocolos y tecnologías como Private VLANs, Q-in-Q tunneling, y cómo SDN (Software-Defined Networking) está cambiando la forma en que gestionamos las redes.
-
-¡Ahora es tu turno!
-
-Prueba modificar la topología añadiendo más switches y PCs.
-
-Crea VLANs adicionales y practica el subnetting con diferentes máscaras.
-
-Simula escenarios donde ciertos departamentos necesiten comunicarse y otros no, ajustando las ACLs en el router.
+- Seguridad: Considera implementar ACLs (Listas de Control de Acceso) en el router para controlar qué tráfico puede pasar entre VLANs.
+- Subnetting Avanzado: Experimenta con diferentes máscaras de subred para optimizar el uso de direcciones IP.
+- VTP (VLAN Trunking Protocol): Investiga cómo VTP puede ayudarte a gestionar las VLANs en múltiples switches de manera centralizada, pero ten en cuenta las implicaciones de seguridad.
+- Experimenta con VLANs dinámicas y ve cómo se pueden asignar dispositivos a VLANs basándose en criterios como direcciones MAC o autenticación de usuario.
+- Investiga otros protocolos y tecnologías como Private VLANs, Q-in-Q tunneling, y cómo SDN (Software-Defined Networking) está cambiando la forma en que gestionamos las redes.
+Pr- ueba modificar la topología añadiendo más switches y PCs.
+- Crea VLANs adicionales y practica el subnetting con diferentes máscaras.
+- Simula escenarios donde ciertos departamentos necesiten comunicarse y otros no, ajustando las ACLs en el router.
 
 Recuerda: La práctica constante y la exploración son claves para dominar el mundo de las redes.
+
+Prácticas de Mejores Configuraciones:
+- Siempre documenta tus configuraciones.
+- Cambia la VLAN nativa por defecto para evitar ataques VLAN hopping.
+- Deshabilita puertos no utilizados y colócalos en una VLAN no utilizada.
+
+### 3.7 Conclusión
+
+En esta práctica, hemos aprendido a:
+
+- Configurar VLANs estáticas y asignar puertos.
+- Utilizar el protocolo 802.1Q para enlaces troncales.
+- Implementar subnetting básico para segmentar la red.
+- Configurar enrutamiento entre VLANs utilizando Router-on-a-Stick. (ROAS)
+
+Estas habilidades son fundamentales para diseñar redes seguras y eficientes. La segmentación mediante VLANs no solo mejora el rendimiento sino que también proporciona una capa adicional de seguridad al aislar diferentes tipos de tráfico.
