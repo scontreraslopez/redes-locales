@@ -259,6 +259,7 @@ Las capturas de pantalla contendrán toda la pantalla, incluida la hora del PC.
 - Dificultad: Moderada
 - Tiempo estimado: 90 minutos
 
+
 ### 3.1. Configuración de VLANs en Switches
 
 Por defecto, todos los puertos de un switch pertenecen a la VLAN 1, la VLAN nativa. Si deseas segmentar tu red, necesitas:
@@ -378,8 +379,6 @@ Switch(config)# interface FastEthernet0/1
 Switch(config-if)# switchport mode access
 Switch(config-if)# switchport access vlan 10
 Switch(config-if)# exit
-```
-
 Asignar PC2 a VLAN 20:
 
 ```bash
@@ -387,12 +386,9 @@ Switch(config)# interface FastEthernet0/2
 Switch(config-if)# switchport mode access
 Switch(config-if)# switchport access vlan 20
 Switch(config-if)# exit
-```
+e. Configura el puerto troncal:
 
-Configura el puerto troncal:
-
-```bash
-Switch(config)# interface Gig0/1
+Switch(config)# interface FastEthernet0/24
 Switch(config-if)# switchport mode trunk
 Switch(config-if)# switchport trunk native vlan 99
 Switch(config-if)# switchport trunk allowed vlan 10,20
@@ -405,15 +401,17 @@ Switch(config-if)# exit
 
 Repite los mismos pasos que hiciste en Switch1.
 
-- Crea las VLANs 10 y 20.
-- Asigna los puertos:
-  - Asignar PC3 a VLAN 10 (puerto Fa0/1).
-  - Asignar PC4 a VLAN 20 (puerto Fa0/2).
-- Configura el puerto troncal en Fa0/24.
-- Configurar Direcciones IP en los PCs
+a. Crea las VLANs 10 y 20.
 
-#### 3.6.4. Paso 4: Configurar las IPs en los PCs
+b. Asigna los puertos:
 
+Asignar PC3 a VLAN 10 (puerto Fa0/1).
+
+Asignar PC4 a VLAN 20 (puerto Fa0/2).
+
+c. Configura el puerto troncal en Fa0/24.
+
+Paso 4: Configurar Direcciones IP en los PCs
 Para los PCs en VLAN 10 (Ventas):
 
 PC1:
@@ -444,11 +442,11 @@ PC4:
 
 Configuración en Packet Tracer:
 
-- Abre cada PC, ve a la pestaña Desktop y selecciona IP Configuration.
-- Introduce la IP Address y Subnet Mask correspondientes.
+Abre cada PC, ve a la pestaña Desktop y selecciona IP Configuration.
 
-#### 3.6.5. Paso 5: Verificar la Conectividad
+Introduce la IP Address y Subnet Mask correspondientes.
 
+Paso 5: Verificar la Conectividad
 1. Comunicación dentro de la misma VLAN:
 
 Desde PC1, realiza un ping a PC3:
@@ -475,8 +473,7 @@ C:\> ping 192.168.20.2
 
 No deberías recibir respuesta, ya que las VLANs están aisladas y no hay enrutamiento entre ellas.
 
-#### 3.6.6. Paso 6: Explicación Breve del Protocolo 802.1Q
-
+Paso 6: Explicación Breve del Protocolo 802.1Q
 El estándar 802.1Q es un protocolo de trunking que permite transmitir tráfico de múltiples VLANs a través de un único enlace físico. Esto se logra añadiendo una etiqueta (tag) a las tramas Ethernet, indicando a qué VLAN pertenece cada una.
 
 ¿Por qué 802.1Q?
@@ -572,3 +569,19 @@ En esta práctica, hemos aprendido a:
 - Configurar enrutamiento entre VLANs utilizando Router-on-a-Stick. (ROAS)
 
 Estas habilidades son fundamentales para diseñar redes seguras y eficientes. La segmentación mediante VLANs no solo mejora el rendimiento sino que también proporciona una capa adicional de seguridad al aislar diferentes tipos de tráfico.
+
+Para Profundizar
+
+Experimenta con VLANs dinámicas y ve cómo se pueden asignar dispositivos a VLANs basándose en criterios como direcciones MAC o autenticación de usuario.
+
+Investiga otros protocolos y tecnologías como Private VLANs, Q-in-Q tunneling, y cómo SDN (Software-Defined Networking) está cambiando la forma en que gestionamos las redes.
+
+¡Ahora es tu turno!
+
+Prueba modificar la topología añadiendo más switches y PCs.
+
+Crea VLANs adicionales y practica el subnetting con diferentes máscaras.
+
+Simula escenarios donde ciertos departamentos necesiten comunicarse y otros no, ajustando las ACLs en el router.
+
+Recuerda: La práctica constante y la exploración son claves para dominar el mundo de las redes.
