@@ -381,7 +381,7 @@ Switch(config-if)# exit
 Configura el puerto troncal:
 
 ```bash
-Switch(config)# interface FastEthernet0/24
+Switch(config)# interface Gig0/1
 Switch(config-if)# switchport mode trunk
 Switch(config-if)# switchport trunk native vlan 99
 Switch(config-if)# switchport trunk allowed vlan 10,20
