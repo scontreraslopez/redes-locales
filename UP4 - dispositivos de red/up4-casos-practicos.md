@@ -477,7 +477,7 @@ C:\> ping 192.168.20.2
 
 No deberías recibir respuesta, ya que las VLANs están aisladas y no hay enrutamiento entre ellas.
 
-Paso 6: Explicación Breve del Protocolo 802.1Q
+##### Explicación Breve del Protocolo 802.1Q
 El estándar 802.1Q es un protocolo de trunking que permite transmitir tráfico de múltiples VLANs a través de un único enlace físico. Esto se logra añadiendo una etiqueta (tag) a las tramas Ethernet, indicando a qué VLAN pertenece cada una.
 
 ¿Por qué 802.1Q?
