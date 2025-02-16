@@ -1,0 +1,52 @@
+Pregunta;Opción1;Opción2;Opción3;Opción4
+¿Qué indica la notación 192.168.12.5/24?;La dirección IP de 192.168.12.5 pertenece a una red especial.;La dirección IP es un número privado.;El /24 indica el la cantidad de equipos que se pueden conectar.;El /24 indica que los primeros 24 bits son la parte de red.
+¿Cuál es el propósito de la dirección IP en una red?;Regular la velocidad de la transferencia de datos.;Asegurar la autenticidad de los mensajes.;Identificar de manera única un dispositivo en una red.;Conectar dispositivos físicos directamente.
+¿Cómo se representan las direcciones IPv6?;En formato decimal.;En formato octal.;En formato hexadecimal.;En formato binario.
+¿Cómo se identifica un datagrama concreto en el proceso de fragmentación de IPv4?;Con la dirección IP de origen.;Con el checksum.;Con el TTL.;Con el campo de identificación (16 bits).
+¿Qué permite el direccionamiento lógico en la comunicación de red?;Cambiar las direcciones físicas de manera dinámica.;Diferenciar entre redes.;Facilitar la conexión física entre dispositivos.;Aumentar la velocidad de transferencia.
+¿Cuál es el dispositivo por excelencia de la capa de red?;Módem.;Router.;Switch.;Repetidor.
+¿Qué significa que en una red se haga supernetting?;Asignación de direcciones IP estáticas.;Agrupación de múltiples subredes en una sola red más grande.;Segmentación de una red grande en subredes más pequeñas.;Implementación de direcciones multicast.
+¿Qué enfoque alternativo se utiliza a NAT en redes IPv6?;PAT.;Port Forwarding.;En IPv6 no es preciso NAT.;NAT64.
+A la hora de configurar NAT-PAT en VirtualBox, ¿a qué se refiere la IP del anfitrión?;No tiene importancia en la configuración.;Es la dirección IP de la máquina física donde se ejecuta VirtualBox.;Es la dirección IP de la máquina virtual.;Es el mismo que el puerto invitado.
+¿En qué consiste el mecanismo de doble pila?;Mejorar la performance de la red.;Permitir conexiones simultáneas IPv4 e IPv6.;Usar dos tipos diferentes de direcciones IP en una red.;Aumentar la seguridad de la red.
+"¿Qué es el ""padding"" en la cabecera de IP?";Relleno para asegurar que la cabecera sea múltiplo de 32 bits.;Parte que contiene los datos transportados.;Filtro para priorizar paquetes.;Mecanismo para la fragmentación.
+¿Cuál es la diferencia principal entre servicios orientados a conexión y servicios orientados a datagrama?;Los servicios orientados a conexión establecen una sesión antes de la transmisión, mientras que los orientados a datagrama no lo hacen.;Los servicios orientados a conexión son más rápidos que los orientados a datagrama.;Los servicios orientados a datagrama son más seguros que los orientados a conexión.;No hay diferencias significativas entre ellos.
+"¿Qué indican los ""Flags"" (DF y MF) en la cabecera IP?";Cuestiones relativas a la fragmentación del paquete.;La longitud del paquete.;El protocolo de la capa de transporte.;La dirección de destino del paquete.
+"¿Cuál es el valor del campo ""versión"" en hexadecimal en un paquete IPv4?";0x6.;0x8.;0xA.;0x4.
+¿Cuál es la longitud de la parte obligatoria de la cabecera de un paquete IP?;512 bits (64 bytes).;160 bits (20 bytes).;128 bits (16 bytes).;32 bits (4 bytes).
+¿Cuál es la dirección de loopback en IPv6?;fe80::1;::0;::1;127.0.0.1
+¿Qué funciones especiales realiza NAT?;Permitir la comunicación entre redes privadas y públicas.;Incrementar la privacidad al ocultar direcciones IP internas.;Compartir una única dirección IP con múltiples dispositivos.;Todas las respuestas son correctas.
+¿Cuál de los siguientes protocolos es utilizado para enviar paquetes de datos entre diferentes redes?;Telnet.;FTP.;IP.;HTTP.
+En NAT-PAT, cuando se menciona el puerto invitado, ¿a qué se refiere?;No se usa en la configuración de NAT-PAT.;Es el puerto en el que la aplicación se ejecuta dentro de la máquina virtual.;Es el puerto que la máquina física utiliza para comunicarse.;Es el mismo puerto que el del anfitrión.
+¿Cuál es el propósito principal de NAT en una red empresarial?;Permitir acceso a Internet sin exponer direcciones internas.;Monitorear el tráfico de red.;Aumentar la seguridad en redes de área local.;Mejorar la velocidad de conexión a Internet.
+En la configuración de NAT-PAT, ¿qué representa el puerto del anfitrión?;Es el puerto de la máquina física que se expone para acceder a la aplicación en la VM.;Es un puerto reservado que no se puede cambiar.;Es el puerto donde se ejecuta la máquina virtual.;Es irrelevante para el funcionamiento de NAT-PAT.
+¿Para qué sirve el protocolo ARP?;Enviar mensajes de error.;Controlar el tráfico de red.;Traducir direcciones IP en direcciones MAC.;Asignar direcciones IP a dispositivos.
+¿Para qué se utiliza NAT en redes?;Para traducir direcciones IP privadas a direcciones IP públicas.;Para aumentar la velocidad de la conexión.;Para ofrecer mejor seguridad en la red.;Para conectar redes de diferentes protocolos.
+"¿Qué son las ""Opciones"" en la cabecera de un paquete IP?";Control de flujo.;Parte obligatoria del paquete.;Un campo opcional de longitud variable.;Sección que gestiona la fragmentación.
+Al configurar NAT-PAT, ¿qué significa la IP invitado?;Es la dirección IP asignada a la máquina virtual que ejecuta la aplicación.;Es la dirección IP del anfitrión donde se lanzan las aplicaciones.;Es irrelevante para la configuración.;Es la dirección IP de internet de la máquina física.
+¿Qué ocurre con un paquete si el campo TTL de IPv4 tiene un valor de 0?;El paquete es reenviado por otro router.;El paquete se guarda temporalmente.;El paquete es descartado y no se entrega.;El paquete es entregado al receptor.
+¿Por qué se creó el nuevo protocolo de direccionamiento IP IPv6?;Para reemplazar los protocolos de capa de enlace.;Para aumentar el número de direcciones IP disponibles.;Para agregar más seguridad a la conexión.;Para simplificar la configuración de red.
+¿Cuál de las siguientes es la característica del direccionamiento lógico?;Es siempre un número decimal.;Solo se utiliza en redes privadas.;Asignado por el administrador de red o automáticamente por DHCP.;Asignado de forma permanente en la tarjeta de red.
+¿Cuáles son los cambios más importantes en el paquete IPv6 en relación con el paquete IPv4?;IPv6 no usa direcciones de loopback.;IPv6 permite direcciones más largas y más opciones de dirección.;IPv6 tiene una longitud de encabezado fija.;IPv6 elimina el campo TTL.
+"¿Qué indica el campo ""longitud de la cabecera"" en el paquete IP?";La cantidad de datos transportados.;La cantidad de fragmentos.;La longitud de la cabecera en bloques de 32 bits.;La longitud total del paquete en bits.
+¿Qué tipo de direcciones utiliza NAT para traducir?;Direcciones de red a direcciones locales.;Direcciones IP privadas a direcciones IP públicas.;Direcciones MAC a direcciones IP.;Direcciones de sitios web a direcciones IP.
+En NAT-PAT, ¿qué significa PAT?;Port Address Translation.;Packet Addressing Technique.;Protocol Address Translation.;Path Address Table.
+¿En qué se diferencian el comando ping y el traceroute?;Ping solo funciona con IPv6.;Traceroute es más seguro que ping.;Ping muestra información sobre direcciones IP.;Ping mide la latencia, mientras que traceroute mide el recorrido de los paquetes.
+¿Cuántos bits tiene una dirección IPv6?;64 bits.;32 bits.;256 bits.;128 bits.
+¿Cuál es una de las ventajas de usar PAT?;Aumenta la capacidad de la red.;Proporciona seguridad adicional.;Mejora la velocidad de la conexión.;Permite la compartición de una única IP pública.
+"¿Qué función principal tiene el campo de ""TTL"" en el paquete IP?";Especificar la longitud de los datos.;Controlar la prioridad del paquete.;Limitar la cantidad de saltos en la red.;Definir la versión del paquete.
+¿Qué protocolo se utiliza para resolver direcciones IP a direcciones físicas en una red?;ARP.;ICMP.;DHCP.;FTP.
+¿Cuáles son las funciones principales del protocolo ICMP?;Asignar direcciones IP dinámicas.;Control de flujo y recuperación de errores.;Traducción de direcciones.;Proporcionar servicios de conexión.
+¿Qué longitud total puede tener un datagrama IP, en octetos?;Hasta 256.;Hasta 4096.;Hasta 8192.;Hasta 65535.
+¿Cuál es la función principal de la capa de red?;Enviar y recibir datos físicos a través de medios.;Asegurar la conexión física entre los equipos.;Determinar la mejor ruta para el envío de paquetes.;Procesar la información de la aplicación.
+"¿Qué función cumple el ""checksum"" en la cabecera IP?";Controlar el flujo de datos.;Identificar la longitud del paquete.;Detección de errores;Indicar la versión del protocolo.
+¿Qué son las redes privadas?;Redes que operan con seguridad en la transferencia de datos.;Redes diseñadas para uso interno, no accesibles desde Internet.;Redes que solo pueden ser accedidas con un nombre de usuario y contraseña.;Redes que utilizan direcciones IP de clase A.
+¿El protocolo ARP es esencial para la interacción de?;Enrutadores de diferentes fabricantes.;Equipos que se comunican a través de redes Ethernet.;Dispositivos Bluetooth.;Sistemas de seguridad de red.
+¿Qué protocolo permite que un dispositivo descubra otros dispositivos en una red local?;ARP.;ICMP.;SNMP.;DHCP.
+¿Con qué tipo de tráfico opera el protocolo ICMP?;Mensajes de control y error.;Mensajes de envío de archivos.;Transacciones de bases de datos.;Transmisiones de video en vivo.
+¿Qué función desempeña un router en una red?;Repetir señales para ampliar el rango.;Conectar dispositivos en una misma red.;Proveer acceso a Internet.;Dirigir el tráfico entre diferentes redes.
+¿Cuál es la función principal de los RIR (Regional Internet Registries)?;Monitorear el tráfico de internet global.;Asignar y gestionar bloques de direcciones IP en diferentes regiones del mundo.;Proveer servicios de internet a usuarios finales.;Controlar la seguridad de las redes.
+¿Cuál de los siguientes protocolos se encarga de gestionar mensajes de error en la red?;SMTP.;ICMP.;ARP.;HTTP.
+¿Cuál de estas funciones realiza ICMP?;Asignar direcciones IP a dispositivos.;Encriptar datos en las comunicaciones.;Reportar errores en la entrega de paquetes.;Enviar archivos de un host a otro.
+¿Cuál es el tamaño máximo de la cabecera de un paquete IP?;20 bytes.;60 bytes.;40 bytes.;80 bytes.
+¿Cuál de las siguientes opciones describe el protocolo IP?;Protocolo que da acceso a internet en redes telefónicas.;Protocolo NO orientado a conexión que permite la entrega de datagramas.;Protocolo que asegura la entrega de paquetes.;Protocolo orientado a conexión que permite la entrega de datagramas
