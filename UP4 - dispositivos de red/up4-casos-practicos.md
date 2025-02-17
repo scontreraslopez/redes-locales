@@ -27,6 +27,7 @@
       - [Paso 8: Reflexión y Exploración Adicional](#paso-8-reflexión-y-exploración-adicional)
       - [Conclusión](#conclusión)
       - [Para Profundizar](#para-profundizar)
+- [4. LAB: Configurando routing dinámico mediante RIP en un switch CISCO](#4-lab-configurando-routing-dinámico-mediante-rip-en-un-switch-cisco)
 
 ## 1. Dominando el comando 'ip route' en Linux
 
