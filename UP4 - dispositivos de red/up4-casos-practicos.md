@@ -1,13 +1,14 @@
 # Casos Prácticos UP4
 
 ## Índice
+
 - [1. Dominando el comando 'ip route' en Linux](#1-dominando-el-comando-ip-route-en-linux)
 - [2. LAB: Configurando la tabla de enrutamiento de un router CISCO mediante el CLI](#2-lab-configurando-la-tabla-de-enrutamiento-de-un-router-cisco-mediante-el-cli)
   - [2.1. Configurar las interfaces de los routers](#21-configurar-las-interfaces-de-los-routers)
   - [2.2. Configurar las rutas estáticas para los routers](#22-configurar-las-rutas-estáticas-para-los-routers)
   - [2.3. Comprobación de la conectividad](#23-comprobación-de-la-conectividad)
   - [2.4. Memoria a entregar](#24-memoria-a-entregar)
-- [3. LAB: Configuarando VLANs en un switch CISCO mediante el CLI](#3-lab-configuarando-vlans-en-un-switch-cisco-mediante-el-cli)
+- [3. LAB: Configurando VLANs en un switch CISCO mediante el CLI](#3-lab-configurando-vlans-en-un-switch-cisco-mediante-el-cli)
   - [3.1. Configuración de VLANs en Switches](#31-configuración-de-vlans-en-switches)
   - [3.2. Relación del diseño de VLANs con las Subredes IP](#32-relación-del-diseño-de-vlans-con-las-subredes-ip)
   - [3.3. Enlaces Troncales (Trunk Links)](#33-enlaces-troncales-trunk-links)
@@ -17,10 +18,10 @@
     - [3.6.1. Paso 1: Diseño y Subnetting](#361-paso-1-diseño-y-subnetting)
     - [3.6.2. Paso 2: Configuración en Packet Tracer](#362-paso-2-configuración-en-packet-tracer)
     - [3.6.3. Paso 3: Configurar VLANs en los Switches](#363-paso-3-configurar-vlans-en-los-switches)
-    - [3.6.4. Paso 4: Configurar Direcciones IP en los PCs](#364-paso-4-configurar-direcciones-ip-en-los-pcs)
+    - [3.6.4. Paso 4: Configurar Direcciones IP en los PCs](#364-paso-4-configurar-las-ips-en-los-pcs)
     - [3.6.5. Paso 5: Verificar la Conectividad](#365-paso-5-verificar-la-conectividad)
     - [3.6.6. Paso 6: Explicación Breve del Protocolo 802.1Q](#366-paso-6-explicación-breve-del-protocolo-8021q)
-    - [3.6.7. Paso 7: Configuración Adicional para Enrutamiento entre VLANs (Opcional)](#367-paso-7-configuración-adicional-para-enrutamiento-entre-vlans-opcional)
+    - [3.6.7. Paso 7: Configuración Adicional para Enrutamiento entre VLANs](#367-paso-7-configuración-adicional-para-enrutamiento-entre-vlans)
     - [3.6.8. Paso 8: Reflexión y Exploración Adicional](#368-paso-8-reflexión-y-exploración-adicional)
 
 ## 1. Dominando el comando 'ip route' en Linux
@@ -197,7 +198,7 @@ Observamos como nos indica que una de las interfaces está directamente conectad
 
 Repetimos la operación con el resto de routers.
 
-Como puede ser un poco difícil de seguir, quizá resulte útil este cuadro resumen: 
+Como puede ser un poco difícil de seguir, quizá resulte útil este cuadro resumen:
 
 | Segmento de red | Dirección de red |
 |-----------------|------------------|
@@ -238,6 +239,8 @@ Esto permite ir tachando según se vaya completando la configuración.
 > [!TIP]
 > Desde el modo de configuración interface `config-if` de dicha interfaz utiliza `no ip address` para borrar una dirección ip de una interfaz
 
+Considera también...
+
 > [!TIP]
 > Desde el modo enable`Router#` o usuario `Router>` puedes ejecutar el comando `show ip interface brief` o `show ip interface`
 
@@ -251,7 +254,7 @@ Las capturas de pantalla contendrán toda la pantalla, incluida la hora del PC.
   - Capturas de pantalla de la configuración de las rutas estáticas. Se deben ver las rutas estáticas añadidas y la puerta de enlace. Se puede ejecutar el comando `show ip route` a este efecto.
   - Captura de pantalla de la verificación de la conectividad entre los routers. Se debe ver el resultado del comando `ping` entre los routers.
 
-## 3. LAB: Configuarando VLANs en un switch CISCO mediante el CLI
+## 3. LAB: Configurando VLANs en un switch CISCO mediante el CLI
 
 - Dificultad: Moderada
 - Tiempo estimado: 90 minutos
@@ -343,26 +346,33 @@ Enlace Troncal:
 
 - Accede a la CLI de Switch1.
 - Entra en modo privilegiado y luego en modo de configuración global:
+
 ```bash
 Switch> enable
 Switch# configure terminal
 Switch(config)# hostname Switch1
 ```
+
 - Crea la VLAN 10 para Ventas:
+
 ```bash
 Switch(config)# vlan 10
 Switch(config-vlan)# name Ventas
 Switch(config-vlan)# exit
 ```
+
 - Crea la VLAN 20 para Contabilidad:
+
 ```bash
 Switch(config)# vlan 20
 Switch(config-vlan)# name Contabilidad
 Switch(config-vlan)# exit
 ```
+
 - Asigna los puertos a las VLANs:
 
 Asignar PC1 a VLAN 10:
+
 ```bash
 Switch(config)# interface FastEthernet0/1
 Switch(config-if)# switchport mode access
@@ -371,6 +381,7 @@ Switch(config-if)# exit
 ```
 
 Asignar PC2 a VLAN 20:
+
 ```bash
 Switch(config)# interface FastEthernet0/2
 Switch(config-if)# switchport mode access
@@ -406,11 +417,13 @@ Repite los mismos pasos que hiciste en Switch1.
 Para los PCs en VLAN 10 (Ventas):
 
 PC1:
+
 - IP Address: 192.168.10.2
 - Subnet Mask: 255.255.255.0
 - Gateway: 192.168.10.1 (lo configuraremos más adelante)
 
 PC3:
+
 - IP Address: 192.168.10.3
 - Subnet Mask: 255.255.255.0
 - Gateway: 192.168.10.1
@@ -418,11 +431,13 @@ PC3:
 Para los PCs en VLAN 20 (Contabilidad):
 
 PC2:
+
 - IP Address: 192.168.20.2
 - Subnet Mask: 255.255.255.0
 - Gateway: 192.168.20.1
 
 PC4:
+
 - IP Address: 192.168.20.3
 - Subnet Mask: 255.255.255.0
 - Gateway: 192.168.20.1
@@ -453,6 +468,7 @@ C:\> ping 192.168.20.3
 2. Aislamiento entre VLANs:
 
 Intenta hacer ping desde PC1 a PC2:
+
 ```bash
 C:\> ping 192.168.20.2
 ```
@@ -474,7 +490,7 @@ Otros Protocolos de Trunking:
 - ISL (Inter-Switch Link): Protocolo propietario de Cisco, ahora en desuso debido a la popularidad y adopción de 802.1Q.
 - VLAN Trunking Protocol (VTP): Aunque no es un protocolo de trunking per se, VTP es utilizado para propagar información de VLANs a través de la red conmutada. Es importante manejarlo con cuidado para evitar problemas de seguridad.
 
-#### 3.6.7. Paso 7: Configuración Adicional para Enrutamiento entre VLANs 
+#### 3.6.7. Paso 7: Configuración Adicional para Enrutamiento entre VLANs
 
 Si se requiere comunicación entre VLANs, necesitamos un dispositivo de capa 3. Puedes utilizar un router o un switch multicapa (Capa 3).
 
@@ -541,7 +557,8 @@ Pr- ueba modificar la topología añadiendo más switches y PCs.
 Recuerda: La práctica constante y la exploración son claves para dominar el mundo de las redes.
 
 Prácticas de Mejores Configuraciones:
-- Siempre documenta tus configuraciones.
+
+- Documenta siempre tus configuraciones.
 - Cambia la VLAN nativa por defecto para evitar ataques VLAN hopping.
 - Deshabilita puertos no utilizados y colócalos en una VLAN no utilizada.
 
