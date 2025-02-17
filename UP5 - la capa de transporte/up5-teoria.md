@@ -2,55 +2,50 @@
 
 ## Índice
 
-1. [Funciones de la Capa de Transporte](#1-funciones-de-la-capa-de-transporte)
-2. [Transmission Control Protocol (TCP)](#2-transmission-control-protocol-tcp)
-    - [Características de TCP](#1-características-de-tcp)
-    - [Encabezado TCP](#2-encabezado-tcp)
-    - [Campos de encabezado TCP](#3-campos-de-encabezado-tcp)
-    - [Aplicaciones que usan TCP](#4-aplicaciones-que-usan-tcp)
-    - [Verifica tu comprensión – Descripción general de TCP](#5-verifica-tu-comprensión--descripción-general-de-tcp)
-    - [Procesos del Servidor TCP](#1-procesos-del-servidor-tcp)
-    - [Establecimiento de Conexión TCP](#2-establecimiento-de-conexión-tcp)
-    - [Terminación de Sesión](#3-terminación-de-sesión)
-    - [Análisis del Enlace de Tres Vías TCP](#4-análisis-del-enlace-de-tres-vías-tcp)
-    - [Vídeo: Protocolo de Enlace TCP de 3 Vías](#5-vídeo-protocolo-de-enlace-tcp-de-3-vías)
-    - [Comprueba tu comprensión – Proceso de comunicación TCP](#6-comprueba-tu-comprensión--proceso-de-comunicación-tcp)
-    - [Fiabilidad de TCP: Entrega Garantizada y Ordenada](#1-fiabilidad-de-tcp-entrega-garantizada-y-ordenada)
-    - [Vídeo: Confiabilidad de TCP: Números de Secuencia y Acuses de Recibo](#2-vídeo-confiabilidad-de-tcp-números-de-secuencia-y-acuses-de-recibo)
-    - [Fiabilidad de TCP: Pérdida y Retransmisión de Datos](#3-fiabilidad-de-tcp-pérdida-y-retransmisión-de-datos)
-    - [Vídeo: Confiabilidad de TCP: Pérdida y Retransmisión de Datos](#4-vídeo-confiabilidad-de-tcp-pérdida-y-retransmisión-de-datos)
-    - [Control de flujo TCP: tamaño de ventana y agradecimientos](#5-control-de-flujo-tcp-tamaño-de-ventana-y-agradecimientos)
-    - [Control de flujo TCP: Tamaño Máximo de Segmento (MSS)](#6-control-de-flujo-tcp-tamaño-máximo-de-segmento-mss)
-    - [Control de Flujo TCP: Evitar la Congestión](#7-control-de-flujo-tcp-evitar-la-congestión)
-    - [Comprueba tu Comprensión – Fiabilidad y Control de Flujo](#8-comprueba-tu-comprensión--fiabilidad-y-control-de-flujo)
-3. [User Datagram Protocol (UDP)](#3-user-datagram-protocol-udp)
-    - [Protocolo Adecuado de Capa de Transporte para la Aplicación Correcta](#6-protocolo-adecuado-de-capa-de-transporte-para-la-aplicación-correcta)
-    - [Comprueba tu comprensión – Transporte de datos](#7-comprueba-tu-comprensión--transporte-de-datos)
-    - [Comparación de Baja Sobrecarga y Confiabilidad de UDP](#1-comparación-de-baja-sobrecarga-y-confiabilidad-de-udp)
-    - [Reensamblaje de Datagramas UDP](#2-reensamblaje-de-datagramas-udp)
-    - [Procesos y Solicitudes del Servidor UDP](#3-procesos-y-solicitudes-del-servidor-udp)
-    - [Procesos de Cliente UDP](#4-procesos-de-cliente-udp)
-    - [Comprueba tu comprensión – Comunicación UDP](#5-comprueba-tu-comprensión--comunicación-udp)
-4. [Otros protocolos Emergentes](#4-otros-protocolos-emergentes)
-5. [Manejo Avanzado de Congestión y Control de Flujo](#3-manejo-avanzado-de-congestión-y-control-de-flujo)
-6. [Impacto de Tecnologías Emergentes](#4-impacto-de-tecnologías-emergentes)
-    - [Internet de las Cosas (IoT)](#internet-de-las-cosas-iot)
-    - [Redes 5G y Futuras Generaciones](#redes-5g-y-futuras-generaciones)
-    - [Protocolo Rápido de Internet basado en UDP (QUIC)](#41-protocolo-rápido-de-internet-basado-en-udp-quic)
-    - [Stream Control Transmission Protocol (SCTP)](#42-stream-control-transmission-protocol-sctp)
-7. [Seguridad Integrada en la Capa de Transporte](#5-seguridad-integrada-en-la-capa-de-transporte)
-    - [TLS (Transport Layer Security) y SSL (Secure Sockets Layer)](#tls-transport-layer-security-y-ssl-secure-sockets-layer)
-8. [PDU de la Capa de Transporte](#5-pdu-de-la-capa-de-transporte)
-    - [Estructura General de un Segmento TCP](#estructura-general-de-un-segmento-tcp)
-9. [Metáforas para Facilitar la Comprensión](#6-metáforas-para-facilitar-la-comprensión)
-10. [Conclusión](#9-conclusión)
-11. [Puertos: Identificando Procesos en Comunicación](#12-puertos-identificando-procesos-en-comunicación)
-    - [Comunicaciones Múltiples Separadas](#1-comunicaciones-múltiples-separadas)
-    - [Pares de Socket](#2-pares-de-socket)
-    - [Grupos de número de puerto](#3-grupos-de-número-de-puerto)
-    - [El Comando netstat](#4-el-comando-netstat)
-    - [Verifica tu comprensión – Números de puerto](#5-verifica-tu-comprensión--números-de-puerto)
-12. [Referencias](#referencias)
+- [1. Funciones de la Capa de Transporte](#1-funciones-de-la-capa-de-transporte)
+- [2. Transmission Control Protocol (TCP)](#2-transmission-control-protocol-tcp)
+    - [2.1. Características de TCP](#21-características-de-tcp)
+    - [2.2. Encabezado TCP](#22-encabezado-tcp)
+        - [2.2.1. Campos de encabezado TCP](#221-campos-de-encabezado-tcp)
+    - [2.3. Aplicaciones que usan TCP](#23-aplicaciones-que-usan-tcp)
+    - [2.4. Ejercicios TCP](#24-ejercicios-tcp)
+    - [2.5. Procesos del Servidor TCP](#25-procesos-del-servidor-tcp)
+    - [2.6. Establecimiento de Conexión TCP](#26-establecimiento-de-conexión-tcp)
+- [3. Terminación de Sesión](#3-terminación-de-sesión)
+- [4. Análisis del Enlace de Tres Vías TCP](#4-análisis-del-enlace-de-tres-vías-tcp)
+- [5. Vídeo: Protocolo de Enlace TCP de 3 Vías](#5-vídeo-protocolo-de-enlace-tcp-de-3-vías)
+- [6. Comprueba tu comprensión – Proceso de comunicación TCP](#6-comprueba-tu-comprensión--proceso-de-comunicación-tcp)
+- [7. Fiabilidad de TCP: Entrega Garantizada y Ordenada](#7-fiabilidad-de-tcp-entrega-garantizada-y-ordenada)
+- [8. Vídeo: Confiabilidad de TCP: Números de Secuencia y Acuses de Recibo](#8-vídeo-confiabilidad-de-tcp-números-de-secuencia-y-acuses-de-recibo)
+- [9. Fiabilidad de TCP: Pérdida y Retransmisión de Datos](#9-fiabilidad-de-tcp-pérdida-y-retransmisión-de-datos)
+- [10. Vídeo: Confiabilidad de TCP: Pérdida y Retransmisión de Datos](#10-vídeo-confiabilidad-de-tcp-pérdida-y-retransmisión-de-datos)
+- [11. Control de flujo TCP: tamaño de ventana y agradecimientos](#11-control-de-flujo-tcp-tamaño-de-ventana-y-agradecimientos)
+- [12. Control de flujo TCP: Tamaño Máximo de Segmento (MSS)](#12-control-de-flujo-tcp-tamaño-máximo-de-segmento-mss)
+- [13. Control de Flujo TCP: Evitar la Congestión](#13-control-de-flujo-tcp-evitar-la-congestión)
+- [14. Comprueba tu Comprensión – Fiabilidad y Control de Flujo](#14-comprueba-tu-comprensión--fiabilidad-y-control-de-flujo)
+- [15. User Datagram Protocol (UDP)](#15-user-datagram-protocol-udp)
+- [16. Protocolo Adecuado de Capa de Transporte para la Aplicación Correcta](#16-protocolo-adecuado-de-capa-de-transporte-para-la-aplicación-correcta)
+- [17. Comprueba tu comprensión – Transporte de datos](#17-comprueba-tu-comprensión--transporte-de-datos)
+- [18. Comparación de Baja Sobrecarga y Confiabilidad de UDP](#18-comparación-de-baja-sobrecarga-y-confiabilidad-de-udp)
+- [19. Reensamblaje de Datagramas UDP](#19-reensamblaje-de-datagramas-udp)
+- [20. Procesos y Solicitudes del Servidor UDP](#20-procesos-y-solicitudes-del-servidor-udp)
+- [21. Procesos de Cliente UDP](#21-procesos-de-cliente-udp)
+- [22. Comprueba tu comprensión – Comunicación UDP](#22-comprueba-tu-comprensión--comunicación-udp)
+- [23. Otros protocolos Emergentes](#23-otros-protocolos-emergentes)
+    - [23.1. Manejo Avanzado de Congestión y Control de Flujo](#231-manejo-avanzado-de-congestión-y-control-de-flujo)
+    - [23.2. Impacto de Tecnologías Emergentes](#232-impacto-de-tecnologías-emergentes)
+    - [23.3. Protocolo Rápido de Internet basado en UDP (QUIC)](#233-protocolo-rápido-de-internet-basado-en-udp-quic)
+    - [23.4. Stream Control Transmission Protocol (SCTP)](#234-stream-control-transmission-protocol-sctp)
+- [24. Seguridad Integrada en la Capa de Transporte](#24-seguridad-integrada-en-la-capa-de-transporte)
+    - [24.1. TLS (Transport Layer Security) y SSL (Secure Sockets Layer)](#241-tls-transport-layer-security-y-ssl-secure-sockets-layer)
+- [25. Puertos: Identificando Procesos en Comunicación](#25-puertos-identificando-procesos-en-comunicación)
+    - [25.1. Comunicaciones Múltiples Separadas](#251-comunicaciones-múltiples-separadas)
+    - [25.2. Pares de Socket](#252-pares-de-socket)
+    - [25.3. Grupos de número de puerto](#253-grupos-de-número-de-puerto)
+    - [25.4. El Comando netstat](#254-el-comando-netstat)
+    - [25.5. Verifica tu comprensión – Números de puerto](#255-verifica-tu-comprensión--números-de-puerto)
+- [26. Conclusión](#26-conclusión)
+- [27. Referencias](#27-referencias)
 
 ## 1. Funciones de la Capa de Transporte
 
@@ -61,6 +56,11 @@ Como se muestra en la imagen, la capa de transporte es el enlace entre la capa d
 ![Protocolos de capa de transporte](https://ccnadesdecero.es/wp-content/uploads/2017/11/Protocolos-de-capa-de-transporte.png)
 
 IP solo se refiere a la estructura, direccionamiento y enrutamiento de paquetes. IP no especifica cómo se realiza la entrega o el transporte de los paquetes. Los protocolos de la capa de transporte especifican cómo transferir mensajes entre hosts y son responsables de administrar los requisitos de confiabilidad de una conversación. La capa de transporte incluye los protocolos TCP y UDP.
+
+La **Unidad de Datos de Protocolo (PDU)** en la capa de transporte se conoce como:
+
+- **Segmento** en TCP.
+- **Datagrama** en UDP.
 
 La **capa de transporte** actúa como un puente esencial entre las capas de red y las orientadas a la aplicación, facilitando una comunicación eficiente y confiable entre procesos que se ejecutan en diferentes máquinas.
 
@@ -137,7 +137,9 @@ La tabla identifica y describe los campos en un encabezado TCP.
 
 ### 2.3. Aplicaciones que usan TCP
 
-TCP es un buen ejemplo de cómo las diferentes capas del conjunto de protocolos TCP/IP tienen roles específicos. TCP maneja todas las tareas asociadas con la división del flujo de datos en segmentos, proporcionando confiabilidad, controlando el flujo de datos y reordenando segmentos. TCP libera a la aplicación de tener que administrar cualquiera de estas tareas. Las aplicaciones, como las que se muestran en la figura, simplemente pueden enviar el flujo de datos a la capa de transporte y utilizar los servicios de TCP.
+TCP es un buen ejemplo de cómo las diferentes capas del conjunto de protocolos TCP/IP tienen roles específicos. TCP maneja todas las tareas asociadas con la división del flujo de datos en segmentos, proporcionando confiabilidad, controlando el flujo de datos y reordenando segmentos. 
+
+TCP libera a la aplicación de tener que administrar cualquiera de estas tareas. Las aplicaciones, como las que se muestran en la figura, simplemente pueden enviar el flujo de datos a la capa de transporte y utilizar los servicios de TCP.
 
 ![Aplicaciones que usan TCP](https://ccnadesdecero.es/wp-content/uploads/2017/11/Aplicaciones-que-usan-TCP.png)
 
@@ -225,6 +227,25 @@ Cuando todos los segmentos han sido reconocidos, la sesión se cierra.
 
 ![Paso 1 FIN](https://ccnadesdecero.es/wp-content/uploads/2020/04/Paso-1-FIN.png)
 
+**Paso 2 ACK**:
+
+El servidor envía un ACK para acusar recibo del FIN para finalizar la sesión del cliente al servidor.
+
+![Paso 2 ACK](https://ccnadesdecero.es/wp-content/uploads/2020/04/Paso-2-ACK.png)
+
+**Paso 3 FIN**:
+
+El servidor envía un FIN al cliente para finalizar la sesión de servidor a cliente.
+
+![Paso 3 FIN](https://ccnadesdecero.es/wp-content/uploads/2020/04/Paso-3-FIN.png)
+
+**Paso 4 ACK**:
+
+El cliente responde con un ACK para reconocer el FIN del servidor.
+
+![Paso 4 ACK](https://ccnadesdecero.es/wp-content/uploads/2020/04/Paso-4-ACK.png)
+
+
 ### 4. Análisis del Enlace de Tres Vías TCP
 
 Los hosts mantienen el estado, rastrean cada segmento de datos dentro de una sesión e intercambian información sobre qué datos se reciben utilizando la información en el encabezado TCP. TCP es un protocolo *full-duplex*, donde cada conexión representa dos sesiones de comunicación unidireccionales. Para establecer la conexión, los hosts realizan un protocolo de enlace de tres vías. Como se muestra en la imagen, los bits de control en el encabezado TCP indican el progreso y el estado de la conexión.
@@ -255,26 +276,28 @@ Haz clic en Reproducir en la figura para ver una demostración en video del prot
 
 [Vídeo: Protocolo de Enlace TCP de 3 Vías](https://www.youtube.com/watch?v=cm_2Jp7dQP8)
 
-6. Comprueba tu comprensión – Proceso de comunicación TCP
+### 6. Comprueba tu comprensión – Proceso de comunicación TCP
+
 Verifica tu comprensión del proceso de comunicación TCP eligiendo la MEJOR respuesta a las siguientes preguntas.
 
-¿Cuáles de los siguientes puertos serían válidos de origen y destino para un host que se conecta a un servidor de correo electrónico?
-A. Origen: 25, Destino: 49152
-B. Origen: 80, Destino: 49152
-C. Origen: 49152, Destino: 25
-D. Origen: 49152, Destino: 80
-¿Qué indicadores de bits de control se utilizan durante el apretón de manos de tres vías?
-A. ACK y FIN
-B. FIN y RESET
-C. RESET y SYN
-D. SYN y ACK
-¿Cuántos intercambios se necesitan para finalizar ambas sesiones entre dos hosts?
-A. un intercambio
-B. dos intercambios
-C. tres intercambios
-D. cuatro intercambios
-E. cinco intercambios
+1. ¿Cuáles de los siguientes puertos serían válidos de origen y destino para un host que se conecta a un servidor de correo electrónico?
+    - [ ] A. Origen: 25, Destino: 49152
+    - [ ] B. Origen: 80, Destino: 49152
+    - [x] C. Origen: 49152, Destino: 25
+    - [ ] D. Origen: 49152, Destino: 80
 
+2. ¿Qué indicadores de bits de control se utilizan durante el apretón de manos de tres vías?
+    - [ ] A. ACK y FIN
+    - [ ] B. FIN y RESET
+    - [ ] C. RESET y SYN
+    - [x] D. SYN y ACK
+
+3. ¿Cuántos intercambios se necesitan para finalizar ambas sesiones entre dos hosts?
+    - [ ] A. un intercambio
+    - [ ] B. dos intercambios
+    - [ ] C. tres intercambios
+    - [x] D. cuatro intercambios
+    - [ ] E. cinco intercambios
 
 https://ccnadesdecero.es/fiabilidad-y-control-de-flujo-tcp/
 
@@ -364,33 +387,29 @@ Los números de acuse de recibo corresponden al siguiente byte esperado y no a u
 
 Ten en cuenta que es la fuente la que está reduciendo el número de bytes no reconocidos que envía y no el tamaño de ventana determinado por el destino.
 
-8. Comprueba tu Comprensión – Fiabilidad y Control de Flujo
+### 8. Comprueba tu Comprensión – Fiabilidad y Control de Flujo
+
 Verifica tu conocimiento del proceso de fiabilidad y flujo TCP escogiendo la mejor respuesta a las siguientes preguntas.
 
-¿Qué campo utiliza el host de destino para volver a ensamblar segmentos en el orden original?
-Bits de Control
-Puerto de Destino
-Número de Secuencia
-Puerto de Origen
-Tamaño de la ventana
-¿Qué campo se utiliza para proporcionar control de flujo?
-Bits de Control
-Puerto de Destino
-Número de Secuencia
-Puerto de Origen
-Tamaño de la Ventana
-¿Qué sucede cuando un host de envío detecta que hay congestión?
-El host receptor aumenta el número de bytes que envía antes de recibir una confirmación del host remitente.
-El host receptor reduce el número de bytes que envía antes de recibir una confirmación del host remitente.
-El host de envío aumenta el número de bytes que envía antes de recibir una confirmación del host de destino.
-El host de envío reduce el número de bytes que envía antes de recibir una confirmación del host de destino.
-¿Aprendiste lo suficiente? Déjanos saber tus respuestas en los comentarios 🙂
+1. ¿Qué campo utiliza el host de destino para volver a ensamblar segmentos en el orden original?
+    - [ ] A. Bits de Control
+    - [ ] B. Puerto de Destino
+    - [x] C. Número de Secuencia
+    - [ ] D. Puerto de Origen
+    - [ ] E. Tamaño de la ventana
 
-Nota: Las explicaciones de los mecanismos, temporizadores y algoritmos de manejo de congestión reales están más allá del alcance de este curso.
+2. ¿Qué campo se utiliza para proporcionar control de flujo?
+    - [ ] A. Bits de Control
+    - [ ] B. Puerto de Destino
+    - [ ] C. Número de Secuencia
+    - [ ] D. Puerto de Origen
+    - [x] E. Tamaño de la Ventana
 
-Glosario: Si tienes dudas con algún término especial, puedes consultar este diccionario de redes informáticas.
-
-¡Listo! Sigue visitando nuestro blog de curso de redes, dale Me Gusta a nuestra fanpage; y encontrarás más herramientas y conceptos que te convertirán en todo un profesional de redes.
+3. ¿Qué sucede cuando un host de envío detecta que hay congestión?
+    - [ ] A. El host receptor aumenta el número de bytes que envía antes de recibir una confirmación del host remitente.
+    - [ ] B. El host receptor reduce el número de bytes que envía antes de recibir una confirmación del host remitente.
+    - [ ] C. El host de envío aumenta el número de bytes que envía antes de recibir una confirmación del host de destino.
+    - [x] D. El host de envío reduce el número de bytes que envía antes de recibir una confirmación del host de destino.
 
 
 ## 3. User Datagram Protocol (UDP)
@@ -524,7 +543,7 @@ D. Origen: 49152, Destino: 1812
 
 ## 4. Otros protocolos Emergentes
 
-## 3. Manejo Avanzado de Congestión y Control de Flujo
+### 4.1. Manejo Avanzado de Congestión y Control de Flujo
 
 Con el incremento del tráfico y las demandas de alta velocidad, se han desarrollado nuevos algoritmos:
 
@@ -533,7 +552,7 @@ Con el incremento del tráfico y las demandas de alta velocidad, se han desarrol
 
 Estos avances permiten un uso más eficiente de la infraestructura existente y mejoran la experiencia del usuario.
 
-## 4. Impacto de Tecnologías Emergentes
+### 4.2. Impacto de Tecnologías Emergentes
 
 ### **Internet de las Cosas (IoT)**
 
@@ -547,7 +566,7 @@ Estos avances permiten un uso más eficiente de la infraestructura existente y m
 - **Aplicaciones en Tiempo Real**: Como realidad aumentada, vehículos autónomos y telemedicina, que dependen de comunicaciones rápidas y fiables.
 - **Edge Computing**: Procesamiento cercano al origen de los datos, reduciendo la carga en la red central y mejorando tiempos de respuesta.
 
-### 4.1. Protocolo Rápido de Internet basado en UDP (QUIC)
+### 4.3. Protocolo Rápido de Internet basado en UDP (QUIC)
 
 Desarrollado por Google, **QUIC** es un protocolo moderno que combina lo mejor de TCP y UDP:
 
@@ -560,7 +579,7 @@ Desarrollado por Google, **QUIC** es un protocolo moderno que combina lo mejor d
 - **QUIC**: Sería como enviar un mensaje instantáneo cifrado por una aplicación de mensajería segura. Rápido, seguro y eficiente.
 
 
-### 4.2. Stream Control Transmission Protocol (SCTP)
+### 4.4. Stream Control Transmission Protocol (SCTP)
 
 El **SCTP** es un protocolo que incorpora características de TCP y UDP:
 
@@ -579,34 +598,6 @@ El **SCTP** es un protocolo que incorpora características de TCP y UDP:
 **SSL** fue el precursor de **TLS** y proporcionó las primeras implementaciones de cifrado y autenticación en las comunicaciones en red. Aunque **SSL** ya no se considera seguro y ha sido reemplazado por **TLS**, su legado sigue siendo importante en la evolución de la seguridad en la capa de transporte.
 
 La seguridad ya no es una opción adicional; es una necesidad integrada. Protocolos como **QUIC** incorporan **TLS** de forma nativa, garantizando conexiones seguras sin pasos adicionales.
-
-## 5. PDU de la Capa de Transporte
-
-La **Unidad de Datos de Protocolo (PDU)** en la capa de transporte se conoce como:
-
-- **Segmento** en TCP.
-- **Datagrama** en UDP.
-
-### Estructura General de un Segmento TCP
-
-| Campo                | Tamaño (bits) |
-|----------------------|---------------|
-| Puerto de Origen     | 16            |
-| Puerto de Destino    | 16            |
-| Número de Secuencia  | 32            |
-| Número de Acuse      | 32            |
-| Offset de Datos      | 4             |
-| Reservado            | 6             |
-| Banderas             | 6             |
-| Ventana              | 16            |
-| Checksum             | 16            |
-| Puntero Urgente      | 16            |
-| Opciones y Relleno   | Variable      |
-| Datos                | Variable      |
-
-Esta estructura permite a TCP gestionar la comunicación de manera eficiente y fiable.
-
-
 
 ## 1.2. Puertos: Identificando Procesos en Comunicación
 
