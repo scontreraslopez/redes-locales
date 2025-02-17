@@ -119,7 +119,7 @@ Un segmento TCP agrega 20 bytes (es decir, 160 bits) de sobrecarga al encapsular
 
 #### 2.2.1. Campos de encabezado TCP
 
-La tabla identifica y describe los diez campos en un encabezado TCP.
+La tabla identifica y describe los campos en un encabezado TCP.
 
 | Campo de encabezado TCP | Descripción |
 |------------------------|-----------------------------------------------------------------------------|
@@ -141,109 +141,119 @@ TCP es un buen ejemplo de cómo las diferentes capas del conjunto de protocolos 
 
 ![Aplicaciones que usan TCP](https://ccnadesdecero.es/wp-content/uploads/2017/11/Aplicaciones-que-usan-TCP.png)
 
+### 2.4. Ejercicios TCP
 
-5. Verifica tu comprensión – Descripción general de TCP
-Comprueba tu comprensión de TCP eligiendo la MEJOR respuesta a las siguientes preguntas.
+1. ¿Qué protocolo de capa de transporte garantiza la entrega fiable del mismo pedido?
+    - [ ] ICMP
+    - [ ] IP
+    - [x] TCP
+    - [ ] UDP
 
-¿Qué protocolo de capa de transporte garantiza la entrega fiable del mismo pedido?
-ICMP
-IP
-TCP
-UDP
-Ver también
-CCNA 1
-MAC e IP Red local y remota
-MAC e IP
-¿Qué enunciado de encabezado TCP es verdadero?
-Se compone de 4 campos en un encabezado de 8 bytes.
-Se compone de 8 campos en un encabezado de 10 bytes.
-Se compone de 10 campos en un encabezado de 20 bytes.
-Se compone de 20 campos en un encabezado de 40 bytes.
-¿Qué dos aplicaciones usarían el protocolo de capa de transporte TCP? (Escoja dos opciones).
-FTP
-HTTP
-ICMP
-TFTP
-VoIP
+2. ¿Qué enunciado de encabezado TCP es verdadero?
+    - [ ] Se compone de 4 campos en un encabezado de 8 bytes.
+    - [ ] Se compone de 8 campos en un encabezado de 10 bytes.
+    - [x] Se compone de 10 campos en un encabezado de 20 bytes.
+    - [ ] Se compone de 20 campos en un encabezado de 40 bytes.
 
-https://ccnadesdecero.es/proceso-de-comunicacion-tcp/
+3. ¿Qué dos aplicaciones usarían el protocolo de capa de transporte TCP? (Escoja dos opciones).
+    - [x] FTP
+    - [x] HTTP
+    - [ ] ICMP
+    - [ ] TFTP
+    - [ ] VoIP
 
-1. Procesos del Servidor TCP
-Ya conoces los fundamentos de TCP. Comprender el papel de los números de puerto te ayudará a comprender los detalles del proceso de comunicación TCP. En este tema, también aprenderás acerca de los procesos de enlace de tres vías TCP y terminación de sesión.
+### 2.5. Procesos del Servidor TCP
 
 Cada proceso de aplicación que se ejecuta en un servidor está configurado para usar un número de puerto. El número de puerto se asigna automáticamente o se configura manualmente por un administrador del sistema.
 
 Un servidor individual no puede tener dos servicios asignados al mismo número de puerto dentro de los mismos servicios de capa de transporte. Por ejemplo, un host que ejecuta una aplicación de servidor web y una aplicación de transferencia de archivos no puede tener ambos configurados para usar el mismo puerto, como el puerto TCP 80.
 
-Una aplicación de servidor activa asignada a un puerto específico se considera abierta, lo que significa que la capa de transporte acepta y procesa segmentos dirigidos a ese puerto. Se acepta cualquier solicitud de cliente entrante dirigida al socket correcto, y los datos se pasan a la aplicación del servidor. Puede haber muchos puertos abiertos simultáneamente en un servidor, uno para cada aplicación de servidor activa.
+Una aplicación de servidor activa asignada a un puerto específico se considera **abierta**, lo que significa que la capa de transporte acepta y procesa segmentos dirigidos a ese puerto. Se acepta cualquier solicitud de cliente entrante dirigida al socket correcto, y los datos se pasan a la aplicación del servidor. Puede haber muchos puertos abiertos simultáneamente en un servidor, uno para cada aplicación de servidor activa.
 
-Clientes que envían solicitudes TCP
-Solicitar puertos de destino
-Solicitar puertos de origen
-Respuesta Puertos de destino
-Respuesta Puertos de origen
-El cliente 1 solicita servicios web y el cliente 2 solicita servicio de correo electrónico utilizando puertos conocidos (es decir, servicios web es puerto 80, servicios de correo electrónico es puerto 25).
+![Clientes envían solicitudes TCP](https://ccnadesdecero.es/wp-content/uploads/2020/04/Clientes-env%C3%ADan-solicitudes-TCP.png)
 
-Clientes envían solicitudes TCP
-Clientes envían solicitudes TCP
-2. Establecimiento de Conexión TCP
-En algunas culturas, cuando dos personas se encuentran, a menudo se saludan dándose la mano. Ambas partes entienden el acto de estrechar la mano como una señal de saludo amistoso. Las conexiones en la red son similares. En las conexiones TCP, el cliente host establece la conexión con el servidor mediante el proceso de enlace de tres vías (three-way handshake).
+En la imagen se observa como el cliente 1 solicita servicios web y el cliente 2 solicita servicio de correo electrónico utilizando puertos conocidos (es decir, servicios web en el puerto 80, servicios de correo electrónico en el puerto 25).
 
-Paso 1. SYN
-Paso 2. ACK y SYN
-Paso 3. ACK
+### 2.6. Establecimiento de Conexión TCP
+
+En algunas culturas, cuando dos personas se encuentran, a menudo se saludan dándose la mano. Ambas partes entienden el acto de estrechar la mano como una señal de saludo amistoso. Las conexiones en la red son similares. En las conexiones TCP, el cliente host establece la conexión con el servidor mediante el proceso de enlace de tres vías (*three-way handshake*).
+
+- **Paso 1. SYN**
+- **Paso 2. ACK y SYN**
+- **Paso 3. ACK**
+
 El cliente que inicia solicita una sesión de comunicación de cliente a servidor con el servidor.
 
-Paso 1 SYN
-Paso 1 SYN
+**Paso 1 SYN**:
+
 El protocolo de enlace de tres vías valida que el host de destino esté disponible para comunicarse. En este ejemplo, el host A ha validado que el host B está disponible.
 
-3. Terminación de Sesión
+![Paso 1 SYN](https://ccnadesdecero.es/wp-content/uploads/2020/04/Paso-1-SYN.png)
+
+**Paso 2 ACK y SIN SYN**:
+
+El servidor reconoce la sesión de comunicación de cliente a servidor y solicita una sesión de comunicación de servidor a cliente.
+
+![Paso 2 ACK y SYN](https://ccnadesdecero.es/wp-content/uploads/2020/04/Paso-2-ACK-y-SYN.png)
+
+Paso 2 ACK y SYN
+El protocolo de enlace de tres vías valida que el host de destino esté disponible para comunicarse. En este ejemplo, el host A ha validado que el host B está disponible.
+
+El cliente que inicia reconoce la sesión de comunicación de servidor a cliente.
+
+**Paso 3. ACK**:
+
+![Paso 3 ACK](https://ccnadesdecero.es/wp-content/uploads/2020/04/Paso-3-ACK.png)
+
+### 3. Terminación de Sesión
+
 Para cerrar una conexión, el indicador de control Finish (FIN) debe establecerse en el encabezado del segmento. Para finalizar cada sesión TCP unidireccional, se utiliza un protocolo de enlace bidireccional, que consta de un segmento FIN y un segmento de acuse de recibo (ACK). Por lo tanto, para finalizar una sola conversación compatible con TCP, se necesitan cuatro intercambios para finalizar ambas sesiones. Tanto el cliente como el servidor pueden iniciar la terminación.
 
-En el ejemplo, los términos cliente y servidor se utilizan como referencia por simplicidad, pero dos hosts que tengan una sesión abierta pueden iniciar el proceso de finalización.
+En el ejemplo, los términos "cliente" y "servidor" se utilizan como referencia por simplicidad, pero dos hosts que tengan una sesión abierta pueden iniciar el proceso de finalización.
 
 Haga clic en cada botón para obtener más información sobre los pasos de finalización de la sesión.
 
-Paso 1. FIN
-Paso 2. ACK
-Paso 3. FIN
-Paso 4. ACK
+- **Paso 1. FIN**
+- **Paso 2. ACK**
+- **Paso 3. FIN**
+- **Paso 4. ACK**
+
 Cuando el cliente no tiene más datos para enviar en la secuencia, envía un segmento con el indicador FIN establecido.
 
-Paso 1 FIN
-Paso 1 FIN
+**Paso 1 FIN**:
 Cuando todos los segmentos han sido reconocidos, la sesión se cierra.
 
-Ver también
-CCNA 1
+![Paso 1 FIN](https://ccnadesdecero.es/wp-content/uploads/2020/04/Paso-1-FIN.png)
 
-Direccionamiento de Red IPv6
-4. Análisis del Enlace de Tres Vías TCP
-Los hosts mantienen el estado, rastrean cada segmento de datos dentro de una sesión e intercambian información sobre qué datos se reciben utilizando la información en el encabezado TCP. TCP es un protocolo full-duplex, donde cada conexión representa dos sesiones de comunicación unidireccionales. Para establecer la conexión, los hosts realizan un protocolo de enlace de tres vías. Como se muestra en la imagen, los bits de control en el encabezado TCP indican el progreso y el estado de la conexión.
+### 4. Análisis del Enlace de Tres Vías TCP
+
+Los hosts mantienen el estado, rastrean cada segmento de datos dentro de una sesión e intercambian información sobre qué datos se reciben utilizando la información en el encabezado TCP. TCP es un protocolo *full-duplex*, donde cada conexión representa dos sesiones de comunicación unidireccionales. Para establecer la conexión, los hosts realizan un protocolo de enlace de tres vías. Como se muestra en la imagen, los bits de control en el encabezado TCP indican el progreso y el estado de la conexión.
 
 Estas son las funciones del apretón de manos de tres vías:
 
-Establece que el dispositivo de destino está presente en la red.
-Verifica que el dispositivo de destino tenga un servicio activo y esté aceptando solicitudes en el número de puerto de destino que el cliente iniciador pretende utilizar.
-Informa al dispositivo de destino que el cliente de origen tiene la intención de establecer una sesión de comunicación en ese número de puerto.
+- Establece que el dispositivo de destino está presente en la red.
+- Verifica que el dispositivo de destino tenga un servicio activo y esté aceptando solicitudes en el número de puerto de destino que el cliente iniciador pretende utilizar.
+- Informa al dispositivo de destino que el cliente de origen tiene la intención de establecer una sesión de comunicación en ese número de puerto.
+
 Una vez completada la comunicación, las sesiones se cierran y la conexión finaliza. Los mecanismos de conexión y sesión permiten la función de confiabilidad TCP.
 
-Campo de bits de control
-Se muestra los campos de encabezado del segmento TCP con el campo de bits de control de 6 bits resaltado
-Los seis bits en el campo Bits de control del encabezado del segmento TCP también se conocen como banderas. Una bandera es un bit que está activado o desactivado.
+**Campo de bits de control**:
+Se muestra los campos de encabezado del segmento TCP con el campo de bits de control de 6 bits resaltado. Los seis bits en el campo Bits de control del encabezado del segmento TCP también se conocen como banderas. Una bandera es un bit que está activado o desactivado.
 
 Los seis indicadores de bits de control son los siguientes:
 
-URG: campo de puntero urgente significativo
-ACK: indicador de reconocimiento utilizado en el establecimiento de la conexión y la finalización de la sesión
-PSH: función de empuje
-RST: restablece la conexión cuando se produce un error o un tiempo de espera
-SYN: sincroniza los números de secuencia utilizados en el establecimiento de la conexión
-FIN: no hay más datos del remitente y se utilizan en la finalización de la sesión
+- **URG**: campo de puntero urgente significativo.
+- **ACK**: indicador de reconocimiento utilizado en el establecimiento de la conexión y la finalización de la sesión.
+- **PSH**: función de empuje.
+- **RST**: restablece la conexión cuando se produce un error o un tiempo de espera.
+- **SYN**: sincroniza los números de secuencia utilizados en el establecimiento de la conexión.
+- **FIN**: no hay más datos del remitente y se utilizan en la finalización de la sesión.
+
+
 5. Vídeo: Protocolo de Enlace TCP de 3 Vías
 Haz clic en Reproducir en la figura para ver una demostración en video del protocolo de enlace TCP de 3 vías, utilizando Wireshark.
 
+[Vídeo: Protocolo de Enlace TCP de 3 Vías](https://www.youtube.com/watch?v=cm_2Jp7dQP8)
 
 6. Comprueba tu comprensión – Proceso de comunicación TCP
 Verifica tu comprensión del proceso de comunicación TCP eligiendo la MEJOR respuesta a las siguientes preguntas.
@@ -596,13 +606,6 @@ La **Unidad de Datos de Protocolo (PDU)** en la capa de transporte se conoce com
 
 Esta estructura permite a TCP gestionar la comunicación de manera eficiente y fiable.
 
-## 6. Metáforas para Facilitar la Comprensión
-
-
-
-## 9. Conclusión
-
-La capa de transporte es fundamental en las comunicaciones de red, y su comprensión es esencial para cualquier profesional en informática. Los avances tecnológicos y las nuevas demandas de aplicaciones requieren una actualización constante de los conocimientos.
 
 
 ## 1.2. Puertos: Identificando Procesos en Comunicación
@@ -675,21 +678,23 @@ Nota: Algunos sistemas operativos de clientes pueden usar números de puerto reg
 
 La tabla muestra algunos números de puerto conocidos y sus aplicaciones asociadas.
 
-Número de puerto	Protocolo	Solicitud
-20	TCP	Protocolo de transferencia de archivos (FTP) – Datos
-21	TCP	Protocolo de transferencia de archivos (FTP) – Control
-22	TCP	Shell seguro (SSH)
-23	TCP	Telnet
-25	TCP	Protocolo simple de transferencia de correo (SMTP)
-53	UDP, TCP	Servicio de nombres de dominio (DNS)
-67	UDP	Protocolo de configuración dinámica de host (DHCP): servidor
-68	UDP	Protocolo de configuración dinámica de host: cliente
-69	UDP	Protocolo trivial de transferencia de archivos (TFTP)
-80	TCP	Protocolo de transferencia de hipertexto (HTTP)
-110	TCP	Protocolo de oficina de correos versión 3 (POP3)
-143	TCP	Protocolo de acceso a mensajes de Internet (IMAP)
-161	UDP	Protocolo simple de administración de red (SNMP)
-443	TCP	Protocolo de transferencia de hipertexto seguro (HTTPS)
+| Número de puerto | Protocolo | Solicitud |
+|------------------|-----------|-----------|
+| 20               | TCP       | Protocolo de transferencia de archivos (FTP) - Datos |
+| 21               | TCP       | Protocolo de transferencia de archivos (FTP) - Control |
+| 22               | TCP       | Shell seguro (SSH) |
+| 23               | TCP       | Telnet |
+| 25               | TCP       | Protocolo simple de transferencia de correo (SMTP) |
+| 53               | UDP, TCP  | Servicio de nombres de dominio (DNS) |
+| 67               | UDP       | Protocolo de configuración dinámica de host (DHCP): servidor |
+| 68               | UDP       | Protocolo de configuración dinámica de host: cliente |
+| 69               | UDP       | Protocolo trivial de transferencia de archivos (TFTP) |
+| 80               | TCP       | Protocolo de transferencia de hipertexto (HTTP) |
+| 110              | TCP       | Protocolo de oficina de correos versión 3 (POP3) |
+| 143              | TCP       | Protocolo de acceso a mensajes de Internet (IMAP) |
+| 161              | UDP       | Protocolo simple de administración de red (SNMP) |
+| 443              | TCP       | Protocolo de transferencia de hipertexto seguro (HTTPS) |
+
 Algunas aplicaciones pueden usar tanto TCP como UDP. Por ejemplo, DNS usa UDP cuando los clientes envían solicitudes a un servidor DNS. Sin embargo, la comunicación entre dos servidores DNS siempre usa TCP.
 
 Ver también
@@ -731,6 +736,10 @@ A. ipconfig /all
 B. ping
 C. netstat
 D. traceroute
+
+## 9. Conclusión
+
+La capa de transporte es fundamental en las comunicaciones de red, y su comprensión es esencial para cualquier profesional en informática. Los avances tecnológicos y las nuevas demandas de aplicaciones requieren una actualización constante de los conocimientos.
 
 ## Referencias
 
