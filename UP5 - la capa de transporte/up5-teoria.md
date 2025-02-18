@@ -68,12 +68,12 @@ En un dispositivo terminal pueden ejecutarse múltiples **procesos** simultánea
 
 En líneas generales, las **funciones clave de la Capa de Transporte** son las siguientes:
 
-- **Segmentación y Reensamblado**: Divide los datos de las aplicaciones en segmentos adecuados para la transmisión y los reensambla en el destino.
-- **Multiplexación y Demultiplexación**: Permite que múltiples procesos utilicen simultáneamente la red, identificando de manera única cada conexión mediante números de puerto.
-- **Control de Flujo**: Gestiona la velocidad de envío de datos para prevenir la saturación del receptor.
-- **Control de Congestión**: Regula el tráfico en la red para evitar y recuperarse de congestiones.
-- **Entrega Confiable**: Asegura la entrega correcta y en orden de los segmentos, detectando y retransmitiendo los que se pierden.
-- **Establecimiento de Sesión**: Crea, mantiene y cierra conexiones entre procesos en dispositivos distintos.
+- **Segmentación y Reensamblado**: Divide los datos de las aplicaciones en segmentos adecuados para la transmisión y los reensambla en el destino. (Obligatoria)
+- **Multiplexación y Demultiplexación**: Permite que múltiples procesos utilicen simultáneamente la red, identificando de manera única cada conexión mediante números de puerto. (Obligatoria)
+- **Control de Flujo**: Gestiona la velocidad de envío de datos para prevenir la saturación del receptor. (Opcional)
+- **Control de Congestión**: Regula el tráfico en la red para evitar y recuperarse de congestiones. (Opcional)
+- **Entrega Confiable**: Asegura la entrega correcta y en orden de los segmentos, detectando y retransmitiendo los que se pierden. (Opcional)
+- **Establecimiento de Sesión**: Crea, mantiene y cierra conexiones entre procesos en dispositivos distintos. (Opcional)
 
 ## 2. Transmission Control Protocol (TCP)
 
@@ -107,7 +107,7 @@ Además de admitir las funciones básicas de segmentación y reensamblado de dat
 - **Proporciona entrega en el mismo orden**: Dado que las redes pueden proporcionar múltiples rutas que pueden tener diferentes velocidades de transmisión, los datos pueden llegar en el orden incorrecto. Al numerar y secuenciar los segmentos, TCP garantiza que los segmentos se vuelvan a ensamblar en el orden correcto.
 - **Admite control de flujo**: Los hosts de red tienen recursos limitados (es decir, memoria y potencia de procesamiento). Cuando TCP es consciente de que estos recursos están sobrecargados, puede solicitar que la aplicación de envío reduzca la velocidad del flujo de datos. Esto se hace mediante TCP que regula la cantidad de datos que transmite la fuente. El control de flujo puede evitar la necesidad de retransmitir los datos cuando los recursos del host receptor se ven desbordados.
 
-Para obtener más información sobre TCP, busca en Internet el RFC 793.
+Puedes obtener más información sobre TCP en el documento RFC 793.
 
 ### 2.2. Encabezado TCP
 
@@ -119,7 +119,7 @@ Un segmento TCP agrega 20 bytes (es decir, 160 bits) de sobrecarga al encapsular
 
 #### 2.2.1. Campos de encabezado TCP
 
-La tabla identifica y describe los campos en un encabezado TCP.
+La tabla identifica y describe los campos en un encabezado TCP. Como el campo Opciones no está siempre presente generalmente se dice que el encabezado TCP presenta 10 campos.
 
 | Campo de encabezado TCP | Descripción |
 |------------------------|-----------------------------------------------------------------------------|
@@ -137,34 +137,13 @@ La tabla identifica y describe los campos en un encabezado TCP.
 
 ### 2.3. Aplicaciones que usan TCP
 
-TCP es un buen ejemplo de cómo las diferentes capas del conjunto de protocolos TCP/IP tienen roles específicos. TCP maneja todas las tareas asociadas con la división del flujo de datos en segmentos, proporcionando confiabilidad, controlando el flujo de datos y reordenando segmentos. 
+TCP es un buen ejemplo de cómo las diferentes capas del conjunto de protocolos TCP/IP tienen roles específicos. TCP maneja todas las tareas asociadas con la división del flujo de datos en segmentos, proporcionando confiabilidad, controlando el flujo de datos y reordenando segmentos.
 
 TCP libera a la aplicación de tener que administrar cualquiera de estas tareas. Las aplicaciones, como las que se muestran en la figura, simplemente pueden enviar el flujo de datos a la capa de transporte y utilizar los servicios de TCP.
 
 ![Aplicaciones que usan TCP](https://ccnadesdecero.es/wp-content/uploads/2017/11/Aplicaciones-que-usan-TCP.png)
 
-### 2.4. Ejercicios TCP
-
-1. ¿Qué protocolo de capa de transporte garantiza la entrega fiable del mismo pedido?
-    - [ ] ICMP
-    - [ ] IP
-    - [x] TCP
-    - [ ] UDP
-
-2. ¿Qué enunciado de encabezado TCP es verdadero?
-    - [ ] Se compone de 4 campos en un encabezado de 8 bytes.
-    - [ ] Se compone de 8 campos en un encabezado de 10 bytes.
-    - [x] Se compone de 10 campos en un encabezado de 20 bytes.
-    - [ ] Se compone de 20 campos en un encabezado de 40 bytes.
-
-3. ¿Qué dos aplicaciones usarían el protocolo de capa de transporte TCP? (Escoja dos opciones).
-    - [x] FTP
-    - [x] HTTP
-    - [ ] ICMP
-    - [ ] TFTP
-    - [ ] VoIP
-
-### 2.5. Procesos del Servidor TCP
+### 2.4. Procesos del Servidor TCP
 
 Cada proceso de aplicación que se ejecuta en un servidor está configurado para usar un número de puerto. El número de puerto se asigna automáticamente o se configura manualmente por un administrador del sistema.
 
@@ -176,7 +155,7 @@ Una aplicación de servidor activa asignada a un puerto específico se considera
 
 En la imagen se observa como el cliente 1 solicita servicios web y el cliente 2 solicita servicio de correo electrónico utilizando puertos conocidos (es decir, servicios web en el puerto 80, servicios de correo electrónico en el puerto 25).
 
-### 2.6. Establecimiento de Conexión TCP
+### 2.5. Establecimiento de Conexión TCP
 
 En algunas culturas, cuando dos personas se encuentran, a menudo se saludan dándose la mano. Ambas partes entienden el acto de estrechar la mano como una señal de saludo amistoso. Las conexiones en la red son similares. En las conexiones TCP, el cliente host establece la conexión con el servidor mediante el proceso de enlace de tres vías (*three-way handshake*).
 
