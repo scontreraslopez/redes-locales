@@ -129,7 +129,7 @@ La tabla identifica y describe los campos en un encabezado TCP. Como el campo Op
 | Número de acuse de recibo | Un campo de 32 bits utilizado para indicar que se han recibido datos y que se espera el siguiente byte de la fuente. |
 | Longitud del encabezado | Un campo de 4 bits conocido como “desplazamiento de datos” que indica la longitud del encabezado del segmento TCP. |
 | Reservado              | Un campo de 6 bits que está reservado para uso futuro.                      |
-| Bits de control        | Un campo de 6 bits utilizado que incluye códigos de bits o banderas, que indican el propósito y la función del segmento TCP. |
+| Bits de control        | Un campo de 6 bits utilizado que incluye códigos de bits o banderas (FIN, ACK, SYN, RST, PSH y URG), que indican el propósito y la función del segmento TCP. |
 | Tamaño de ventana      | Un campo de 16 bits utilizado para indicar el número de bytes que se pueden aceptar a la vez. |
 | Suma de comprobación    | Un campo de 16 bits utilizado para la verificación de errores del encabezado y los datos del segmento. |
 | Urgente                | Un campo de 16 bits utilizado para indicar si los datos contenidos son urgentes. |
@@ -186,7 +186,7 @@ El cliente que inicia reconoce la sesión de comunicación de servidor a cliente
 
 ![Paso 3 ACK](https://ccnadesdecero.es/wp-content/uploads/2020/04/Paso-3-ACK.png)
 
-### 3. Terminación de Sesión
+### 2.6. Terminación de Sesión
 
 Para cerrar una conexión, el indicador de control Finish (FIN) debe establecerse en el encabezado del segmento. Para finalizar cada sesión TCP unidireccional, se utiliza un protocolo de enlace bidireccional, que consta de un segmento FIN y un segmento de acuse de recibo (ACK). Por lo tanto, para finalizar una sola conversación compatible con TCP, se necesitan cuatro intercambios para finalizar ambas sesiones. Tanto el cliente como el servidor pueden iniciar la terminación.
 
@@ -224,8 +224,7 @@ El cliente responde con un ACK para reconocer el FIN del servidor.
 
 ![Paso 4 ACK](https://ccnadesdecero.es/wp-content/uploads/2020/04/Paso-4-ACK.png)
 
-
-### 4. Análisis del Enlace de Tres Vías TCP
+### 2.7. Análisis del Enlace de Tres Vías TCP
 
 Los hosts mantienen el estado, rastrean cada segmento de datos dentro de una sesión e intercambian información sobre qué datos se reciben utilizando la información en el encabezado TCP. TCP es un protocolo *full-duplex*, donde cada conexión representa dos sesiones de comunicación unidireccionales. Para establecer la conexión, los hosts realizan un protocolo de enlace de tres vías. Como se muestra en la imagen, los bits de control en el encabezado TCP indican el progreso y el estado de la conexión.
 
@@ -249,13 +248,9 @@ Los seis indicadores de bits de control son los siguientes:
 - **SYN**: sincroniza los números de secuencia utilizados en el establecimiento de la conexión.
 - **FIN**: no hay más datos del remitente y se utilizan en la finalización de la sesión.
 
-
-5. Vídeo: Protocolo de Enlace TCP de 3 Vías
-Haz clic en Reproducir en la figura para ver una demostración en video del protocolo de enlace TCP de 3 vías, utilizando Wireshark.
-
 [Vídeo: Protocolo de Enlace TCP de 3 Vías](https://www.youtube.com/watch?v=cm_2Jp7dQP8)
 
-### 6. Comprueba tu comprensión – Proceso de comunicación TCP
+### 2.8. Comprueba tu comprensión – Proceso de comunicación TCP
 
 Verifica tu comprensión del proceso de comunicación TCP eligiendo la MEJOR respuesta a las siguientes preguntas.
 
@@ -278,10 +273,13 @@ Verifica tu comprensión del proceso de comunicación TCP eligiendo la MEJOR res
     - [x] D. cuatro intercambios
     - [ ] E. cinco intercambios
 
+
+
 https://ccnadesdecero.es/fiabilidad-y-control-de-flujo-tcp/
 
 
-1. Fiabilidad de TCP: Entrega Garantizada y Ordenada
+### 2.8. Fiabilidad de TCP I: Entrega Garantizada y Ordenada
+
 Puede haber ocasiones en que los segmentos TCP no lleguen a su destino. Otras veces, los segmentos TCP pueden llegar fuera de servicio. Para que el destinatario entienda el mensaje original, se deben recibir todos los datos y los datos de estos segmentos deben volver a ensamblarse en el pedido original. Los números de secuencia se asignan en el encabezado de cada paquete para lograr este objetivo. El número de secuencia representa el primer byte de datos del segmento TCP.
 
 Durante la configuración de la sesión, se establece un número de secuencia inicial (ISN). Este ISN representa el valor inicial de los bytes que se transmiten a la aplicación receptora. A medida que los datos se transmiten durante la sesión, el número de secuencia se incrementa por el número de bytes que se han transmitido. Este seguimiento de bytes de datos permite que cada segmento se identifique y reconozca de forma única. Los segmentos faltantes se pueden identificar.
@@ -299,8 +297,8 @@ Una de las funciones de TCP es garantizar que cada segmento llegue a su destino.
 
 Haz clic en Reproducir en la figura para ver una lección acerca de los números de secuencia y los acuses de recibo del TCP.
 
+### 2.9. Fiabilidad de TCP II: Pérdida y Retransmisión de Datos
 
-3. Fiabilidad de TCP: Pérdida y Retransmisión de Datos
 No importa cuán bien diseñada esté una red, ocasionalmente se produce pérdida de datos. TCP proporciona métodos para gestionar estas pérdidas de segmento. Entre estos se encuentra un mecanismo para retransmitir segmentos para datos no reconocidos.
 
 Antes de las mejoras posteriores, TCP solo podía reconocer el siguiente byte esperado. Por ejemplo, en la imagen, usando los números de segmento para simplificar, el host A envía los segmentos 1 a 10 al host B. Si todos los segmentos llegan excepto los segmentos 3 y 4, el host B responderá con acuse de recibo especificando que el siguiente segmento esperado es el segmento 3. El host A no tiene idea de si llegaron otros segmentos o no. El host A, por lo tanto, reenviaría los segmentos 3 a 10. Si todos los segmentos reenviados llegaran con éxito, los segmentos 5 a 10 serían duplicados. Esto puede provocar demoras, congestión e ineficiencias.
@@ -319,7 +317,8 @@ TCP usa temporizadores para saber cuánto tiempo esperar antes de reenviar un se
 Haz clic en Reproducir en la figura para ver una lección acerca de la retransmisión TCP.
 
 
-5. Control de flujo TCP: tamaño de ventana y agradecimientos
+### 2.10. Control de flujo TCP: tamaño de ventana y agradecimientos
+
 TCP también proporciona mecanismos para el control de flujo. El control de flujo es la cantidad de datos que el destino puede recibir y procesar de manera confiable. El control de flujo ayuda a mantener la confiabilidad de la transmisión TCP al ajustar la velocidad del flujo de datos entre el origen y el destino para una sesión determinada. Para lograr esto, el encabezado TCP incluye un campo de 16 bits llamado tamaño de ventana.
 
 La imagen muestra un ejemplo de tamaño de ventana y acuses de recibo.
@@ -340,7 +339,8 @@ Si la disponibilidad del espacio de almacenamiento intermedio del destino dismin
 
 Nota: Los dispositivos actuales usan el protocolo de ventanas deslizantes (Sliding window protocol). El receptor generalmente envía un acuse de recibo después de cada dos segmentos que recibe. El número de segmentos recibidos antes de ser reconocido puede variar. La ventaja de las ventanas deslizantes es que permite al emisor transmitir segmentos continuamente, siempre que el receptor reconozca segmentos anteriores. Los detalles de las ventanas deslizantes están más allá del alcance de este curso.
 
-6. Control de flujo TCP: Tamaño Máximo de Segmento (MSS)
+### 2.11. Control de flujo TCP: Tamaño Máximo de Segmento (MSS)
+
 En la imagen, la fuente está transmitiendo 1.460 bytes de datos dentro de cada segmento TCP. Este suele ser el tamaño máximo de segmento (MSS) que puede recibir el dispositivo de destino. El MSS es parte del campo de opciones en el encabezado TCP que especifica la mayor cantidad de datos, en bytes, que un dispositivo puede recibir en un solo segmento TCP. El tamaño de MSS no incluye el encabezado TCP. El MSS generalmente se incluye durante el protocolo de enlace de tres vías.
 
 Tamaño máximo de segmento MSS
@@ -349,7 +349,9 @@ Un MSS común es de 1,460 bytes cuando se usa IPv4. Un host determina el valor d
 
 Tamaño predeterminado de MSS
 Tamaño predeterminado de MSS
-7. Control de Flujo TCP: Evitar la Congestión
+
+### 2.12. Control de Flujo TCP: Evitar la Congestión
+
 Cuando se produce congestión en una red, el Router sobrecargado descarta los paquetes. Cuando los paquetes que contienen segmentos TCP no llegan a su destino, se dejan sin confirmar. Al determinar la velocidad a la que se envían los segmentos TCP pero no se reconoce, la fuente puede asumir un cierto nivel de congestión de la red.
 
 Ver también
@@ -366,7 +368,7 @@ Los números de acuse de recibo corresponden al siguiente byte esperado y no a u
 
 Ten en cuenta que es la fuente la que está reduciendo el número de bytes no reconocidos que envía y no el tamaño de ventana determinado por el destino.
 
-### 8. Comprueba tu Comprensión – Fiabilidad y Control de Flujo
+### 2.13. Comprueba tu Comprensión – Fiabilidad y Control de Flujo
 
 Verifica tu conocimiento del proceso de fiabilidad y flujo TCP escogiendo la mejor respuesta a las siguientes preguntas.
 
