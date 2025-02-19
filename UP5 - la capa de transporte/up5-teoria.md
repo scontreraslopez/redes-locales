@@ -146,9 +146,35 @@ Un servidor individual no puede tener dos servicios asignados al mismo número d
 
 Una aplicación de servidor activa asignada a un puerto específico se considera **abierta**, lo que significa que la capa de transporte acepta y procesa segmentos dirigidos a ese puerto. Se acepta cualquier solicitud de cliente entrante dirigida al socket correcto, y los datos se pasan a la aplicación del servidor. Puede haber muchos puertos abiertos simultáneamente en un servidor, uno para cada aplicación de servidor activa.
 
+#### 2.4.1. Clientes que envían solicitudes TCP
+
 ![Clientes envían solicitudes TCP](https://ccnadesdecero.es/wp-content/uploads/2020/04/Clientes-env%C3%ADan-solicitudes-TCP.png)
 
 En la imagen se observa como el cliente 1 solicita servicios web y el cliente 2 solicita servicio de correo electrónico utilizando puertos conocidos (es decir, servicios web en el puerto 80, servicios de correo electrónico en el puerto 25).
+
+#### 2.4.2. Solicitar puertos de destino
+
+Las solicitudes generan dinámicamente un número de puerto de origen. En este caso, el Cliente 1 está utilizando el puerto de origen 49152 y el Cliente 2 está utilizando el puerto de origen 51152.
+
+![Solicitar puertos de destino](https://ccnadesdecero.es/wp-content/uploads/2020/04/Solicitar-puertos-de-destino.png)
+
+#### 2.4.3. Solicitar puertos de origen
+
+Cuando el servidor responde a las solicitudes del cliente, invierte el destino y los puertos de origen de la solicitud inicial.
+
+![Solicitar puertos de origen](https://ccnadesdecero.es/wp-content/uploads/2020/04/Solicitar-puertos-de-origen.png)
+
+#### 2.4.4. Respuesta puertos destino
+
+Observa que la respuesta del servidor a la solicitud web ahora tiene el puerto de destino 49152 y la respuesta de correo electrónico ahora tiene el puerto de destino 51152.
+
+![Respuesta puertos de destino](https://ccnadesdecero.es/wp-content/uploads/2020/04/Respuesta-Puertos-de-destino.png)
+
+#### 2.4.5. Respuesta puertos de origen
+
+El puerto de origen en la respuesta del servidor es el puerto de destino original en las solicitudes iniciales.
+
+![Solicitar puertos de origen](https://ccnadesdecero.es/wp-content/uploads/2020/04/Respuesta-Puertos-de-origen.png)
 
 ### 2.5. Establecimiento de Conexión TCP
 
