@@ -41,7 +41,6 @@
 - [7. Conclusión](#7-conclusión)
 - [8. Referencias](#8-referencias)
 
-
 ## 1. Funciones de la Capa de Transporte
 
 Los programas de capa de aplicación generan datos que deben intercambiarse entre los hosts de origen y de destino. La capa de transporte es responsable de las comunicaciones lógicas entre las aplicaciones que se ejecutan en diferentes hosts. Esto puede incluir servicios como el establecimiento de una sesión temporal entre dos hosts y la transmisión confiable de información para una aplicación.
@@ -71,6 +70,8 @@ En líneas generales, las **funciones clave de la Capa de Transporte** son las s
 - **Establecimiento de Sesión**: Crea, mantiene y cierra conexiones entre procesos en dispositivos distintos. (Opcional)
 
 ## 2. Transmission Control Protocol (TCP)
+
+Repasar esto: https://examenredes.com/ccna-1-version-7-modulo-14-capa-de-transporte/
 
 **TCP** es un protocolo orientado a conexión que proporciona comunicación fiable:
 
