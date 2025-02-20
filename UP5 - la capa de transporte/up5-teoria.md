@@ -327,7 +327,7 @@ TCP también proporciona mecanismos para el control de flujo. El control de fluj
 
 La imagen muestra un ejemplo de tamaño de ventana y acuses de recibo.
 
-[Ejemplo de tamaño de ventana TCP](https://ccnadesdecero.es/wp-content/uploads/2020/04/Ejemplo-de-tama%C3%B1o-de-ventana-TCP.png)
+![Ejemplo de tamaño de ventana TCP](https://ccnadesdecero.es/wp-content/uploads/2020/04/Ejemplo-de-tama%C3%B1o-de-ventana-TCP.png)
 
 El tamaño de la ventana determina el número de bytes que se pueden enviar antes de esperar un acuse de recibo. El número de reconocimiento es el número del siguiente byte esperado.
 
