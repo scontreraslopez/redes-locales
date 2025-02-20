@@ -299,6 +299,7 @@ El proceso TCP receptor coloca los datos del segmento en un búfer de recepción
 Una de las funciones de TCP es garantizar que cada segmento llegue a su destino. Los servicios TCP en el host de destino reconocen los datos que ha recibido la aplicación de origen.
 
 [Serie de videos acerca de TCP](https://www.youtube.com/watch?v=eNuC80Mzy0I)
+
 [Video Fiabilidad de TCP](https://www.youtube.com/watch?v=ScXoIKcOwP8)
 
 #### 2.8.2. Fiabilidad II: Pérdida y Retransmisión de Datos
@@ -689,6 +690,6 @@ La capa de transporte es fundamental en las comunicaciones de red, y su comprens
 
 ## Referencias
 
-https://ccnadesdecero.es/ccna-1/#Modulo_14_Capa_de_Transporte_CCNA_1_v7
-https://examenredes.com/ccna-1-version-7-modulo-14-capa-de-transporte/
+- https://ccnadesdecero.es/ccna-1/#Modulo_14_Capa_de_Transporte_CCNA_1_v7
+- https://examenredes.com/ccna-1-version-7-modulo-14-capa-de-transporte/
 
