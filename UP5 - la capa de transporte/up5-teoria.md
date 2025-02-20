@@ -84,7 +84,7 @@ Repasar esto: https://examenredes.com/ccna-1-version-7-modulo-14-capa-de-transpo
 
 TCP se considera un protocolo de capa de transporte confiable y con todas las funciones, que garantiza que todos los datos lleguen al destino. TCP incluye campos que aseguran la entrega de los datos de la aplicación. Estos campos requieren un procesamiento adicional por parte de los hosts de envío y recepción. Para mantener el estado de una conversación y rastrear la información, TCP primero debe establecer una conexión entre el remitente y el receptor. Es por eso que TCP se conoce como un protocolo orientado a la conexión.
 
-![Protocolo de Control de Transmisión TCP](https://ccnadesdecero.es/wp-content/uploads/2017/11/Protocolo-de-Control-de-Transmisi%C3%B3n-TCP.png)
+![Protocolo de Control de Transmisión TCP](https://examenredes.com/wp-content/uploads/2021/12/14.1.4.gif)
 
 TCP proporciona confiabilidad y control de flujo utilizando estas operaciones básicas:
 
@@ -276,19 +276,19 @@ Los seis indicadores de bits de control son los siguientes:
 
 ### 2.8. Fiabilidad de TCP I: Entrega Garantizada y Ordenada
 
-Puede haber ocasiones en que los segmentos TCP no lleguen a su destino. Otras veces, los segmentos TCP pueden llegar fuera de servicio. Para que el destinatario entienda el mensaje original, se deben recibir todos los datos y los datos de estos segmentos deben volver a ensamblarse en el pedido original. Los números de secuencia se asignan en el encabezado de cada paquete para lograr este objetivo. El número de secuencia representa el primer byte de datos del segmento TCP.
+Puede haber ocasiones en que los segmentos TCP no lleguen a su destino. Otras veces, los segmentos TCP pueden llegar desordenados. Para que el destinatario entienda el mensaje original, se deben recibir todos los datos y los datos de estos segmentos deben volver a ensamblarse en el mensaje original. Los números de secuencia se asignan en el encabezado de cada paquete para lograr este objetivo. El número de secuencia representa el primer byte de datos del segmento TCP.
 
-Durante la configuración de la sesión, se establece un número de secuencia inicial (ISN). Este ISN representa el valor inicial de los bytes que se transmiten a la aplicación receptora. A medida que los datos se transmiten durante la sesión, el número de secuencia se incrementa por el número de bytes que se han transmitido. Este seguimiento de bytes de datos permite que cada segmento se identifique y reconozca de forma única. Los segmentos faltantes se pueden identificar.
+Durante la configuración de la sesión, se establece un número de secuencia inicial (ISN). Este ISN representa el valor inicial de los bytes que se transmiten a la aplicación receptora. A medida que los datos se transmiten durante la sesión, el número de secuencia se incrementa por el número de bytes que se han transmitido. Este seguimiento de bytes de datos permite que cada segmento se identifique y reconozca de forma única. Así, podemos identificar los segmentos que no se hayan entregado.
 
-El ISN no comienza en uno, pero es efectivamente un número aleatorio. Esto es para prevenir ciertos tipos de ataques maliciosos. Para simplificar, utilizaremos un ISN de 1 para los ejemplos de este capítulo.
+El ISN no comienza en uno, sino que es un número aleatorio. Esto es así para prevenir ciertos tipos de ataques maliciosos. No obstante, en muchos ejemplos se suelen emplear el número 1 por simplicidad.
 
 Los números de secuencia de segmento indican cómo volver a armar y reordenar los segmentos recibidos, como se muestra en la imagen.
 
 ![Segmentos TCP se reordenan en destino](https://ccnadesdecero.es/wp-content/uploads/2020/04/Segmentos-TCP-se-reordenan-en-destino.png)
 
-Segmentos TCP se reordenan en destino: Aunque los segmentos pueden tomar diferentes rutas y llegar fuera de servicio al destino, TCP tiene la capacidad de reordenar los segmentos.
+Segmentos TCP se reordenan en destino: Aunque los segmentos pueden tomar diferentes rutas y llegar desordenados al destino, TCP tiene la capacidad de reordenar los segmentos.
 
-El proceso TCP receptor coloca los datos de un segmento en un búfer receptor. Los segmentos se colocan en el orden de secuencia adecuado y se pasan a la capa de aplicación cuando se vuelven a montar. Los segmentos que llegan con números de secuencia que están fuera de servicio se retienen para su posterior procesamiento. Luego, cuando llegan los segmentos con los bytes faltantes, estos segmentos se procesan en orden.
+El proceso TCP receptor coloca los datos de un segmento en un búfer receptor. Los segmentos se colocan en el orden de secuencia adecuado y se pasan a la capa de aplicación cuando se vuelven a montar. Los segmentos que llegan con números de secuencia que están desordenados se retienen para su posterior procesamiento. Luego, cuando llegan los segmentos con los bytes faltantes, estos segmentos se procesan en orden.
 
 Una de las funciones de TCP es garantizar que cada segmento llegue a su destino. Los servicios TCP en el host de destino reconocen los datos que ha recibido la aplicación de origen.
 
@@ -296,13 +296,13 @@ Una de las funciones de TCP es garantizar que cada segmento llegue a su destino.
 
 ### 2.9. Fiabilidad de TCP II: Pérdida y Retransmisión de Datos
 
-No importa cuán bien diseñada esté una red, ocasionalmente se produce pérdida de datos. TCP proporciona métodos para gestionar estas pérdidas de segmento. Entre estos se encuentra un mecanismo para retransmitir segmentos para datos no reconocidos.
+No importa cuán bien diseñada esté una red, ocasionalmente se produce pérdida de datos. TCP proporciona métodos para gestionar estas pérdidas de segmentos. Entre estos se encuentra un mecanismo para retransmitir segmentos para datos no reconocidos.
 
-Antes de las mejoras posteriores, TCP solo podía reconocer el siguiente byte esperado. Por ejemplo, en la imagen, usando los números de segmento para simplificar, el host A envía los segmentos 1 a 10 al host B. Si todos los segmentos llegan excepto los segmentos 3 y 4, el host B responderá con acuse de recibo especificando que el siguiente segmento esperado es el segmento 3. El host A no tiene idea de si llegaron otros segmentos o no. El host A, por lo tanto, reenviaría los segmentos 3 a 10. Si todos los segmentos reenviados llegaran con éxito, los segmentos 5 a 10 serían duplicados. Esto puede provocar demoras, congestión e ineficiencias.
+Antes de las mejoras posteriores, TCP solo podía reconocer el siguiente byte esperado. Por ejemplo, en la imagen que aparece abajo, el host A envía los segmentos 1 a 10 al host B. Si todos los segmentos llegan excepto los segmentos 3 y 4, el host B responderá con acuse de recibo especificando que el siguiente segmento esperado es el segmento 3. El host A no tiene idea de si llegaron otros segmentos o no. El host A, por lo tanto, reenviaría los segmentos 3 a 10. Si todos los segmentos reenviados llegaran con éxito, los segmentos 5 a 10 serían duplicados. Esto puede provocar demoras, congestión e ineficiencias.
 
 ![Segmentos duplicados](https://ccnadesdecero.es/wp-content/uploads/2020/04/Segmentos-duplicados.png)
 
-Los sistemas operativos host de hoy en día suelen emplear una función TCP opcional llamada reconocimiento selectivo (SACK), negociada durante el protocolo de enlace de tres vías. Si ambos hosts admiten SACK, el receptor puede reconocer explícitamente qué segmentos (bytes) se recibieron, incluidos los segmentos discontinuos. Por lo tanto, el host emisor solo necesitaría retransmitir los datos faltantes. Por ejemplo, en la siguiente imagen, nuevamente usando números de segmento para simplificar, el host A envía los segmentos 1 a 10 al host B. Si todos los segmentos llegan excepto los segmentos 3 y 4, el host B puede confirmar que ha recibido los segmentos 1 y 2 (ACK 3) y reconoce selectivamente los segmentos 5 a 10 (SACK 5-10). El host A solo necesitaría reenviar los segmentos 3 y 4.
+Los sistemas operativos habitualmente presentes hoy en día en los hosts, suelen emplear una función TCP opcional llamada reconocimiento selectivo (SACK), negociada durante el protocolo de enlace de tres vías. Si ambos hosts admiten SACK, el receptor puede reconocer explícitamente qué segmentos (bytes) se recibieron, incluidos los segmentos discontinuos. Por lo tanto, el host emisor solo necesitaría retransmitir los datos faltantes. Por ejemplo, en la siguiente imagen, nuevamente usando números de segmento para simplificar, el host A envía los segmentos 1 a 10 al host B. Si todos los segmentos llegan excepto los segmentos 3 y 4, el host B puede confirmar que ha recibido los segmentos 1 y 2 (ACK 3) y reconoce selectivamente los segmentos 5 a 10 (SACK 5-10). El host A solo necesitaría reenviar los segmentos 3 y 4.
 
 ![Segmentos sin duplicar](https://ccnadesdecero.es/wp-content/uploads/2020/04/Segmentos-sin-duplicar.png)
 
@@ -390,7 +390,6 @@ El **UDP** es un protocolo sin conexión y sin garantías de entrega:
 
 - **UDP**: Es como enviar una postal. No hay confirmación de recepción, pero es rápido y sencillo. Ideal para mensajes breves donde la pérdida ocasional es tolerable.
 
-
 UDP es un protocolo de capa de transporte más simple que TCP. No proporciona confiabilidad y control de flujo, lo que significa que requiere menos campos de encabezado. Debido a que los procesos UDP del emisor y del receptor no tienen que administrar la confiabilidad y el control de flujo, esto significa que los datagramas UDP pueden procesarse más rápido que los segmentos TCP. UDP proporciona las funciones básicas para entregar datagramas entre las aplicaciones apropiadas, con muy poca sobrecarga y verificación de datos.
 
 Nota: UDP divide los datos en datagramas que también se denominan segmentos.
@@ -465,7 +464,7 @@ Al igual que los segmentos con TCP, cuando los datagramas UDP se envían a un de
 Por lo tanto, UDP simplemente vuelve a ensamblar los datos en el orden en que se recibieron y los reenvía a la aplicación. Si la secuencia de datos es importante para la aplicación, la aplicación debe identificar la secuencia adecuada y determinar cómo se deben procesar los datos.
 
 UDP sin conexión y no confiable
-UDP sin conexión y no confiable. Se muestra datagramas UDP que se envían en orden, pero que llegan fuera de servicio debido a la posibilidad de que diferentes rutas lleguen al destino.
+UDP sin conexión y no confiable. Se muestra datagramas UDP que se envían en orden, pero que llegan desordenados debido a la posibilidad de que diferentes rutas lleguen al destino.
 3. Procesos y Solicitudes del Servidor UDP
 Al igual que las aplicaciones basadas en TCP, a las aplicaciones de servidor basadas en UDP se les asignan números de puerto conocidos o registrados, como se muestra en la imagen. Cuando estas aplicaciones o procesos se ejecutan en un servidor, aceptan los datos que coinciden con el número de puerto asignado. Cuando UDP recibe un datagrama destinado a uno de estos puertos, reenvía los datos de la aplicación a la aplicación adecuada en función de su número de puerto.
 
@@ -703,3 +702,5 @@ La capa de transporte es fundamental en las comunicaciones de red, y su comprens
 ## Referencias
 
 https://ccnadesdecero.es/ccna-1/#Modulo_14_Capa_de_Transporte_CCNA_1_v7
+https://examenredes.com/ccna-1-version-7-modulo-14-capa-de-transporte/
+
