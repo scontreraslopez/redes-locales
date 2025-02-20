@@ -367,30 +367,6 @@ Los números de acuse de recibo corresponden al siguiente byte esperado y no a u
 
 Ten en cuenta que es la fuente la que está reduciendo el número de bytes no reconocidos que envía y no el tamaño de ventana determinado por el destino.
 
-### 2.13. Comprueba tu Comprensión – Fiabilidad y Control de Flujo
-
-Verifica tu conocimiento del proceso de fiabilidad y flujo TCP escogiendo la mejor respuesta a las siguientes preguntas.
-
-1. ¿Qué campo utiliza el host de destino para volver a ensamblar segmentos en el orden original?
-    - [ ] A. Bits de Control
-    - [ ] B. Puerto de Destino
-    - [x] C. Número de Secuencia
-    - [ ] D. Puerto de Origen
-    - [ ] E. Tamaño de la ventana
-
-2. ¿Qué campo se utiliza para proporcionar control de flujo?
-    - [ ] A. Bits de Control
-    - [ ] B. Puerto de Destino
-    - [ ] C. Número de Secuencia
-    - [ ] D. Puerto de Origen
-    - [x] E. Tamaño de la Ventana
-
-3. ¿Qué sucede cuando un host de envío detecta que hay congestión?
-    - [ ] A. El host receptor aumenta el número de bytes que envía antes de recibir una confirmación del host remitente.
-    - [ ] B. El host receptor reduce el número de bytes que envía antes de recibir una confirmación del host remitente.
-    - [ ] C. El host de envío aumenta el número de bytes que envía antes de recibir una confirmación del host de destino.
-    - [x] D. El host de envío reduce el número de bytes que envía antes de recibir una confirmación del host de destino.
-
 ## 3. User Datagram Protocol (UDP)
 
 El **UDP** es un protocolo sin conexión y sin garantías de entrega:
