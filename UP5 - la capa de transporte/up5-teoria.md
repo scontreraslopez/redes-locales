@@ -1,5 +1,7 @@
 # UP5. La capa de transporte
 
+## Índice
+
 - [1. Funciones de la Capa de Transporte](#1-funciones-de-la-capa-de-transporte)
 - [2. Transmission Control Protocol (TCP)](#2-transmission-control-protocol-tcp)
   - [2.1. Características de TCP](#21-características-de-tcp)
@@ -10,13 +12,13 @@
   - [2.5. Establecimiento de Conexión TCP](#25-establecimiento-de-conexión-tcp)
   - [2.6. Terminación de Sesión](#26-terminación-de-sesión)
   - [2.7. Análisis del Enlace de Tres Vías TCP](#27-análisis-del-enlace-de-tres-vías-tcp)
-  - [2.8. Comprueba tu comprensión – Proceso de comunicación TCP](#28-comprueba-tu-comprensión--proceso-de-comunicación-tcp)
-  - [2.9. Fiabilidad de TCP I: Entrega Garantizada y Ordenada](#29-fiabilidad-de-tcp-i-entrega-garantizada-y-ordenada)
-  - [2.10. Fiabilidad de TCP II: Pérdida y Retransmisión de Datos](#210-fiabilidad-de-tcp-ii-pérdida-y-retransmisión-de-datos)
-  - [2.11. Control de flujo TCP: tamaño de ventana y agradecimientos](#211-control-de-flujo-tcp-tamaño-de-ventana-y-agradecimientos)
-  - [2.12. Control de flujo TCP: Tamaño Máximo de Segmento (MSS)](#212-control-de-flujo-tcp-tamaño-máximo-de-segmento-mss)
-  - [2.13. Control de Flujo TCP: Evitar la Congestión](#213-control-de-flujo-tcp-evitar-la-congestión)
-  - [2.14. Comprueba tu Comprensión – Fiabilidad y Control de Flujo](#214-comprueba-tu-comprensión--fiabilidad-y-control-de-flujo)
+  - [2.8. Fiabilidad y control de flujo](#28-fiabilidad-y-control-de-flujo)
+    - [2.8.1. Fiabilidad I: Entrega Garantizada y Ordenada](#281-fiabilidad-i-entrega-garantizada-y-ordenada)
+    - [2.8.2. Fiabilidad II: Pérdida y Retransmisión de Datos](#282-fiabilidad-ii-pérdida-y-retransmisión-de-datos)
+    - [2.8.3. Control de flujo I: Tamaño de Ventana y Acuses de Recibo](#283-control-de-flujo-i-tamaño-de-ventana-y-acuses-de-recibo)
+    - [2.8.4. Control de flujo II: Tamaño Máximo de Segmento (MSS)](#284-control-de-flujo-ii-tamaño-máximo-de-segmento-mss)
+    - [2.8.5. Control de flujo III: Prevención de Congestiones](#285-control-de-flujo-iii-prevención-de-congestiones)
+  - [2.9. Comprueba tu Comprensión – Fiabilidad y Control de Flujo](#29-comprueba-tu-comprensión--fiabilidad-y-control-de-flujo)
 - [3. User Datagram Protocol (UDP)](#3-user-datagram-protocol-udp)
     - [3.1. Protocolo Adecuado de Capa de Transporte para la Aplicación Correcta](#31-protocolo-adecuado-de-capa-de-transporte-para-la-aplicación-correcta)
     - [3.2. Comprueba tu comprensión – Transporte de datos](#32-comprueba-tu-comprensión--transporte-de-datos)
@@ -274,7 +276,11 @@ Los seis indicadores de bits de control son los siguientes:
 
 [Vídeo: Protocolo de Enlace TCP de 3 Vías](https://www.youtube.com/watch?v=cm_2Jp7dQP8)
 
-### 2.8. Fiabilidad de TCP I: Entrega Garantizada y Ordenada
+### 2.8. Fiabilidad y control de flujo
+
+#### 2.8.1. Fiabilidad I: Entrega Garantizada y Ordenada
+
+La razón por la que TCP es el mejor protocolo para algunas aplicaciones es porque, a diferencia de UDP, reenvía paquetes descartados y paquetes numerados para indicar su orden correcto antes de la entrega. TCP también puede ayudar a mantener el flujo de paquetes para que los dispositivos no se sobrecarguen. En este tema se tratan detalladamente estas características de TCP.
 
 Puede haber ocasiones en que los segmentos TCP no lleguen a su destino. Otras veces, los segmentos TCP pueden llegar desordenados. Para que el destinatario entienda el mensaje original, se deben recibir todos los datos y los datos de estos segmentos deben volver a ensamblarse en el mensaje original. Los números de secuencia se asignan en el encabezado de cada paquete para lograr este objetivo. El número de secuencia representa el primer byte de datos del segmento TCP.
 
@@ -286,23 +292,26 @@ Los números de secuencia de segmento indican cómo volver a armar y reordenar l
 
 ![Segmentos TCP se reordenan en destino](https://ccnadesdecero.es/wp-content/uploads/2020/04/Segmentos-TCP-se-reordenan-en-destino.png)
 
-Segmentos TCP se reordenan en destino: Aunque los segmentos pueden tomar diferentes rutas y llegar desordenados al destino, TCP tiene la capacidad de reordenar los segmentos.
+Aunque los segmentos pueden tomar diferentes rutas y llegar desordenados al destino, TCP tiene la capacidad de reordenar los segmentos.
 
-El proceso TCP receptor coloca los datos de un segmento en un búfer receptor. Los segmentos se colocan en el orden de secuencia adecuado y se pasan a la capa de aplicación cuando se vuelven a montar. Los segmentos que llegan con números de secuencia que están desordenados se retienen para su posterior procesamiento. Luego, cuando llegan los segmentos con los bytes faltantes, estos segmentos se procesan en orden.
+El proceso TCP receptor coloca los datos del segmento en un búfer de recepción. Los segmentos se colocan en el orden de secuencia adecuado y se pasan a la capa de aplicación cuando se vuelven a montar. Todos los segmentos que lleguen con números de secuencia desordenados se retienen para su posterior procesamiento. A continuación, cuando llegan los segmentos con bytes faltantes, tales segmentos se procesan en orden.
 
 Una de las funciones de TCP es garantizar que cada segmento llegue a su destino. Los servicios TCP en el host de destino reconocen los datos que ha recibido la aplicación de origen.
 
 [Serie de videos acerca de TCP](https://www.youtube.com/watch?v=eNuC80Mzy0I)
+[Video Fiabilidad de TCP](https://www.youtube.com/watch?v=ScXoIKcOwP8)
 
-### 2.9. Fiabilidad de TCP II: Pérdida y Retransmisión de Datos
+#### 2.8.2. Fiabilidad II: Pérdida y Retransmisión de Datos
 
-No importa cuán bien diseñada esté una red, ocasionalmente se produce pérdida de datos. TCP proporciona métodos para gestionar estas pérdidas de segmentos. Entre estos se encuentra un mecanismo para retransmitir segmentos para datos no reconocidos.
+No importa cuán bien diseñada esté una red, ocasionalmente se produce la pérdida de datos. TCP proporciona métodos para administrar la pérdida de segmentos. Entre estos está un mecanismo para retransmitir segmentos para los datos sin reconocimiento.
 
-Antes de las mejoras posteriores, TCP solo podía reconocer el siguiente byte esperado. Por ejemplo, en la imagen que aparece abajo, el host A envía los segmentos 1 a 10 al host B. Si todos los segmentos llegan excepto los segmentos 3 y 4, el host B responderá con acuse de recibo especificando que el siguiente segmento esperado es el segmento 3. El host A no tiene idea de si llegaron otros segmentos o no. El host A, por lo tanto, reenviaría los segmentos 3 a 10. Si todos los segmentos reenviados llegaran con éxito, los segmentos 5 a 10 serían duplicados. Esto puede provocar demoras, congestión e ineficiencias.
+El número de secuencia (SEQ) y el número de acuse de recibo (ACK) se utilizan juntos para confirmar la recepción de los bytes de datos contenidos en los segmentos transmitidos. El número SEQ identifica el primer byte de datos en el segmento que se transmite. TCP utiliza el número de ACK reenviado al origen para indicar el próximo byte que el receptor espera recibir. Esto se llama acuse de recibo de expectativa.
+
+Antes de mejoras posteriores, TCP solo podía reconocer el siguiente byte esperado. Por ejemplo, en la figura, utilizando números de segmento para simplificar, el host A envía los segmentos del 1 al 10 al host B. Si llegan todos los segmentos excepto los segmentos 3 y 4, el host B respondería con acuse de recibo especificando que el siguiente segmento esperado es el segmento 3. El host A no tiene idea de si algún otro segmento llegó o no. Por lo tanto, el host A reenviaría los segmentos 3 a 10. Si todos los segmentos de reenvío llegan correctamente, los segmentos 5 a 10 serían duplicados. Esto puede provocar retrasos, congestión e ineficiencias.
 
 ![Segmentos duplicados](https://ccnadesdecero.es/wp-content/uploads/2020/04/Segmentos-duplicados.png)
 
-Los sistemas operativos habitualmente presentes hoy en día en los hosts, suelen emplear una función TCP opcional llamada reconocimiento selectivo (SACK), negociada durante el protocolo de enlace de tres vías. Si ambos hosts admiten SACK, el receptor puede reconocer explícitamente qué segmentos (bytes) se recibieron, incluidos los segmentos discontinuos. Por lo tanto, el host emisor solo necesitaría retransmitir los datos faltantes. Por ejemplo, en la siguiente imagen, nuevamente usando números de segmento para simplificar, el host A envía los segmentos 1 a 10 al host B. Si todos los segmentos llegan excepto los segmentos 3 y 4, el host B puede confirmar que ha recibido los segmentos 1 y 2 (ACK 3) y reconoce selectivamente los segmentos 5 a 10 (SACK 5-10). El host A solo necesitaría reenviar los segmentos 3 y 4.
+Los sistemas operativos actualmente suelen emplear una característica TCP opcional llamada reconocimiento selectivo (SACK), negociada durante el protocolo de enlace de tres vías. Si ambos hosts admiten SACK, el receptor puede reconocer explícitamente qué segmentos (bytes) se recibieron, incluidos los segmentos discontinuos. Por lo tanto, el host emisor solo necesitaría retransmitir los datos faltantes. Por ejemplo, en la siguiente figura, utilizando de nuevo números de segmento para simplificar, el host A envía los segmentos 1 a 10 al host B. Si llegan todos los segmentos excepto los segmentos 3 y 4, el host B puede reconocer que ha recibido los segmentos 1 y 2 (ACK 3) y reconocer selectivamente los segmentos 5 a 10 (SACK 5-10). El host A solo necesitaría reenviar los segmentos 3 y 4.
 
 ![Segmentos sin duplicar](https://ccnadesdecero.es/wp-content/uploads/2020/04/Segmentos-sin-duplicar.png)
 
@@ -310,7 +319,9 @@ Nota: TCP normalmente envía ACK para cualquier otro paquete, pero otros factore
 
 TCP usa temporizadores para saber cuánto tiempo esperar antes de reenviar un segmento.
 
-### 2.10. Control de flujo TCP: tamaño de ventana y acuses de recibo
+[Video Fiabilidad de TCP II](https://www.youtube.com/watch?v=8_em-0tkY5Y)
+
+#### 2.8.3 Control de flujo I: Tamaño de Ventana y Acuses de Recibo
 
 TCP también proporciona mecanismos para el control de flujo. El control de flujo es la cantidad de datos que el destino puede recibir y procesar de manera confiable. El control de flujo ayuda a mantener la confiabilidad de la transmisión TCP al ajustar la velocidad del flujo de datos entre el origen y el destino para una sesión determinada. Para lograr esto, el encabezado TCP incluye un campo de 16 bits llamado tamaño de ventana.
 
@@ -332,7 +343,7 @@ Si la disponibilidad del espacio de almacenamiento intermedio del destino dismin
 
 Nota: Los dispositivos actuales usan el protocolo de ventanas deslizantes (Sliding window protocol). El receptor generalmente envía un acuse de recibo después de cada dos segmentos que recibe. El número de segmentos recibidos antes de ser reconocido puede variar. La ventaja de las ventanas deslizantes es que permite al emisor transmitir segmentos continuamente, siempre que el receptor reconozca segmentos anteriores. Los detalles de las ventanas deslizantes están más allá del alcance de este curso.
 
-### 2.11. Control de flujo TCP: Tamaño Máximo de Segmento (MSS)
+#### 2.8.4 Control de flujo II: Tamaño Máximo de Segmento (MSS)
 
 En la imagen, la fuente está transmitiendo 1.460 bytes de datos dentro de cada segmento TCP. Este suele ser el tamaño máximo de segmento (MSS) que puede recibir el dispositivo de destino. El MSS es parte del campo de opciones en el encabezado TCP que especifica la mayor cantidad de datos, en bytes, que un dispositivo puede recibir en un solo segmento TCP. El tamaño de MSS no incluye el encabezado TCP. El MSS generalmente se incluye durante el protocolo de enlace de tres vías.
 
@@ -342,7 +353,7 @@ Un MSS común es de 1,460 bytes cuando se usa IPv4. Un host determina el valor d
 
 ![Tamaño predeterminado de MSS](https://ccnadesdecero.es/wp-content/uploads/2020/04/Tama%C3%B1o-predeterminado-de-MSS.png)
 
-### 2.12. Control de Flujo TCP: Evitar la Congestión
+#### 2.8.5 Control de flujo III: Prevención de Congestiones
 
 Cuando se produce congestión en una red, el Router sobrecargado descarta los paquetes. Cuando los paquetes que contienen segmentos TCP no llegan a su destino, se dejan sin confirmar. Al determinar la velocidad a la que se envían los segmentos TCP pero no se reconoce, la fuente puede asumir un cierto nivel de congestión de la red.
 
@@ -507,65 +518,6 @@ B. Origen: 1812, Destino: 49152
 C. Origen: 49152, Destino: 53
 D. Origen: 49152, Destino: 1812
 
-
-## 4. Otros protocolos Emergentes
-
-### 4.1. Manejo Avanzado de Congestión y Control de Flujo
-
-Con el incremento del tráfico y las demandas de alta velocidad, se han desarrollado nuevos algoritmos:
-
-- **BBR (Bottleneck Bandwidth and Round-trip propagation time)**: Estima la capacidad real de la red y ajusta el envío de datos para maximizar el rendimiento sin causar congestión.
-- **Algoritmos Adaptativos**: Protocolos que ajustan dinámicamente sus parámetros basándose en las condiciones actuales de la red.
-
-Estos avances permiten un uso más eficiente de la infraestructura existente y mejoran la experiencia del usuario.
-
-### 4.2. Impacto de Tecnologías Emergentes
-
-### **Internet de las Cosas (IoT)**
-
-- **Proliferación de Dispositivos**: Millones de dispositivos conectados requieren protocolos eficientes y escalables.
-- **Protocolos Ligeros**: Como **MQTT** o **CoAP**, optimizados para dispositivos con recursos limitados y comunicaciones de baja potencia.
-- **Seguridad**: La protección de datos y dispositivos es crítica, dado el volumen y sensibilidad de la información manejada.
-
-### **Redes 5G y Futuras Generaciones**
-
-- **Alta Velocidad y Baja Latencia**: Requieren protocolos de transporte que puedan aprovechar estas características.
-- **Aplicaciones en Tiempo Real**: Como realidad aumentada, vehículos autónomos y telemedicina, que dependen de comunicaciones rápidas y fiables.
-- **Edge Computing**: Procesamiento cercano al origen de los datos, reduciendo la carga en la red central y mejorando tiempos de respuesta.
-
-### 4.3. Protocolo Rápido de Internet basado en UDP (QUIC)
-
-Desarrollado por Google, **QUIC** es un protocolo moderno que combina lo mejor de TCP y UDP:
-
-- **Basado en UDP**: Utiliza UDP para evitar limitaciones en redes donde TCP puede ser bloqueado o manipulado.
-- **Establecimiento de Conexión Rápido**: Reduce la latencia al combinar el handshake de transporte y seguridad en un solo paso.
-- **Cifrado Incorporado**: Integra TLS 1.3, ofreciendo seguridad desde el diseño.
-- **Multiplexación de Flujo**: Permite múltiples flujos independientes dentro de una conexión para evitar bloqueos.
-- **Mejora en Móviles**: Diseñado para lidiar con cambios frecuentes en la conexión, como en dispositivos móviles en movimiento.
-
-- **QUIC**: Sería como enviar un mensaje instantáneo cifrado por una aplicación de mensajería segura. Rápido, seguro y eficiente.
-
-
-### 4.4. Stream Control Transmission Protocol (SCTP)
-
-El **SCTP** es un protocolo que incorpora características de TCP y UDP:
-
-- **Multistreaming**: Permite múltiples flujos de datos independientes dentro de una única conexión.
-- **Multihoming**: Un único punto final puede tener múltiples direcciones IP, aumentando la tolerancia a fallos.
-- **Entrega Fiable y Ordenada**: Similar a TCP, pero con mayor flexibilidad en la gestión de flujos.
-
-## 5. Seguridad Integrada en la Capa de Transporte
-
-### **TLS (Transport Layer Security) y SSL (Secure Sockets Layer)**
-
-- **Cifrado de Datos**: Protege la confidencialidad de la información transmitida.
-- **Autenticación**: Verifica la identidad de las partes comunicantes.
-- **Integridad**: Asegura que los datos no sean alterados durante la transmisión.
-
-**SSL** fue el precursor de **TLS** y proporcionó las primeras implementaciones de cifrado y autenticación en las comunicaciones en red. Aunque **SSL** ya no se considera seguro y ha sido reemplazado por **TLS**, su legado sigue siendo importante en la evolución de la seguridad en la capa de transporte.
-
-La seguridad ya no es una opción adicional; es una necesidad integrada. Protocolos como **QUIC** incorporan **TLS** de forma nativa, garantizando conexiones seguras sin pasos adicionales.
-
 ## 1.2. Puertos: Identificando Procesos en Comunicación
 
 Los **puertos** son números que identifican de manera única a los procesos dentro de un dispositivo. Funcionan como puntos finales de comunicación en la capa de transporte. Gracias a los puertos:
@@ -694,6 +646,66 @@ A. ipconfig /all
 B. ping
 C. netstat
 D. traceroute
+
+## 4. Otros protocolos Emergentes
+
+### 4.1. Manejo Avanzado de Congestión y Control de Flujo
+
+Con el incremento del tráfico y las demandas de alta velocidad, se han desarrollado nuevos algoritmos:
+
+- **BBR (Bottleneck Bandwidth and Round-trip propagation time)**: Estima la capacidad real de la red y ajusta el envío de datos para maximizar el rendimiento sin causar congestión.
+- **Algoritmos Adaptativos**: Protocolos que ajustan dinámicamente sus parámetros basándose en las condiciones actuales de la red.
+
+Estos avances permiten un uso más eficiente de la infraestructura existente y mejoran la experiencia del usuario.
+
+### 4.2. Impacto de Tecnologías Emergentes
+
+### **Internet de las Cosas (IoT)**
+
+- **Proliferación de Dispositivos**: Millones de dispositivos conectados requieren protocolos eficientes y escalables.
+- **Protocolos Ligeros**: Como **MQTT** o **CoAP**, optimizados para dispositivos con recursos limitados y comunicaciones de baja potencia.
+- **Seguridad**: La protección de datos y dispositivos es crítica, dado el volumen y sensibilidad de la información manejada.
+
+### **Redes 5G y Futuras Generaciones**
+
+- **Alta Velocidad y Baja Latencia**: Requieren protocolos de transporte que puedan aprovechar estas características.
+- **Aplicaciones en Tiempo Real**: Como realidad aumentada, vehículos autónomos y telemedicina, que dependen de comunicaciones rápidas y fiables.
+- **Edge Computing**: Procesamiento cercano al origen de los datos, reduciendo la carga en la red central y mejorando tiempos de respuesta.
+
+### 4.3. Protocolo Rápido de Internet basado en UDP (QUIC)
+
+Desarrollado por Google, **QUIC** es un protocolo moderno que combina lo mejor de TCP y UDP:
+
+- **Basado en UDP**: Utiliza UDP para evitar limitaciones en redes donde TCP puede ser bloqueado o manipulado.
+- **Establecimiento de Conexión Rápido**: Reduce la latencia al combinar el handshake de transporte y seguridad en un solo paso.
+- **Cifrado Incorporado**: Integra TLS 1.3, ofreciendo seguridad desde el diseño.
+- **Multiplexación de Flujo**: Permite múltiples flujos independientes dentro de una conexión para evitar bloqueos.
+- **Mejora en Móviles**: Diseñado para lidiar con cambios frecuentes en la conexión, como en dispositivos móviles en movimiento.
+
+- **QUIC**: Sería como enviar un mensaje instantáneo cifrado por una aplicación de mensajería segura. Rápido, seguro y eficiente.
+
+
+### 4.4. Stream Control Transmission Protocol (SCTP)
+
+El **SCTP** es un protocolo que incorpora características de TCP y UDP:
+
+- **Multistreaming**: Permite múltiples flujos de datos independientes dentro de una única conexión.
+- **Multihoming**: Un único punto final puede tener múltiples direcciones IP, aumentando la tolerancia a fallos.
+- **Entrega Fiable y Ordenada**: Similar a TCP, pero con mayor flexibilidad en la gestión de flujos.
+
+## 5. Seguridad Integrada en la Capa de Transporte
+
+### **TLS (Transport Layer Security) y SSL (Secure Sockets Layer)**
+
+- **Cifrado de Datos**: Protege la confidencialidad de la información transmitida.
+- **Autenticación**: Verifica la identidad de las partes comunicantes.
+- **Integridad**: Asegura que los datos no sean alterados durante la transmisión.
+
+**SSL** fue el precursor de **TLS** y proporcionó las primeras implementaciones de cifrado y autenticación en las comunicaciones en red. Aunque **SSL** ya no se considera seguro y ha sido reemplazado por **TLS**, su legado sigue siendo importante en la evolución de la seguridad en la capa de transporte.
+
+La seguridad ya no es una opción adicional; es una necesidad integrada. Protocolos como **QUIC** incorporan **TLS** de forma nativa, garantizando conexiones seguras sin pasos adicionales.
+
+
 
 ## 9. Conclusión
 
