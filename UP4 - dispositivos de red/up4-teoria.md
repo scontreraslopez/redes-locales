@@ -358,9 +358,9 @@ Las VLAN pueden estar asociadas a puertos específicos de un switch local o pued
 
 ## 5. Diagrama lógico de la red
 
-Antes de instalar físicamente los dispositivos de red, se debe elaborar un diagrama lógico. Esto facilita la realización de cambios o ampliaciones futuros. Este descibe la funcionalidad de cada elemento de la red, con datos como direcciones IP, puertos y características de los dispositivos. Cubre hasta la capa de red del modelo OSI.
+Antes de instalar físicamente los dispositivos de red, se debe elaborar un diagrama lógico. Esto facilita la realización de cambios o ampliaciones futuros. Este describe la funcionalidad de cada elemento de la red, con datos como direcciones IP, puertos y características de los dispositivos. Cubre hasta la capa de red del modelo OSI.
 
-Adicionalente, deberemos contar con el mapa físico de la red, que especifica la disposición de dispositivos y cableado, incluyendo distancias y tipos de cables. Este incluirá la trayectoria real del cableado, ubicación de patch panels, switches y conectores terminales, además de otros datos sobre la capa física del modelo OSI.
+Adicionalmente, deberemos contar con el mapa físico de la red, que especifica la disposición de dispositivos y cableado, incluyendo distancias y tipos de cables. Este incluirá la trayectoria real del cableado, ubicación de patch panels, switches y conectores terminales, además de otros datos sobre la capa física del modelo OSI.
 
 ### 5.1. Consideraciones en el diseño lógico de la red
 
