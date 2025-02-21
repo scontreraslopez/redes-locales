@@ -348,7 +348,7 @@ Siempre que haya congestión, se producirá la retransmisión de segmentos TCP p
 
 Si la fuente determina que los segmentos TCP no se reconocen o no se reconocen de manera oportuna, entonces puede reducir el número de bytes que envía antes de recibir un reconocimiento. Como se ilustra en la imagen, la PC A detecta que hay congestión y, por lo tanto, reduce la cantidad de bytes que envía antes de recibir un acuse de recibo de la PC B.
 
-[Control de congestión TCP](https://ccnadesdecero.es/wp-content/uploads/2020/04/Control-de-congesti%C3%B3n-TCP.png)
+![Control de congestión TCP](https://ccnadesdecero.es/wp-content/uploads/2020/04/Control-de-congesti%C3%B3n-TCP.png)
 
 Los números de acuse de recibo corresponden al siguiente byte esperado y no a un segmento. Los números de segmento utilizados se simplifican con fines ilustrativos.
 
@@ -368,13 +368,20 @@ Resumimos a continuación los conceptos clave de fiabilidad y control de flujo d
 
 ## 3. User Datagram Protocol (UDP)
 
-El **UDP** es un protocolo sin conexión y sin garantías de entrega:
+El **UDP** es un protocolo sin conexión y sin garantías de entrega (*best effort*):
 
 - **Baja Sobrecarga**: Menos control y gestión que TCP, lo que permite mayor velocidad.
 - **Sin Control de Flujo ni Congestión**: No ajusta la tasa de envío ni retransmite datos perdidos.
 - **Uso Ideal**: Aplicaciones donde la velocidad es crítica y se tolera la pérdida de algunos datos, como streaming de video o voz, y juegos en línea.
 
-- **UDP**: Es como enviar una postal. No hay confirmación de recepción, pero es rápido y sencillo. Ideal para mensajes breves donde la pérdida ocasional es tolerable.
+Las características UDP incluyen lo siguiente:
+
+- Los datos se reconstruyen en el orden en que se recibieron.
+- Los segmentos perdidos no se vuelven a enviar.
+- No hay establecimiento de sesión.
+- El envío no está informado sobre la disponibilidad de recursos.
+
+**UDP** es como enviar una postal. No hay confirmación de recepción, pero es rápido y sencillo. Ideal para mensajes breves donde la pérdida ocasional es tolerable.
 
 UDP es un protocolo de capa de transporte más simple que TCP. No proporciona confiabilidad y control de flujo, lo que significa que requiere menos campos de encabezado. Debido a que los procesos UDP del emisor y del receptor no tienen que administrar la confiabilidad y el control de flujo, esto significa que los datagramas UDP pueden procesarse más rápido que los segmentos TCP. UDP proporciona las funciones básicas para entregar datagramas entre las aplicaciones apropiadas, con muy poca sobrecarga y verificación de datos.
 
