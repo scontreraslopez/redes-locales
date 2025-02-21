@@ -354,25 +354,17 @@ Los números de acuse de recibo corresponden al siguiente byte esperado y no a u
 
 Ten en cuenta que es la fuente la que está reduciendo el número de bytes no reconocidos que envía y no el tamaño de ventana determinado por el destino.
 
-Resumen:
+#### 2.8.6. Resumen de Fiabilidad y Control de Flujo
 
-El tamaño de ventana en TCP es un mecanismo esencial de control de flujo que determina la cantidad de datos que un emisor puede enviar sin recibir un reconocimiento (ACK) del receptor. Este tamaño sí sube y baja durante una sesión, adaptándose dinámicamente a las condiciones de la red y al estado del receptor.
+Resumimos a continuación los conceptos clave de fiabilidad y control de flujo de TCP:
 
-Control de Flujo: El receptor informa al emisor cuántos bytes puede recibir sin sobresaturarse mediante el campo de ventana de recepción en el encabezado TCP. Si el receptor está ocupado o tiene un búfer limitado, puede reducir el tamaño de ventana, indicándole al emisor que disminuya la tasa de envío.
-
-Control de Congestión: TCP implementa algoritmos como Slow Start, Congestion Avoidance, Fast Retransmit y Fast Recovery para detectar y responder a la congestión en la red. Por ejemplo:
-
-Slow Start: Al iniciar una conexión, TCP comienza enviando paquetes lentamente y aumenta el tamaño de ventana exponencialmente hasta detectar pérdidas o alcanzar un umbral.
-
-Congestion Avoidance: Después de alcanzar el umbral, el tamaño de ventana aumenta linealmente para evitar congestión.
-
-Respuesta a Pérdidas: Si se detecta pérdida de paquetes, TCP reduce drásticamente el tamaño de ventana para aliviar la congestión.
-
-Este comportamiento dinámico permite que TCP ajuste eficientemente el flujo de datos, aumentando la ventana cuando la red es rápida y estable, y reduciéndola cuando hay congestión o problemas.
-
-Máximo Tamaño de Segmento (MSS)
-
-El MSS es el tamaño máximo de segmento de datos que un dispositivo está dispuesto a recibir en una sola unidad TCP. A diferencia del tamaño de ventana, el MSS no cambia durante una sesión; se establece al inicio y permanece constante para evitar fragmentación y garantizar eficiencia.
+- El tamaño de ventana en TCP es un mecanismo esencial de control de flujo que determina la cantidad de datos que un emisor puede enviar sin recibir un reconocimiento (ACK) del receptor. Este tamaño sí sube y baja durante una sesión, adaptándose dinámicamente a las condiciones de la red y al estado del receptor.
+- Control de Flujo: El receptor informa al emisor cuántos bytes puede recibir sin sobresaturarse mediante el campo de ventana de recepción en el encabezado TCP. Si el receptor está ocupado o tiene un búfer limitado, puede reducir el tamaño de ventana, indicándole al emisor que disminuya la tasa de envío.
+- Control de Congestión: TCP implementa algoritmos como Slow Start, Congestion Avoidance, Fast Retransmit y Fast Recovery para detectar y responder a la congestión en la red. Por ejemplo:
+  - Slow Start: Al iniciar una conexión, TCP comienza enviando paquetes lentamente y aumenta el tamaño de ventana exponencialmente hasta detectar pérdidas o alcanzar un umbral.
+  - Congestion Avoidance: Después de alcanzar el umbral, el tamaño de ventana aumenta linealmente para evitar congestión.
+  - Respuesta a Pérdidas: Si se detecta pérdida de paquetes, TCP reduce drásticamente el tamaño de ventana para aliviar la congestión. Este comportamiento dinámico permite que TCP ajuste eficientemente el flujo de datos, aumentando la ventana cuando la red es rápida y estable, y reduciéndola cuando hay congestión o problemas.
+- Máximo Tamaño de Segmento (MSS): El MSS es el tamaño máximo de segmento de datos que un dispositivo está dispuesto a recibir en una sola unidad TCP. A diferencia del tamaño de ventana, el MSS no cambia durante una sesión; se establece al inicio y permanece constante para evitar fragmentación y garantizar eficiencia.
 
 ## 3. User Datagram Protocol (UDP)
 
