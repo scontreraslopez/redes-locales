@@ -394,7 +394,7 @@ UDP también se conoce como un protocolo de entrega de mejor esfuerzo porque no 
 
 UDP es como colocar una carta regular, no registrada, en el correo. El remitente de la carta no tiene conocimiento de la disponibilidad del receptor para recibir la carta. La oficina de correos tampoco es responsable de rastrear la carta o informar al remitente si la carta no llega al destino final.
 
-![Protocolo de datagramas de usuario UDP](https://ccnadesdecero.es/wp-content/uploads/2017/11/Protocolo-de-datagramas-de-usuario-UDP.png)
+![Protocolo de datagramas de usuario UDP](https://examenredes.com/wp-content/uploads/2021/12/14.1.5.gif)
 
 ### 3.1. Casos de uso de UDP
 
