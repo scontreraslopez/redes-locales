@@ -388,9 +388,7 @@ UDP también se conoce como un protocolo de entrega de mejor esfuerzo porque no 
 
 UDP es como colocar una carta regular, no registrada, en el correo. El remitente de la carta no tiene conocimiento de la disponibilidad del receptor para recibir la carta. La oficina de correos tampoco es responsable de rastrear la carta o informar al remitente si la carta no llega al destino final.
 
-
 ![Protocolo de datagramas de usuario UDP](https://ccnadesdecero.es/wp-content/uploads/2017/11/Protocolo-de-datagramas-de-usuario-UDP.png)
-
 
 6. Protocolo Adecuado de Capa de Transporte para la Aplicación Correcta
 Algunas aplicaciones pueden tolerar cierta pérdida de datos durante la transmisión a través de la red, pero los retrasos en la transmisión son inaceptables. Para estas aplicaciones, UDP es la mejor opción porque requiere menos sobrecarga de red. UDP es preferible para aplicaciones como Voz sobre IP (VoIP). Los reconocimientos y la retransmisión retrasarían la entrega y harían inaceptable la conversación de voz.
