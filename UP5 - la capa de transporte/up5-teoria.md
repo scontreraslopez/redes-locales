@@ -368,6 +368,26 @@ Los números de acuse de recibo corresponden al siguiente byte esperado y no a u
 
 Ten en cuenta que es la fuente la que está reduciendo el número de bytes no reconocidos que envía y no el tamaño de ventana determinado por el destino.
 
+Resumen:
+
+El tamaño de ventana en TCP es un mecanismo esencial de control de flujo que determina la cantidad de datos que un emisor puede enviar sin recibir un reconocimiento (ACK) del receptor. Este tamaño sí sube y baja durante una sesión, adaptándose dinámicamente a las condiciones de la red y al estado del receptor.
+
+Control de Flujo: El receptor informa al emisor cuántos bytes puede recibir sin sobresaturarse mediante el campo de ventana de recepción en el encabezado TCP. Si el receptor está ocupado o tiene un búfer limitado, puede reducir el tamaño de ventana, indicándole al emisor que disminuya la tasa de envío.
+
+Control de Congestión: TCP implementa algoritmos como Slow Start, Congestion Avoidance, Fast Retransmit y Fast Recovery para detectar y responder a la congestión en la red. Por ejemplo:
+
+Slow Start: Al iniciar una conexión, TCP comienza enviando paquetes lentamente y aumenta el tamaño de ventana exponencialmente hasta detectar pérdidas o alcanzar un umbral.
+
+Congestion Avoidance: Después de alcanzar el umbral, el tamaño de ventana aumenta linealmente para evitar congestión.
+
+Respuesta a Pérdidas: Si se detecta pérdida de paquetes, TCP reduce drásticamente el tamaño de ventana para aliviar la congestión.
+
+Este comportamiento dinámico permite que TCP ajuste eficientemente el flujo de datos, aumentando la ventana cuando la red es rápida y estable, y reduciéndola cuando hay congestión o problemas.
+
+Máximo Tamaño de Segmento (MSS)
+
+El MSS es el tamaño máximo de segmento de datos que un dispositivo está dispuesto a recibir en una sola unidad TCP. A diferencia del tamaño de ventana, el MSS no cambia durante una sesión; se establece al inicio y permanece constante para evitar fragmentación y garantizar eficiencia.
+
 ## 3. User Datagram Protocol (UDP)
 
 El **UDP** es un protocolo sin conexión y sin garantías de entrega:
@@ -390,7 +410,8 @@ UDP es como colocar una carta regular, no registrada, en el correo. El remitente
 
 ![Protocolo de datagramas de usuario UDP](https://ccnadesdecero.es/wp-content/uploads/2017/11/Protocolo-de-datagramas-de-usuario-UDP.png)
 
-6. Protocolo Adecuado de Capa de Transporte para la Aplicación Correcta
+### 3.1. Casos de uso de UDP
+
 Algunas aplicaciones pueden tolerar cierta pérdida de datos durante la transmisión a través de la red, pero los retrasos en la transmisión son inaceptables. Para estas aplicaciones, UDP es la mejor opción porque requiere menos sobrecarga de red. UDP es preferible para aplicaciones como Voz sobre IP (VoIP). Los reconocimientos y la retransmisión retrasarían la entrega y harían inaceptable la conversación de voz.
 
 UDP también es utilizado por las aplicaciones de solicitud y respuesta donde los datos son mínimos y la retransmisión se puede hacer rápidamente. Por ejemplo, el servicio de nombres de dominio (DNS) usa UDP para este tipo de transacción. El cliente solicita direcciones IPv4 e IPv6 para un nombre de dominio conocido de un servidor DNS. Si el cliente no recibe una respuesta en un período de tiempo predeterminado, simplemente envía la solicitud nuevamente.
@@ -409,8 +430,6 @@ La imagen resume las diferencias entre UDP y TCP.
 
 ![Diferencias entre UDP y TCP](https://ccnadesdecero.es/wp-content/uploads/2017/11/Diferencias-entre-UDP-y-TCP.png)
 
-Diferencias entre UDP y TCP
-Diferencias entre UDP y TCP
 7. Comprueba tu comprensión – Transporte de datos
 Verifica tu comprensión de la capa de transporte eligiendo la MEJOR respuesta a las siguientes preguntas.
 
@@ -474,6 +493,8 @@ El Cliente 1 está enviando una solicitud DNS utilizando el conocido puerto 53, 
 
 Clientes que envían solicitudes UDP
 Clientes que envían solicitudes UDP
+
+
 5. Comprueba tu comprensión – Comunicación UDP
 Comprueba tu comprensión de la comunicación UDP eligiendo la MEJOR respuesta a las siguientes preguntas.
 
@@ -493,7 +514,7 @@ B. Origen: 1812, Destino: 49152
 C. Origen: 49152, Destino: 53
 D. Origen: 49152, Destino: 1812
 
-## 1.2. Puertos: Identificando Procesos en Comunicación
+## 4. Puertos: Identificando Procesos en Comunicación
 
 Los **puertos** son números que identifican de manera única a los procesos dentro de un dispositivo. Funcionan como puntos finales de comunicación en la capa de transporte. Gracias a los puertos:
 
@@ -622,34 +643,25 @@ B. ping
 C. netstat
 D. traceroute
 
-## 4. Otros protocolos Emergentes
+## 5. Otros protocolos Emergentes
 
-### 4.1. Manejo Avanzado de Congestión y Control de Flujo
+Los nuevos desarrollos tecnológicos y las demandas de aplicaciones avanzadas han impulsado la evolución de la capa de transporte. Algunas de estas necesidades vienen por efecto de:
 
-Con el incremento del tráfico y las demandas de alta velocidad, se han desarrollado nuevos algoritmos:
-
-- **BBR (Bottleneck Bandwidth and Round-trip propagation time)**: Estima la capacidad real de la red y ajusta el envío de datos para maximizar el rendimiento sin causar congestión.
-- **Algoritmos Adaptativos**: Protocolos que ajustan dinámicamente sus parámetros basándose en las condiciones actuales de la red.
-
-Estos avances permiten un uso más eficiente de la infraestructura existente y mejoran la experiencia del usuario.
-
-### 4.2. Impacto de Tecnologías Emergentes
-
-### **Internet de las Cosas (IoT)**
+**Internet de las Cosas (IoT)**:
 
 - **Proliferación de Dispositivos**: Millones de dispositivos conectados requieren protocolos eficientes y escalables.
 - **Protocolos Ligeros**: Como **MQTT** o **CoAP**, optimizados para dispositivos con recursos limitados y comunicaciones de baja potencia.
 - **Seguridad**: La protección de datos y dispositivos es crítica, dado el volumen y sensibilidad de la información manejada.
 
-### **Redes 5G y Futuras Generaciones**
+**Redes 5G y Futuras Generaciones**:
 
 - **Alta Velocidad y Baja Latencia**: Requieren protocolos de transporte que puedan aprovechar estas características.
 - **Aplicaciones en Tiempo Real**: Como realidad aumentada, vehículos autónomos y telemedicina, que dependen de comunicaciones rápidas y fiables.
 - **Edge Computing**: Procesamiento cercano al origen de los datos, reduciendo la carga en la red central y mejorando tiempos de respuesta.
 
-### 4.3. Protocolo Rápido de Internet basado en UDP (QUIC)
+### 5.1. Protocolo Rápido de Internet basado en UDP (QUIC)
 
-Desarrollado por Google, **QUIC** es un protocolo moderno que combina lo mejor de TCP y UDP:
+En respuesta a estas necesidades, han surgido protocolos innovadores que buscan mejorar la eficiencia y seguridad de las comunicaciones. Uno de los más destacados es **QUIC**. Desarrollado por Google, **QUIC** es un protocolo moderno que combina lo mejor de TCP y UDP:
 
 - **Basado en UDP**: Utiliza UDP para evitar limitaciones en redes donde TCP puede ser bloqueado o manipulado.
 - **Establecimiento de Conexión Rápido**: Reduce la latencia al combinar el handshake de transporte y seguridad en un solo paso.
@@ -659,16 +671,17 @@ Desarrollado por Google, **QUIC** es un protocolo moderno que combina lo mejor d
 
 - **QUIC**: Sería como enviar un mensaje instantáneo cifrado por una aplicación de mensajería segura. Rápido, seguro y eficiente.
 
-
 ### 4.4. Stream Control Transmission Protocol (SCTP)
 
-El **SCTP** es un protocolo que incorpora características de TCP y UDP:
+Otro protocolo emergente es el **SCTP**. Desarrollado como una alternativa a TCP y UDP, **SCTP** ofrece características avanzadas para aplicaciones exigentes. Así, **SCTP** es un protocolo que incorpora características de TCP y UDP:
 
 - **Multistreaming**: Permite múltiples flujos de datos independientes dentro de una única conexión.
 - **Multihoming**: Un único punto final puede tener múltiples direcciones IP, aumentando la tolerancia a fallos.
 - **Entrega Fiable y Ordenada**: Similar a TCP, pero con mayor flexibilidad en la gestión de flujos.
 
 ## 5. Seguridad Integrada en la Capa de Transporte
+
+La seguridad es un aspecto crítico en las comunicaciones de red. La capa de transporte es el punto de control para garantizar la confidencialidad, integridad y autenticación de los datos. Algunas tecnologías clave en este ámbito son:
 
 ### **TLS (Transport Layer Security) y SSL (Secure Sockets Layer)**
 
@@ -680,9 +693,7 @@ El **SCTP** es un protocolo que incorpora características de TCP y UDP:
 
 La seguridad ya no es una opción adicional; es una necesidad integrada. Protocolos como **QUIC** incorporan **TLS** de forma nativa, garantizando conexiones seguras sin pasos adicionales.
 
-
-
-## 9. Conclusión
+## 6. Conclusión
 
 La capa de transporte es fundamental en las comunicaciones de red, y su comprensión es esencial para cualquier profesional en informática. Los avances tecnológicos y las nuevas demandas de aplicaciones requieren una actualización constante de los conocimientos.
 
