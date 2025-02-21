@@ -396,7 +396,7 @@ UDP es como colocar una carta regular, no registrada, en el correo. El remitente
 
 ![Protocolo de datagramas de usuario UDP](https://examenredes.com/wp-content/uploads/2021/12/14.1.5.gif)
 
-### 3.1. Casos de uso de UDP
+### 3.1. Casos de uso de UDP vs TCP
 
 Algunas aplicaciones pueden tolerar cierta pérdida de datos durante la transmisión a través de la red, pero los retrasos en la transmisión son inaceptables. Para estas aplicaciones, UDP es la mejor opción porque requiere menos sobrecarga de red. UDP es preferible para aplicaciones como Voz sobre IP (VoIP). Los reconocimientos y la retransmisión retrasarían la entrega y harían inaceptable la conversación de voz.
 
@@ -416,65 +416,51 @@ La imagen resume las diferencias entre UDP y TCP.
 
 ![Diferencias entre UDP y TCP](https://ccnadesdecero.es/wp-content/uploads/2017/11/Diferencias-entre-UDP-y-TCP.png)
 
-7. Comprueba tu comprensión – Transporte de datos
-Verifica tu comprensión de la capa de transporte eligiendo la MEJOR respuesta a las siguientes preguntas.
+### 3.2. Comparación de Baja Sobrecarga y Confiabilidad de UDP
 
-¿Qué capa es responsable de establecer una sesión de comunicación temporal entre las aplicaciones host de origen y destino?
-A. Capa de aplicación
-B. Capa de enlace de datos
-C. Capa de red
-D. Capa física
-E. Capa de transporte
-¿Cuáles son las tres responsabilidades de la capa de transporte? (Escoja tres opciones).
-A. Multiplexión de conversaciones
-B. identificación de marcos
-C. identificación de información de enrutamiento
-D. segmentación de datos y reensamblado de segmentos
-E. Seguimiento de conversaciones individuales
-¿Qué declaración de protocolo de capa de transporte es verdadera?
-A. TCP tiene menos campos que UDP.
-B. TCP es más rápido que UDP.
-C. UDP es un protocolo de entrega de mejor esfuerzo.
-D. UDP proporciona fiabilidad.
-¿Qué protocolo de capa de transporte se usaría para aplicaciones VoIP?
-A. Protocolo de información de sesión (SIP)
-B. Protocolo de control de transmisión (TCP)
-C. Protocolo de datagramas de usuario (UDP)
-D. Protocolo de transferencia de VoIP
-
-https://ccnadesdecero.es/comunicacion-udp/
-
-1. Comparación de Baja Sobrecarga y Confiabilidad de UDP
 Como se explicó anteriormente, UPD es perfecto para comunicaciones que necesitan ser rápidas, como VoIP. Este tema explica en detalle por qué UDP es perfecto para algunos tipos de transmisiones. Como se muestra en la figura, UDP no establece una conexión. UDP suministra transporte de datos con baja sobrecarga debido a que posee un encabezado de datagrama pequeño sin tráfico de administración de red.
 
-UDP de baja sobrecarga frente a fiabilidad
-UDP de baja sobrecarga frente a fiabilidad
-2. Reensamblaje de Datagramas UDP
+![UDP de baja sobrecarga frente a fiabilidad](https://examenredes.com/wp-content/uploads/2021/12/2021-12-29_182709.jpg)
+
+### 3.3. Reensamblaje de Datagramas UDP
+
 Al igual que los segmentos con TCP, cuando los datagramas UDP se envían a un destino, a menudo toman diferentes caminos y llegan en el orden incorrecto. UDP no rastrea los números de secuencia como lo hace TCP. UDP no tiene forma de reordenar los datagramas en su orden de transmisión, como se muestra en la imagen.
 
 Por lo tanto, UDP simplemente vuelve a ensamblar los datos en el orden en que se recibieron y los reenvía a la aplicación. Si la secuencia de datos es importante para la aplicación, la aplicación debe identificar la secuencia adecuada y determinar cómo se deben procesar los datos.
 
 UDP sin conexión y no confiable
-UDP sin conexión y no confiable. Se muestra datagramas UDP que se envían en orden, pero que llegan desordenados debido a la posibilidad de que diferentes rutas lleguen al destino.
-3. Procesos y Solicitudes del Servidor UDP
+
+![UDP sin conexión y no confiable](https://examenredes.com/wp-content/uploads/2021/12/2021-12-29_182742.jpg)
+
+### 3.4. Procesos y Solicitudes del Servidor UDP
+
 Al igual que las aplicaciones basadas en TCP, a las aplicaciones de servidor basadas en UDP se les asignan números de puerto conocidos o registrados, como se muestra en la imagen. Cuando estas aplicaciones o procesos se ejecutan en un servidor, aceptan los datos que coinciden con el número de puerto asignado. Cuando UDP recibe un datagrama destinado a uno de estos puertos, reenvía los datos de la aplicación a la aplicación adecuada en función de su número de puerto.
 
-Servidor UDP escuchando solicitudes
-Servidor UDP escuchando solicitudes. Una aplicación de servidor RADIUS usa UDP para escuchar las solicitudes en el puerto 53
+![UDP sin conexión y no confiable](https://examenredes.com/wp-content/uploads/2021/12/2021-12-29_182815.jpg)
+
 Nota: El Remote Authentication Dial-in User Service (RADIUS) que se muestra en la imagen proporciona servicios de autenticación, autorización y contabilidad para administrar el acceso de los usuarios. El funcionamiento de RADIUS está más allá del alcance de este curso.
 
-4. Procesos de Cliente UDP
+### 3.5. Procesos de Cliente UDP
+
 Al igual que con TCP, la comunicación cliente-servidor es iniciada por una aplicación cliente que solicita datos de un proceso del servidor. El proceso del cliente UDP selecciona dinámicamente un número de puerto del rango de números de puerto y lo utiliza como puerto de origen para la conversación. El puerto de destino suele ser el número de puerto conocido o registrado asignado al proceso del servidor.
 
 Después de que un cliente ha seleccionado los puertos de origen y destino, se utiliza el mismo par de puertos en el encabezado de todos los datagramas en la transacción. Para los datos que regresan al cliente desde el servidor, se invierten los números de puerto de origen y destino en el encabezado del datagrama.
 
+**TODO**
+
 Haz clic en cada botón para ver una ilustración de dos hosts que solicitan servicios del servidor de autenticación DNS y RADIUS.
 
-Clientes que envían solicitudes UDP
-Puertos de destino de solicitud UDP
-Puertos de origen de solicitud UDP
-Destino de respuesta UDP
-Puertos de origen de respuesta UDP
+Clientes Mandando Solicitudes UDP
+El cliente 1 está enviando una solicitud DNS utilizando el conocido puerto 53, mientras que el cliente 2 solicita servicios de autenticación RADIUS mediante el puerto registrado 1812.
+
+https://examenredes.com/wp-content/uploads/2021/12/2021-12-29_183011.jpg
+
+![UDP sin conexión y no confiable](https://examenredes.com/wp-content/uploads/2021/12/2021-12-29_183011.jpg)
+
+Clientes Mandando Solicitudes UDP
+El cliente 1 está enviando una solicitud DNS utilizando el conocido puerto 53, mientras que el cliente 2 solicita servicios de autenticación RADIUS mediante el puerto registrado 1812.
+
+
 El Cliente 1 está enviando una solicitud DNS utilizando el conocido puerto 53, mientras que el Cliente 2 está solicitando servicios de autenticación RADIUS utilizando el puerto registrado 1812.
 
 Clientes que envían solicitudes UDP
@@ -682,6 +668,34 @@ La seguridad ya no es una opción adicional; es una necesidad integrada. Protoco
 ## 6. Conclusión
 
 La capa de transporte es fundamental en las comunicaciones de red, y su comprensión es esencial para cualquier profesional en informática. Los avances tecnológicos y las nuevas demandas de aplicaciones requieren una actualización constante de los conocimientos.
+
+
+7. Comprueba tu comprensión – Transporte de datos
+Verifica tu comprensión de la capa de transporte eligiendo la MEJOR respuesta a las siguientes preguntas.
+
+¿Qué capa es responsable de establecer una sesión de comunicación temporal entre las aplicaciones host de origen y destino?
+A. Capa de aplicación
+B. Capa de enlace de datos
+C. Capa de red
+D. Capa física
+E. Capa de transporte
+¿Cuáles son las tres responsabilidades de la capa de transporte? (Escoja tres opciones).
+A. Multiplexión de conversaciones
+B. identificación de marcos
+C. identificación de información de enrutamiento
+D. segmentación de datos y reensamblado de segmentos
+E. Seguimiento de conversaciones individuales
+¿Qué declaración de protocolo de capa de transporte es verdadera?
+A. TCP tiene menos campos que UDP.
+B. TCP es más rápido que UDP.
+C. UDP es un protocolo de entrega de mejor esfuerzo.
+D. UDP proporciona fiabilidad.
+¿Qué protocolo de capa de transporte se usaría para aplicaciones VoIP?
+A. Protocolo de información de sesión (SIP)
+B. Protocolo de control de transmisión (TCP)
+C. Protocolo de datagramas de usuario (UDP)
+D. Protocolo de transferencia de VoIP
+
 
 ## Referencias
 
