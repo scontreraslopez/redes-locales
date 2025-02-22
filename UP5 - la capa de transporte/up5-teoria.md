@@ -19,13 +19,16 @@
     - [2.8.4. Control de flujo II: Tamaño Máximo de Segmento (MSS)](#284-control-de-flujo-ii-tamaño-máximo-de-segmento-mss)
     - [2.8.5. Control de flujo III: Prevención de Congestiones](#285-control-de-flujo-iii-prevención-de-congestiones)
 - [3. User Datagram Protocol (UDP)](#3-user-datagram-protocol-udp)
-  - [3.1. Casos de uso de UDP](#31-casos-de-uso-de-udp)
+  - [3.1. Casos de uso de UDP vs TCP](#31-casos-de-uso-de-udp-vs-tcp)
+  - [3.2. Comparación de Baja Sobrecarga y Confiabilidad de UDP](#32-comparación-de-baja-sobrecarga-y-confiabilidad-de-udp)
+  - [3.3. Reensamblaje de Datagramas UDP](#33-reensamblaje-de-datagramas-udp)
+  - [3.4. Procesos y Solicitudes del Servidor UDP](#34-procesos-y-solicitudes-del-servidor-udp)
+  - [3.5. Procesos de Cliente UDP](#35-procesos-de-cliente-udp)
 - [4. Puertos: Identificando Procesos en Comunicación](#4-puertos-identificando-procesos-en-comunicación)
 - [5. Otros protocolos Emergentes](#5-otros-protocolos-emergentes)
   - [5.1. Protocolo Rápido de Internet basado en UDP (QUIC)](#51-protocolo-rápido-de-internet-basado-en-udp-quic)
   - [5.2. Stream Control Transmission Protocol (SCTP)](#52-stream-control-transmission-protocol-sctp)
 - [6. Seguridad Integrada en la Capa de Transporte](#6-seguridad-integrada-en-la-capa-de-transporte)
-  - [6.1. TLS (Transport Layer Security) y SSL (Secure Sockets Layer)](#61-tls-transport-layer-security-y-ssl-secure-sockets-layer)
 - [7. Conclusión](#7-conclusión)
 - [8. Referencias](#8-referencias)
 
@@ -441,32 +444,33 @@ Nota: El Remote Authentication Dial-in User Service (RADIUS) que se muestra en l
 
 ### 3.5. Procesos de Cliente UDP
 
-Al igual que con TCP, la comunicación cliente-servidor es iniciada por una aplicación cliente que solicita datos de un proceso del servidor. El proceso del cliente UDP selecciona dinámicamente un número de puerto del rango de números de puerto y lo utiliza como puerto de origen para la conversación. El puerto de destino suele ser el número de puerto conocido o registrado asignado al proceso del servidor.
+Como en TCP, la comunicación cliente-servidor es iniciada por una aplicación cliente que solicita datos de un proceso de servidor. El proceso de cliente UDP selecciona dinámicamente un número de puerto del intervalo de números de puerto y lo utiliza como puerto de origen para la conversación. Por lo general, el puerto de destino es el número de puerto bien conocido o registrado que se asigna al proceso de servidor.
 
-Después de que un cliente ha seleccionado los puertos de origen y destino, se utiliza el mismo par de puertos en el encabezado de todos los datagramas en la transacción. Para los datos que regresan al cliente desde el servidor, se invierten los números de puerto de origen y destino en el encabezado del datagrama.
+Después de que un cliente ha seleccionado los puertos de origen y destino, se utiliza el mismo par de puertos en el encabezado de todos los datagramas en la transacción. Para la devolución de datos del servidor al cliente, se invierten los números de puerto de origen y destino en el encabezado del datagrama.
 
-**TODO**
+Abajo se presenta una ilustración de dos hosts que solicitan servicios del servidor de autenticación DNS y RADIUS.
 
-Haz clic en cada botón para ver una ilustración de dos hosts que solicitan servicios del servidor de autenticación DNS y RADIUS.
+**Clientes Mandando Solicitudes UDP**: El cliente 1 está enviando una solicitud DNS utilizando el conocido puerto 53, mientras que el cliente 2 solicita servicios de autenticación RADIUS mediante el puerto registrado 1812.
 
-Clientes Mandando Solicitudes UDP
-El cliente 1 está enviando una solicitud DNS utilizando el conocido puerto 53, mientras que el cliente 2 solicita servicios de autenticación RADIUS mediante el puerto registrado 1812.
+![Solicitud UDP de Puertos de Origen](https://examenredes.com/wp-content/uploads/2021/12/2021-12-29_183011.jpg)
 
-https://examenredes.com/wp-content/uploads/2021/12/2021-12-29_183011.jpg
+**Solicitud UDP de Puertos de Origen**: Las solicitudes de los clientes generan dinámicamente números de puerto de origen. En este caso, el cliente 1 está utilizando el puerto de origen 49152 y el cliente 2 está utilizando el puerto de origen 51152.
 
-![UDP sin conexión y no confiable](https://examenredes.com/wp-content/uploads/2021/12/2021-12-29_183011.jpg)
+![UDP Solicitud de Puertos de Origen](https://examenredes.com/wp-content/uploads/2021/12/2021-12-29_183053.jpg)
 
-Clientes Mandando Solicitudes UDP
-El cliente 1 está enviando una solicitud DNS utilizando el conocido puerto 53, mientras que el cliente 2 solicita servicios de autenticación RADIUS mediante el puerto registrado 1812.
+**UDP Solicitud de Puertos de Origen**: Cuando el servidor responde a las solicitudes del cliente, invierte los puertos de destino y origen de la solicitud inicial.
 
+![Destino de respuesta UDP](https://examenredes.com/wp-content/uploads/2021/12/2021-12-29_183150.jpg)
 
-El Cliente 1 está enviando una solicitud DNS utilizando el conocido puerto 53, mientras que el Cliente 2 está solicitando servicios de autenticación RADIUS utilizando el puerto registrado 1812.
+**Destino de respuesta UDP**: En la respuesta del servidor a la solicitud DNS ahora es el puerto de destino 49152 y la respuesta de autenticación RADIUS ahora es el puerto de destino 51152.
 
-Clientes que envían solicitudes UDP
-Clientes que envían solicitudes UDP
+![UDP Respuesta de Puertos de Origen](https://examenredes.com/wp-content/uploads/2021/12/2021-12-29_183215.jpg)
 
+**UDP Respuesta de Puertos de Origen**: Los puertos de origen en la respuesta del servidor son los puertos de destino originales en las solicitudes iniciales.
 
-5. Comprueba tu comprensión – Comunicación UDP
+![UDP Communication](https://examenredes.com/wp-content/uploads/2021/12/2021-12-29_183240.jpg)
+
+## 5. Comprueba tu comprensión – Comunicación UDP
 Comprueba tu comprensión de la comunicación UDP eligiendo la MEJOR respuesta a las siguientes preguntas.
 
 ¿Por qué es conveniente UDP para los protocolos que hacen una simple solicitud y responden transacciones?
@@ -484,6 +488,33 @@ A. Origen: 53, Destino: 49152
 B. Origen: 1812, Destino: 49152
 C. Origen: 49152, Destino: 53
 D. Origen: 49152, Destino: 1812
+
+
+7. Comprueba tu comprensión – Transporte de datos
+Verifica tu comprensión de la capa de transporte eligiendo la MEJOR respuesta a las siguientes preguntas.
+
+¿Qué capa es responsable de establecer una sesión de comunicación temporal entre las aplicaciones host de origen y destino?
+A. Capa de aplicación
+B. Capa de enlace de datos
+C. Capa de red
+D. Capa física
+E. Capa de transporte
+¿Cuáles son las tres responsabilidades de la capa de transporte? (Escoja tres opciones).
+A. Multiplexión de conversaciones
+B. identificación de marcos
+C. identificación de información de enrutamiento
+D. segmentación de datos y reensamblado de segmentos
+E. Seguimiento de conversaciones individuales
+¿Qué declaración de protocolo de capa de transporte es verdadera?
+A. TCP tiene menos campos que UDP.
+B. TCP es más rápido que UDP.
+C. UDP es un protocolo de entrega de mejor esfuerzo.
+D. UDP proporciona fiabilidad.
+¿Qué protocolo de capa de transporte se usaría para aplicaciones VoIP?
+A. Protocolo de información de sesión (SIP)
+B. Protocolo de control de transmisión (TCP)
+C. Protocolo de datagramas de usuario (UDP)
+D. Protocolo de transferencia de VoIP
 
 ## 4. Puertos: Identificando Procesos en Comunicación
 
@@ -642,7 +673,7 @@ En respuesta a estas necesidades, han surgido protocolos innovadores que buscan 
 
 - **QUIC**: Sería como enviar un mensaje instantáneo cifrado por una aplicación de mensajería segura. Rápido, seguro y eficiente.
 
-### 4.4. Stream Control Transmission Protocol (SCTP)
+### 5.2. Stream Control Transmission Protocol (SCTP)
 
 Otro protocolo emergente es el **SCTP**. Desarrollado como una alternativa a TCP y UDP, **SCTP** ofrece características avanzadas para aplicaciones exigentes. Así, **SCTP** es un protocolo que incorpora características de TCP y UDP:
 
@@ -650,7 +681,7 @@ Otro protocolo emergente es el **SCTP**. Desarrollado como una alternativa a TCP
 - **Multihoming**: Un único punto final puede tener múltiples direcciones IP, aumentando la tolerancia a fallos.
 - **Entrega Fiable y Ordenada**: Similar a TCP, pero con mayor flexibilidad en la gestión de flujos.
 
-## 5. Seguridad Integrada en la Capa de Transporte
+## 6. Seguridad Integrada en la Capa de Transporte
 
 La seguridad es un aspecto crítico en las comunicaciones de red. La capa de transporte es el punto de control para garantizar la confidencialidad, integridad y autenticación de los datos. Algunas tecnologías clave en este ámbito son:
 
@@ -664,39 +695,25 @@ La seguridad es un aspecto crítico en las comunicaciones de red. La capa de tra
 
 La seguridad ya no es una opción adicional; es una necesidad integrada. Protocolos como **QUIC** incorporan **TLS** de forma nativa, garantizando conexiones seguras sin pasos adicionales.
 
-## 6. Conclusión
+## 7. Conclusión
 
 La capa de transporte es fundamental en las comunicaciones de red, y su comprensión es esencial para cualquier profesional en informática. Los avances tecnológicos y las nuevas demandas de aplicaciones requieren una actualización constante de los conocimientos.
 
+La capa de transporte es el enlace entre la capa de aplicación y las capas inferiores que son responsables de la transmisión a través de la red. La capa de transporte es responsable de las comunicaciones lógicas entre aplicaciones que se ejecutan en diferentes hosts. La capa de transporte incluye los protocolos TCP y UDP. Los protocolos de capa de transporte especifican cómo transferir mensajes entre hosts y es responsable de administrar los requisitos de fiabilidad de una conversación. La capa de transporte es responsable del seguimiento de conversaciones (sesiones), la segmentación de datos y el reensamblaje de segmentos, la adición de información de encabezado, la identificación de aplicaciones y la multiplexación de conversaciones. TCP is stateful, reliable, acknowledges data, resends lost data, and delivers data in sequenced order. Utilice TCP para el correo electrónico y la web. UDP no tiene estado, es rápido, tiene una sobrecarga baja, no requiere acuses de recibo, no reenvía los datos perdidos y entrega los datos en el orden en que llegan. Use UDP para VoIP y DNS.
 
-7. Comprueba tu comprensión – Transporte de datos
-Verifica tu comprensión de la capa de transporte eligiendo la MEJOR respuesta a las siguientes preguntas.
+TCP establece sesiones, asegura confiabilidad, proporciona entrega del mismo pedido y admite control de flujo. Un segmento TCP agrega 20 bytes de sobrecarga como información de encabezado al encapsular los datos de capa de aplicación. Los campos de encabezado TCP son los puertos de origen y destino, número de secuencia, número de reconocimiento, longitud del encabezado, reservado, bits de control, tamaño de ventana, suma de verificación y urgente. Las aplicaciones que usan TCP son HTTP, FTP, SMTP y Telnet.
 
-¿Qué capa es responsable de establecer una sesión de comunicación temporal entre las aplicaciones host de origen y destino?
-A. Capa de aplicación
-B. Capa de enlace de datos
-C. Capa de red
-D. Capa física
-E. Capa de transporte
-¿Cuáles son las tres responsabilidades de la capa de transporte? (Escoja tres opciones).
-A. Multiplexión de conversaciones
-B. identificación de marcos
-C. identificación de información de enrutamiento
-D. segmentación de datos y reensamblado de segmentos
-E. Seguimiento de conversaciones individuales
-¿Qué declaración de protocolo de capa de transporte es verdadera?
-A. TCP tiene menos campos que UDP.
-B. TCP es más rápido que UDP.
-C. UDP es un protocolo de entrega de mejor esfuerzo.
-D. UDP proporciona fiabilidad.
-¿Qué protocolo de capa de transporte se usaría para aplicaciones VoIP?
-A. Protocolo de información de sesión (SIP)
-B. Protocolo de control de transmisión (TCP)
-C. Protocolo de datagramas de usuario (UDP)
-D. Protocolo de transferencia de VoIP
+UDP reconstruye los datos en el orden en que se reciben, los segmentos perdidos no se vuelven a enviar, no se establece la sesión y UPD no informa al remitente de la disponibilidad de recursos. Los campos de encabezado UDP son puertos de origen y destino, longitud y suma de verificación. Las aplicaciones que utilizan UDP son DHCP, DNS, SNMP, TFTP, VoIP y videoconferencias.
 
+Los protocolos de capa de transporte TCP y UDP utilizan números de puerto para administrar múltiples conversaciones simultáneas. Esta es la razón por la que los campos de encabezado TCP y UDP identifican un número de puerto de aplicación de origen y destino. Los puertos de origen y de destino se colocan dentro del segmento. Los segmentos se encapsulan dentro de un paquete IP. El paquete IP contiene la dirección IP de origen y de destino. Se conoce como socket a la combinación de la dirección IP de origen y el número de puerto de origen, o de la dirección IP de destino y el número de puerto de destino. El socket se utiliza para identificar el servidor y el servicio que solicita el cliente. Hay un rango de números de puerto entre 0 y 65535. Esta gama se divide en grupos: Puertos conocidos, Puertos Registrados, Puertos Privados y/o Dinámicos. Hay algunos números de puerto conocidos que están reservados para aplicaciones comunes como FTP, SSH, DNS, HTTP y otros. A veces es necesario conocer las conexiones TCP activas que están abiertas y en ejecución en el host de red. Netstat es una utilidad de red importante que puede usarse para verificar esas conexiones.
 
-## Referencias
+Cada proceso de aplicación que se ejecuta en el servidor para utilizar un número de puerto. El número de puerto es asignado automáticamente o configurado manualmente por un administrador del sistema. Los procesos del servidor TCP son los siguientes: clientes que envían solicitudes TCP, solicitan puertos de destino, solicitan puertos de origen, responden a solicitudes de puerto de destino y puerto de origen. Para terminar una conversación simple admitida por TCP, se requieren cuatro intercambios para finalizar ambas sesiones. El cliente o el servidor pueden iniciar la terminación. El protocolo de enlace de tres vías establece que el dispositivo de destino está presente en la red, verifica que el dispositivo de destino tiene un servicio activo y acepta solicitudes en el número de puerto de destino que el cliente iniciador pretende utilizar, e informa al dispositivo de destino que el cliente de origen tiene la intención de establecer una sesión de comunicación sobre ese número de puerto. Los seis indicadores de bits de control son: URG, ACK, PSH, RST, SYN y FIN.
+
+Para que el receptor comprenda el mensaje original, los datos en estos segmentos se vuelven a ensamblar en el orden original. Se asignan números de secuencia en el encabezado de cada paquete. No importa cuán bien diseñada esté una red, ocasionalmente se produce la pérdida de datos. TCP proporciona formas de administrar pérdidas de segmentos. Hay un mecanismo para retransmitir segmentos para datos no reconocidos. Los sistemas operativos host actualmente suelen emplear una característica TCP opcional llamada reconocimiento selectivo (SACK), negociada durante el protocolo de enlace de tres vías. Si ambos hosts admiten SACK, el receptor puede reconocer explícitamente qué segmentos (bytes) se recibieron, incluidos los segmentos discontinuos. Por lo tanto, el host emisor solo necesitaría retransmitir los datos faltantes. El control de flujo permite mantener la confiabilidad de la transmisión de TCP mediante el ajuste de la velocidad del flujo de datos entre el origen y el destino. Para lograr esto, el encabezado TCP incluye un campo de 16 bits llamado “tamaño de la ventana”. El proceso en el que el destino envía reconocimientos a medida que procesa los bytes recibidos y el ajuste continuo de la ventana de envío del origen se conoce como ventanas deslizantes. El origen está transmitiendo 1460 bytes de datos dentro de cada segmento TCP. Este es el MSS típico que puede recibir un dispositivo de destino. Para evitar y controlar la congestión, TCP emplea varios mecanismos de manejo de congestión. Es la fuente la que está reduciendo el número de bytes no reconocidos que envía y no el tamaño de ventana determinado por el destino.
+
+UDP es un protocolo simple que proporciona las funciones básicas de la capa de transporte. Cuando los datagramas UDP se envían a un destino, a menudo toman caminos diferentes y llegan en el orden incorrecto. UDP no realiza un seguimiento de los números de secuencia de la manera en que lo hace TCP. UDP no puede reordenar los datagramas en el orden de la transmisión. UDP simplemente reensambla los datos en el orden en que se recibieron y los envía a la aplicación. Si la secuencia de datos es importante para la aplicación, esta debe identificar la secuencia adecuada y determinar cómo se deben procesar los datos. A las aplicaciones de servidor basadas en UDP se les asignan números de puerto conocidos o registrados. Cuando UDP recibe un datagrama destinado a uno de esos puertos, envía los datos de aplicación a la aplicación adecuada en base a su número de puerto. El proceso de cliente UDP selecciona dinámicamente un número de puerto del intervalo de números de puerto y lo utiliza como puerto de origen para la conversación. Por lo general, el puerto de destino es el número de puerto bien conocido o registrado que se asigna al proceso de servidor. Después de que un cliente ha seleccionado los puertos de origen y destino, se utiliza el mismo par de puertos en el encabezado de todos los datagramas utilizados en la transacción. Para la devolución de datos del servidor al cliente, se invierten los números de puerto de origen y destino en el encabezado del datagrama.
+
+ ## 8. Referencias
 
 - https://ccnadesdecero.es/ccna-1/#Modulo_14_Capa_de_Transporte_CCNA_1_v7
 - https://examenredes.com/ccna-1-version-7-modulo-14-capa-de-transporte/
