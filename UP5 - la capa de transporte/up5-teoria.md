@@ -656,5 +656,5 @@ UDP es un protocolo simple que proporciona las funciones básicas de la capa de 
 
 ## 8. Referencias
 
-- https://ccnadesdecero.es/ccna-1/#Modulo_14_Capa_de_Transporte_CCNA_1_v7
-- https://examenredes.com/ccna-1-version-7-modulo-14-capa-de-transporte/
+- <https://ccnadesdecero.es/ccna-1/#Modulo_14_Capa_de_Transporte_CCNA_1_v7>
+- <https://examenredes.com/ccna-1-version-7-modulo-14-capa-de-transporte/>
