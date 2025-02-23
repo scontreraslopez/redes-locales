@@ -349,7 +349,6 @@
     - d) Mayor latencia en la entrega
     - **Respuesta Correcta**: a
 
-
     53. **¿Por qué es conveniente UDP para los protocolos que realizan una simple solicitud y respuesta?**
    - a) Baja sobrecarga
    - b) Control de flujo
