@@ -9,6 +9,11 @@
     - [2.2.1. Campos de encabezado TCP](#221-campos-de-encabezado-tcp)
   - [2.3. Aplicaciones que usan TCP](#23-aplicaciones-que-usan-tcp)
   - [2.4. Procesos del Servidor TCP](#24-procesos-del-servidor-tcp)
+    - [2.4.1. Clientes que envían solicitudes TCP](#241-clientes-que-envían-solicitudes-tcp)
+    - [2.4.2. Solicitar puertos de destino](#242-solicitar-puertos-de-destino)
+    - [2.4.3. Solicitar puertos de origen](#243-solicitar-puertos-de-origen)
+    - [2.4.4. Respuesta puertos destino](#244-respuesta-puertos-destino)
+    - [2.4.5. Respuesta puertos de origen](#245-respuesta-puertos-de-origen)
   - [2.5. Establecimiento de Conexión TCP](#25-establecimiento-de-conexión-tcp)
   - [2.6. Terminación de Sesión](#26-terminación-de-sesión)
   - [2.7. Análisis del Enlace de Tres Vías TCP](#27-análisis-del-enlace-de-tres-vías-tcp)
@@ -25,44 +30,51 @@
   - [3.4. Procesos y Solicitudes del Servidor UDP](#34-procesos-y-solicitudes-del-servidor-udp)
   - [3.5. Procesos de Cliente UDP](#35-procesos-de-cliente-udp)
 - [4. Puertos: Identificando Procesos en Comunicación](#4-puertos-identificando-procesos-en-comunicación)
+  - [4.1. Comunicaciones Múltiples Separadas](#41-comunicaciones-múltiples-separadas)
+  - [4.2. Pares de Socket](#42-pares-de-socket)
+  - [4.3. Grupos de número de puerto](#43-grupos-de-número-de-puerto)
+  - [4.4. El Comando netstat](#44-el-comando-netstat)
 - [5. Otros protocolos Emergentes](#5-otros-protocolos-emergentes)
-  - [5.1. Protocolo Rápido de Internet basado en UDP (QUIC)](#51-protocolo-rápido-de-internet-basado-en-udp-quic)
-  - [5.2. Stream Control Transmission Protocol (SCTP)](#52-stream-control-transmission-protocol-sctp)
+  - [5.1. Internet de las Cosas (IoT)](#51-internet-de-las-cosas-iot)
+  - [5.2. Redes 5G y Futuras Generaciones](#52-redes-5g-y-futuras-generaciones)
+  - [5.3. Protocolo Rápido de Internet Basado en UDP (QUIC)](#53-protocolo-rápido-de-internet-basado-en-udp-quic)
+  - [5.4. Stream Control Transmission Protocol (SCTP)](#54-stream-control-transmission-protocol-sctp)
 - [6. Seguridad Integrada en la Capa de Transporte](#6-seguridad-integrada-en-la-capa-de-transporte)
 - [7. Conclusión](#7-conclusión)
 - [8. Referencias](#8-referencias)
 
 ## 1. Funciones de la Capa de Transporte
 
-Los programas de capa de aplicación generan datos que deben intercambiarse entre los hosts de origen y de destino. La capa de transporte es responsable de las comunicaciones lógicas entre las aplicaciones que se ejecutan en diferentes hosts. Esto puede incluir servicios como el establecimiento de una sesión temporal entre dos hosts y la transmisión confiable de información para una aplicación.
+La capa de transporte gestiona las comunicaciones lógicas entre las aplicaciones que operan en distintos hosts. Su principal objetivo es facilitar el intercambio de datos entre estas aplicaciones, asegurando que los requerimientos específicos de cada una sean satisfechos.
 
-Como se muestra en la imagen, la capa de transporte es el enlace entre la capa de aplicación y las capas inferiores, que son responsables de la transmisión de la red. Las diferentes aplicaciones tienen diferentes requisitos de fiabilidad de transporte. Por lo tanto, TCP/IP proporciona los siguientes dos protocolos de capa de transporte
+Esta capa se encarga de proporcionar varios servicios, entre los cuales se incluyen:
 
-![Protocolos de capa de transporte](https://ccnadesdecero.es/wp-content/uploads/2017/11/Protocolos-de-capa-de-transporte.png)
+- **Establecimiento de Conexiones**: Permite la creación de sesiones temporales entre dos hosts para la transmisión de datos.
+- **Transmisión Confiable**: Garantiza que la información se entregue sin errores y en el orden correcto.
 
-IP solo se refiere a la estructura, direccionamiento y enrutamiento de paquetes. IP no especifica cómo se realiza la entrega o el transporte de los paquetes. Los protocolos de la capa de transporte especifican cómo transferir mensajes entre hosts y son responsables de administrar los requisitos de confiabilidad de una conversación. La capa de transporte incluye los protocolos TCP y UDP.
+La capa de transporte actúa como un puente esencial entre la capa de aplicación y las capas inferiores responsables de la transmisión a través de la red. Diferentes aplicaciones tienen diferentes requisitos de fiabilidad, lo que motiva la existencia de varios protocolos en esta capa.
 
-La **Unidad de Datos de Protocolo (PDU)** en la capa de transporte se conoce como:
+![Protocolos de capa de transporte](https://examenredes.com/wp-content/uploads/2021/12/2021-12-29_090920.jpg)
 
-- **Segmento** en TCP.
-- **Datagrama** en UDP.
+Los protocolos de capa de transporte más utilizados son **TCP (Transmission Control Protocol)** y **UDP (User Datagram Protocol)**, cada uno diseñado para manejar distintos tipos de tráfico. IP, por su parte, se centra en la estructura y el direccionamiento de paquetes, pero no especifica cómo se entregan estos datos.
 
-La **capa de transporte** actúa como un puente esencial entre las capas de red y las orientadas a la aplicación, facilitando una comunicación eficiente y confiable entre procesos que se ejecutan en diferentes máquinas.
+A continuación, se definen los dos tipos de **Unidad de Datos de Protocolo (PDU)** en la capa de transporte:
 
-En un dispositivo terminal pueden ejecutarse múltiples **procesos** simultáneamente. Un proceso es una instancia en ejecución de una aplicación. Algunos programas permiten múltiples instancias concurrentes, cada una considerada un proceso distinto. Estos procesos necesitan comunicarse con procesos en otros dispositivos, y la capa de transporte facilita esta comunicación de extremo a extremo.
+- **Segmento**: Utilizado por TCP.
+- **Datagrama**: Utilizado por UDP.
 
-En líneas generales, las **funciones clave de la Capa de Transporte** son las siguientes:
+Las funciones clave de la capa de transporte se pueden clasificar de la siguiente manera:
 
-- **Segmentación y Reensamblado**: Divide los datos de las aplicaciones en segmentos adecuados para la transmisión y los reensambla en el destino. (Obligatoria)
-- **Multiplexación y Demultiplexación**: Permite que múltiples procesos utilicen simultáneamente la red, identificando de manera única cada conexión mediante números de puerto. (Obligatoria)
-- **Control de Flujo**: Gestiona la velocidad de envío de datos para prevenir la saturación del receptor. (Opcional)
-- **Control de Congestión**: Regula el tráfico en la red para evitar y recuperarse de congestiones. (Opcional)
-- **Entrega Confiable**: Asegura la entrega correcta y en orden de los segmentos, detectando y retransmitiendo los que se pierden. (Opcional)
-- **Establecimiento de Sesión**: Crea, mantiene y cierra conexiones entre procesos en dispositivos distintos. (Opcional)
+1. **Segmentación y Reensamblado**: Divide los datos de las aplicaciones en segmentos adecuados para su transmisión y los reensambla en el destino.
+2. **Multiplexación y Demultiplexación**: Permite que múltiples procesos utilicen la red simultáneamente, identificando cada conexión mediante números de puerto.
+3. **Control de Flujo**: Gestión de la velocidad de envío de datos para prevenir la saturación del receptor.
+4. **Control de Congestión**: Regulación del tráfico para evitar congestiones en la red.
+5. **Entrega Confiable**: Asegura la entrega correcta y en orden de los segmentos, incluyendo la detección y retransmisión de segmentos perdidos.
+6. **Establecimiento de Sesiones**: Facilita la creación, mantenimiento y cierre de conexiones entre procesos en diferentes dispositivos.
+
+La capa de transporte juega un papel fundamental en la comunicación eficiente y confiable entre procesos que se ejecutan en distintas máquinas, permitiendo que múltiples procesos se comuniquen de forma simultánea sin interferencias.
 
 ## 2. Transmission Control Protocol (TCP)
-
-Repasar esto: https://examenredes.com/ccna-1-version-7-modulo-14-capa-de-transporte/
 
 **TCP** es un protocolo orientado a conexión que proporciona comunicación fiable:
 
@@ -470,52 +482,6 @@ Abajo se presenta una ilustración de dos hosts que solicitan servicios del serv
 
 ![UDP Communication](https://examenredes.com/wp-content/uploads/2021/12/2021-12-29_183240.jpg)
 
-## 5. Comprueba tu comprensión – Comunicación UDP
-Comprueba tu comprensión de la comunicación UDP eligiendo la MEJOR respuesta a las siguientes preguntas.
-
-¿Por qué es conveniente UDP para los protocolos que hacen una simple solicitud y responden transacciones?
-A. Control de flujo
-B. Baja sobrecarga
-C. Confianza
-D. Entrega en el mismo pedido
-¿Qué declaración de reensamblaje de datagramas UDP es verdadera?
-A. UDP no vuelve a ensamblar los datos.
-B. UDP vuelve a ensamblar los datos en el orden en que fueron recibidos.
-C. UDP vuelve a ensamblar los datos utilizando bits de control.
-D. UDP vuelve a ensamblar los datos utilizando números de secuencia.
-¿Cuáles de los siguientes puertos serían válidos de origen y destino para un host que se conecta a un servidor DNS?
-A. Origen: 53, Destino: 49152
-B. Origen: 1812, Destino: 49152
-C. Origen: 49152, Destino: 53
-D. Origen: 49152, Destino: 1812
-
-
-7. Comprueba tu comprensión – Transporte de datos
-Verifica tu comprensión de la capa de transporte eligiendo la MEJOR respuesta a las siguientes preguntas.
-
-¿Qué capa es responsable de establecer una sesión de comunicación temporal entre las aplicaciones host de origen y destino?
-A. Capa de aplicación
-B. Capa de enlace de datos
-C. Capa de red
-D. Capa física
-E. Capa de transporte
-¿Cuáles son las tres responsabilidades de la capa de transporte? (Escoja tres opciones).
-A. Multiplexión de conversaciones
-B. identificación de marcos
-C. identificación de información de enrutamiento
-D. segmentación de datos y reensamblado de segmentos
-E. Seguimiento de conversaciones individuales
-¿Qué declaración de protocolo de capa de transporte es verdadera?
-A. TCP tiene menos campos que UDP.
-B. TCP es más rápido que UDP.
-C. UDP es un protocolo de entrega de mejor esfuerzo.
-D. UDP proporciona fiabilidad.
-¿Qué protocolo de capa de transporte se usaría para aplicaciones VoIP?
-A. Protocolo de información de sesión (SIP)
-B. Protocolo de control de transmisión (TCP)
-C. Protocolo de datagramas de usuario (UDP)
-D. Protocolo de transferencia de VoIP
-
 ## 4. Puertos: Identificando Procesos en Comunicación
 
 Los **puertos** son números que identifican de manera única a los procesos dentro de un dispositivo. Funcionan como puntos finales de comunicación en la capa de transporte. Gracias a los puertos:
@@ -530,12 +496,14 @@ Los números de puerto se dividen en rangos:
 - **Puertos Registrados (1024-49151)**: Asignados para aplicaciones y procesos específicos.
 - **Puertos Dinámicos o Privados (49152-65535)**: Utilizados temporalmente por aplicaciones cliente al establecer conexiones.
 
-1. Comunicaciones Múltiples Separadas
-Como has aprendido, hay algunas situaciones en las que TCP es el protocolo adecuado para el trabajo, y otras situaciones en las que se debe utilizar UDP. No importa qué tipo de datos se transporten, tanto TCP como UDP usan números de puerto.
+### 4.1. Comunicaciones Múltiples Separadas
+
+Hay algunas situaciones en las que TCP es el protocolo adecuado para el trabajo, y otras situaciones en las que se debe utilizar UDP. No importa qué tipo de datos se transporten, tanto TCP como UDP usan números de puerto.
 
 Los protocolos de capa de transporte TCP y UDP utilizan números de puerto para administrar múltiples conversaciones simultáneas. Como se muestra en la figura, los campos de encabezado TCP y UDP identifican un número de puerto de aplicación de origen y destino.
 
 Puerto de origen (16) | Puerto de destino (16)
+
 El número de puerto de origen está asociado con la aplicación de origen en el host local, mientras que el número de puerto de destino está asociado con la aplicación de destino en el host remoto.
 
 Por ejemplo, supón que un host está iniciando una solicitud de página web desde un servidor web. Cuando el host inicia la solicitud de la página web, el host genera dinámicamente el número de puerto de origen para identificar de forma exclusiva la conversación. Cada solicitud generada por un host utilizará un número de puerto de origen creado dinámicamente diferente. Este proceso permite que se produzcan múltiples conversaciones simultáneamente.
@@ -544,20 +512,17 @@ En la solicitud, el número de puerto de destino es lo que identifica el tipo de
 
 Un servidor puede ofrecer más de un servicio simultáneamente, como servicios web en el puerto 80, mientras que ofrece el establecimiento de conexión de Protocolo de transferencia de archivos (FTP) en el puerto 21.
 
-2. Pares de Socket
+### 4.2. Pares de Socket
+
 Los puertos de origen y destino se colocan dentro del segmento. Los segmentos se encapsulan dentro de un paquete IP. El paquete IP contiene la dirección IP de origen y destino. La combinación de la dirección IP de origen y el número de puerto de origen, o la dirección IP de destino y el número de puerto de destino se conoce como socket.
 
 En el ejemplo de la imagen, la PC solicita simultáneamente servicios FTP y web del servidor de destino.
 
 ![Pares de Socket](https://ccnadesdecero.es/wp-content/uploads/2020/04/Pares-de-Socket.png)
 
-Pares de Socket
-Pares de Socket
 En el ejemplo, la solicitud FTP generada por la PC incluye las direcciones MAC de capa 2 y las direcciones IP de capa 3. La solicitud también identifica el número de puerto de origen 1305 (es decir, generado dinámicamente por el host) y el puerto de destino, identificando los servicios FTP en el puerto 21. El host también ha solicitado una página web del servidor utilizando las mismas direcciones de Capa 2 y Capa 3 . Sin embargo, está utilizando el número de puerto de origen 1099 (es decir, generado dinámicamente por el host) y el puerto de destino que identifica el servicio web en el puerto 80.
 
-El socket se utiliza para identificar el servidor y el servicio que solicita el cliente. Un socket de cliente podría verse así, con 1099 representando el número de puerto de origen: 192.168.1.5:1099
-
-El socket en un servidor web puede ser 192.168.1.7:80
+El socket se utiliza para identificar el servidor y el servicio que solicita el cliente. Un socket de cliente podría verse así, con 1099 representando el número de puerto de origen: 192.168.1.5:1099. Por su parte, el socket en un servidor web puede ser 192.168.1.7:80.
 
 Juntos, estos dos sockets se combinan para formar un par de sockets: 192.168.1.5:1099, 192.168.1.7:80
 
@@ -565,24 +530,20 @@ Los sockets permiten que múltiples procesos, que se ejecutan en un cliente, se 
 
 El número de puerto de origen actúa como una dirección de retorno para la aplicación solicitante. La capa de transporte realiza un seguimiento de este puerto y la aplicación que inició la solicitud para que cuando se devuelva una respuesta, se pueda reenviar a la aplicación correcta.
 
-3. Grupos de número de puerto
+### 4.3. Grupos de número de puerto
+
 La Internet Assigned Numbers Authority (IANA) es la organización de estándares responsable de asignar varios estándares de direccionamiento, incluidos los números de puerto de 16 bits. Los 16 bits utilizados para identificar los números de puerto de origen y destino proporcionan un rango de puertos de 0 a 65535.
 
 La IANA ha dividido el rango de números en los siguientes tres grupos de puertos.
 
-Grupo portuario	Rango de números	Descripción
-Puertos conocidos	0 a 1,023	
-Estos números de puerto están reservados para servicios y aplicaciones comunes o populares, como navegadores web, clientes de correo electrónico y clientes de acceso remoto.
-Los puertos bien conocidos definidos para aplicaciones de servidor comunes permiten a los clientes identificar fácilmente el servicio asociado requerido.
-Puertos registrados	1.024 a 49.151	
-La IANA asigna estos números de puerto a una entidad solicitante para usar con procesos o aplicaciones específicos.
-Estos procesos son principalmente aplicaciones individuales que un usuario ha elegido instalar, en lugar de aplicaciones comunes que recibirían un número de puerto conocido.
-Por ejemplo, Cisco ha registrado el puerto 1812 para su proceso de autenticación del servidor RADIUS.
-Puertos privados y/o dinámicos	49,152 a 65,535	
-Estos puertos también se conocen como puertos efímeros.
-El sistema operativo del cliente generalmente asigna números de puerto dinámicamente cuando se inicia una conexión a un servicio.
-El puerto dinámico se utiliza para identificar la aplicación del cliente durante la comunicación.
-Nota: Algunos sistemas operativos de clientes pueden usar números de puerto registrados en lugar de números de puerto dinámicos para asignar puertos de origen.
+| Grupo de puertos | Rango | Descripción |
+|------------------|-------|-------------|
+| Puertos Bien Conocidos | 0-1023 | Estos números de puerto están reservados para servicios y aplicaciones comunes o populares, como navegadores web, clientes de correo electrónico y clientes de acceso remoto. Los puertos bien conocidos definidos para aplicaciones de servidor comunes permiten a los clientes identificar fácilmente el servicio asociado requerido |
+| Puertos registrados | 1024-49151 | La IANA asigna estos números de puerto a una entidad solicitante para usar con procesos o aplicaciones específicos. Estos procesos son principalmente aplicaciones individuales que un usuario ha elegido instalar, en lugar de aplicaciones comunes que recibirían un número de puerto conocido. Por ejemplo, Cisco ha registrado el puerto 1812 para su proceso de autenticación del servidor RADIUS |
+| Puertos privados y/o dinámicos | 49152 a 65535 | Estos puertos también se conocen como puertos efímeros. El sistema operativo del cliente generalmente asigna números de puerto dinámicamente cuando se inicia una conexión a un servicio. El puerto dinámico se utiliza para identificar la aplicación del cliente durante la comunicación. |
+
+> [!NOTE]
+> Algunos sistemas operativos de clientes pueden usar números de puerto registrados en lugar de números de puerto dinámicos para asignar puertos de origen.
 
 La tabla muestra algunos números de puerto conocidos y sus aplicaciones asociadas.
 
@@ -605,12 +566,11 @@ La tabla muestra algunos números de puerto conocidos y sus aplicaciones asociad
 
 Algunas aplicaciones pueden usar tanto TCP como UDP. Por ejemplo, DNS usa UDP cuando los clientes envían solicitudes a un servidor DNS. Sin embargo, la comunicación entre dos servidores DNS siempre usa TCP.
 
-Ver también
-CCNA 1
-Administración de Archivos de Configuración IOS
-Administración de Archivos de Configuración IOS
-4. El Comando netstat
-Las conexiones TCP inexplicadas pueden representar una gran amenaza de seguridad. Pueden indicar que algo o alguien está conectado al host local. A veces es necesario saber qué conexiones TCP activas están abiertas y ejecutándose en un host en red. Netstat es una importante utilidad de red que se puede usar para verificar esas conexiones. Como se muestra a continuación, ingresa el comando netstat para enumerar los protocolos en uso, la dirección local y los números de puerto, la dirección extranjera y los números de puerto y el estado de la conexión.
+El el sitio web de la IANA se puede encontrar una lista completa de los números de puerto asignados.
+
+### 4.4. El Comando netstat
+
+Las conexiones TCP no descritas pueden representar una gran amenaza de seguridad. Pueden indicar que algo o alguien está conectado al host local. A veces es necesario saber qué conexiones TCP activas están abiertas y ejecutándose en un host en red. Netstat es una importante utilidad de red que se puede usar para verificar esas conexiones. Como se muestra a continuación, ingresa el comando netstat para enumerar los protocolos en uso, la dirección local y los números de puerto, la dirección extranjera y los números de puerto y el estado de la conexión.
 
 ```bash
 C:\> netstat
@@ -624,74 +584,55 @@ TCP 192.168.1.124:3161 sc.msn.com:http ESTABLISHED
 TCP 192.168.1.124:3166 www.cisco.com:http ESTABLISHED
 ```
 
-De manera predeterminada, el comando netstat intentará resolver las direcciones IP para nombres de dominio y números de puerto para aplicaciones conocidas. La opción -n se puede usar para mostrar las direcciones IP y los números de puerto en su forma numérica.
-
-5. Verifica tu comprensión – Números de puerto
-Verifica tu comprensión de los números de puerto eligiendo la MEJOR respuesta a las siguientes preguntas.
-
-Supongamos que un host con dirección IP 10.1.1.10 desea solicitar servicios web desde un servidor en 10.1.1.254. ¿Cuál de los siguientes mostraría para corregir el par de socket?
-A. 1099:10 .1.1.10, 80:10 .1.1.254
-B. 10.1.1. 10:80, 10.1.1. 254:1099
-C. 10.1.1. 10:1099, 10.1.1. 254:80
-D. 80:10 .1.1.10, 1099:10 .1.1.254
-¿Qué grupo de puertos incluye números de puerto para aplicaciones FTP, HTTP y TFTP?
-A. Puertos dinámicos
-B. Puertos privados
-C. Puertos registrados
-D. Puertos bien conocidos
-¿Qué comando de Windows mostrará los protocolos en uso, la dirección local y los números de puerto, la dirección extranjera y los números de puerto y el estado de la conexión?
-A. ipconfig /all
-B. ping
-C. netstat
-D. traceroute
+De manera predeterminada, el comando `netstat` intentará resolver las direcciones IP para nombres de dominio y números de puerto para aplicaciones conocidas. La opción `-n` se puede usar para mostrar las direcciones IP y los números de puerto en su forma numérica.
 
 ## 5. Otros protocolos Emergentes
 
-Los nuevos desarrollos tecnológicos y las demandas de aplicaciones avanzadas han impulsado la evolución de la capa de transporte. Algunas de estas necesidades vienen por efecto de:
+Los desarrollos tecnológicos recientes y las crecientes demandas de aplicaciones avanzadas han impulsado la evolución de la capa de transporte. Entre estas necesidades se destacan:
 
-**Internet de las Cosas (IoT)**:
+### 5.1. Internet de las Cosas (IoT)
 
-- **Proliferación de Dispositivos**: Millones de dispositivos conectados requieren protocolos eficientes y escalables.
-- **Protocolos Ligeros**: Como **MQTT** o **CoAP**, optimizados para dispositivos con recursos limitados y comunicaciones de baja potencia.
-- **Seguridad**: La protección de datos y dispositivos es crítica, dado el volumen y sensibilidad de la información manejada.
+- **Proliferación de Dispositivos**: La conexión de millones de dispositivos requiere protocolos eficientes y escalables.
+- **Protocolos Ligeros**: Como **MQTT** y **CoAP**, ideales para dispositivos con recursos limitados y comunicaciones de baja potencia.
+- **Seguridad**: La protección de datos y dispositivos es esencial, especialmente por el volumen y la sensibilidad de la información manejada.
 
-**Redes 5G y Futuras Generaciones**:
+### 5.2. Redes 5G y Futuras Generaciones
 
-- **Alta Velocidad y Baja Latencia**: Requieren protocolos de transporte que puedan aprovechar estas características.
-- **Aplicaciones en Tiempo Real**: Como realidad aumentada, vehículos autónomos y telemedicina, que dependen de comunicaciones rápidas y fiables.
-- **Edge Computing**: Procesamiento cercano al origen de los datos, reduciendo la carga en la red central y mejorando tiempos de respuesta.
+- **Alta Velocidad y Baja Latencia**: Estas redes demandan protocolos de transporte que maximicen estas características.
+- **Aplicaciones en Tiempo Real**: Tecnologías como la realidad aumentada, vehículos autónomos y telemedicina requieren comunicaciones rápidas y fiables.
+- **Edge Computing**: El procesamiento de datos cercano a su origen reduce la carga en la red central y mejora los tiempos de respuesta.
 
-### 5.1. Protocolo Rápido de Internet basado en UDP (QUIC)
+### 5.3. Protocolo Rápido de Internet Basado en UDP (QUIC)
 
-En respuesta a estas necesidades, han surgido protocolos innovadores que buscan mejorar la eficiencia y seguridad de las comunicaciones. Uno de los más destacados es **QUIC**. Desarrollado por Google, **QUIC** es un protocolo moderno que combina lo mejor de TCP y UDP:
+Ante estas necesidades, han surgido protocolos innovadores como **QUIC**. Desarrollado por Google, **QUIC** combina las ventajas de TCP y UDP:
 
 - **Basado en UDP**: Utiliza UDP para evitar limitaciones en redes donde TCP puede ser bloqueado o manipulado.
 - **Establecimiento de Conexión Rápido**: Reduce la latencia al combinar el handshake de transporte y seguridad en un solo paso.
-- **Cifrado Incorporado**: Integra TLS 1.3, ofreciendo seguridad desde el diseño.
-- **Multiplexación de Flujo**: Permite múltiples flujos independientes dentro de una conexión para evitar bloqueos.
-- **Mejora en Móviles**: Diseñado para lidiar con cambios frecuentes en la conexión, como en dispositivos móviles en movimiento.
+- **Cifrado Incorporado**: Integra TLS 1.3 para ofrecer seguridad desde el diseño.
+- **Multiplexación de Flujos**: Permite múltiples flujos independientes en una sola conexión, evitando bloqueos.
+- **Optimización para Móviles**: Diseñado para adaptarse a cambios frecuentes de conexión en dispositivos móviles.
 
-- **QUIC**: Sería como enviar un mensaje instantáneo cifrado por una aplicación de mensajería segura. Rápido, seguro y eficiente.
+**Analogía**: **QUIC** se asemeja a un mensaje instantáneo cifrado a través de una aplicación de mensajería segura: rápido, seguro y eficiente.
 
-### 5.2. Stream Control Transmission Protocol (SCTP)
+### 5.4. Stream Control Transmission Protocol (SCTP)
 
-Otro protocolo emergente es el **SCTP**. Desarrollado como una alternativa a TCP y UDP, **SCTP** ofrece características avanzadas para aplicaciones exigentes. Así, **SCTP** es un protocolo que incorpora características de TCP y UDP:
+Otro protocolo emergente es el **SCTP**, que proporciona características avanzadas frente a TCP y UDP:
 
-- **Multistreaming**: Permite múltiples flujos de datos independientes dentro de una única conexión.
-- **Multihoming**: Un único punto final puede tener múltiples direcciones IP, aumentando la tolerancia a fallos.
-- **Entrega Fiable y Ordenada**: Similar a TCP, pero con mayor flexibilidad en la gestión de flujos.
+- **Multistreaming**: Permite múltiples flujos de datos independientes apilados dentro de una única conexión.
+- **Multihoming**: Un solo punto final puede tener varias direcciones IP, mejorando la tolerancia a fallos.
+- **Entrega Fiable y Ordenada**: Aunque similar a TCP, **SCTP** ofrece mayor flexibilidad en la gestión de flujos.
 
 ## 6. Seguridad Integrada en la Capa de Transporte
 
-La seguridad es un aspecto crítico en las comunicaciones de red. La capa de transporte es el punto de control para garantizar la confidencialidad, integridad y autenticación de los datos. Algunas tecnologías clave en este ámbito son:
+La seguridad es fundamental en las comunicaciones de red, y la capa de transporte actúa como el punto de control para garantizar la confidencialidad, integridad y autenticación de los datos. Las tecnologías clave en este ámbito incluyen:
 
 ### **TLS (Transport Layer Security) y SSL (Secure Sockets Layer)**
 
 - **Cifrado de Datos**: Protege la confidencialidad de la información transmitida.
-- **Autenticación**: Verifica la identidad de las partes comunicantes.
+- **Autenticación**: Verifica la identidad de las partes que se comunican.
 - **Integridad**: Asegura que los datos no sean alterados durante la transmisión.
 
-**SSL** fue el precursor de **TLS** y proporcionó las primeras implementaciones de cifrado y autenticación en las comunicaciones en red. Aunque **SSL** ya no se considera seguro y ha sido reemplazado por **TLS**, su legado sigue siendo importante en la evolución de la seguridad en la capa de transporte.
+**SSL** fue el precursor de **TLS**, ofreciendo inicialmente cifrado y autenticación en las comunicaciones en red. Aunque **SSL** ya no se considera seguro y ha sido reemplazado por **TLS**, su legado es significativo en la evolución de la seguridad de la capa de transporte.
 
 La seguridad ya no es una opción adicional; es una necesidad integrada. Protocolos como **QUIC** incorporan **TLS** de forma nativa, garantizando conexiones seguras sin pasos adicionales.
 
@@ -713,7 +654,7 @@ Para que el receptor comprenda el mensaje original, los datos en estos segmentos
 
 UDP es un protocolo simple que proporciona las funciones básicas de la capa de transporte. Cuando los datagramas UDP se envían a un destino, a menudo toman caminos diferentes y llegan en el orden incorrecto. UDP no realiza un seguimiento de los números de secuencia de la manera en que lo hace TCP. UDP no puede reordenar los datagramas en el orden de la transmisión. UDP simplemente reensambla los datos en el orden en que se recibieron y los envía a la aplicación. Si la secuencia de datos es importante para la aplicación, esta debe identificar la secuencia adecuada y determinar cómo se deben procesar los datos. A las aplicaciones de servidor basadas en UDP se les asignan números de puerto conocidos o registrados. Cuando UDP recibe un datagrama destinado a uno de esos puertos, envía los datos de aplicación a la aplicación adecuada en base a su número de puerto. El proceso de cliente UDP selecciona dinámicamente un número de puerto del intervalo de números de puerto y lo utiliza como puerto de origen para la conversación. Por lo general, el puerto de destino es el número de puerto bien conocido o registrado que se asigna al proceso de servidor. Después de que un cliente ha seleccionado los puertos de origen y destino, se utiliza el mismo par de puertos en el encabezado de todos los datagramas utilizados en la transacción. Para la devolución de datos del servidor al cliente, se invierten los números de puerto de origen y destino en el encabezado del datagrama.
 
- ## 8. Referencias
+## 8. Referencias
 
 - https://ccnadesdecero.es/ccna-1/#Modulo_14_Capa_de_Transporte_CCNA_1_v7
 - https://examenredes.com/ccna-1-version-7-modulo-14-capa-de-transporte/

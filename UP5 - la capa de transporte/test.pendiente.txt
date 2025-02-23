@@ -1,0 +1,65 @@
+## 5. Comprueba tu comprensión – Comunicación UDP
+Comprueba tu comprensión de la comunicación UDP eligiendo la MEJOR respuesta a las siguientes preguntas.
+
+¿Por qué es conveniente UDP para los protocolos que hacen una simple solicitud y responden transacciones?
+A. Control de flujo
+B. Baja sobrecarga
+C. Confianza
+D. Entrega en el mismo pedido
+¿Qué declaración de reensamblaje de datagramas UDP es verdadera?
+A. UDP no vuelve a ensamblar los datos.
+B. UDP vuelve a ensamblar los datos en el orden en que fueron recibidos.
+C. UDP vuelve a ensamblar los datos utilizando bits de control.
+D. UDP vuelve a ensamblar los datos utilizando números de secuencia.
+¿Cuáles de los siguientes puertos serían válidos de origen y destino para un host que se conecta a un servidor DNS?
+A. Origen: 53, Destino: 49152
+B. Origen: 1812, Destino: 49152
+C. Origen: 49152, Destino: 53
+D. Origen: 49152, Destino: 1812
+
+
+7. Comprueba tu comprensión – Transporte de datos
+Verifica tu comprensión de la capa de transporte eligiendo la MEJOR respuesta a las siguientes preguntas.
+
+¿Qué capa es responsable de establecer una sesión de comunicación temporal entre las aplicaciones host de origen y destino?
+A. Capa de aplicación
+B. Capa de enlace de datos
+C. Capa de red
+D. Capa física
+E. Capa de transporte
+¿Cuáles son las tres responsabilidades de la capa de transporte? (Escoja tres opciones).
+A. Multiplexión de conversaciones
+B. identificación de marcos
+C. identificación de información de enrutamiento
+D. segmentación de datos y reensamblado de segmentos
+E. Seguimiento de conversaciones individuales
+¿Qué declaración de protocolo de capa de transporte es verdadera?
+A. TCP tiene menos campos que UDP.
+B. TCP es más rápido que UDP.
+C. UDP es un protocolo de entrega de mejor esfuerzo.
+D. UDP proporciona fiabilidad.
+¿Qué protocolo de capa de transporte se usaría para aplicaciones VoIP?
+A. Protocolo de información de sesión (SIP)
+B. Protocolo de control de transmisión (TCP)
+C. Protocolo de datagramas de usuario (UDP)
+D. Protocolo de transferencia de VoIP
+
+
+5. Verifica tu comprensión – Números de puerto
+Verifica tu comprensión de los números de puerto eligiendo la MEJOR respuesta a las siguientes preguntas.
+
+Supongamos que un host con dirección IP 10.1.1.10 desea solicitar servicios web desde un servidor en 10.1.1.254. ¿Cuál de los siguientes mostraría para corregir el par de socket?
+A. 1099:10 .1.1.10, 80:10 .1.1.254
+B. 10.1.1. 10:80, 10.1.1. 254:1099
+C. 10.1.1. 10:1099, 10.1.1. 254:80
+D. 80:10 .1.1.10, 1099:10 .1.1.254
+¿Qué grupo de puertos incluye números de puerto para aplicaciones FTP, HTTP y TFTP?
+A. Puertos dinámicos
+B. Puertos privados
+C. Puertos registrados
+D. Puertos bien conocidos
+¿Qué comando de Windows mostrará los protocolos en uso, la dirección local y los números de puerto, la dirección extranjera y los números de puerto y el estado de la conexión?
+A. ipconfig /all
+B. ping
+C. netstat
+D. traceroute
