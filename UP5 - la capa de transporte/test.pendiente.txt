@@ -255,66 +255,88 @@
    - c) Ambas son correctas
    - d) Ninguna es correcta
 
+A revisar....
 
-5. **¿Qué protocolo utiliza el puerto 53?**
-   - a) DNS
-   - b) FTP
-   - c) HTTP
-   - d) SSH
+
+1. **¿Cuál es el protocolo utilizado por el puerto 443?**
+   - a) TCP
+   - b) UDP
+   - c) Ambos
+   - d) Ninguno
    - **Respuesta Correcta**: a
 
-8. **¿Qué puerto es utilizado comúnmente por el servidor DHCP?**
-   - a) 67
-   - b) 68
-   - c) 53
-   - d) 80
+2. **¿Qué protocolo utiliza el puerto 445?**
+   - a) TCP
+   - b) UDP
+   - c) Ambos
+   - d) Ninguno
    - **Respuesta Correcta**: a
 
-17. **¿Para cuál de los siguientes protocolos se utiliza el puerto 161?**
-    - a) SNMP
-    - b) HTTP
-    - c) FTP
-    - d) DHCP
-    - **Respuesta Correcta**: a
+3. **¿Qué puerto es utilizado comúnmente por el Protocolo de Escritorio Remoto (RDP)?**
+   - a) 3389 (TCP)
+   - b) 3389 (UDP)
+   - c) Ambos 3389
+   - d) Ninguno
+   - **Respuesta Correcta**: a
 
+4. **¿Qué protocolo utiliza el puerto 53 para el servicio de DNS?**
+   - a) TCP
+   - b) UDP
+   - c) Ambos
+   - d) Ninguno
+   - **Respuesta Correcta**: c
 
-  
-18. **¿Qué número de puerto se utiliza para las solicitudes de autenticación de RADIUS?**
-    - a) 1812
-    - b) 53
-    - c) 67
-    - d) 68
-    - **Respuesta Correcta**: a
+5. **¿Qué puerto es utilizado comúnmente por el servidor DHCP?**
+   - a) 67 (UDP)
+   - b) 68 (UDP)
+   - c) Ambos
+   - d) Ninguno
+   - **Respuesta Correcta**: a
 
+6. **¿Para cuál de los siguientes protocolos se utiliza el puerto 161?**
+   - a) TCP
+   - b) UDP
+   - c) Ambos
+   - d) Ninguno
+   - **Respuesta Correcta**: b
 
-24. **¿Cuál de los siguientes servicios se asocia con el puerto 23?**
-    - a) Telnet
-    - b) SMTP
-    - c) SNMP
-    - d) TCP
-    - Comentario: Quizá cambiar por SSH / RDP... Telnet ya se usa poco.
+7. **¿Qué número de puerto se utiliza para las solicitudes de autenticación de RADIUS?**
+   - a) 1812 (UDP)
+   - b) 1812 (TCP)
+   - c) Ambos
+   - d) Ninguno
+   - **Respuesta Correcta**: a
 
+8. **¿Cuál de los siguientes servicios se asocia con el puerto 22?**
+   - a) TCP (SSH)
+   - b) UDP
+   - c) Ambos
+   - d) Ninguno
+   - **Respuesta Correcta**: a
 
-26. **¿A cuál de los siguientes protocolos se le asigna el puerto 110?**
-    - a) POP3
-    - b) IMAP
-    - c) DNS
-    - d) HTTP
+9. **¿A cuál de los siguientes protocolos se le asigna el puerto 110?**
+   - a) TCP (POP3)
+   - b) UDP
+   - c) Ambos
+   - d) Ninguno
+   - **Respuesta Correcta**: a
 
-
-30. **¿Cuál es el número de puerto que utiliza DNS para la comunicación sobre TCP?**
+10. **¿Cuál es el número de puerto que utiliza DNS para la comunicación sobre TCP?**
     - a) 53
     - b) 80
     - c) 443
     - d) 21
     - **Respuesta Correcta**: a
 
-34. **¿Qué puerto se utiliza para el Protocolo Trivial de Transferencia de Archivos (TFTP)?**
-    - a) 69
+11. **¿Qué puerto se utiliza para el Protocolo Trivial de Transferencia de Archivos (TFTP)?**
+    - a) 69 (UDP)
     - b) 21
     - c) 25
     - d) 53
     - **Respuesta Correcta**: a
+
+
+
 
 41. **¿Cuál es uno de los principales beneficios del protocolo QUIC?**
     - a) Establecimiento de conexión rápido y reducción de latencia
