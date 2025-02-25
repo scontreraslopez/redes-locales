@@ -489,7 +489,7 @@ Otros Protocolos de Trunking:
 - ISL (Inter-Switch Link): Protocolo propietario de Cisco, ahora en desuso debido a la popularidad y adopción de 802.1Q.
 - VLAN Trunking Protocol (VTP): Aunque no es un protocolo de trunking per se, VTP es utilizado para propagar información de VLANs a través de la red conmutada. Es importante manejarlo con cuidado para evitar problemas de seguridad.
 
-#### 3.6.7. Paso 7: Configuración Adicional para Enrutamiento entre VLANs
+#### 3.6.4. Paso 4: Configuración Adicional para Enrutamiento entre VLANs
 
 Si se requiere comunicación entre VLANs, necesitamos un dispositivo de capa 3. Puedes utilizar un router o un switch multicapa (Capa 3).
 
@@ -540,7 +540,7 @@ Switch1(config-if)# exit
 
 Desde PC1, realiza un ping a PC2. Ahora deberías recibir respuestas, ya que el router está ruteando el tráfico entre las VLANs.
 
-#### 3.6.8. Paso 8: Reflexión y Exploración Adicional
+#### 3.7 Reflexión y Exploración Adicional
 
 Es posible profundizar en este campo por los siguientes caminos:
 
@@ -561,7 +561,7 @@ Prácticas de Mejores Configuraciones:
 - Cambia la VLAN nativa por defecto para evitar ataques VLAN hopping.
 - Deshabilita puertos no utilizados y colócalos en una VLAN no utilizada.
 
-### 3.7 Conclusión
+### 3.8 Conclusión
 
 En esta práctica, hemos aprendido a:
 
