@@ -544,6 +544,7 @@ La IANA ha dividido el rango de números en los siguientes tres grupos de puerto
 
 > [!NOTE]
 > Algunos sistemas operativos de clientes pueden usar números de puerto registrados en lugar de números de puerto dinámicos para asignar puertos de origen.
+
 | Número de puerto | Protocolo | Solicitud |
 |------------------|-----------|-----------|
 | 20               | TCP       | Protocolo de transferencia de archivos (FTP) - Datos |
