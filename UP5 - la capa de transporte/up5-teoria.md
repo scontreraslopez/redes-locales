@@ -544,9 +544,6 @@ La IANA ha dividido el rango de números en los siguientes tres grupos de puerto
 
 > [!NOTE]
 > Algunos sistemas operativos de clientes pueden usar números de puerto registrados en lugar de números de puerto dinámicos para asignar puertos de origen.
-
-La tabla muestra algunos números de puerto conocidos y sus aplicaciones asociadas.
-
 | Número de puerto | Protocolo | Solicitud |
 |------------------|-----------|-----------|
 | 20               | TCP       | Protocolo de transferencia de archivos (FTP) - Datos |
@@ -563,6 +560,8 @@ La tabla muestra algunos números de puerto conocidos y sus aplicaciones asociad
 | 143              | TCP       | Protocolo de acceso a mensajes de Internet (IMAP) |
 | 161              | UDP       | Protocolo simple de administración de red (SNMP) |
 | 443              | TCP       | Protocolo de transferencia de hipertexto seguro (HTTPS) |
+| 445              | TCP       | Protocolo de bloque de mensajes de servidor (SMB) |
+| 3389             | TCP       | Protocolo de escritorio remoto (RDP) |
 
 Algunas aplicaciones pueden usar tanto TCP como UDP. Por ejemplo, DNS usa UDP cuando los clientes envían solicitudes a un servidor DNS. Sin embargo, la comunicación entre dos servidores DNS siempre usa TCP.
 

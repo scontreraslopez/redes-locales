@@ -3,56 +3,36 @@
    - b) Proporciona control de flujo
    - c) Requiere confirmación de entrega
    - d) Siempre asegura la entrega de datagramas
-   - **Respuesta Correcta**: a
 
 2. **¿Cuál es una ventaja principal de usar UDP en comparación con TCP?**
    - a) Menor sobrecarga y mayor velocidad
    - b) Más confiabilidad en la entrega de datos
    - c) Mayor control sobre la congestión
    - d) Establece conexiones de manera más segura
-   - **Respuesta Correcta**: a
 
 3. **¿Para qué tipo de aplicaciones es ideal el uso de UDP?**
    - a) Aplicaciones donde la velocidad es crítica y se tolera la pérdida de datos
    - b) Aplicaciones donde todos los datos deben ser recuperados
    - c) Aplicaciones que requieren confirmaciones de entrega
    - d) Aplicaciones que utilizan conexiones persistentes
-   - **Respuesta Correcta**: a
 
 4. **¿Cuál es el rango de puertos bien conocidos según la IANA?**
    - a) 0-1023
    - b) 49152-65535
    - c) 1024-49151
    - d) 256-512
-   - **Respuesta Correcta**: a
-
-5. **¿Qué protocolo utiliza el puerto 53?**
-   - a) DNS
-   - b) FTP
-   - c) HTTP
-   - d) SSH
-   - **Respuesta Correcta**: a
 
 6. **¿Qué hace UDP en caso de pérdida de datagramas?**
    - a) No retransmite los datagramas perdidos
    - b) Retransmite todos los datagramas perdidos
    - c) Asegura la entrega de todos los datagramas
    - d) Espera a que se reconozcan los datagramas
-   - **Respuesta Correcta**: a
 
 7. **¿Cuál de las siguientes características NO se aplica a UDP?**
    - a) Establecimiento de sesión requerido
    - b) No hay control de flujo
    - c) No hay seguimiento de estado
    - d) Bajo encabezado de datagrama
-   - **Respuesta Correcta**: a
-
-8. **¿Qué puerto es utilizado comúnmente por el servidor DHCP?**
-   - a) 67
-   - b) 68
-   - c) 53
-   - d) 80
-   - **Respuesta Correcta**: a
 
 9. **¿Cómo se define el término "mejor esfuerzo" en el contexto de UDP?**
    - a) Se intenta entregar datos sin garantías de éxito
@@ -73,310 +53,168 @@
     - b) UDP
     - c) ICMP
     - d) ARP
-    - **Respuesta Correcta**: a
+    Comentario: Quizá sería interesante meter otra porque también usa UDP...
 
 12. **¿Cuál de los siguientes ejemplos se considera un uso adecuado de UDP?**
     - a) Streaming de video
     - b) Transferencia de archivos grandes
     - c) Envío de correos electrónicos
     - d) Acceso a bases de datos
-    - **Respuesta Correcta**: a
 
 13. **¿Qué tipo de conexión establece UDP?**
     - a) Sin conexión
     - b) Con conexión
     - c) Persistente
     - d) Segura
-    - **Respuesta Correcta**: a
 
 14. **¿Qué identificación se utiliza para distinguir diferentes procesos en el mismo dispositivo?**
     - a) Números de puerto
     - b) Direcciones IP
     - c) Protocolo de transporte
     - d) Direcciones MAC
-    - **Respuesta Correcta**: a
 
 15. **¿Qué puerto se asocia típicamente con el servicio FTP?**
     - a) 21
     - b) 25
     - c) 22
     - d) 53
-    - **Respuesta Correcta**: a
 
 16. **¿A qué se refiere el término "socket"?
-
     - a) Combinación de dirección IP y número de puerto
     - b) Solo a la dirección IP del servidor
     - c) Solo al número de puerto
     - d) A la dirección MAC del cliente
-    - **Respuesta Correcta**: a
-
-17. **¿Para cuál de los siguientes protocolos se utiliza el puerto 161?**
-    - a) SNMP
-    - b) HTTP
-    - c) FTP
-    - d) DHCP
-    - **Respuesta Correcta**: a
-    
-18. **¿Qué número de puerto se utiliza para las solicitudes de autenticación de RADIUS?**
-    - a) 1812
-    - b) 53
-    - c) 67
-    - d) 68
-    - **Respuesta Correcta**: a
 
 19. **¿Cómo se describe el proceso de "multiplexación" en redes?**
     - a) Permite que múltiples conexiones existan simultáneamente
     - b) Es la entrega garantizada de datos
     - c) Es un mecanismo de seguridad
     - d) Es un proceso de reenvío de datos
-    - **Respuesta Correcta**: a
 
 20. **¿Cómo se llama la herramienta que permite listar conexiones de red activas en un sistema?**
     - a) netstat
     - b) ifconfig
     - c) tracert
     - d) ping
-    - **Respuesta Correcta**: a
 
 21. **¿Cuál es el rango de números de puertos dinámicos?**
     - a) 49152-65535
     - b) 0-1023
     - c) 1024-49151
-    - d) 256-512
-    - **Respuesta Correcta**: a
 
 22. **¿Qué puerto se utiliza comúnmente para el servicio HTTP?**
     - a) 80
     - b) 21
     - c) 25
     - d) 443
-    - **Respuesta Correcta**: a
 
-23. **¿Qué hace una aplicación cliente al seleccionar un puerto de origen?**
+23. **¿Qué hace una aplicación cliente para establecer un puerto de origen?**
     - a) Genera dinámicamente un número de puerto
     - b) Usa el puerto bien conocido
     - c) Establece una conexión persistente
     - d) Solicita al servidor el puerto que va a usar
-    - **Respuesta Correcta**: a
-
-24. **¿Cuál de los siguientes servicios se asocia con el puerto 23?**
-    - a) Telnet
-    - b) SMTP
-    - c) SNMP
-    - d) TCP
-    - **Respuesta Correcta**: a
 
 25. **¿Cómo se caracteriza el protocolo SCTP?**
     - a) Ofrece multistreaming y multihoming
     - b) Es un protocolo basado en conexión únicamente
     - c) Solo soporta UDP
     - d) No ofrece entrega confiable
-    - **Respuesta Correcta**: a
-
-26. **¿A cuál de los siguientes protocolos se le asigna el puerto 110?**
-    - a) POP3
-    - b) IMAP
-    - c) DNS
-    - d) HTTP
-    - **Respuesta Correcta**: a
 
 27. **Los números de puerto se utilizan para identificar qué aspecto de la comunicación en red?**
     - a) Procesos dentro de un dispositivo
     - b) Direcciones IP de origen
     - c) Tipos de protocolos
     - d) Direcciones MAC
-    - **Respuesta Correcta**: a
 
 28. **¿Qué acción realiza UDP al recibir datagramas fuera de orden?**
     - a) Los reenvía en el orden recibido
     - b) Los reordena antes de enviarlos
     - c) Los descarta automáticamente
     - d) Realiza un seguimiento de la secuencia
-    - **Respuesta Correcta**: a
 
-29. **¿Qué tipo de aplicaciones típicamente no utilizan UDP?**
-    - a) Aplicaciones que requieren entrega garantizada de datos
-    - b) Juegos en línea
-    - c) Streaming de música
-    - d) VoIP
-    - **Respuesta Correcta**: a
-
-30. **¿Cuál es el número de puerto que utiliza DNS para la comunicación sobre TCP?**
-    - a) 53
-    - b) 80
-    - c) 443
-    - d) 21
-    - **Respuesta Correcta**: a
-
-31. **¿Qué recurso gestiona la asignación de números de puerto?**
+31. **¿Qué organismo gestiona la asignación de números de puerto?**
     - a) Internet Assigned Numbers Authority (IANA)
     - b) Network Management Protocol (NMP)
     - c) Internet Engineering Task Force (IETF)
     - d) World Wide Web Consortium (W3C)
-    - **Respuesta Correcta**: a
 
 32. **¿Qué hace el comando `netstat -n` en un sistema operativo?**
     - a) Muestra direcciones IP y números de puerto en forma numérica
     - b) Lista solo los puertos TCP
-    - c) S muestra la información de tráfico de manera gráfica
+    - c) Muestra la información de tráfico de manera gráfica
     - d) Verifica la conexión de seguridad
-    - **Respuesta Correcta**: a
-
-33. **Al usar UDP, ¿cuál es la principal razón por la que los datos pueden ser perdidos durante la transmisión?**
-    - a) No se realiza retransmisión de datagramas perdidos
-    - b) El tamaño de los datagramas es demasiado grande
-    - c) El protocolo requiere conexión
-    - d) Se necesita confirmación de recepción
-    - **Respuesta Correcta**: a
-
-34. **¿Qué puerto se utiliza para el Protocolo Trivial de Transferencia de Archivos (TFTP)?**
-    - a) 69
-    - b) 21
-    - c) 25
-    - d) 53
-    - **Respuesta Correcta**: a
-
-35. **¿Cuál es la propiedad principal de un protocolo sin conexión como UDP?**
-    - a) No hay necesidad de establecer una conexión antes de enviar datos
-    - b) Asegura la entrega de todos los datos
-    - c) Proporciona un flujo constante de datos
-    - d) Controla la congestión de la red
-    - **Respuesta Correcta**: a
 
 36. **¿En qué condiciones UDP es el protocolo preferido para transmisión de datos?**
     - a) Cuando la pérdida de datos no resulta crítica y se necesita velocidad
     - b) Cuando se necesita una comunicación segura
     - c) Cuando se requiere orden en la transmisión de datos
     - d) Cuando todos los datos enviados deben ser entregados
-    - **Respuesta Correcta**: a
-
-37. **¿Qué tipo de conexión se evita con el uso de UDP?**
-    - a) Conexión establecida y mantenida
-    - b) Conexiones inseguras
-    - c) Conexiones retrasadas
-    - d) Conexiones de alta latencia
-    - **Respuesta Correcta**: a
 
 38. **¿Cuál es el puerto estándar para el servicio HTTPS?**
     - a) 443
     - b) 80
     - c) 21
     - d) 25
-    - **Respuesta Correcta**: a
-
-39. **What typical applications use UDP for communication?**
-    - a) Telephony applications like VoIP
-    - b) Database applications
-    - c) Email applications
-    - d) Web browsing
-    - **Respuesta Correcta**: a
 
 40. **¿Cuál de las siguientes afirmaciones es cierta con respecto a UDP?**
     - a) Se considera un protocolo de "mejor esfuerzo"
     - b) Proporciona confirmación de entrega
     - c) Siempre entrega datos en el orden correcto
     - d) Necesita una conexión previa antes de enviar datos
-    - **Respuesta Correcta**: a
-
-41. **¿Cuál es uno de los principales beneficios del protocolo QUIC?**
-    - a) Establecimiento de conexión rápido y reducción de latencia
-    - b) Solo funciona sobre TCP
-    - c) No proporciona cifrado de datos
-    - d) No permite múltiples flujos independientes
-    - **Respuesta Correcta**: a
 
 42. **¿Qué tipo de aplicaciones se benefician más del uso de MQTT?**
     - a) Aplicaciones de Internet de las Cosas (IoT)
     - b) Aplicaciones de streaming de video
     - c) Juegos en línea
     - d) Navegadores web
-    - **Respuesta Correcta**: a
 
 43. **¿Qué característica clave ofrece SCTP en comparación con TCP y UDP?**
     - a) Multistreaming
     - b) Solo entrega de datos de flujo unidireccional
     - c) No tiene soporte para direcciones IP
     - d) Retransmisión de datos garantizada
-    - **Respuesta Correcta**: a
-
-44. **¿Cuál de los siguientes es un protocolo ligero ideal para comunicaciones de baja potencia en dispositivos IoT?**
-    - a) CoAP
-    - b) FTP
-    - c) SSH
-    - d) SMTP
-    - **Respuesta Correcta**: a
 
 45. **¿Qué integración de seguridad se ofrece de forma nativa en el protocolo QUIC?**
     - a) TLS 1.3
     - b) SSL 3.0
     - c) HTTPS
     - d) FTP seguro
-    - **Respuesta Correcta**: a
 
 46. **¿Cuál es uno de los desafíos que plantean las redes 5G en relación a los protocolos de transporte?**
     - a) La necesidad de alta velocidad y baja latencia
     - b) Aumento de la latencia en las conexiones
     - c) Menor capacidad de carga de datos
     - d) Protocolo de diseño complicado
-    - **Respuesta Correcta**: a
 
 47. **¿Cuál de las siguientes opciones describe mejor el propósito de TLS en la capa de transporte?**
     - a) Cifrar datos para garantizar la confidencialidad
-    - b) Solo permitir conexiones no seguras
+    - b) Disminuir la latencia en las comunicaciones
     - c) Mantener el ritmo de datos al enviar
     - d) Proveer una conexión basada en el estado del sistema
-    - **Respuesta Correcta**: a
 
 48. **En el contexto de la seguridad de las comunicaciones en red, ¿qué función realiza SSL?**
     - a) Proteger la confidencialidad de la información transmitida
     - b) Aumentar la velocidad de la transmisión
     - c) Simplificar la gestión de datos
-    - d) Proporcionar conexiones sin necesidad de autenticación
-    - **Respuesta Correcta**: a
+    - d) Reducir la sobrecarga en la entrega garantizada
 
-49. **¿Cuál de las siguientes es una característica de CoAP?**
-    - a) Protocolo optimizado para dispositivos con recursos limitados
-    - b) Siempre requiere una conexión segura
-    - c) No se utiliza en aplicaciones de IoT
-    - d) Solo admite comunicación unidireccional
-    - **Respuesta Correcta**: a
-
-50. **¿Qué aspecto de SCTP mejora la tolerancia a fallos en las conexiones?**
-    - a) Multihoming
-    - b) Compresión de datos
-    - c) Aumento del tamaño de los datagramas
-    - d) Mayor latencia en la entrega
-    - **Respuesta Correcta**: a
-
-    53. **¿Por qué es conveniente UDP para los protocolos que realizan una simple solicitud y respuesta?**
+53. **¿Por qué es conveniente UDP para los protocolos que realizan una simple solicitud y respuesta?**
    - a) Baja sobrecarga
    - b) Control de flujo
    - c) Confianza
    - d) Entrega en el mismo pedido
-   - **Respuesta Correcta**: a
 
 54. **¿Qué declaración sobre el reensamblaje de datagramas UDP es verdadera?**
    - a) UDP no vuelve a ensamblar los datos.
    - b) UDP vuelve a ensamblar los datos en el orden en que fueron recibidos.
    - c) UDP vuelve a ensamblar los datos utilizando bits de control.
    - d) UDP vuelve a ensamblar los datos utilizando números de secuencia.
-   - **Respuesta Correcta**: a
 
 55. **¿Qué capa es responsable de establecer una sesión de comunicación temporal entre las aplicaciones host de origen y destino?**
    - a) Capa de transporte
    - b) Capa de aplicación
    - c) Capa de enlace de datos
    - d) Capa de red
-   - **Respuesta Correcta**: a
-
-56. **¿Cuáles son las tres responsabilidades de la capa de transporte? (Escoja tres opciones).**
-   - a) Multiplexión de conversaciones
-   - b) Identificación de marcos
-   - c) Segmentación de datos y reensamblado de segmentos
-   - d) Identificación de información de enrutamiento
-   - e) Seguimiento de conversaciones individuales
-   - **Respuesta Correcta**: a, c, e
 
 57. **¿Qué declaración sobre los protocolos de la capa de transporte es verdadera?**
    - a) TCP tiene más campos que UDP.
@@ -390,19 +228,12 @@
    - b) Protocolo de control de transmisión (TCP)
    - c) Protocolo de información de sesión (SIP)
    - d) Protocolo de transferencia de VoIP es más rápido que UDP.
-   - **Respuesta Correcta**: a
-
-59. **Supongamos que un host con dirección IP 10.1.1.10 desea solicitar servicios web desde un servidor en 10.1.1.254. ¿Cuál de los siguientes mostraría para corregir el par de socket?**
-   - a) 10.1.1.10:XXXX, 10.1.1.254:80 (donde XXXX es un número de puerto asignado dinámicamente)
-   - b) 10.1.1.10:80, 10.1.1.254:XXXX
-   - **Respuesta Correcta**: a
 
 60. **¿Qué grupo de puertos incluye números de puerto para aplicaciones FTP, HTTP y TFTP?**
    - a) Puertos bien conocidos
    - b) Puertos dinámicos
    - c) Puertos privados
    - d) Puertos registrados
-   - **Respuesta Correcta**: a
 
 61. **¿Qué comando de Windows mostrará los protocolos en uso, la dirección local y los números de puerto, la dirección remota y los números de puerto y el estado de la conexión?**
    - a) netstat
@@ -418,8 +249,106 @@
    - d) Origen: 49152, Destino: 1812
    - **Respuesta Correcta**: a
 
-   59. **Supongamos que un host con dirección IP 10.1.1.10 desea solicitar servicios web desde un servidor en 10.1.1.254. ¿Cuál de los siguientes mostraría para corregir el par de socket?**
+59. **Supongamos que un host con dirección IP 10.1.1.10 desea solicitar servicios web desde un servidor en 10.1.1.254. ¿Cuál de los siguientes mostraría para corregir el par de socket?**
    - a) 10.1.1.10:49152, 10.1.1.254:80 
    - b) 10.1.1.10:80, 10.1.1.254:49152
    - c) Ambas son correctas
    - d) Ninguna es correcta
+
+
+5. **¿Qué protocolo utiliza el puerto 53?**
+   - a) DNS
+   - b) FTP
+   - c) HTTP
+   - d) SSH
+   - **Respuesta Correcta**: a
+
+8. **¿Qué puerto es utilizado comúnmente por el servidor DHCP?**
+   - a) 67
+   - b) 68
+   - c) 53
+   - d) 80
+   - **Respuesta Correcta**: a
+
+17. **¿Para cuál de los siguientes protocolos se utiliza el puerto 161?**
+    - a) SNMP
+    - b) HTTP
+    - c) FTP
+    - d) DHCP
+    - **Respuesta Correcta**: a
+
+
+  
+18. **¿Qué número de puerto se utiliza para las solicitudes de autenticación de RADIUS?**
+    - a) 1812
+    - b) 53
+    - c) 67
+    - d) 68
+    - **Respuesta Correcta**: a
+
+
+24. **¿Cuál de los siguientes servicios se asocia con el puerto 23?**
+    - a) Telnet
+    - b) SMTP
+    - c) SNMP
+    - d) TCP
+    - Comentario: Quizá cambiar por SSH / RDP... Telnet ya se usa poco.
+
+
+26. **¿A cuál de los siguientes protocolos se le asigna el puerto 110?**
+    - a) POP3
+    - b) IMAP
+    - c) DNS
+    - d) HTTP
+
+
+30. **¿Cuál es el número de puerto que utiliza DNS para la comunicación sobre TCP?**
+    - a) 53
+    - b) 80
+    - c) 443
+    - d) 21
+    - **Respuesta Correcta**: a
+
+34. **¿Qué puerto se utiliza para el Protocolo Trivial de Transferencia de Archivos (TFTP)?**
+    - a) 69
+    - b) 21
+    - c) 25
+    - d) 53
+    - **Respuesta Correcta**: a
+
+41. **¿Cuál es uno de los principales beneficios del protocolo QUIC?**
+    - a) Establecimiento de conexión rápido y reducción de latencia
+    - b) Solo funciona sobre TCP
+    - c) No proporciona cifrado de datos
+    - d) No permite múltiples flujos independientes
+
+
+44. **¿Cuál de los siguientes es un protocolo ligero ideal para comunicaciones de baja potencia en dispositivos IoT?**
+    - a) CoAP
+    - b) FTP
+    - c) SSH
+    - d) SMTP
+
+49. **¿Cuál de las siguientes es una característica de CoAP?**
+    - a) Protocolo optimizado para dispositivos con recursos limitados
+    - b) Siempre requiere una conexión segura
+    - c) No se utiliza en aplicaciones de IoT
+    - d) Solo admite comunicación unidireccional
+    - **Respuesta Correcta**: a
+
+
+50. **¿Qué aspecto de SCTP mejora la tolerancia a fallos en las conexiones?**
+    - a) Multihoming
+    - b) Compresión de datos
+    - c) Aumento del tamaño de los datagramas
+    - d) Mayor latencia en la entrega
+    - **Respuesta Correcta**: a
+
+
+56. **¿Cuáles son las tres responsabilidades de la capa de transporte? (Escoja tres opciones).**
+   - a) Multiplexión de conversaciones
+   - b) Identificación de marcos
+   - c) Segmentación de datos y reensamblado de segmentos
+   - d) Identificación de información de enrutamiento
+   - e) Seguimiento de conversaciones individuales
+   - **Respuesta Correcta**: a, c, e
