@@ -155,31 +155,28 @@ red
     - Realiza auditorías de seguridad
     - Descubre rutas automáticamente
 
-
 28. **Pregunta:** "¿Cuál es el propósito de la métrica en una tabla de enrutamiento?"
-
-    Determinar el coste o distancia de la ruta
-    Almacenar el tiempo de respuesta
-    Guardar la dirección IP de origen
-    Modificar el tráfico de red
+    - Determinar el coste o distancia de la ruta
+    - Almacenar el tiempo de respuesta
+    - Guardar la dirección IP de origen
+    - Modificar el tráfico de red
 
 29. **Pregunta:** "¿Qué tipo de enrutamiento es mejor para redes que cambian frecuentemente?"
-
-    Enrutamiento dinámico
-    Enrutamiento estático
-    Enrutamiento manual
-    Enrutamiento basado en protocolos de seguridad
+    - Enrutamiento dinámico
+    - Enrutamiento estático
+    - Enrutamiento manual
+    - Enrutamiento basado en protocolos de seguridad
 
 30. **Pregunta:** "¿Cuál de los siguientes protocolos utiliza el conteo de saltos como métrica?"
-    OSPF
-    RIP
-    EIGRP
-    BGP
+    - OSPF
+    - RIP
+    - EIGRP
+    - BGP
 
 31. **Pregunta:** "¿Cómo se define una VLAN?"
-    Segmentación de una red física en redes lógicas
-    Aumento del tráfico de la red
-    Un tipo de hardware de red
-    Tecnología de almacenamiento en red
+    - Segmentación de una red física en redes lógicas
+    - Aumento del tráfico de la red
+    - Un tipo de hardware de red
+    - Tecnología de almacenamiento en red
 
 
