@@ -114,7 +114,8 @@
 
 21. **Pregunta:** "Los enlaces troncalizados (trunking) en switches VLAN permiten..."
     - Tener puertos adicionales
-    - Reducir la velocidad de la red
+    - Reducir la velocidad de la     Respuesta Correcta: a
+red
     - Aumentar la latencia
     - Transportar tráfico de múltiples VLAN simultáneamente
 
@@ -141,3 +142,44 @@
     - Máscara de subred
     - Gateway
     - Historial de tráfico
+
+26. **Pregunta:** "Cuando se menciona 'máscara de subred', ¿a qué se refiere?"
+    - A una técnica para aumentar el ancho de banda
+    - A un hardware específico de red
+    - A un valor que divide direcciones IP en partes funcionales
+    - A un tipo de protocolo
+
+27. **Pregunta:** "¿Qué hace un protocolo de enrutamiento dinámico?"
+    - Obliga a la configuración manual de rutas
+    - Modifica el hardware del router
+    - Realiza auditorías de seguridad
+    - Descubre rutas automáticamente
+
+
+28. **Pregunta:** "¿Cuál es el propósito de la métrica en una tabla de enrutamiento?"
+
+    Determinar el coste o distancia de la ruta
+    Almacenar el tiempo de respuesta
+    Guardar la dirección IP de origen
+    Modificar el tráfico de red
+
+29. **Pregunta:** "¿Qué tipo de enrutamiento es mejor para redes que cambian frecuentemente?"
+
+    Enrutamiento dinámico
+    Enrutamiento estático
+    Enrutamiento manual
+    Enrutamiento basado en protocolos de seguridad
+
+30. **Pregunta:** "¿Cuál de los siguientes protocolos utiliza el conteo de saltos como métrica?"
+    OSPF
+    RIP
+    EIGRP
+    BGP
+
+31. **Pregunta:** "¿Cómo se define una VLAN?"
+    Segmentación de una red física en redes lógicas
+    Aumento del tráfico de la red
+    Un tipo de hardware de red
+    Tecnología de almacenamiento en red
+
+
