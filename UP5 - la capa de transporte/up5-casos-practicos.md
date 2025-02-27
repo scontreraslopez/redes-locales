@@ -99,3 +99,6 @@ Espero que esta introducción refleje adecuadamente tus intenciones y ayude a tu
 
 TODO: **Práctica de PT**: https://examenredes.com/14-8-1-packet-tracer-comunicaciones-de-tcp-y-udp-respuestas/ 
 Link: Podemos usar <http://poc.aquilasoftware.com/poclite/resources/cms/cms.html#/login> para hacer la práctica de TCP stream.
+
+- ¿Meter algún ejercicio de netstats?
+- ¿Hacer una práctica para identificar el puerto cliente y el puerto servidor?
