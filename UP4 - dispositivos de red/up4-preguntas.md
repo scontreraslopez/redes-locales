@@ -593,3 +593,4 @@
     - Altas velocidades de transmisión y baja latencia
     - Disminución de recursos
     - Solo uso en zonas urbanas
+
