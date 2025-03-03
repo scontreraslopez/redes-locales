@@ -600,3 +600,4 @@ Los medios inalámbricos transportan señales electromagnéticas que representan
 ## 6. Referencias
 
 - [CCNA 1 Versión 7 Módulo 4: Capa Física](https://examenredes.com/ccna-1-version-7-modulo-4-capa-fisica/)
+- [aulaClic. Curso de Redes Telemáticas. Rogelio Montañana](https://www.aulaclic.es/redes/index.htm)
