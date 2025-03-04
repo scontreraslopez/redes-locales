@@ -76,11 +76,18 @@ En términos de rendimiento, no todas las conexiones físicas son iguales a la h
 
 La capa física de OSI proporciona los medios de transporte de los bits que conforman una trama de la capa de enlace de datos a través de los medios de red. Esta capa acepta una trama completa desde la capa de enlace de datos y la codifica como una secuencia de señales que se transmiten en los medios locales. Un dispositivo final o un dispositivo intermediario recibe los bits codificados que componen una trama.
 
-Haga clic en Reproducir en la figura para ver un ejemplo del proceso de encapsulación. La última parte de este proceso muestra los bits que se envían a través del medio físico. La capa física codifica las tramas y crea las señales eléctricas, ópticas o de ondas de radio que representan los bits en cada trama. Estas señales se envían por los medios, una a la vez.
-
-La capa física del nodo de destino recupera estas señales individuales de los medios, las restaura a sus representaciones en bits y pasa los bits a la capa de enlace de datos en forma de trama completa.
+Así pues, la capa física se responsabiliza de la especificación de los medios de transmisión mecánicos, eléctricos, funcionales y procedurales. La capa física codifica las tramas y crea las señales eléctricas, ópticas o de ondas de radio que representan los bits en cada trama y las envía por los respectivos medios. Del mismo modo, la capa física del nodo de destino recupera estas señales individuales de los medios, las restaura a sus representaciones en bits y pasa los bits a la capa de enlace de datos en forma de trama completa.
 
 ![Proceso de encapsulación](https://examenredes.com/wp-content/uploads/2021/12/4.1.2a.gif)
+
+En resumen, la capa física:
+
+- Se ocupa de transmitir bits.
+- Especifica cuestiones como:
+  - La forma de los conectores.
+  - Las características eléctricas de los cables y su longitud máxima.
+  - Las características y frecuencias de las señales que se envían por los cables o por ondas de radio.
+  - La forma de codificar los bits en señales (modulación), tanto en las transmisiones analógicas como en las digitales.
 
 ## 3. Características de la capa física
 
@@ -113,11 +120,25 @@ Los estándares de la capa física abarcan tres áreas funcionales:
 - Codificación
 - Señalización
 
-#### Componentes físicos
+#### 3.2.1. Componentes físicos
 
 Los componentes físicos son los dispositivos de hardware electrónico, medios y otros conectores que transmiten las señales que representan los bits. Todos los componentes de hardware, como NIC, interfaces y conectores, materiales y diseño de los cables, se especifican en los estándares asociados con la capa física. Los diversos puertos e interfaces de un router Cisco 1941 también son ejemplos de componentes físicos con conectores y diagramas de pines específicos derivados de los estándares.
 
-### 3.3. Codificación
+Respecto a los medios de transmisión podemos clasificarlos en:
+
+- Cables o medios guiados:
+  - Cables metálicos (cobre):
+    - Coaxial
+    - De pares trenzados (apantallados o sin apantallar)
+  - Fibra óptica:
+    - Multimodo: Distancias cortas y *bajas* velocidades
+    - Monomodo: Distancias largas o *altas* velocidades
+- Ondas de radio o medios no guiados
+  - Microondas
+    - Enlaces fijos (terrestres y vía satélite)
+    - Equipos móviles (WiFi, GSM, vía satélite)
+
+#### 3.2.2. Codificación
 
 La codificación, o codificación de línea, es un método que se utiliza para convertir una transmisión de bits de datos en un “código” predefinido. Los códigos son grupos de bits utilizados para ofrecer un patrón predecible que pueda reconocer tanto el emisor como el receptor. En otras palabras, la codificación es el método o patrón utilizado para representar la información digital. Similar a la forma en que el código Morse codifica un mensaje con una serie de puntos y guiones.
 
@@ -127,7 +148,7 @@ Por ejemplo, en la codificación Manchester los 0 se representan mediante una tr
 
 La transición se produce en el medio de cada período de bit.
 
-### 3.4. Señalización
+#### 3.2.3. Señalización
 
 La capa física debe generar las señales inalámbricas, ópticas o eléctricas que representan los “1” y los “0” en los medios. La forma en que se representan los bits se denomina método de señalización. Los estándares de la capa física deben definir qué tipo de señal representa un “1” y qué tipo de señal representa un “0”. Esto puede ser tan simple como un cambio en el nivel de una señal eléctrica o de un pulso óptico. Por ejemplo, un pulso largo podría representar un 1 mientras que un pulso corto podría representar un 0.
 
@@ -597,7 +618,21 @@ El cable de fibra óptica transmite datos a distancias más largas y con anchos 
 
 Los medios inalámbricos transportan señales electromagnéticas que representan los dígitos binarios de las comunicaciones de datos mediante frecuencias de radio y de microondas. La tecnología inalámbrica tiene algunas limitaciones, entre ellas: área de cobertura, interferencia, seguridad y los problemas que se producen con cualquier medio compartido. Los estándares inalámbricos incluyen los siguientes: Wi-Fi (IEEE 802.11), Bluetooth (IEEE 802.15), WiMAX (IEEE 802.16) y Zigbee (IEEE 802.15.4). LAN inalámbrica (WLAN) requiere un AP inalámbrico y adaptadores NIC inalámbricos.
 
-## 6. Referencias
+## 6. Cuestiones de seguridad trabajando con cables
+
+En la transmisión de datos los voltajes con los que se trabaja son bajos (de unos pocos voltios) y no representan un peligro para las personas. Sin embargo, los equipos que se alimentan por el cable de Ethernet (PoE) pueden tener tensiones de hasta 50, lo que puede ser peligroso si se manipulan incorrectamente.
+
+Consejos de seguridad:
+
+- No tocar cables desnudos.
+- Comprobar cables y partes metálicas con el polímetro.
+- Si se trabaja con escaleras, que no sean metálicas.
+- No tocar más de un cable a la vez, por dos cuestiones:
+  - Evitamos que se cierre el circuito eléctrico, así estaríamos protegidos por el diferencial.
+  - Se evita que la corriente atraviese el centro del cuerpo.
+- No trabajar con cables mojados.
+
+## 7. Referencias
 
 - [CCNA 1 Versión 7 Módulo 4: Capa Física](https://examenredes.com/ccna-1-version-7-modulo-4-capa-fisica/)
 - [aulaClic. Curso de Redes Telemáticas. Rogelio Montañana](https://www.aulaclic.es/redes/index.htm)
