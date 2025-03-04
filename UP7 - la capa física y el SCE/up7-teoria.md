@@ -37,7 +37,8 @@
   - [5.4. Cableado UTP](#54-cableado-utp)
   - [5.5. Cableado de fibra óptica](#55-cableado-de-fibra-óptica)
   - [5.6. Medios inalámbricos](#56-medios-inalámbricos)
-- [6. Referencias](#6-referencias)
+- [6. Cuestiones de seguridad](#6-cuestiones-de-seguridad)
+- [7. Referencias](#7-referencias)
 
 ## 1. Introducción
 
@@ -111,6 +112,15 @@ Existen muchas organizaciones internacionales y nacionales, organizaciones de re
 Además de estos, a menudo hay grupos de normas de cableado regionales como CSA (Asociación de Normas Canadienses), CENELEC (Comité Europeo de Normalización Electrotécnica) y JSA / JIS (Asociación de Normas Japonesas), que desarrollan especificaciones locales.
 
 ![Estándares de la capa física](https://examenredes.com/wp-content/uploads/2021/12/2021-12-25_084438.jpg)
+
+Los dos estándares más importantes de cableado estructurado son:
+
+- ANSI/EIA/TIA 568
+- ISO/IEC 11801
+
+Estos dos estándares son muy similares, y lo normal es buscar cumplir con ambos.
+
+El sistema de cableado estructurado se rfiere a las normas para la instalación de infraestructura de cableado en edificios.
 
 ### 3.2. Componentes físicos
 
@@ -228,12 +238,16 @@ El cableado de cobre es el tipo más común de cableado utilizado en las redes h
 
 Las redes utilizan medios de cobre porque son económicos y fáciles de instalar, y tienen baja resistencia a la corriente eléctrica. Sin embargo, estos medios están limitados por la distancia y la interferencia de señal.
 
-Los datos se transmiten en cables de cobre como impulsos eléctricos. Un detector en la interfaz de red de un dispositivo de destino debe recibir una señal que pueda decodificarse exitosamente para que coincida con la señal enviada. No obstante, cuanto más lejos viaja una señal, más se deteriora. Esto se denomina atenuación de señal. Por este motivo, todos los medios de cobre deben cumplir con las limitaciones de distancia especificadas en los estándares que los rigen.
+Los datos se transmiten en cables de cobre como impulsos eléctricos. Un detector en la interfaz de red de un dispositivo de destino debe recibir una señal que pueda decodificarse exitosamente para que coincida con la señal enviada. No obstante, cuanto más lejos viaja una señal, más se deteriora. Esto se denomina **atenuación** de señal. Por este motivo, todos los medios de cobre deben cumplir con las limitaciones de distancia especificadas en los estándares que los rigen.
 
 Los valores de temporización y voltaje de los pulsos eléctricos también son vulnerables a las interferencias de dos fuentes:
 
 - Interferencia electromagnética (EMI) o interferencia de radiofrecuencia (RFI): las señales de EMI y RFI pueden distorsionar y dañar las señales de datos que transportan los medios de cobre. Las posibles fuentes de EMI y RFI incluyen las ondas de radio y dispositivos electromagnéticos, como las luces fluorescentes o los motores eléctricos.
 - Diafonía o crosstalk: Se trata de una perturbación causada por los campos eléctricos o magnéticos de una señal de un hilo a la señal de un hilo adyacente. En los circuitos telefónicos, el crosstalk puede provocar que se escuche parte de otra conversación de voz de un circuito adyacente. En especial, cuando una corriente eléctrica fluye por un hilo, crea un pequeño campo magnético circular alrededor de dicho hilo, que puede captar un hilo adyacente.
+
+Tenemos también la diafonía alienígena, que es la interferencia entre cables de diferentes pares en un cable de par trenzado. La diafonía alienígena es una fuente común de interferencia en los cables de par trenzado. La diafonía alien es importante solo a partir de 10GBASE-T y superiores.
+
+![diapositiva54-rogelio](/assets/images/diapositiva54-rogelio.png)
 
 En la figura, se muestra la forma en que la interferencia puede afectar la transmisión de datos.
 
@@ -246,7 +260,7 @@ En la figura, se muestra la forma en que la interferencia puede afectar la trans
 
 Para contrarrestar los efectos negativos de la EMI y la RFI, algunos tipos de cables de cobre se empaquetan con un blindaje metálico y requieren una conexión a tierra adecuada.
 
-Para contrarrestar los efectos negativos del crosstalk, algunos tipos de cables de cobre tienen pares de hilos de circuitos opuestos trenzados que cancelan dicho tipo de interferencia en forma eficaz.
+Para contrarrestar los efectos negativos del crosstalk, algunos tipos de cables de cobre tienen pares de hilos de circuitos opuestos trenzados que cancelan dicho tipo de interferencia en forma eficaz. Un detalle interesante es que la densidad de trenzado de cada par es diferente para que la cancelación del crosstalk sea más efectiva.
 
 La susceptibilidad de los cables de cobre al ruido electrónico también se puede limitar utilizando estas recomendaciones:
 
@@ -347,12 +361,13 @@ Los cables de categorías superiores se diseñan y fabrican para admitir velocid
 
 La figura muestra tres categorías de cable UTP:
 
-La categoría 3 se utilizó originalmente para la comunicación de voz a través de líneas de voz, pero más tarde para la transmisión de datos.
-Las categorías 5 y 5e se utilizan para la transmisión de datos. La categoría 5 soporta 100Mbps y la categoría 5e soporta 1000 Mbps
-La categoría 6 tiene un separador añadido entre cada par de cables para soportar velocidades más altas. Categoría 6 soporta hasta 10 Gbps.
-Categoría 7 también soporta 10 Gbps.
-Categoría 8 soporta 40 Gbps.
-Algunos fabricantes producen cables que exceden las especificaciones de la categoría 6a de la TIA/EIA y se refieren a estos como cables de Categoría 7.
+- La categoría 3 se utilizó originalmente para la comunicación de voz a través de líneas de voz, pero más tarde para la transmisión de datos.
+- Las categorías 5 y 5e se utilizan para la transmisión de datos. La categoría 5 soporta 100Mbps y la categoría 5e soporta 1000 Mbps
+- La categoría 6 tiene un separador añadido entre cada par de cables para soportar velocidades más altas. Categoría 6 soporta hasta 10 Gbps.
+- Categoría 7 también soporta 10 Gbps. Algunos fabricantes producen cables que exceden las especificaciones de la categoría 6a de la TIA/EIA y se refieren a estos como cables de Categoría 7.
+- Categoría 8 soporta 40 Gbps.
+
+
 
 ![Categorías de cables UTP](https://examenredes.com/wp-content/uploads/2021/12/2021-12-25_092608.jpg)
 
@@ -410,6 +425,18 @@ Tipos de cable y estándar
 | Cable directo de Ethernet| Ambos extremos son T568A o T568B, siendo lo más común que ambos tengan T568B | Conecta un host de red a un dispositivo de red como un switch o concentrador. |
 | Cruzado Ethernet         | Un extremo T568A, otro extremo T568B | Conecta dos hosts de red. Conecta dos dispositivos intermediarios de red (switch a switch o router a router). |
 | Rollover                 | Propietario de Cisco             | Conecta el puerto serial de una estación de trabajo al puerto de consola de un router utilizando un adaptador. |
+
+### 4.3.4. Categorías de cable UTP
+
+| Categoría | Tipo de cable | Frecuencia máxima | Distancia máxima | Año estándar | Longitud máxima | Velocidad máxima |
+|-----------|----------------|-------------------|------------------|--------------|-----------------|------------------|
+| 5         | UTP            | 100 MHz           | 100 metros       | 1995         | 100 metros      | 100 Mbps         |
+| 5e        | UTP            | 100 MHz           | 100 metros       | 2001         | 100 metros      | 1 Gbps           |
+| 6         | UTP        | 250 MHz           | 100 metros       | 2002         | 100 metros      | 1 Gbps o 10 Gbps (hasta 55m)           |
+| 6a        | UTP        | 500 MHz           | 100 metros       | 2008         | 100 metros      | 10 Gbps          |
+| 8         | SFTP        | 2000 MHz          | 30 metros        | 2016         | 30 metros       | 40 Gbps         |
+
+![Evolución de los cables](/assets/images/cables_evolution.png)
 
 ### 4.4. Cableado de fibra óptica
 
@@ -618,7 +645,9 @@ El cable de fibra óptica transmite datos a distancias más largas y con anchos 
 
 Los medios inalámbricos transportan señales electromagnéticas que representan los dígitos binarios de las comunicaciones de datos mediante frecuencias de radio y de microondas. La tecnología inalámbrica tiene algunas limitaciones, entre ellas: área de cobertura, interferencia, seguridad y los problemas que se producen con cualquier medio compartido. Los estándares inalámbricos incluyen los siguientes: Wi-Fi (IEEE 802.11), Bluetooth (IEEE 802.15), WiMAX (IEEE 802.16) y Zigbee (IEEE 802.15.4). LAN inalámbrica (WLAN) requiere un AP inalámbrico y adaptadores NIC inalámbricos.
 
-## 6. Cuestiones de seguridad trabajando con cables
+## 6. Instalación de cableado
+
+### 6.1. Seguridad en la manipulación de cableado
 
 En la transmisión de datos los voltajes con los que se trabaja son bajos (de unos pocos voltios) y no representan un peligro para las personas. Sin embargo, los equipos que se alimentan por el cable de Ethernet (PoE) pueden tener tensiones de hasta 50, lo que puede ser peligroso si se manipulan incorrectamente.
 
@@ -631,6 +660,123 @@ Consejos de seguridad:
   - Evitamos que se cierre el circuito eléctrico, así estaríamos protegidos por el diferencial.
   - Se evita que la corriente atraviese el centro del cuerpo.
 - No trabajar con cables mojados.
+
+### 6.2. Esquema de una instalación de cableado de red
+
+A rasgos generales una instalación de cableado de red puede dividirse en dos partes:
+
+- Cableado horizontal: Conecta los puntos de red desde los dispositivos finales (como PCs, impresoras, teléfonos) hasta el Punto de Consolidación (PCON), típicamente el panel de parcheo, o directamente el Rack de Telecomunicaciones.
+- Cableado vertical o Backbone: Interconecta los diferentes pisos o zonas de un edificio con el cuarto de telecomunicaciones principal (PoP). También a veces se le llama RITI.
+
+Los componentes principales de una instalación de cableado de red son:
+
+#### Rosetas
+
+- Dispositivos que actúan como puntos de terminación del cableado horizontal en los puestos de trabajo o zonas de uso.
+- Generalmente son placas con uno o varios puertos RJ45.
+- Facilitan la conexión de dispositivos finales mediante latiguillos.
+
+#### Latiguillos
+
+- Cables cortos (máximo 10 metros) que conectan dispositivos finales (ordenadores, impresoras, teléfonos) con las rosetas o los paneles de parcheo con switches.
+- Tipos comunes: UTP categoría 5e, 6, 6a o superior, dependiendo de los requisitos de la red.
+- Su calidad y longitud son críticas para evitar pérdidas de rendimiento.
+
+#### Paneles de parcheo
+
+- Componentes en los racks que permiten la conexión ordenada del cableado horizontal con los switches.
+- Proveen flexibilidad en la gestión de cables, facilitando cambios o reorganizaciones sin alterar el cableado estructurado principal.
+
+#### Switches
+
+- Equipos de red que permiten la conexión de múltiples dispositivos para formar una red local (LAN).
+- **Características importantes**:
+  - Número de puertos.
+  - Velocidad soportada (1 Gbps, 10 Gbps, etc.).
+  - Capacidad de administración (no gestionados, gestionados).
+
+#### Racks
+
+- Armarios que organizan y protegen los equipos de red y telecomunicaciones.
+- Proveen soporte para:
+  - Paneles de parcheo.
+  - Switches.
+  - Guías para cableado.
+  - Sistemas de ventilación para evitar el sobrecalentamiento.
+
+### Routers
+
+- Dispositivos encargados de interconectar redes diferentes, como la red local (LAN) con Internet o con una red WAN.
+- **Funciones clave**:
+  - Dirección IP y enrutamiento de datos.
+  - Traducción de direcciones de red (NAT).
+  - Posibilidad de incluir opciones avanzadas como firewalls integrados.
+
+#### Canaletas
+
+- Conductos diseñados para guiar y proteger el cableado, garantizando un entorno ordenado y seguro.
+- **Beneficios**:
+  - Evitar enredos y daños en los cables.
+  - Mejorar la estética en instalaciones visibles.
+  - Facilitar el acceso en caso de mantenimiento o futuras ampliaciones.
+
+#### Otros elementos
+
+- Regletas o paneles de alimentación: Proveen energía a los equipos dentro de los racks, algunas incluso ofrecen protección contra sobretensiones.
+- Organizadores de cables: Accesorios fundamentales en los racks para una gestión adecuada del cableado, ayudando a evitar enredos y a mantener un entorno limpio.
+- Sistemas de ventilación/refrigeración. En instalaciones con equipos que generan calor, los ventiladores o sistemas de aire acondicionado son indispensables para mantener el rendimiento.
+- Unidades de alimentación ininterrumpida (SAI/UPS): Garantizan el suministro eléctrico en caso de fallos y protegen los dispositivos frente a cortes repentinos.
+- Etiquetas: No es un componente físico, pero el uso de etiquetas para identificar cables, puertos y equipos es crucial en cualquier instalación profesional.
+- Sensores de temperatura o humedad para racks críticos.
+
+### 6.2.1. Cableado Horizontal
+
+- Conecta los puntos de red desde los dispositivos finales (como PCs, impresoras, teléfonos) hasta el **Punto de Consolidación (PCON)** o el **Rac de Telecomunicaciones**.
+- **Características**:
+  - Longitud máxima: 90 metros para cables de cobre.
+  - Los **latiguillos** (patch cords) no deben superar los 10 metros para evitar problemas de rendimiento.
+  - En ningún caso se debe sobrepasar el límite de 100 metros del estándar, sumando el cableado horizontal y los latiguillos.
+  - Tipos de cables: UTP, STP, fibra óptica.
+  - Uso de paneles de parcheo (patch panels) para la organización.
+
+Aquí encontramos los **Racks de Comunicaciones**. Se trata de armarios metálicos para organizar y proteger equipos de telecomunicaciones.
+
+**Elementos comunes en los racks**:
+
+- Equipos de red: switches, routers, paneles de parcheo.
+- Guías para cables.
+- Sistemas de ventilación.
+- Fuentes de alimentación redundantes.
+
+### 6.2.2. Cableado Vertical o Backbone
+
+- Interconecta los diferentes pisos o zonas de un edificio con el cuarto de telecomunicaciones principal.
+- **Características**:
+  - Generalmente usa fibra óptica por su alta capacidad y mayor longitud permitida.
+  - Proporciona conexión entre armarios secundarios y principales.
+
+  
+### 2. Punto de Presencia (POP)
+- Es el lugar donde la red local conecta con la red externa (Internet o WAN).
+- Incluye **equipos de conmutación y routers** que permiten la conectividad con proveedores de servicios.
+
+
+
+## Importancia de certificar la instalación:
+- Las instalaciones deben ser **certificadas** para garantizar su capacidad de soportar altas velocidades de transmisión de datos (1 Gbps, 10 Gbps o más).
+- Las certificaciones ayudan a comprobar que se respetan los estándares y que no hay fallos que puedan degradar el rendimiento de la red local, especialmente en instalaciones con longitudes cercanas al límite estándar.
+
+## Reglas generales del SCE:
+1. Seguir normativas como ANSI/TIA-568 o ISO/IEC 11801.
+2. Planificar el crecimiento futuro de la red.
+3. Usar etiquetas claras para identificar los cables y puertos.
+4. Mantener un buen sistema de gestión de cables para evitar enredos.
+
+---
+
+### Gráfico simplificado:
+
+
 
 ## 7. Referencias
 
