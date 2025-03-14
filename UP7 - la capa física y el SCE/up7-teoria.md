@@ -661,12 +661,26 @@ Consejos de seguridad:
   - Se evita que la corriente atraviese el centro del cuerpo.
 - No trabajar con cables mojados.
 
+Mencionar aquí como funcionan las protecciones eléctricas tomando como referencia la imagen de abajo:
+
+![Electrical Safety](https://i.pinimg.com/originals/08/cc/e0/08cce0d0f02ab11ce5520cfc3ff09142.png)
+
+Distinguimos el:
+
+- Interruptor general (IG): Es el que corta la corriente de toda la instalación.
+- Interruptor diferencial (ID): Corta la corriente si detecta una fuga de corriente a tierra.
+- Interruptor magnetotérmico (IM): Corta la corriente si detecta una sobrecarga o cortocircuito. Estos pueden ser de varios amperios, por ejemplo, 10A, 16A, 20A, 25A, 32A, 40A, 50A, 63A, etc. Puede actuar tanto a nivel general, donde muchas veces se le llama ICP (Interruptor de Control de Potencia), como a nivel individual, donde también se les llama PIA (Pequeño Interruptor Automático).
+
 ### 6.2. Esquema de una instalación de cableado de red
 
 A rasgos generales una instalación de cableado de red puede dividirse en dos partes:
 
 - Cableado horizontal: Conecta los puntos de red desde los dispositivos finales (como PCs, impresoras, teléfonos) hasta el Punto de Consolidación (PCON), típicamente el panel de parcheo, o directamente el Rack de Telecomunicaciones.
 - Cableado vertical o Backbone: Interconecta los diferentes pisos o zonas de un edificio con el cuarto de telecomunicaciones principal (PoP). También a veces se le llama RITI.
+
+### Gráfico simplificado:
+
+![diapositiva68-rogelio](/assets/images/diapositiva68-rogelio.PNG)
 
 Los componentes principales de una instalación de cableado de red son:
 
@@ -731,6 +745,8 @@ Los componentes principales de una instalación de cableado de red son:
 
 ### 6.2.1. Cableado Horizontal
 
+![diapositiva88-rogelio](/assets/images/diapositiva88-rogelio.PNG)
+
 - Conecta los puntos de red desde los dispositivos finales (como PCs, impresoras, teléfonos) hasta el **Punto de Consolidación (PCON)** o el **Rac de Telecomunicaciones**.
 - **Características**:
   - Longitud máxima: 90 metros para cables de cobre.
@@ -748,34 +764,36 @@ Aquí encontramos los **Racks de Comunicaciones**. Se trata de armarios metálic
 - Sistemas de ventilación.
 - Fuentes de alimentación redundantes.
 
+![diapositiva102-rogelio](/assets/images/diapositiva102-rogelio.png)
+
+![diapositiva103-rogelio](/assets/images/diapositiva103-rogelio.png)
+
+![diapositiva112-rogelio](/assets/images/diapositiva112-rogelio.png)
+
+
 ### 6.2.2. Cableado Vertical o Backbone
 
 - Interconecta los diferentes pisos o zonas de un edificio con el cuarto de telecomunicaciones principal.
 - **Características**:
   - Generalmente usa fibra óptica por su alta capacidad y mayor longitud permitida.
   - Proporciona conexión entre armarios secundarios y principales.
-
   
-### 2. Punto de Presencia (POP)
+### 6.2.3. Punto de Presencia (POP)
+
 - Es el lugar donde la red local conecta con la red externa (Internet o WAN).
 - Incluye **equipos de conmutación y routers** que permiten la conectividad con proveedores de servicios.
 
+### 6.2.4. Importancia de certificar la instalación
 
-
-## Importancia de certificar la instalación:
 - Las instalaciones deben ser **certificadas** para garantizar su capacidad de soportar altas velocidades de transmisión de datos (1 Gbps, 10 Gbps o más).
 - Las certificaciones ayudan a comprobar que se respetan los estándares y que no hay fallos que puedan degradar el rendimiento de la red local, especialmente en instalaciones con longitudes cercanas al límite estándar.
 
-## Reglas generales del SCE:
+Reglas generales del SCE:
+
 1. Seguir normativas como ANSI/TIA-568 o ISO/IEC 11801.
 2. Planificar el crecimiento futuro de la red.
 3. Usar etiquetas claras para identificar los cables y puertos.
 4. Mantener un buen sistema de gestión de cables para evitar enredos.
-
----
-
-### Gráfico simplificado:
-
 
 
 ## 7. Referencias
