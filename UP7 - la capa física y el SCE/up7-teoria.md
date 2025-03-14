@@ -770,7 +770,6 @@ Aquí encontramos los **Racks de Comunicaciones**. Se trata de armarios metálic
 
 ![diapositiva112-rogelio](/assets/images/diapositiva112-rogelio.png)
 
-
 ### 6.2.2. Cableado Vertical o Backbone
 
 - Interconecta los diferentes pisos o zonas de un edificio con el cuarto de telecomunicaciones principal.
