@@ -1,7 +1,6 @@
-# Todo lo que necesitas saber sobre DNS: Curso intensivo de diseño de sistemas #4
+# UP6: La capa de aplicación
 
-## Imagen principal
-
+## DNS: Sistema de Nombres de Dominio
 
 Fuente: https://www.youtube.com/watch?v=27r4Bzuj5NQ
 
@@ -24,3 +23,6 @@ Los servidores de nombres autoritativos para un dominio proporcionan respuestas 
 El diseño jerárquico de DNS lo hace altamente descentralizado y robusto. La vida de una consulta DNS típica incluye que el usuario escriba un nombre de dominio en un navegador, el navegador revise su caché y luego realice una llamada al sistema operativo para intentar obtener la respuesta, lo que puede implicar contactar con el resolutor DNS, el servidor raíz, el servidor de nombres TLD y finalmente el servidor de nombres autoritativo del dominio 
 
 Al actualizar los registros DNS para un sistema de producción activo y de alto tráfico, es esencial considerar la propagación DNS, que puede ser lenta debido al tiempo de vida (TTL) de cada registro DNS. Para mitigar este riesgo, se recomienda reducir el TTL del registro a cambiar a un tiempo corto, como 60 segundos, con suficiente antelación a la actualización, y mantener el servidor funcionando en la dirección IP antigua por un tiempo después de la actualización 
+
+## DHCP
+
