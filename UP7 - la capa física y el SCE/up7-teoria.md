@@ -3,33 +3,39 @@
 ## Índice
 
 - [1. Introducción](#1-introducción)
+- [2. Propósito de la capa física](#2-propósito-de-la-capa-física)
   - [2.1. La conexión física](#21-la-conexión-física)
   - [2.2. La capa física](#22-la-capa-física)
 - [3. Características de la capa física](#3-características-de-la-capa-física)
   - [3.1. Estándares de la capa física](#31-estándares-de-la-capa-física)
-  - [3.2. Componentes físicos](#32-componentes-físicos)
-  - [3.3. Codificación](#33-codificación)
-  - [3.4. Señalización](#34-señalización)
+  - [3.2. Áreas funcionales de la capa física](#32-áreas-funcionales-de-la-capa-física)
+    - [3.2.1. Componentes físicos](#321-componentes-físicos)
+    - [3.2.2. Codificación](#322-codificación)
+    - [3.2.3. Señalización](#323-señalización)
   - [3.5. Ancho de banda](#35-ancho-de-banda)
   - [3.6. Terminología del ancho de banda](#36-terminología-del-ancho-de-banda)
 - [4. Cableado de cobre](#4-cableado-de-cobre)
   - [4.1. Características del cableado de cobre](#41-características-del-cableado-de-cobre)
   - [4.2. Tipos de cableado de cobre](#42-tipos-de-cableado-de-cobre)
+    - [4.2.1. Par trenzado no blindado (UTP)](#421-par-trenzado-no-blindado-utp)
+    - [4.2.2. Par trenzado blindado (STP)](#422-par-trenzado-blindado-stp)
+    - [4.2.3. Cable coaxial](#423-cable-coaxial)
   - [4.3. Cableado UTP](#43-cableado-utp)
     - [4.3.1. Propiedades del cableado UTP](#431-propiedades-del-cableado-utp)
     - [4.3.2. Conectores y estándares de cableado UTP](#432-conectores-y-estándares-de-cableado-utp)
     - [4.3.3. Cables UTP directos y cruzados](#433-cables-utp-directos-y-cruzados)
-  - [4.4. Cableado de fibra óptica](#44-cableado-de-fibra-óptica)
-    - [4.4.1. Propiedades del cableado de fibra óptica](#441-propiedades-del-cableado-de-fibra-óptica)
-    - [4.4.2. Tipos de medios de fibra](#442-tipos-de-medios-de-fibra)
-    - [4.4.3. Uso del cableado de fibra óptica](#443-uso-del-cableado-de-fibra-óptica)
-    - [4.4.4. Conectores de fibra óptica](#444-conectores-de-fibra-óptica)
-    - [4.4.5. Cables de conexión de fibra](#445-cables-de-conexión-de-fibra)
-    - [4.4.6. Fibra versus cobre](#446-fibra-versus-cobre)
-  - [4.5. Medios inalámbricos](#45-medios-inalámbricos)
-    - [4.5.1. Propiedades de los medios inalámbricos](#451-propiedades-de-los-medios-inalámbricos)
-    - [4.5.2. Tipos de medios inalámbricos](#452-tipos-de-medios-inalámbricos)
-    - [4.5.3. LAN inalámbrica](#453-lan-inalámbrica)
+    - [4.3.4. Categorías de cable UTP](#434-categorías-de-cable-utp)
+- [4.4. Cableado de fibra óptica](#44-cableado-de-fibra-óptica)
+  - [4.4.1. Propiedades del cableado de fibra óptica](#441-propiedades-del-cableado-de-fibra-óptica)
+  - [4.4.2. Tipos de medios de fibra](#442-tipos-de-medios-de-fibra)
+  - [4.4.3. Uso del cableado de fibra óptica](#443-uso-del-cableado-de-fibra-óptica)
+  - [4.4.4. Conectores de fibra óptica](#444-conectores-de-fibra-óptica)
+  - [4.4.5. Cables de conexión de fibra](#445-cables-de-conexión-de-fibra)
+  - [4.4.6. Fibra versus cobre](#446-fibra-versus-cobre)
+- [4.5. Medios inalámbricos](#45-medios-inalámbricos)
+  - [4.5.1. Propiedades de los medios inalámbricos](#451-propiedades-de-los-medios-inalámbricos)
+  - [4.5.2. Tipos de medios inalámbricos](#452-tipos-de-medios-inalámbricos)
+  - [4.5.3. LAN inalámbrica](#453-lan-inalámbrica)
 - [5. Conclusiones](#5-conclusiones)
   - [5.1. Propósito de la capa física](#51-propósito-de-la-capa-física)
   - [5.2. Características de la capa física](#52-características-de-la-capa-física)
@@ -37,7 +43,13 @@
   - [5.4. Cableado UTP](#54-cableado-utp)
   - [5.5. Cableado de fibra óptica](#55-cableado-de-fibra-óptica)
   - [5.6. Medios inalámbricos](#56-medios-inalámbricos)
-- [6. Cuestiones de seguridad](#6-cuestiones-de-seguridad)
+- [6. Instalación de cableado](#6-instalación-de-cableado)
+  - [6.1. Seguridad en la manipulación de cableado](#61-seguridad-en-la-manipulación-de-cableado)
+  - [6.2. Esquema de una instalación de cableado de red](#62-esquema-de-una-instalación-de-cableado-de-red)
+    - [6.2.1. Cableado Horizontal](#621-cableado-horizontal)
+    - [6.2.2. Cableado Vertical o Backbone](#622-cableado-vertical-o-backbone)
+    - [6.2.3. Punto de Presencia (POP)](#623-punto-de-presencia-pop)
+    - [6.2.4. Importancia de certificar la instalación](#624-importancia-de-certificar-la-instalación)
 - [7. Referencias](#7-referencias)
 
 ## 1. Introducción
@@ -77,7 +89,7 @@ En términos de rendimiento, no todas las conexiones físicas son iguales a la h
 
 La capa física de OSI proporciona los medios de transporte de los bits que conforman una trama de la capa de enlace de datos a través de los medios de red. Esta capa acepta una trama completa desde la capa de enlace de datos y la codifica como una secuencia de señales que se transmiten en los medios locales. Un dispositivo final o un dispositivo intermediario recibe los bits codificados que componen una trama.
 
-Así pues, la capa física se responsabiliza de la especificación de los medios de transmisión mecánicos, eléctricos, funcionales y procedurales. La capa física codifica las tramas y crea las señales eléctricas, ópticas o de ondas de radio que representan los bits en cada trama y las envía por los respectivos medios. Del mismo modo, la capa física del nodo de destino recupera estas señales individuales de los medios, las restaura a sus representaciones en bits y pasa los bits a la capa de enlace de datos en forma de trama completa.
+Así pues, la capa física se responsabiliza de la especificación de los medios de transmisión mecánicos, eléctricos, funcionales y procedimentales. La capa física codifica las tramas y crea las señales eléctricas, ópticas o de ondas de radio que representan los bits en cada trama y las envía por los respectivos medios. Del mismo modo, la capa física del nodo de destino recupera estas señales individuales de los medios, las restaura a sus representaciones en bits y pasa los bits a la capa de enlace de datos en forma de trama completa.
 
 ![Proceso de encapsulación](https://examenredes.com/wp-content/uploads/2021/12/4.1.2a.gif)
 
@@ -120,9 +132,9 @@ Los dos estándares más importantes de cableado estructurado son:
 
 Estos dos estándares son muy similares, y lo normal es buscar cumplir con ambos.
 
-El sistema de cableado estructurado se rfiere a las normas para la instalación de infraestructura de cableado en edificios.
+El sistema de cableado estructurado se refiere a las normas para la instalación de infraestructura de cableado en edificios.
 
-### 3.2. Componentes físicos
+### 3.2. Áreas funcionales de la capa física
 
 Los estándares de la capa física abarcan tres áreas funcionales:
 
@@ -367,8 +379,6 @@ La figura muestra tres categorías de cable UTP:
 - Categoría 7 también soporta 10 Gbps. Algunos fabricantes producen cables que exceden las especificaciones de la categoría 6a de la TIA/EIA y se refieren a estos como cables de Categoría 7.
 - Categoría 8 soporta 40 Gbps.
 
-
-
 ![Categorías de cables UTP](https://examenredes.com/wp-content/uploads/2021/12/2021-12-25_092608.jpg)
 
 Los cables UTP generalmente se terminan con un conector RJ-45. El estándar TIA/EIA-568 describe las asignaciones de los códigos por colores de los hilos a la asignación de pines (diagrama de pines) de los cables Ethernet.
@@ -457,15 +467,11 @@ En términos generales, los cables de fibra óptica pueden clasificarse en dos t
 - Fibra óptica monomodo (SMF)
 - Fibra multimodo (MMF)
 
-##### Fibra monomodo
-
-SMF consta de un núcleo muy pequeño y utiliza tecnología láser cara para enviar un solo rayo de luz, como se muestra en la figura. SMF es popular en situaciones de larga distancia que abarcan cientos de kilómetros, como las requeridas en aplicaciones de telefonía de larga distancia y televisión por cable.
+**Fibra monomodo**: SMF consta de un núcleo muy pequeño y utiliza tecnología láser cara para enviar un solo rayo de luz, como se muestra en la figura. SMF es popular en situaciones de larga distancia que abarcan cientos de kilómetros, como las requeridas en aplicaciones de telefonía de larga distancia y televisión por cable.
 
 ![Fibra monomodo](https://examenredes.com/wp-content/uploads/2021/12/2021-12-25_100858.jpg)
 
-##### Fibra multimodo
-
-MMF consta de un núcleo más grande y utiliza emisores LED para enviar pulsos de luz. Específicamente, la luz de un LED ingresa a la fibra multimodo en diferentes ángulos, como se muestra en la figura. Este tipo de fibra se usa también en redes locales debido a que pueden alimentarse mediante LED de bajo costo, en particular para la interconexión de dispositivos de red. Proporciona un ancho de banda de hasta 10 Gb/s a través de longitudes de enlace de hasta 550 metros.
+**Fibra multimodo**: MMF consta de un núcleo más grande y utiliza emisores LED para enviar pulsos de luz. Específicamente, la luz de un LED ingresa a la fibra multimodo en diferentes ángulos, como se muestra en la figura. Este tipo de fibra se usa también en redes locales debido a que pueden alimentarse mediante LED de bajo costo, en particular para la interconexión de dispositivos de red. Proporciona un ancho de banda de hasta 10 Gb/s a través de longitudes de enlace de hasta 550 metros.
 
 ![https://examenredes.com/wp-content/uploads/2021/12/2021-12-25_100953.jpg](https://examenredes.com/wp-content/uploads/2021/12/2021-12-25_100953.jpg)
 
@@ -488,27 +494,19 @@ Nota: Algunos switches y routers tienen puertos que admiten conectores de fibra 
 
 ![BIDI SFP 1270-1330](/assets/images/bidi-sfp-1270-1330.png)
 
-##### Conectores de punta directa (ST)
-
-Los conectores ST fueron uno de los primeros tipos de conectores utilizados. El conector se bloquea de manera segura con un mecanismo tipo bayoneta enroscable.
+**Conectores de punta directa (ST)**: Los conectores ST fueron uno de los primeros tipos de conectores utilizados. El conector se bloquea de manera segura con un mecanismo tipo bayoneta enroscable.
 
 ![Conectores ST](https://examenredes.com/wp-content/uploads/2021/12/2021-12-25_101244.jpg)
 
-##### Conectores suscriptor (SC)
-
-Los conectores SC a veces se denominan conector cuadrado o conector estándar. Es un conector LAN y WAN ampliamente adoptado que utiliza un mecanismo de inserción/extracción para asegurar la inserción correcta. Este tipo de conector se utiliza con la fibra óptica multimodo y monomodo.
+**Conectores suscriptor (SC)**: Los conectores SC a veces se denominan conector cuadrado o conector estándar. Es un conector LAN y WAN ampliamente adoptado que utiliza un mecanismo de inserción/extracción para asegurar la inserción correcta. Este tipo de conector se utiliza con la fibra óptica multimodo y monomodo.
 
 ![Conectores SC](https://examenredes.com/wp-content/uploads/2021/12/2021-12-25_101344.jpg)
 
-##### Conectores Lucent (LC) Conectores Simplex
-
-Los conectores LC simplex son una versión más pequeña del conector SC. A veces se denominan conectores pequeños o locales y están creciendo rápidamente en popularidad debido a su tamaño más pequeño.
+**Conectores Lucent (LC) Conectores Simplex**: Los conectores LC simplex son una versión más pequeña del conector SC. A veces se denominan conectores pequeños o locales y están creciendo rápidamente en popularidad debido a su tamaño más pequeño.
 
 ![Conectores LC multimodo dúplex](https://examenredes.com/wp-content/uploads/2021/12/2021-12-25_101410.jpg)
 
-##### Conectores LC multimodo dúplex
-
-Un conector LC multimodo dúplex es similar a un conector LC simplex, pero utiliza un conector dúplex.
+**Conectores LC multimodo dúplex**: Un conector LC multimodo dúplex es similar a un conector LC simplex, pero utiliza un conector dúplex.
 
 ![Conectores LC multimodo dúplex](https://examenredes.com/wp-content/uploads/2021/12/2021-12-25_101435.jpg)
 
@@ -747,13 +745,17 @@ Los componentes principales de una instalación de cableado de red son:
 
 ![diapositiva88-rogelio](/assets/images/diapositiva88-rogelio.png)
 
-- Conecta los puntos de red desde los dispositivos finales (como PCs, impresoras, teléfonos) hasta el **Punto de Consolidación (PCON)** o el **Rac de Telecomunicaciones**.
+- Conecta los puntos de red desde los dispositivos finales (como PCs, impresoras, teléfonos) hasta el **Punto de Consolidación (PCON)** o el **Rack de Telecomunicaciones**. Al cableado horizontal también se le puede llamar canal.
+
 - **Características**:
-  - Longitud máxima: 90 metros para cables de cobre.
-  - Los **latiguillos** (patch cords) no deben superar los 10 metros para evitar problemas de rendimiento.
-  - En ningún caso se debe sobrepasar el límite de 100 metros del estándar, sumando el cableado horizontal y los latiguillos.
+  - Consiste en: un latiguillo de conexión que va desde el dispositivo final a la roseta, un enlace permanente que va desde la roseta al panel de parcheo y un latiguillo de parcheo que conecta el panel de parcheo al switch.
+  - En el caso de cableado de cobre:
+    - La longitud máxima del enlace permanente no debe superar los 90 metros.
+    - La longitud máxima del latiguillo de parcheo no debe superar los 6 metros.
+    - La longitud máxima del latiguillo de conexión no debe superar los 3 metros.
+    - La longitud total del cableado horizontal (suma del enlace permanente y los latiguillos) no debe superar los 100 metros.
+    - Actualmente tiene poco sentido utilizar cableado de categoría inferior a la 6.
   - Tipos de cables: UTP, STP, fibra óptica.
-  - Uso de paneles de parcheo (patch panels) para la organización.
 
 Aquí encontramos los **Racks de Comunicaciones**. Se trata de armarios metálicos para organizar y proteger equipos de telecomunicaciones.
 
@@ -793,7 +795,22 @@ Reglas generales del SCE:
 2. Planificar el crecimiento futuro de la red.
 3. Usar etiquetas claras para identificar los cables y puertos.
 4. Mantener un buen sistema de gestión de cables para evitar enredos.
-
+5. Proteger los cables de interferencias electromagnéticas.
+6. Realizar pruebas de certificación para asegurar el rendimiento.
+7. Documentar la instalación y realizar un mantenimiento regular.
+8. Capacitar al personal en buenas prácticas de instalación y mantenimiento.
+9. Utilizar herramientas adecuadas para la instalación y el mantenimiento.
+10. Mantener un entorno limpio y ordenado en el área de trabajo.
+11. Respetar las distancias máximas de cableado para evitar pérdidas de señal.
+12. Considerar la seguridad eléctrica y el uso de protecciones adecuadas.
+13. Implementar medidas de seguridad física para proteger el equipo y el cableado.
+14. Realizar auditorías periódicas para verificar el estado del cableado y los equipos.
+15. Mantener un inventario actualizado de los equipos y el cableado instalado.
+16. Establecer un plan de contingencia para fallos o problemas en la red.
+17. Considerar la posibilidad de redundancia en el cableado y los equipos para garantizar la continuidad del servicio.
+18. Evaluar el uso de tecnologías emergentes y su impacto en la infraestructura existente.
+19. Mantenerse actualizado sobre las mejores prácticas y estándares de la industria.
+20. Fomentar la colaboración entre los equipos de instalación, mantenimiento y gestión de la red para asegurar una comunicación efectiva y un trabajo en equipo.
 
 ## 7. Referencias
 
