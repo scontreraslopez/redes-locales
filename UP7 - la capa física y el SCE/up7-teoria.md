@@ -680,7 +680,7 @@ A rasgos generales una instalación de cableado de red puede dividirse en dos pa
 
 ### Gráfico simplificado:
 
-![diapositiva68-rogelio](/assets/images/diapositiva68-rogelio.PNG)
+![diapositiva68-rogelio](/assets/images/diapositiva68-rogelio.png)
 
 Los componentes principales de una instalación de cableado de red son:
 
@@ -745,7 +745,7 @@ Los componentes principales de una instalación de cableado de red son:
 
 ### 6.2.1. Cableado Horizontal
 
-![diapositiva88-rogelio](/assets/images/diapositiva88-rogelio.PNG)
+![diapositiva88-rogelio](/assets/images/diapositiva88-rogelio.png)
 
 - Conecta los puntos de red desde los dispositivos finales (como PCs, impresoras, teléfonos) hasta el **Punto de Consolidación (PCON)** o el **Rac de Telecomunicaciones**.
 - **Características**:
