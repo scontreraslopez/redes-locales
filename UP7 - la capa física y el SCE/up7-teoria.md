@@ -757,6 +757,9 @@ Los componentes principales de una instalación de cableado de red son:
     - Actualmente tiene poco sentido utilizar cableado de categoría inferior a la 6.
   - Tipos de cables: UTP, STP, fibra óptica.
 
+> [!NOTE]
+> En algunos textos he leído límites de 5 metros para los latiguillos de parcheo y conexión. No es un tema que tenga meridianamente claro y no he encontrado una referencia oficial que lo aclare. Seguiré buscando. En la práctica, los latiguillos de conexión suelen ser de 1 metro y los de parcheo de 0,5 metros, aunque el aula de informática 314 es harina de otro costal... En cualquier caso, el límite de 100 metros para el enlace permanente es innegociable.
+
 Aquí encontramos los **Racks de Comunicaciones**. Se trata de armarios metálicos para organizar y proteger equipos de telecomunicaciones.
 
 **Elementos comunes en los racks**:
