@@ -450,7 +450,7 @@
     - [ ] C. Generan mayores costes de instalación
     - [ ] D. Son más propensos al ruido
 
-76. ¿Qué protocolo de capa de transporte garantiza la entrega fiable del mensaje? 
+76. ¿Qué protocolo de capa de transporte garantiza la entrega fiable del mensaje?
     - [ ] A. ICMP  
     - [ ] B. UDP  
     - [ ] C. TCP  
