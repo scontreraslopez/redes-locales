@@ -1,6 +1,9 @@
-# Test Examen Final Redes
+# Test Examen Final de Redes Locales
 
-## Bloque capa física
+>[!NOTE]
+>Debería clasificar en bloques. Tampoco debería subir las soluciones aquí, pero si algún alumno sabe navegar el github, pues eso que se lleva.
+
+## Bloque 1: Normas y Estándares
 
 1. ¿Cuál de los siguientes estándares se utiliza comúnmente para el cableado estructurado?
     - [ ] A. IEEE 802.11
@@ -8,17 +11,19 @@
     - [ ] C. ISO 27001
     - [ ] D. TCP/IP
 
-2. ¿Qué medio de transmisión presenta inmunidad total a la interferencia electromagnética?
+2. ¿Qué norma es relevante para las conexiones de fibra óptica?
+    - [ ] A. T568A
+    - [x] B. IEC 60793
+    - [ ] C. EIA-568
+    - [ ] D. ISO 9001
+
+## Bloque 2: Medios de Transmisión
+
+3. ¿Qué medio de transmisión presenta inmunidad total a la interferencia electromagnética?
     - [x] A. Fibra óptica
     - [ ] B. Cable coaxial
     - [ ] C. Cable de par trenzado
     - [ ] D. Cobre sin blindaje
-
-3. ¿Cuál es la función principal de la capa física en el modelo OSI?
-    - [ ] A. Establecer las conexiones lógicas entre dispositivos
-    - [x] B. Transmitir bits a través de un medio físico
-    - [ ] C. Asignar direcciones IP
-    - [ ] D. Encapsular datos de aplicación
 
 4. ¿Qué tipo de cable es el más utilizado en redes LAN?
     - [x] A. UTP
@@ -26,59 +31,69 @@
     - [ ] C. Coaxial
     - [ ] D. Fibra óptica
 
-5. ¿Cuál de los siguientes NO es un tipo de señalización utilizada en la capa física?
-    - [ ] A. Codificación por modulación de frecuencia (FSK)
-    - [ ] B. Codificación por bloques 4B/5B
-    - [ ] C. Codificación Manchester
-    - [x] D. Codificación por variación de flujo (PWM)
-
-6. ¿Qué afecta negativamente a la señal cuando se transmite a largas distancias por cables de cobre?
-    - [ ] A. Ancho de banda
-    - [ ] B. Difracción
-    - [x] C. Atenuación
-    - [ ] D. Dispersión
-
-7. ¿Cuál de los siguientes conectores se emplea para cables de fibra óptica?
+5. ¿Cuál de los siguientes conectores se emplea para cables de fibra óptica?
     - [ ] A. RJ-45
     - [ ] B. BNC
     - [x] C. LC
     - [ ] D. MMF
 
-8. ¿Cómo se identifican los cables individuales del cable UTP?
+6. ¿Cuántos PARES de hilos hay en un cable UTP?
+    - [ ] A. Dos
+    - [x] B. Cuatro
+    - [ ] C. Seis
+    - [ ] D. Ocho
+
+## Bloque 3: Funcionamiento y características de la Capa Física
+
+7. ¿Cuál es la función principal de la capa física en el modelo OSI?
+    - [ ] A. Establecer las conexiones lógicas entre dispositivos
+    - [x] B. Transmitir bits a través de un medio físico
+    - [ ] C. Asignar direcciones IP
+    - [ ] D. Encapsular datos de aplicación
+
+8. ¿Cuál de los siguientes NO es un tipo de señalización utilizada en la capa física?
+    - [ ] A. Codificación por modulación de frecuencia (FSK)
+    - [ ] B. Codificación por bloques 4B/5B
+    - [ ] C. Codificación Manchester
+    - [x] D. Codificación por variación de flujo (PWM)
+
+9. ¿Qué afecta negativamente a la señal cuando se transmite a largas distancias por cables de cobre?
+    - [ ] A. Ancho de banda
+    - [ ] B. Difracción
+    - [x] C. Atenuación
+    - [ ] D. Dispersión
+
+10. ¿Cómo se identifican los cables individuales del cable UTP?
     - [ ] A. Código de señal
     - [x] B. Codificación de colores
     - [ ] C. Voltaje
     - [ ] D. Serigrafiado
 
-9. ¿Cuál de las siguientes es una característica de la fibra óptica?
+## Bloque 4: Desempeño de Redes
+
+11. ¿Cuál de las siguientes es una característica de la fibra óptica?
     - [x] A. Inmunidad total a interferencias
     - [ ] B. Menor costo que el cobre
     - [ ] C. Puede transportar electricidad
     - [ ] D. Mayor atenuación que el cobre
 
-10. ¿Qué tipo de conexión se utiliza para conectar dos dispositivos similares cuando no existe Auto-MDIX?
+12. ¿Qué tipo de conexión se utiliza para conectar dos dispositivos similares cuando no existe Auto-MDIX?
     - [ ] A. Directo
     - [x] B. Cruzado
     - [ ] C. Rollover
     - [ ] D. Intermediate
 
-11. ¿Cuál de los siguientes cables es más sensible a las interferencias electromagnéticas?
+13. ¿Cuál de los siguientes cables es más sensible a las interferencias electromagnéticas?
     - [ ] A. Par trenzado blindado (STP)
     - [x] B. Par trenzado no blindado (UTP)
     - [ ] C. Coaxial
     - [ ] D. Fibra óptica
 
-13. ¿Qué es la latencia en el contexto de redes?
+14. ¿Qué es la latencia en el contexto de redes?
     - [ ] A. La capacidad máxima de datos
     - [x] B. El tiempo que tardan los datos en transferirse de un lugar a otro
     - [ ] C. La pérdida de señal
     - [ ] D. El tipo de cable utilizado
-
-14. ¿Qué norma es relevante para las conexiones de fibra óptica?
-    - [ ] A. T568A
-    - [x] B. IEC 60793
-    - [ ] C. EIA-568
-    - [ ] D. ISO 9001
 
 15. ¿Qué formato se usa para la terminación de cables UTP?
     - [x] A. RJ-45
@@ -86,13 +101,15 @@
     - [ ] C. SC
     - [ ] D. LC
 
+## Bloque 5: Instalación y Conexiones
+
 16. ¿Qué tipo de cable utiliza un blindaje para contrarrestar EMI y RFI?
     - [x] A. STP
     - [ ] B. Coaxial
     - [ ] C. UTP
     - [ ] D. Fibra óptica
 
-17. ¿Qué tipo de fibra óptica se presenta mejores prestaciones?
+17. ¿Qué tipo de fibra óptica se presenta con mejores prestaciones?
     - [x] A. Monomodo
     - [ ] B. Multimodo
     - [ ] C. Cat-8
@@ -104,7 +121,7 @@
     - [x] C. Throughput
     - [ ] D. Latencia
 
-19. En que medio se transmite la señal mediante pulsos eléctricos?
+19. ¿En qué medio se transmite la señal mediante pulsos eléctricos?
     - [x] A. Cable de cobre
     - [ ] B. Cable de fibra óptica
     - [ ] C. Conexión inalámbrica
@@ -116,7 +133,7 @@
     - [ ] C. Atenuación
     - [ ] D. Pérdida de señal
 
-21. ¿Cuál de los siguientes elementos sirve para conectar un punto de acceso al inalámbrico al medio principal de la red?
+21. ¿Cuál de los siguientes elementos sirve para conectar un punto de acceso inalámbrico al medio principal de la red?
     - [ ] A. Antena
     - [ ] B. Puerto de consola
     - [x] C. Puerto Ethernet/LAN
@@ -145,6 +162,8 @@
     - [ ] B. Señales eléctricas
     - [ ] C. Ondas de radio
     - [ ] D. Microondas
+
+## Bloque 1: Soluciones de Cableado y Conexiones
 
 26. ¿Cuál es la solución más económica que podemos usar si un cliente nos solicita 10 Gbps en un enlace de 50m?
     - [ ] A. Fibra óptima multimodo
@@ -176,11 +195,13 @@
     - [ ] C. Aumentar el ancho de banda
     - [ ] D. Facilitar la instalación
 
+## Bloque 2: Desempeño y Características de Redes
+
 31. ¿Cuál es el principal mecanismo para la cancelación de interferencias entre diferentes pares trenzados?
     - [x] A. Diferente densidad de trenzado
-    - [] B. Uso de mejores materiales aislante
-    - [] C. Pureza del cobre utilizado en los conductores
-    - [] D. Modulación de la señal
+    - [ ] B. Uso de mejores materiales aislantes
+    - [ ] C. Pureza del cobre utilizado en los conductores
+    - [ ] D. Modulación de la señal
 
 32. ¿Qué tipo de canal nos permite enviar y recibir datos en la misma conexión?
     - [ ] A. Half-duplex
@@ -205,6 +226,8 @@
     - [x] B. WDM
     - [ ] C. UTP
     - [ ] D. G.fast
+
+## Bloque 3: Tecnologías Inalámbricas y Codificación
 
 36. ¿Qué significa la sigla "WLAN"?
     - [ ] A. Red de Área Local con Cable
@@ -236,13 +259,15 @@
     - [ ] C. Conexiones prolongadas por satélite
     - [ ] D. Redes de área metropolitana
 
+## Bloque 4: Conversión y Transmisión
+
 41. ¿Qué tipo de conversión realiza una tarjeta de interfaz de red?
     - [ ] A. Eléctrico a óptico
     - [x] B. Eléctrico a datos
     - [ ] C. Datos a texto
     - [ ] D. Texto a ruido
 
-42. ¿Qué tipo de conversión realiza un ONT?
+42. ¿Qué tipo de conversión realiza un OTN?
     - [ ] A. Eléctrico a datos
     - [x] B. Óptico a eléctrico
     - [ ] C. Óptico a datos
@@ -265,6 +290,8 @@
     - [ ] B. Totalmente susceptible a EMI y RFI
     - [ ] C. Solo resistente a RFI
     - [ ] D. Solo resistente a EMI
+
+## Bloque 5: Atenuación y Parámetros de Red
 
 46. ¿Cuáles son los parámetros más implicados en la atenuación del cable?
     - [ ] A. Longitud y tipo de terminaciones
@@ -296,6 +323,8 @@
     - [ ] C. Confusión
     - [ ] D. Rollover
 
+## Bloque 1: Señales y Conectores de Fibra Óptica
+
 51. ¿Qué tipo de señal se utiliza en sistemas de transmisión óptica?
     - [x] A. Pulsos de luz
     - [ ] B. Pulsos de electricidad
@@ -312,147 +341,149 @@
     - [ ] A. Interferencias entre otros pares del mismo cable
     - [x] B. Interferencia causada por otros cables cercanos
     - [ ] C. Interferencias causadas por efecto de los transformadores
-    - [ ] D. Interferencias causadas el efecto pelicular en el cobre
+    - [ ] D. Interferencias causadas por el efecto pelicular en el cobre
 
-54. ¿Cuál de estas tecnologías se basa en conexión por microondas?  
-    - [ ] A. Gigabit Ethernet  
-    - [x] B. WiMAX  
-    - [ ] C. LAN  
-    - [ ] D. PoE  
+54. ¿Cuál de estas tecnologías se basa en conexión por microondas?
+    - [ ] A. Gigabit Ethernet
+    - [x] B. WiMAX
+    - [ ] C. LAN
+    - [ ] D. PoE
 
-### Preguntas sobre Dimensiones de Fibra Óptica  
+## Bloque 2: Dimensiones de Fibra Óptica
 
-55. ¿Cuál es el diámetro típico del núcleo de la fibra óptica monomodo?  
-    - [ ] A. 62.5 micrómetros  
-    - [x] B. 8-10 micrómetros  
-    - [ ] C. 50 micrómetros  
-    - [ ] D. 100 micrómetros  
+55. ¿Cuál es el diámetro típico del núcleo de la fibra óptica monomodo?
+    - [ ] A. 62.5 micrómetros
+    - [x] B. 8-10 micrómetros
+    - [ ] C. 50 micrómetros
+    - [ ] D. 100 micrómetros
 
-56. ¿Qué diámetro suele tener el núcleo de una fibra óptica multimodo?  
-    - [x] A. 50 o 62.5 micrómetros  
-    - [ ] B. 8-10 micrómetros  
-    - [ ] C. 125 micrómetros  
+56. ¿Qué diámetro suele tener el núcleo de una fibra óptica multimodo?
+    - [x] A. 50 o 62.5 micrómetros
+    - [ ] B. 8-10 micrómetros
+    - [ ] C. 125 micrómetros
     - [ ] D. 200 micrómetros
 
-57. ¿Cuál es el diámetro del revestimiento en la fibra óptica estándar (tanto para monomodo como para multimodo)?  
-    - [x] A. 125 micrómetros  
-    - [ ] B. 50 micrómetros  
-    - [ ] C. 8-10 micrómetros  
-    - [ ] D. 200 micrómetros  
+57. ¿Cuál es el diámetro del revestimiento en la fibra óptica estándar (tanto para monomodo como para multimodo)?
+    - [x] A. 125 micrómetros
+    - [ ] B. 50 micrómetros
+    - [ ] C. 8-10 micrómetros
+    - [ ] D. 200 micrómetros
 
-58. ¿Qué tipo de fibra óptica es más adecuada para aplicaciones de larga distancia y qué tamaño de núcleo tiene?  
-    - [x] A. Fibra monomodo, núcleo de 8-10 micrómetros  
-    - [ ] B. Fibra multimodo, núcleo de 50 micrómetros  
-    - [ ] C. Fibra monomodo, núcleo de 50 micrómetros  
-    - [ ] D. Fibra multimodo, núcleo de 62.5 micrómetros  
+58. ¿Qué tipo de fibra óptica es más adecuada para aplicaciones de larga distancia y qué tamaño de núcleo tiene?
+    - [x] A. Fibra monomodo, núcleo de 8-10 micrómetros
+    - [ ] B. Fibra multimodo, núcleo de 50 micrómetros
+    - [ ] C. Fibra monomodo, núcleo de 50 micrómetros
+    - [ ] D. Fibra multimodo, núcleo de 62.5 micrómetros
 
-59. ¿Qué factor clave reduce la dispersión y la atenuación en fibras ópticas monomodo?  
-    - [ ] A. Un mayor diámetro de núcleo  
-    - [x] B. Un menor diámetro de núcleo  
-    - [ ] C. Un revestimiento más grueso  
-    - [ ] D. Un diseño de múltiples capas  
+59. ¿Qué factor clave reduce la dispersión y la atenuación en fibras ópticas monomodo?
+    - [ ] A. Un mayor diámetro de núcleo
+    - [x] B. Un menor diámetro de núcleo
+    - [ ] C. Un revestimiento más grueso
+    - [ ] D. Un diseño de múltiples capas
 
-60. En una fibra óptica multimodo, la dispersión es más alta debido a:  
-    - [ ] A. Su revestimiento  
-    - [x] B. La estructura del núcleo más grande  
-    - [ ] C. Su baja capacidad de luz  
-    - [ ] D. La utilización de un solo haz de luz  
+## Bloque 3: Gestión de la Dispersión y Ancho de Banda
 
-61. ¿Cuál es la función del revestimiento en una fibra óptica?  
-    - [ ] A. Transmitir datos  
-    - [x] B. Proporcionar protección y reflexión de luz  
-    - [ ] C. Conducto eléctrico  
-    - [ ] D. Mejorar la señal  
+60. En una fibra óptica multimodo, la dispersión es más alta debido a:
+    - [ ] A. Su revestimiento
+    - [x] B. La estructura del núcleo más grande
+    - [ ] C. Su baja capacidad de luz
+    - [ ] D. La utilización de un solo haz de luz
 
-62. Al comparar la fibra monomodo con la multimodo, ¿cuál proporciona mayor ancho de banda por km?  
-    - [ ] A. Fibra multimodo  
-    - [x] B. Fibra monomodo  
-    - [ ] C. Ambas tienen el mismo  
-    - [ ] D. Ninguna  
+61. ¿Cuál es la función del revestimiento en una fibra óptica?
+    - [ ] A. Transmitir datos
+    - [x] B. Proporcionar protección y reflexión de luz
+    - [ ] C. Conducto eléctrico
+    - [ ] D. Mejorar la señal
 
-63. En el serigrafiado de un cable de fibra óptica, ¿qué indica típicamente un número antes de una letra, como "12F"?  
-    - [x] A. Número de fibras en el cable  
-    - [ ] B. Tipo de fibra utilizada  
-    - [ ] C. Longitud total del cable  
-    - [ ] D. Fecha de fabricación  
+62. Al comparar la fibra monomodo con la multimodo, ¿cuál proporciona mayor ancho de banda por km?
+    - [ ] A. Fibra multimodo
+    - [x] B. Fibra monomodo
+    - [ ] C. Ambas tienen el mismo
+    - [ ] D. Ninguna
 
-64. Si en el serigrafiado de un cable se encuentra la letra "L", ¿a qué podría referirse?  
-    - [ ] A. Ligera flexibilidad  
-    - [ ] B. Ligadura de cables simultáneos  
-    - [x] C. Indicador de un cable de uso en interior  
-    - [ ] D. Longitud total del cable  
+## Bloque 4: Identificación y Clasificación de Cables
 
-65. ¿Qué podría significar la combinación "OM3" en el serigrafiado de un cable de fibra óptica?  
-    - [ ] A. Tipo de conector utilizado  
-    - [ ] B. Color del revestimiento exterior  
-    - [x] C. Clasificación de rendimiento de la fibra multimodo  
-    - [ ] D. Tipo de tratamiento de superficie  
+63. En el serigrafiado de un cable de fibra óptica, ¿qué indica típicamente un número antes de una letra, como "12F"?
+    - [x] A. Número de fibras en el cable
+    - [ ] B. Tipo de fibra utilizada
+    - [ ] C. Longitud total del cable
+    - [ ] D. Fecha de fabricación
 
-66. En el serigrafiado, si se encuentra la abreviatura "SM", ¿qué indica sobre el cable?  
-    - [x] A. Es un cable de fibra monomodo  
-    - [ ] B. Es un cable de fibra multimodo  
-    - [ ] C. Es un cable de superficie dura  
+64. Si en el serigrafiado de un cable se encuentra la letra "L", ¿a qué podría referirse?
+    - [ ] A. Ligera flexibilidad
+    - [ ] B. Ligadura de cables simultáneos
+    - [x] C. Indicador de un cable de uso en interior
+    - [ ] D. Longitud total del cable
+
+65. ¿Qué podría significar la combinación "OM3" en el serigrafiado de un cable de fibra óptica?
+    - [ ] A. Tipo de conector utilizado
+    - [ ] B. Color del revestimiento exterior
+    - [x] C. Clasificación de rendimiento de la fibra multimodo
+    - [ ] D. Tipo de tratamiento de superficie
+
+66. En el serigrafiado, si se encuentra la abreviatura "SM", ¿qué indica sobre el cable?
+    - [x] A. Es un cable de fibra monomodo
+    - [ ] B. Es un cable de fibra multimodo
+    - [ ] C. Es un cable de superficie dura
     - [ ] D. Es un cable con revestimiento resistente al fuego
 
-67. Un cable con el serigrafiado "LSZH" es ideal para aplicaciones donde se desea minimizar:  
-    - [ ] A. La resistencia a la tracción  
-    - [ ] B. La interferencia electromagnética  
-    - [x] C. La emisión de humo y gases tóxicos en caso de incendio  
-    - [ ] D. La flexibilidad del cable  
+67. Un cable con el serigrafiado "LSZH" es ideal para aplicaciones donde se desea minimizar:
+    - [ ] A. La resistencia a la tracción
+    - [ ] B. La interferencia electromagnética
+    - [x] C. La emisión de humo y gases tóxicos en caso de incendio
+    - [ ] D. La flexibilidad del cable
 
-### Preguntas sobre Emisores de Luz en Fibra Óptica  
+## Bloque 5: Emisores de Luz en Fibra Óptica
 
-68. ¿Qué tipo de emisor de luz se utiliza comúnmente en fibras ópticas monomodo?  
-    - [x] A. Láser  
-    - [ ] B. LED  
-    - [ ] C. Luz incandescente  
-    - [ ] D. Luz ultravioleta  
+68. ¿Qué tipo de emisor de luz se utiliza comúnmente en fibras ópticas monomodo?
+    - [x] A. Láser
+    - [ ] B. LED
+    - [ ] C. Luz incandescente
+    - [ ] D. Luz ultravioleta
 
-69. ¿Cuál de los siguientes emisores de luz se puede utilizar en fibra óptica multimodo?  
-    - [x] A. LED o Láser  
-    - [ ] B. Solo Láser  
-    - [ ] C. Solo LED  
-    - [ ] D. Luz incandescente solamente  
+69. ¿Cuál de los siguientes emisores de luz se puede utilizar en fibra óptica multimodo?
+    - [x] A. LED o Láser
+    - [ ] B. Solo Láser
+    - [ ] C. Solo LED
+    - [ ] D. Luz incandescente solamente
 
-70. ¿Por qué se elige un emisor láser para la fibra óptica monomodo?  
-    - [ ] A. Es más económico  
-    - [x] B. Proporciona un haz de luz más estrecho y una alta eficiencia  
-    - [ ] C. Produce más calor  
-    - [ ] D. Es más fácil de fabricar  
+70. ¿Por qué se elige un emisor láser para la fibra óptica monomodo?
+    - [ ] A. Es más económico
+    - [x] B. Proporciona un haz de luz más estrecho y una alta eficiencia
+    - [ ] C. Produce más calor
+    - [ ] D. Es más fácil de fabricar
 
-71. ¿Cuál es el riesgo asociado a mirar a través de un cable de fibra óptica conectado?  
-    - [ ] A. No hay riesgo si se usan gafas de seguridad  
-    - [x] B. Posible daño ocular por la luz láser que puede escapar del núcleo de la fibra  
-    - [ ] C. Irritación por el material aislante del cable  
-    - [ ] D. Posible daño por contacto con el cable  
+71. ¿Cuál es el riesgo asociado a mirar a través de un cable de fibra óptica conectado?
+    - [ ] A. No hay riesgo si se usan gafas de seguridad
+    - [x] B. Posible daño ocular por la luz láser que puede escapar del núcleo de la fibra
+    - [ ] C. Irritación por el material aislante del cable
+    - [ ] D. Posible daño por contacto con el cable
 
-72. ¿Por qué motivo se han empleado emisores de luz no coherente como LED en algunas aplicaciones de fibra óptica multimodo?  
-    - [x] A. Simplicidad de diseño y abaratamiento de los costes  
-    - [ ] B. Mayor ancho de banda  
-    - [ ] C. Altamente eficiente a largas distancias  
-    - [ ] D. Inmunidad a la interferencia  
+72. ¿Por qué motivo se han empleado emisores de luz no coherente como LED en algunas aplicaciones de fibra óptica multimodo?
+    - [x] A. Simplicidad de diseño y abaratamiento de costos
+    - [ ] B. Mayor ancho de banda
+    - [ ] C. Altamente eficiente a largas distancias
+    - [ ] D. Inmunidad a la interferencia
 
-73. ¿Qué tipo de emisor es más adecuado para aplicaciones a larga distancia en fibra multimodo?  
-    - [ ] A. LED  
-    - [x] B. Láser  
-    - [ ] C. Pulsar  
-    - [ ] D. Emisores de luz polarizada  
+73. ¿Qué tipo de emisor es más adecuado para aplicaciones a larga distancia en fibra multimodo?
+    - [ ] A. LED
+    - [x] B. Láser
+    - [ ] C. Pulsar
+    - [ ] D. Emisores de luz polarizada
 
-74. En comparación con un láser, ¿cómo se comporta un LED en términos de dispersión de luz en la fibra?  
-    - [x] A. Produce más dispersión debido a sus múltiples ángulos de salida  
-    - [ ] B. Produce menos dispersión  
-    - [ ] C. La luz LED no resulta afectada por la dispersión sino por la atenuación  
-    - [ ] D. Produce la misma dispersión  
+74. En comparación con un láser, ¿cómo se comporta un LED en términos de dispersión de luz en la fibra?
+    - [x] A. Produce más dispersión debido a sus múltiples ángulos de salida
+    - [ ] B. Produce menos dispersión
+    - [ ] C. La luz LED no resulta afectada por la dispersión sino por la atenuación
+    - [ ] D. Produce la misma dispersión
 
-75. ¿Cuál de los siguientes enunciados es cierto sobre los emisores láser utilizados en fibra óptica?  
-    - [x] A. Tienen un perfil de salida de luz más concentrado  
-    - [ ] B. Son ineficientes para las distancias cortas  
-    - [ ] C. Generan mayores costes de instalación  
-    - [ ] D. Son más propensos al ruido  
+75. ¿Cuál de los siguientes enunciados es cierto sobre los emisores láser utilizados en fibra óptica?
+    - [x] A. Tienen un perfil de salida de luz más concentrado
+    - [ ] B. Son ineficientes para las distancias cortas
+    - [ ] C. Generan mayores costes de instalación
+    - [ ] D. Son más propensos al ruido
 
-## Bloque capa de transporte TCP/IP
-
-76. ¿Qué protocolo de capa de transporte garantiza la entrega fiable del mensaje? 
+76. ¿Qué protocolo de capa de transporte garantiza la entrega fiable del mensaje?
     - [ ] A. ICMP  
     - [ ] B. UDP  
     - [x] C. TCP  
