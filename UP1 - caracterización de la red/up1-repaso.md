@@ -1,13 +1,9 @@
-A continuación se presenta un conjunto de apuntes y ejercicios en **Markdown** sobre la caracterización de las redes locales para el curso de "Redes Locales" en un Grado Medio de Formación Profesional.
-
----
-
-# Tema 1: Caracterización de las Redes Locales
+# Tema 1: Caracterización de las Redes Locales - Repaso y Ejercicios Prácticos
 
 ## 1. Definición de Red de Área Local y Principales Características
 
 - **Red de Área Local (LAN):**  
-  Una LAN es una red de comunicación que abarca un espacio geográfico reducido (por ejemplo, un edificio, una oficina, un hogar o un campus). Se caracteriza por:
+  Una LAN es una red de comunicación que abarca un espacio geográfico reducido (por ejemplo, un edificio, una oficina, un hogar o un campus). Surgen por la necesidad de compartir recursos dentro de la organización. Se caracteriza por:
   - **Alta velocidad:** Uso de tecnologías como Ethernet y Wi-Fi.
   - **Baja latencia:** Las distancias cortas reducen significativamente el tiempo de propagación.
   - **Administración centralizada:** Normalmente, la red es gestionada por la propia organización o el propietario local, lo cual facilita su mantenimiento, seguridad y control.
@@ -71,18 +67,17 @@ En el estudio de la transmisión de datos en redes es fundamental comprender y p
 
 - **Definición:** Es el tiempo que se necesita para insertar todos los bits de un paquete en el medio de transmisión.
 - **Fórmula:**
-  \[
-  \text{Tiempo de Transmisión (T}_\text{t}\text{)} = \frac{\text{Tamaño del paquete (en bits)}}{\text{Velocidad de transmisión (en bits/s)}}
-  \]
+
+![Tiempo de Transmisión](/assets/images/t1_f1.png)
 
 ### 4.2 Retraso de Propagación
 
 - **Definición:** Es el tiempo que tarda un bit en recorrer el medio físico desde el emisor hasta el receptor.
 - **Fórmula:**
   \[
-  \text{Retraso de Propagación (T}_\text{p}\text{)} = \frac{\text{Distancia (d)}}{\text{Velocidad de propagación (v)}}
+t1_f2
   \]
-  *Ejemplo:* En fibra óptica, la velocidad de propagación suele ser aproximadamente \(2 \times 10^8\) m/s.
+  *Ejemplo:* En fibra óptica, la velocidad de propagación suele ser aproximadamente \(2 \times 10^8\) m/s. 
 
 ### 4.3 Retraso de Procesamiento
 
@@ -93,10 +88,11 @@ En el estudio de la transmisión de datos en redes es fundamental comprender y p
 - **Definición:** Es la suma de todos los retardos (transmisión, propagación y procesamiento) que un paquete experimenta al ir desde el origen hasta el destino.
 - **Fórmula General:**
   \[
-  \text{Tiempo Total} = \text{Tiempo de Transmisión} + \text{Retraso de Propagación} + \text{Retraso de Procesamiento}
+t1_f3
   \]
 
-> **Nota:** En una red LAN, el **tiempo de transmisión** suele ser el factor dominante (debido a las cortas distancias) mientras que, en el Internet, el **retraso de propagación** se vuelve más relevante, lo cual ha motivado el uso de tecnologías como los **CDN (Content Delivery Network)**. Estas redes distribuidas sitúan el contenido más cerca del usuario final para minimizar la latencia y mejorar la experiencia en la entrega de información.
+    > [!NOTE]  
+    > En una red LAN, el **tiempo de transmisión** suele ser el factor dominante debido a las cortas distancias y altas velocidades de conexión. Por otro lado, en redes de mayor alcance como el Internet, el **retraso de propagación** adquiere mayor relevancia. Esto ha impulsado el desarrollo de tecnologías como las **CDN (Content Delivery Networks)**, que consisten en redes distribuidas diseñadas para acercar el contenido al usuario final, reduciendo la latencia y mejorando la experiencia en la entrega de información.
 
 ---
 
