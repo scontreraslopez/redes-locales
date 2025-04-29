@@ -37,13 +37,13 @@ Los modelos de referencia son una forma de abstraer la complejidad de la interco
 - **Modelo OSI (Open Systems Interconnection):**
   - **Descripción:** Propuesto por la ISO, es un modelo académico que proporciona una aproximación teórica para comprender la transmisión de datos.
   - **Capas:**  
-    1. **Capa Física:** Transmisión de bits a través del medio físico.  
-    2. **Capa de Enlace de Datos:** Control de errores, detección de colisiones, acceso al medio.  
-    3. **Capa de Red:** Encaminamiento y direccionamiento.  
-    4. **Capa de Transporte:** Segmentación, control de flujo y reensamblaje.  
-    5. **Capa de Sesión:** Gestión de la conexión y sesiones entre aplicaciones.  
-    6. **Capa de Presentación:** Formato, cifrado y compresión de datos.  
-    7. **Capa de Aplicación:** Interfaz y servicios directos al usuario.
+    - **L1: Capa Física:** Transmisión de bits a través del medio físico.  
+    - **L2: Capa de Enlace de Datos:** Control de errores, detección de colisiones, acceso al medio.  
+    - **L3: Capa de Red:** Encaminamiento y direccionamiento.  
+    - **L4: Capa de Transporte:** Segmentación, control de flujo y reensamblaje.  
+    - **L5: Capa de Sesión:** Gestión de la conexión y sesiones entre aplicaciones.  
+    - **L6: Capa de Presentación:** Formato, cifrado y compresión de datos.  
+    - **L7: Capa de Aplicación:** Interfaz y servicios directos al usuario.
 
 - **Modelo TCP/IP:**
   - **Descripción:** Basado en la experiencia práctica y experimental, es un modelo más ingenieril y realista en la aplicación de protocolos.
@@ -71,22 +71,26 @@ En el estudio de la transmisión de datos en redes es fundamental comprender y p
 - **Definición:** Es el tiempo que se necesita para insertar todos los bits de un paquete en el medio de transmisión.
 - **Fórmula:**
 
-$$
+```math
 
+\[
 T_t = \frac{L}{R}
+\]
 
 Donde:
 
-  - T_t = Tiempo de transmisión (en segundos)
-  - L = Longitud del paquete (en bits)
-  - R = Tasa de transmisión (en bits por segundo)
+- \(T_t\): Tiempo de transmisión (en segundos).  
+- \(L\): Longitud del paquete (en bits).  
+- \(R\): Tasa de transmisión (en bits por segundo).
+
+```
 
 - **Ejemplo:** Si un paquete tiene 1,500 bytes y la tasa de transmisión es de 
 1 Gbps:
 
   T_t = \frac{1,500 \times 8}{1 \times 10^9} = 0.000012 \, \text{segundos} \quad (\approx 12 \, \mu s)
 
-$$
+``
 
   - **Interpretación:** Esto significa que se tardará aproximadamente 12 microsegundos en transmitir el paquete de 1,500 bytes a una velocidad de 1 Gbps
 
