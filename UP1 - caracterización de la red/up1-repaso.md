@@ -1,5 +1,24 @@
 # Tema 1: Caracterización de las Redes Locales - Repaso y Ejercicios Prácticos
 
+## Índice
+
+- [1. Definición de Red de Área Local y Principales Características](#1-definición-de-red-de-área-local-y-principales-características)
+- [2. Clasificación de Redes según su Ámbito de Aplicación](#2-clasificación-de-redes-según-su-ámbito-de-aplicación)
+- [3. Modelos de Referencia en Redes](#3-modelos-de-referencia-en-redes)
+- [4. Problemas del Tema 1](#4-problemas-del-tema-1)
+  - [4.1 Transmisiones de Datos](#41-transmisiones-de-datos)
+    - [4.1.1 Tiempo de Transmisión](#411-tiempo-de-transmisión)
+    - [4.1.2 Retraso de Propagación](#412-retraso-de-propagación)
+    - [4.1.3 Retraso de Procesamiento](#413-retraso-de-procesamiento)
+    - [4.1.4 Tiempo de Entrega del Paquete](#414-tiempo-de-entrega-del-paquete)
+  - [4.2 Sistemas de representación de la información](#42-sistemas-de-representación-de-la-información)
+    - [4.2.1 Sistema Decimal](#421-sistema-decimal)
+    - [4.2.2 Sistema Binario](#422-sistema-binario)
+    - [4.2.3 Sistema Hexadecimal](#423-sistema-hexadecimal)
+- [5. Ejercicios Prácticos](#5-ejercicios-prácticos)
+- [6. Ejercicios de Repaso Propuestos: Transmisiones de Datos y Sistemas de Representación](#6-ejercicios-de-repaso-propuestos-transmisiones-de-datos-y-sistemas-de-representación)
+
+
 ## 1. Definición de Red de Área Local y Principales Características
 
 **Red de Área Local (LAN):**  Una LAN es una red de comunicación que abarca un espacio geográfico reducido (por ejemplo, un edificio, una oficina, un hogar o un campus). Surgen por la necesidad de compartir recursos dentro de la organización. 
@@ -138,6 +157,192 @@ T_t = T_p + T_p + T_{proc}
 
 ---
 
+### 4.2 Sistemas de representación de la información
+
+#### 4.2.1. Sistema Decimal
+
+El que usamos habitualmente. Los números se descomponen como sumas de potencias base 10.
+
+Así
+```math
+754 = 7 \times 10^2 + 5 \times 10^1 + 4 \times 10⁰ = 700 + 50 + 4
+```
+
+#### 4.2.2. Sistema Binario
+
+Fundamental en sistemas de computadores. Los números se descomponen como sumas de potencia base 2.
+
+Así
+```math
+1001 = 2^3 + 2^0 = 9 \text { en decimal}
+```
+
+En redes no es habitual trabajar con números binarios cuya representación decimal sea superior a 255 (1 octeto), por lo que sobre todo trabajaremos estos.
+
+Gracias a esto, podemos usar un método simplificado para convertir de decimal a binario.
+
+Podemos convertir un octeto binario a decimal de forma rápida usando restas, aprovechando que el número máximo de un octeto es 255 (es decir, en binario: 11111111). La idea es “partir” de 255 y, por cada bit que esté en 0, restar su valor correspondiente (la potencia de 2 que le toca). De esta manera, al omitir las posiciones activas (con 1) y “quitar” solo lo que falta, obtenemos la suma de los bits en 1.
+
+##### Pasos a seguir (decimal a binario usando restas)
+
+Vamos a explicar cómo convertir un número decimal a binario usando restas, aprovechando que en redes solemos trabajar con octetos (8 bits). La idea es iniciar con el número decimal y, a partir de la mayor potencia de 2 (para un octeto, la mayor es 128), restar sucesivamente las potencias de 2 cuando sean menores o iguales al número o al residuo que tengamos. Cada vez que podamos restar esa potencia, asignamos un 1 en la posición correspondiente; si no podemos restarla, colocamos 0.
+
+Imagina que queremos convertir el número decimal **172** a binario (en un octeto). Vamos a usar las potencias de 2 correspondientes a cada bit:
+
+- **Bit 7:** 128  
+- **Bit 6:** 64  
+- **Bit 5:** 32  
+- **Bit 4:** 16  
+- **Bit 3:** 8  
+- **Bit 2:** 4  
+- **Bit 1:** 2  
+- **Bit 0:** 1  
+
+Procederemos de la siguiente forma:
+
+1. **Empiezas con 172 y la mayor potencia: 128**  
+   - ¿172 es mayor o igual que 128? Sí.  
+   - Asignamos 1 al Bit 7 y restamos 128.  
+   - **Residuo:** 172 − 128 = 44.
+
+2. **Siguiente potencia: 64 (Bit 6)**  
+   - ¿44 es mayor o igual que 64? No.  
+   - Asignamos 0 al Bit 6, sin restar ningún valor.  
+   - **Residuo sigue siendo:** 44.
+
+3. **Ahora la potencia: 32 (Bit 5)**  
+   - ¿44 ≥ 32? Sí.  
+   - Ponemos 1 en el Bit 5 y restamos 32.  
+   - **Residuo:** 44 − 32 = 12.
+
+4. **Siguiente: 16 (Bit 4)**  
+   - ¿12 ≥ 16? No.  
+   - Asignamos 0 en el Bit 4.  
+   - **Residuo:** sigue siendo 12.
+
+5. **Luego: 8 (Bit 3)**  
+   - ¿12 es mayor o igual que 8? Sí.  
+   - Ponemos 1 en el Bit 3 y restamos 8.  
+   - **Residuo:** 12 − 8 = 4.
+
+6. **La siguiente potencia: 4 (Bit 2)**  
+   - ¿4 es mayor o igual que 4? Sí.  
+   - Asignamos 1 en el Bit 2 y restamos 4.  
+   - **Residuo:** 4 − 4 = 0.
+
+7. **Ahora: 2 (Bit 1)**  
+   - ¿0 es mayor o igual que 2? No.  
+   - Ponemos 0 en el Bit 1.
+
+8. **Finalmente: 1 (Bit 0)**  
+   - ¿0 es mayor o igual que 1? No.  
+   - Ponemos 0 en el Bit 0.
+
+Resumiendo en una tabla:
+
+| Bit (posición) | Valor (potencia de 2) | ¿Se resta?          | Resto   | Bit asignado |
+|----------------|-----------------------|---------------------|---------|--------------|
+| Bit 7          | 128                   | 172 ≥ 128 → Sí      | 172-128=44 | 1            |
+| Bit 6          | 64                    | 44 < 64 → No        | 44      | 0            |
+| Bit 5          | 32                    | 44 ≥ 32 → Sí        | 44-32=12 | 1            |
+| Bit 4          | 16                    | 12 < 16 → No        | 12      | 0            |
+| Bit 3          | 8                     | 12 ≥ 8 → Sí         | 12-8=4  | 1            |
+| Bit 2          | 4                     | 4 ≥ 4 → Sí          | 4-4=0   | 1            |
+| Bit 1          | 2                     | 0 < 2 → No          | 0       | 0            |
+| Bit 0          | 1                     | 0 < 1 → No          | 0       | 0            |
+
+Al final, la secuencia de bits (de Bit 7 a Bit 0) es: **1 0 1 0 1 1 0 0**, es decir, **10101100**.
+
+###### ¿Por Qué Es Útil Este Método en Redes?
+
+Cuando trabajas con direcciones IP o máscaras de red, habitualmente manejas números en formato de octetos. Este método te permite desglosar mentalmente el número decimal en sus componentes binarios de forma intuitiva, solo restando lo que falta para alcanzar el valor total del octeto.
+
+#### 4.2.3. Sistema Hexadecimal
+
+El sistema hexadecimal nos ayuda a representar de manera más compacta números que en decimal serían excesivamente largos, dado que 1 carácter hexadecimal (nibble) equivale a un grupo de 4 bits. Así 8 bits (un byte) se pueden representar con 2 caracteres hexadecimales. Por ejemplo, el número binario **10101100** se puede representar como **AC** en hexadecimal.
+
+Para trabajar en redes resulta muy práctico convertir hexadecimal a decimal (y viceversa) usando el enfoque nibble a nibble. Esto significa convertir cada dígito hexadecimal en su equivalente en binario (4 bits) y luego deducir su valor decimal. Aquí te explico paso a paso para ambos procesos:
+
+##### Conversión de Hexadecimal a Decimal
+
+**Concepto básico:**  
+Cada dígito hexadecimal equivale a un nibble (4 bits). Por ejemplo, el dígito hexadecimal "A" equivale al binario `1010` y su valor decimal es 10. Al convertir un número hexadecimal mayor (generalmente un byte, compuesto por dos nibbles) se sigue este método:
+
+**Pasos:**
+
+1. **Divide el número en nibbles:**  
+   Por ejemplo, para convertir el byte hexadecimal **AC**, separa en dos dígitos:  
+   - Primer nibble: `A`  
+   - Segundo nibble: `C`
+
+2. **Convierte cada dígito a binario:**  
+   Utiliza la siguiente tabla para cada nibble:
+
+   | Hexadecimal | Binario | Decimal |
+   |-------------|---------|---------|
+   | 0           | 0000    | 0       |
+   | 1           | 0001    | 1       |
+   | 2           | 0010    | 2       |
+   | 3           | 0011    | 3       |
+   | 4           | 0100    | 4       |
+   | 5           | 0101    | 5       |
+   | 6           | 0110    | 6       |
+   | 7           | 0111    | 7       |
+   | 8           | 1000    | 8       |
+   | 9           | 1001    | 9       |
+   | A           | 1010    | 10      |
+   | B           | 1011    | 11      |
+   | C           | 1100    | 12      |
+   | D           | 1101    | 13      |
+   | E           | 1110    | 14      |
+   | F           | 1111    | 15      |
+
+   Así, para nuestro ejemplo:  
+   - `A` → 1010 (valor 10)  
+   - `C` → 1100 (valor 12)
+
+3. **Concatena los valores binarios:**  
+
+Juntando los dos nibbles, obtenemos el binario completo: `10101100`, que ya podemos traducir de binario a decimal por el método general.    Esto equivale a 172 en decimal.
+
+Por lo tanto, el hexadecimal **AC** equivale al decimal **172**.
+
+---
+
+##### Conversión de Decimal a Hexadecimal
+
+**Concepto básico:**
+
+Para convertir un número decimal a hexadecimal, se puede proceder a convertir el decimal a binario (en forma de octeto) y luego agrupar los bits en nibbles. Otra vía (más directa y equivalente) es dividir el número decimal en partes correspondientes a la división entera y el residuo con 16 pero nos centraremos en el primer método que es más intuitivo.
+
+**Método usando nibbles:**
+
+1. **Convierte el número decimal a binario (dentro de un byte, si se trabaja en redes):**
+
+  Por ejemplo, para el decimal **111**, se obtiene el octeto binario `01101111`. Nótese la importancia de hacer padding (rellenar con 0s) a la izquierda para tener el octeto entero siempre.
+
+2. **Separa el octeto en dos nibbles:**  
+   - Primer nibble (bits más significativos): `0110`  
+   - Segundo nibble (bits menos significativos): `1111`
+
+3. **Convierte cada nibble a su valor hexadecimal usando la tabla anterior:**  
+   - `0110` → 6 → **6**  
+   - `1111` → 15 → **F**
+
+   Así, el número decimal **111** se representa como **6F** en hexadecimal.
+
+**Método directo (división por 16):**
+
+1. Divide el número decimal entre 16:  
+   - 111 ÷ 16 = 6 (cociente) con residuo 15.
+2. El cociente 6 se convierte a hexadecimal → **6**  
+   El residuo 15 se convierte a hexadecimal → **F**.
+3. Junta ambos resultados: **6F**
+
+---
+
+En redes, especialmente cuando se trabaja con IPv6 o con configuraciones de hardware que exigen manipulación de direcciones en distintos sistemas numéricos, este método nibble a nibble es muy efectivo. La correspondencia directa entre un dígito hexadecimal y 4 bits facilita la conversión y minimiza errores al interpretar direcciones, máscaras de subred o identificadores de hardware.
+
 ## 5. Ejercicios Prácticos
 
 ### Ejercicio 1: Transmisión de un archivo .OVA de 5GB en una red Gigabit Ethernet
@@ -193,7 +398,6 @@ T_t = T_p + T_p + T_{proc}
 
 2. **Retraso de Propagación:**
 
-<<<<<<< HEAD
   ```math
    T_p = \frac{3\,000\,000 \, \text{m}}{2 \times 10^8 \, \text{m/s}} = 0.015 \, \text{segundos} \quad (15 \, \text{ms})
   ```
@@ -203,17 +407,6 @@ T_t = T_p + T_p + T_{proc}
   ```math
    T_{total} \approx 0.956 \text{ms} + 15 \text{ms} \approx 15.956  \text{ms}
   ```
-=======
-```math
-T_p = \frac{3\,000\,000 \, \text{m}}{2 \times 10^8 \, \text{m/s}} = 0.015 \, \text{segundos} \quad (15 \, \text{ms})
-```
-
-3. **Tiempo Total Sin Procesamiento Adicional:**
-  
-```math
-T_{total} \approx 0.933 \text{ms} + 15 \text{ms} \approx 15.933  \text{ms}
-```
->>>>>>> ac9f56e16c0bf14cd3ac8671a99523f49be71676
 
 **Respuesta:** El email se transmitiría en aproximadamente 16 ms.
 
@@ -238,32 +431,61 @@ $(5 \times 1 \text{ ms} = 5 \text{ ms})$
 
 ---
 
-### 4.2 Sistemas de representación de la información
+## 6. Ejercicios de Repaso Propuestos: Transmisiones de Datos y Sistemas de Representación**
 
-#### 4.2.1. Sistema Decimal
+**Instrucciones:** Resuelve los siguientes ejercicios aplicando las fórmulas y métodos explicados en el Tema 1. Presta atención a las unidades y realiza las conversiones necesarias. Usa la velocidad de propagación $v = 2 \times 10^8$ m/s cuando sea necesario.
 
-El que usamos habitualmente. Los números se descomponen como sumas de potencias base 10.
+**Bloque 1: Transmisiones de Datos**
 
-Así
-```math
-754 = 7 \times 10^2 + 5 \times 10^1 + 4 \times 10⁰ = 700 + 50 + 4
-```
+1.  **Tiempo de Transmisión (Foto HD):** Calcula el tiempo de transmisión ($T_t$) necesario para enviar una fotografía de 8 Megabytes (MB) a través de una conexión de red con una tasa de transmisión (R) de 100 Mbps.
+    *   *Recuerda:* 1 MB = $2^{20}$ bytes, 1 byte = 8 bits, 1 Mbps = $10^6$ bits/s.
 
-#### 4.2.2. Sistema Binario
+2.  **Retraso de Propagación (Fibra Ciudad):** Calcula el retraso de propagación ($T_p$) para un bit que viaja a través de un cable de fibra óptica de 50 km de longitud entre dos puntos de una ciudad.
 
-Fundamental en sistemas de computadores. Los números se descomponen como sumas de potencia base 2.
+3.  **Tiempo de Entrega (Paquete Pequeño WAN):** Se envía un paquete de 500 bytes a través de un enlace WAN de 2000 km con una velocidad de transmisión de 2 Mbps. Asumiendo que no hay retraso de procesamiento, ¿cuál es el tiempo total de entrega del paquete?
+    *   Calcula $T_t$ y $T_p$ y súmalos.
 
-Así
-```math
-1001 = 2^3 + 2^0 = 9 \text { en decimal}
-```
+4.  **Tiempo de Entrega con Procesamiento (Similar al anterior):** Considera el mismo escenario del ejercicio 3 (paquete de 500 bytes, enlace de 2000 km a 2 Mbps), pero ahora el paquete debe atravesar 4 routers, y cada router introduce un retraso de procesamiento ($T_{proc}$) de 0.5 milisegundos (ms). Calcula el nuevo tiempo total de entrega.
+    *   *Recuerda:* 1 ms = 0.001 segundos.
 
-En redes no es habitual trabajar con números binarios cuya representación decimal sea superior a 255 (1 octeto), por lo que sobre todo trabajaremos estos.
+5.  **Comparativa de Tecnologías (Mismo Archivo):** Tienes un archivo de 20 MB. ¿Cuánto tiempo de transmisión ($T_t$) tardaría en enviarse por:
+    *   a) Una conexión ADSL de 20 Mbps?
+    *   b) Una conexión Gigabit Ethernet (1 Gbps)?
+    *   Compara los resultados. ¿Qué tecnología es significativamente más rápida para la transmisión pura?
 
+6.  **RTT Básico (Ping LAN):** Envías un paquete de ping (considera 64 bytes de tamaño) a un servidor en tu misma red local (LAN), situado a 100 metros de distancia a través de un cable Ethernet a 1 Gbps. Ignorando el tiempo de procesamiento, ¿cuál sería el RTT (Round Trip Time) esperado?
+    *   Calcula el tiempo de entrega de ida ($T_t + T_p$) y multiplícalo por 2.
 
-#### 4.2.3. Sistema Hexadecimal
+**Bloque 2: Sistemas de Representación**
 
-El sistema hexadecimal nos ayuda a representar de manera más cómoda números que en decimal serían excesivamente largos, dado que 1 carácter hexadecimal (nibble) equivale a un grupo de 4 bits.
+7.  **Decimal a Binario (Octetos):** Convierte los siguientes números decimales a su representación binaria de 8 bits (octeto), usando el método de restas sucesivas si te ayuda:
+    *   a) 145
+    *   b) 68
+    *   c) 250
+    *   d) 15
 
+8.  **Binario a Decimal (Octetos):** Convierte los siguientes octetos binarios a su valor decimal:
+    *   a) `11010010`
+    *   b) `01011100`
+    *   c) `10001111`
+    *   d) `00101010`
 
+9.  **Hexadecimal a Binario y Decimal:** Convierte los siguientes valores hexadecimales (representando un byte cada uno) a su equivalente binario de 8 bits y a su valor decimal:
+    *   a) `B7`
+    *   b) `2E`
+    *   c) `F1`
+    *   d) `88`
+    *   *Pista:* Usa el método nibble a nibble (cada dígito hex son 4 bits).
 
+10. **Decimal a Hexadecimal:** Convierte los siguientes números decimales a su representación hexadecimal de 2 dígitos:
+    *   a) 199
+    *   b) 85
+    *   c) 23
+    *   d) 172 (¡Comprueba si coincide con el ejemplo del texto!)
+    *   *Pista:* Puedes pasar primero a binario (octeto) y luego agrupar en nibbles, o usar la división por 16.
+
+11. **Aplicación en Redes (Máscara):** Una máscara de subred común es `255.255.255.0`. Convierte el número `255` a binario (octeto) y a hexadecimal. ¿Qué patrón observas en la representación binaria de 255?
+
+12. **Aplicación en Redes (Dirección IP):** Un componente de una dirección IPv4 es `11000000` en binario. ¿Cuál es su valor decimal y hexadecimal? (Este es el primer octeto de una dirección IP Clase C muy común).
+
+---
