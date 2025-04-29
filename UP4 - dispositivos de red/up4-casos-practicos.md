@@ -384,7 +384,7 @@ Switch(config-if)# switchport access vlan 10
 Switch(config-if)# exit
 Asignar PC2 a VLAN 20:
 
-```bash
+
 Switch(config)# interface FastEthernet0/2
 Switch(config-if)# switchport mode access
 Switch(config-if)# switchport access vlan 20
