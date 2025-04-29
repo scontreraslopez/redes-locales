@@ -72,18 +72,14 @@ En el estudio de la transmisión de datos en redes es fundamental comprender y p
 - **Fórmula:**
 
 ```math
-
-\[
 T_t = \frac{L}{R}
-\]
+```
 
 Donde:
 
-- \(T_t\): Tiempo de transmisión (en segundos).  
-- \(L\): Longitud del paquete (en bits).  
-- \(R\): Tasa de transmisión (en bits por segundo).
-
-```
+- $T_t$: Tiempo de transmisión (en segundos).  
+- $L$: Longitud del paquete (en bits).  
+- $R$: Tasa de transmisión (en bits por segundo).
 
 - **Ejemplo:** Si un paquete tiene 1,500 bytes y la tasa de transmisión es de 
 1 Gbps:
