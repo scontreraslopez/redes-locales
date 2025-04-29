@@ -61,9 +61,11 @@ Los modelos de referencia son una forma de abstraer la complejidad de la interco
 
 ## 4. Problemas del Tema 1
 
-En el estudio de la transmisión de datos en redes es fundamental comprender y poder calcular los distintos tipos de retardo o demora que afectan a la entrega de la información. Entre ellos destacan:
+### 4.1 Transmisiones de Datos
 
-### 4.1 Tiempo de Transmisión
+En el estudio de la transmisión de datos en redes es fundamental comprender y poder calcular los distintos tipos de retardo o demora que afectan a la entrega de la información. Entre ellos destacan los siguientes.
+
+#### 4.1.1 Tiempo de Transmisión
 
 - **Definición:** Es el tiempo que se necesita para insertar todos los bits de un paquete en el medio de transmisión.
 - **Fórmula:**
@@ -78,50 +80,57 @@ Donde:
 - $L$: Longitud del paquete (en bits).  
 - $R$: Tasa de transmisión (en bits por segundo).
 
-**Ejemplo:** Si un paquete tiene 1,500 bytes y la tasa de transmisión es de 
+**Ejemplo:** Si un paquete tiene 1500 bytes y la tasa de transmisión es de 
 1 Gbps:
 
-  ```math
-  T_t = \frac{1,500 \times 8}{1 \times 10^9} = 0.000012 \, \text{segundos} \quad (\approx 12 \, \mu s)
-  ```
+```math
+T_t = \frac{1500 \times 8}{1 \times 10^9} = 0.000012 \, \text{segundos} \quad (\approx 12 \, \mu s)
+ ```
 
 **Interpretación:** Esto significa que se tardará aproximadamente 12 microsegundos en transmitir el paquete de 1,500 bytes a una velocidad de 1 Gbps. Esta componente del tiempo de entrega es la que podemos optimar mejorando la velocidad de transmisión del medio físico. Por ejemplo, al pasar de una red Fast Ethernet (100 Mbps) a una Gigabit Ethernet (1 Gbps), el tiempo de transmisión se reduce diez veces.
 
 Sin embargo, como veremos no es la única componente del tiempo de entrega. En redes de área local (LAN), el tiempo de transmisión es el factor dominante debido a las altas velocidades de conexión y a las cortas distancias. En cambio, en redes de área amplia (WAN), como Internet, el tiempo de propagación y el tiempo de procesamiento son más relevantes.
 
-### 4.2 Retraso de Propagación
+#### 4.1.2 Retraso de Propagación
 
 - **Definición:** Es el tiempo que tarda un bit en recorrer el medio físico desde el emisor hasta el receptor.
+
 - **Fórmula:**
   
-  ```math
-  T_p = \frac{d}{v}
-  ```
+```math
+T_p = \frac{d}{v}
+```
   
-  Donde:
+Donde:
   
-  - $T_p$: Tiempo de propagación (en segundos).
-  - $d$: Distancia entre emisor y receptor (en metros).
-  - $v$: Velocidad de propagación en el medio (en metros por segundo).
+- $T_p$: Tiempo de propagación (en segundos).
+- $d$: Distancia entre emisor y receptor (en metros).
+- $v$: Velocidad de propagación en el medio (en metros por segundo).
   
-  **Ejemplo:** En fibra óptica, la velocidad de propagación suele ser aproximadamente $2 \times 10^8$ m/s.
+>[!NOTE]
+> En fibra óptica, la velocidad de propagación suele ser aproximadamente $2 \times 10^8$ m/s. En el cable de cobre se considera que, corriente eléctrica su propaga entre un 60-95% de la velocidad de la luz en el vacío. Por conveniencia podemos considerar $2 \times 10^8$ m/s (67%) para nuestros cálculos.
 
-### 4.3 Retraso de Procesamiento
+Estas consideraciones justifican el uso de técnicas avanzadas como los **CDN**, que ayudan a minimizar la latencia trasladando el contenido a nodos más próximos al usuario final.
 
-- **Definición:** Se refiere al tiempo adicional que requieren los equipos intermedios (como routers y switches) para procesar y reenviar el paquete. Este retardo depende de la capacidad del equipo y de la carga de trabajo en el momento.
+#### 4.1.3 Retraso de Procesamiento
 
-### 4.4 Tiempo de Entrega del Paquete
+- **Definición:** $T_{proc}$. Se refiere al tiempo adicional que requieren los equipos intermedios (como routers y switches) para procesar y reenviar el paquete. Este retardo depende de la capacidad del equipo y de la carga de trabajo en el momento.
 
-- **Definición:** Es la suma de todos los retardos (transmisión, propagación y procesamiento) que un paquete experimenta al ir desde el origen hasta el destino.
+#### 4.1.4 Tiempo de Entrega del Paquete
+
+- **Definición:** Es la suma de todos los retardos (transmisión, propagación y procesamiento) que un paquete experimenta al ir desde el origen hasta el destino. 
+
+>[!NOTE] 
+> En redes es bastante común usar el RTT (Round Trip Time) como alternativa al tiempo de entrega del paquete. Este es el tiempo que un paquete de datos tarda en viajar de un origen hasta un destino, ida y vuelta. Este tiempo será el doble del tiempo de entrega del paquete.
+
 - **Fórmula General:**
-  \[
-t1_f3
-  \]
 
-    > [!NOTE]  
-    > En una red LAN, el **tiempo de transmisión** suele ser el factor dominante debido a las cortas distancias y altas velocidades de conexión. Por otro lado, en redes de mayor alcance como el Internet, el **retraso de propagación** adquiere mayor relevancia. Esto ha impulsado el desarrollo de tecnologías como las **CDN (Content Delivery Networks)**, que consisten en redes distribuidas diseñadas para acercar el contenido al usuario final, reduciendo la latencia y mejorando la experiencia en la entrega de información.
+```math
+T_t = T_p + T_p + T_{proc}
+```
 
-Comprender y calcular estos retardos es fundamental para optimizar el rendimiento de las redes. Mientras que en las LANs la transmisión del paquete (debido a los altos anchos de banda y a las cortas distancias) es el factor dominante, en enlaces de larga distancia (como en Internet) el retraso de propagación y el de procesamiento se vuelven cruciales. Estas consideraciones justifican el uso de técnicas avanzadas como los **CDN**, que ayudan a minimizar la latencia trasladando el contenido a nodos más próximos al usuario final.
+> [!NOTE]  
+> En una red LAN, el **tiempo de transmisión** suele ser el factor dominante debido a las cortas distancias y altas velocidades de conexión. Por otro lado, en redes de mayor alcance como el Internet, el **retraso de propagación** adquiere mayor relevancia. Esto ha impulsado el desarrollo de tecnologías como las **CDN (Content Delivery Networks)**, que consisten en redes distribuidas diseñadas para acercar el contenido al usuario final, reduciendo la latencia y mejorando la experiencia en la entrega de información.
 
 ---
 
@@ -130,22 +139,24 @@ Comprender y calcular estos retardos es fundamental para optimizar el rendimient
 ### Ejercicio 1: Transmisión de un archivo .OVA de 5GB en una red Gigabit Ethernet
 
 **Datos:**
-- **Tamaño del archivo:** 5GB  
-  (Se considerará 1GB = \(10^9\) bytes, por lo tanto, 5GB = \(5 \times 10^9\) bytes).
-- **Velocidad de la red:** 1 Gbps (\(1 \times 10^9\) bits/s).
+- **Tamaño del archivo:** 5GB.  
+  Se considerará 1GB = $ 2^{30} $ bytes, por lo tanto, 5GB = $ (5 \times 2^{30}) $ **bytes**.
+- **Velocidad de la red:** 1 Gbps = $ (1 \times 10^9) bits/s $.
 - **Suposiciones:** No se consideran los retardos de propagación ni de procesamiento.
 
 **Cálculos:**
 
 1. **Conversión de bytes a bits:**
-   \[
-   5 \, \text{GB} = 5 \times 10^9 \, \text{bytes} \times 8 = 40 \times 10^9 \, \text{bits}
-   \]
+   
+   ```math
+   5 \, \text{GB} = 5 \times 2^{30} \text{bytes} \times 8 = 40 \times 10^9 \, \text{bits}
+   ```
 
 2. **Tiempo de Transmisión:**
-   \[
+
+   ```math
    T_t = \frac{40 \times 10^9 \, \text{bits}}{1 \times 10^9 \, \text{bits/s}} = 40 \, \text{segundos}
-   \]
+   ```
 
 **Respuesta:** El archivo se transmitirá en 40 segundos.
 
@@ -154,29 +165,32 @@ Comprender y calcular estos retardos es fundamental para optimizar el rendimient
 ### Ejercicio 2: Transmisión de un email de 70kB por fibra DIGI de 600Mbps
 
 **Datos:**
-- **Tamaño del email:** 70 kB  
-  (Se considera 70 kB = \(70 \times 10^3\) bytes ≈ 560 kbits, ya que \(70\,000 \times 8 = 560\,000\) bits).
-- **Velocidad de la red:** 600 Mbps (\(600 \times 10^6\) bits/s).
-- **Distancia entre origen y destino:** 3000 km = 3,000,000 m.
-- **Velocidad de propagación:** Aproximadamente \(2 \times 10^8\) m/s.
+- **Tamaño del email:** 70 kB
+  ```math
+  \text{Transformamos a bytes: } 70 kB = (70 \times 2^{10}) \, bytes = 560 \, \text{kbits} \\
+  \text {y de ahí a bits: } 70000 \times 8 = 560000 \text \, bits.
+  ```
+- **Velocidad de la red:** 600 Mbps = $(600 \times 10^6) $ bits/s.
+- **Distancia entre origen y destino:** 3000 km = $(3 \times 10^6)$ m.
+- **Velocidad de propagación:**  $(2 \times 10^8)$ m/s.
 - **Suposiciones:** No se añade retraso de procesamiento extra.
 
 **Cálculos:**
 
 1. **Tiempo de Transmisión:**
-   \[
+   ```math
    T_t = \frac{560\,000 \, \text{bits}}{600 \times 10^6 \, \text{bits/s}} \approx 0.000933 \, \text{segundos} \quad (\approx 0.933 \, \text{ms})
-   \]
+   ```
 
 2. **Retraso de Propagación:**
-   \[
+   ```math
    T_p = \frac{3\,000\,000 \, \text{m}}{2 \times 10^8 \, \text{m/s}} = 0.015 \, \text{segundos} \quad (15 \, \text{ms})
-   \]
+  ```
 
 3. **Tiempo Total Sin Procesamiento Adicional:**
-   \[
-   T_{total} \approx 0.933 \, \text{ms} + 15 \, \text{ms} \approx 15.933 \, \text{ms}
-   \]
+  ```math
+   T_{total} \approx 0.933 \text{ms} + 15 \text{ms} \approx 15.933  \text{ms}
+  ```
 
 **Respuesta:** El email se transmitiría en aproximadamente 16 ms.
 
@@ -186,14 +200,15 @@ Comprender y calcular estos retardos es fundamental para optimizar el rendimient
 
 **Datos adicionales:**
 - Cada router introduce un retraso de 1 ms.
-- **Total de retraso de procesamiento:** \(5 \times 1 \, \text{ms} = 5 \, \text{ms}\).
+- **Total de retraso de procesamiento:** 
+$(5 \times 1 \text{ ms} = 5 \text{ ms})$
 
 **Cálculos:**
 
 1. **Tiempo Total con Procesamiento:**
-   \[
+```math
    T_{total} \approx T_t + T_p + \text{Retraso de Procesamiento} \approx 0.933 \, \text{ms} + 15 \, \text{ms} + 5 \, \text{ms} \approx 20.933 \, \text{ms}
-   \]
+```
 
 **Respuesta:** Teniendo en cuenta los retardos en cada router, el tiempo total sería aproximadamente de 21 ms.
 
