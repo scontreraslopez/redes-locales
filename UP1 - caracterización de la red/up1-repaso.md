@@ -139,37 +139,41 @@ T_t = T_p + T_p + T_{proc}
 ### Ejercicio 1: Transmisión de un archivo .OVA de 5GB en una red Gigabit Ethernet
 
 **Datos:**
+
 - **Tamaño del archivo:** 5GB.  
-  Se considerará 1GB = $ 2^{30} $ bytes, por lo tanto, 5GB = $ (5 \times 2^{30}) $ **bytes**.
-- **Velocidad de la red:** 1 Gbps = $ (1 \times 10^9) bits/s $.
+  1GB = $ 2^{30} $ bytes, por lo tanto, 5GB = $ (5 \times 2^{30}) $ **bytes**.
+- **Velocidad de la red:** 1 Gbps = $ (1 \times 10^9) \, bits/s $.
 - **Suposiciones:** No se consideran los retardos de propagación ni de procesamiento.
 
 **Cálculos:**
 
 1. **Conversión de bytes a bits:**
-   
-   ```math
-   5 \, \text{GB} = 5 \times 2^{30} \text{bytes} \times 8 = 40 \times 10^9 \, \text{bits}
-   ```
+
+```math
+5 \, \text{GB} = 5 \times 2^{30} \text{bytes} \times 8 = 42949672960 \approx \, 4,295 \times 10^{10}\text{bits}
+```
 
 2. **Tiempo de Transmisión:**
 
    ```math
-   T_t = \frac{40 \times 10^9 \, \text{bits}}{1 \times 10^9 \, \text{bits/s}} = 40 \, \text{segundos}
+   T_t = \frac{4,295 \times 10^{10}\text{bits}}{1 \times 10^9 \, \text{bits/s}} = 42,95 \, \text{segundos}
    ```
 
-**Respuesta:** El archivo se transmitirá en 40 segundos.
+**Respuesta:** El archivo se transmitirá en aproximadamente 43 segundos.
 
 ---
 
-### Ejercicio 2: Transmisión de un email de 70kB por fibra DIGI de 600Mbps
+### Ejercicio 2: Transmisión de un email de 70kB por fibra DIGI de 600Mbps a 3000 km de distancia
 
 **Datos:**
+
 - **Tamaño del email:** 70 kB
+
   ```math
-  \text{Transformamos a bytes: } 70 kB = (70 \times 2^{10}) \, bytes = 560 \, \text{kbits} \\
-  \text {y de ahí a bits: } 70000 \times 8 = 560000 \text \, bits.
+  \text{Transformamos a bytes: } 70 kB = (70 \times 2^{10}) \, bytes = 71680 \, \text{bytes} \\
+  \text {y de ahí a bits: } 71680 \times 8 = 573440 \text \, bits.
   ```
+
 - **Velocidad de la red:** 600 Mbps = $(600 \times 10^6) $ bits/s.
 - **Distancia entre origen y destino:** 3000 km = $(3 \times 10^6)$ m.
 - **Velocidad de propagación:**  $(2 \times 10^8)$ m/s.
@@ -178,18 +182,21 @@ T_t = T_p + T_p + T_{proc}
 **Cálculos:**
 
 1. **Tiempo de Transmisión:**
+
    ```math
-   T_t = \frac{560\,000 \, \text{bits}}{600 \times 10^6 \, \text{bits/s}} \approx 0.000933 \, \text{segundos} \quad (\approx 0.933 \, \text{ms})
+   T_t = \frac{573440 \, \text{bits}}{600 \times 10^6 \, \text{bits/s}} \approx 0.000956 \, \text{segundos} \quad ( 0.956 \, \text{ms})
    ```
 
 2. **Retraso de Propagación:**
-   ```math
+
+  ```math
    T_p = \frac{3\,000\,000 \, \text{m}}{2 \times 10^8 \, \text{m/s}} = 0.015 \, \text{segundos} \quad (15 \, \text{ms})
   ```
 
 3. **Tiempo Total Sin Procesamiento Adicional:**
+
   ```math
-   T_{total} \approx 0.933 \text{ms} + 15 \text{ms} \approx 15.933  \text{ms}
+   T_{total} \approx 0.956 \text{ms} + 15 \text{ms} \approx 15.956  \text{ms}
   ```
 
 **Respuesta:** El email se transmitiría en aproximadamente 16 ms.
@@ -206,8 +213,9 @@ $(5 \times 1 \text{ ms} = 5 \text{ ms})$
 **Cálculos:**
 
 1. **Tiempo Total con Procesamiento:**
+
 ```math
-   T_{total} \approx T_t + T_p + \text{Retraso de Procesamiento} \approx 0.933 \, \text{ms} + 15 \, \text{ms} + 5 \, \text{ms} \approx 20.933 \, \text{ms}
+   T_{total} = T_t + T_p + T_{proc} \approx 0.933 \, \text{ms} + 15 \, \text{ms} + 5 \, \text{ms} \approx 20.933 \, \text{ms}
 ```
 
 **Respuesta:** Teniendo en cuenta los retardos en cada router, el tiempo total sería aproximadamente de 21 ms.
