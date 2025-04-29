@@ -54,12 +54,15 @@ Los modelos de referencia son una forma de abstraer la complejidad de la interco
     4. **Capa de Aplicación:** Implementa protocolos y servicios a nivel de usuario.
 
 - **Modelo Híbrido (por Tanenbaum):**
-  - **Descripción:** 
+  - **Descripción:**
     Una aproximación que parte del modelo TCP/IP pero que separa la capa de acceso al medio en dos: **Capa Física** y **Capa de Enlace de Datos**. Esta separación facilita el estudio de ambas capas, dado que tienen funciones de naturaleza muy distinta.
 
 ---
 
 ## 4. Problemas del Tema 1
+
+
+
 
 En el estudio de la transmisión de datos en redes es fundamental comprender y poder calcular los distintos tipos de retardo o demora que afectan a la entrega de la información. Entre ellos destacan:
 
@@ -68,7 +71,19 @@ En el estudio de la transmisión de datos en redes es fundamental comprender y p
 - **Definición:** Es el tiempo que se necesita para insertar todos los bits de un paquete en el medio de transmisión.
 - **Fórmula:**
 
-![Tiempo de Transmisión](/assets/images/t1_f1.png)
+```math
+T_t = \frac{L}{R}
+```
+  Donde:
+  - \(T_t\) = Tiempo de transmisión (en segundos)
+  - \(L\) = Longitud del paquete (en bits)
+  - \(R\) = Tasa de transmisión (en bits por segundo)
+- **Ejemplo:** Si un paquete tiene 1,500 bytes y la tasa de transmisión es de 1 Gbps: 
+  \[
+  T_t = \frac{1,500 \times 8}{1 \times 10^9} = 0.000012 \, \text{segundos} \quad (\approx 12 \, \mu s)
+  \]
+  - **Interpretación:** Esto significa que se tardará aproximadamente 12 microsegundos en transmitir el paquete de 1,500 bytes a una velocidad de 1 Gbps
+```
 
 ### 4.2 Retraso de Propagación
 
@@ -93,6 +108,8 @@ t1_f3
 
     > [!NOTE]  
     > En una red LAN, el **tiempo de transmisión** suele ser el factor dominante debido a las cortas distancias y altas velocidades de conexión. Por otro lado, en redes de mayor alcance como el Internet, el **retraso de propagación** adquiere mayor relevancia. Esto ha impulsado el desarrollo de tecnologías como las **CDN (Content Delivery Networks)**, que consisten en redes distribuidas diseñadas para acercar el contenido al usuario final, reduciendo la latencia y mejorando la experiencia en la entrega de información.
+
+Comprender y calcular estos retardos es fundamental para optimizar el rendimiento de las redes. Mientras que en las LANs la transmisión del paquete (debido a los altos anchos de banda y a las cortas distancias) es el factor dominante, en enlaces de larga distancia (como en Internet) el retraso de propagación y el de procesamiento se vuelven cruciales. Estas consideraciones justifican el uso de técnicas avanzadas como los **CDN**, que ayudan a minimizar la latencia trasladando el contenido a nodos más próximos al usuario final.
 
 ---
 
@@ -170,12 +187,3 @@ t1_f3
 
 ---
 
-## Reflexión Final
-
-Comprender y calcular estos retardos es fundamental para optimizar el rendimiento de las redes. Mientras que en las LANs la transmisión del paquete (debido a los altos anchos de banda y a las cortas distancias) es el factor dominante, en enlaces de larga distancia (como en Internet) el retraso de propagación y el de procesamiento se vuelven cruciales. Estas consideraciones justifican el uso de técnicas avanzadas como los **CDN**, que ayudan a minimizar la latencia trasladando el contenido a nodos más próximos al usuario final.
-
-Además, entender estos conceptos permite analizar casos prácticos y diseñar estrategias de mejora en redes, lo que es vital en entornos donde la eficiencia y la rapidez de la comunicación son esenciales.
-
----
-
-¿Te gustaría profundizar en la simulación de estos problemas con herramientas de red o explorar más sobre la administración de LAN versus WAN? ¡Hay un mundo de aplicaciones prácticas que podemos analizar!
