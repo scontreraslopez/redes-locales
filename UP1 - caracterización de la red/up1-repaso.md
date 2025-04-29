@@ -61,9 +61,6 @@ Los modelos de referencia son una forma de abstraer la complejidad de la interco
 
 ## 4. Problemas del Tema 1
 
-
-
-
 En el estudio de la transmisión de datos en redes es fundamental comprender y poder calcular los distintos tipos de retardo o demora que afectan a la entrega de la información. Entre ellos destacan:
 
 ### 4.1 Tiempo de Transmisión
@@ -81,24 +78,33 @@ Donde:
 - $L$: Longitud del paquete (en bits).  
 - $R$: Tasa de transmisión (en bits por segundo).
 
-- **Ejemplo:** Si un paquete tiene 1,500 bytes y la tasa de transmisión es de 
+**Ejemplo:** Si un paquete tiene 1,500 bytes y la tasa de transmisión es de 
 1 Gbps:
 
+  ```math
   T_t = \frac{1,500 \times 8}{1 \times 10^9} = 0.000012 \, \text{segundos} \quad (\approx 12 \, \mu s)
+  ```
 
-``
+**Interpretación:** Esto significa que se tardará aproximadamente 12 microsegundos en transmitir el paquete de 1,500 bytes a una velocidad de 1 Gbps. Esta componente del tiempo de entrega es la que podemos optimar mejorando la velocidad de transmisión del medio físico. Por ejemplo, al pasar de una red Fast Ethernet (100 Mbps) a una Gigabit Ethernet (1 Gbps), el tiempo de transmisión se reduce diez veces.
 
-  - **Interpretación:** Esto significa que se tardará aproximadamente 12 microsegundos en transmitir el paquete de 1,500 bytes a una velocidad de 1 Gbps
-
+Sin embargo, como veremos no es la única componente del tiempo de entrega. En redes de área local (LAN), el tiempo de transmisión es el factor dominante debido a las altas velocidades de conexión y a las cortas distancias. En cambio, en redes de área amplia (WAN), como Internet, el tiempo de propagación y el tiempo de procesamiento son más relevantes.
 
 ### 4.2 Retraso de Propagación
 
 - **Definición:** Es el tiempo que tarda un bit en recorrer el medio físico desde el emisor hasta el receptor.
 - **Fórmula:**
-  \[
-t1_f2
-  \]
-  *Ejemplo:* En fibra óptica, la velocidad de propagación suele ser aproximadamente \(2 \times 10^8\) m/s. 
+  
+  ```math
+  T_p = \frac{d}{v}
+  ```
+  
+  Donde:
+  
+  - $T_p$: Tiempo de propagación (en segundos).
+  - $d$: Distancia entre emisor y receptor (en metros).
+  - $v$: Velocidad de propagación en el medio (en metros por segundo).
+  
+  **Ejemplo:** En fibra óptica, la velocidad de propagación suele ser aproximadamente $2 \times 10^8$ m/s.
 
 ### 4.3 Retraso de Procesamiento
 
