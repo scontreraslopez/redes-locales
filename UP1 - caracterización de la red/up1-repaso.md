@@ -71,19 +71,25 @@ En el estudio de la transmisión de datos en redes es fundamental comprender y p
 - **Definición:** Es el tiempo que se necesita para insertar todos los bits de un paquete en el medio de transmisión.
 - **Fórmula:**
 
-```math
+$$
+
 T_t = \frac{L}{R}
-```
-  Donde:
-  - \(T_t\) = Tiempo de transmisión (en segundos)
-  - \(L\) = Longitud del paquete (en bits)
-  - \(R\) = Tasa de transmisión (en bits por segundo)
-- **Ejemplo:** Si un paquete tiene 1,500 bytes y la tasa de transmisión es de 1 Gbps: 
-  \[
+
+Donde:
+
+  - T_t = Tiempo de transmisión (en segundos)
+  - L = Longitud del paquete (en bits)
+  - R = Tasa de transmisión (en bits por segundo)
+
+- **Ejemplo:** Si un paquete tiene 1,500 bytes y la tasa de transmisión es de 
+1 Gbps:
+
   T_t = \frac{1,500 \times 8}{1 \times 10^9} = 0.000012 \, \text{segundos} \quad (\approx 12 \, \mu s)
-  \]
+
+$$
+
   - **Interpretación:** Esto significa que se tardará aproximadamente 12 microsegundos en transmitir el paquete de 1,500 bytes a una velocidad de 1 Gbps
-```
+
 
 ### 4.2 Retraso de Propagación
 
