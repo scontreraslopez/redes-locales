@@ -2,15 +2,19 @@
 
 ## 1. Definición de Red de Área Local y Principales Características
 
-- **Red de Área Local (LAN):**  
-  Una LAN es una red de comunicación que abarca un espacio geográfico reducido (por ejemplo, un edificio, una oficina, un hogar o un campus). Surgen por la necesidad de compartir recursos dentro de la organización. Se caracteriza por:
-  - **Alta velocidad:** Uso de tecnologías como Ethernet y Wi-Fi.
-  - **Baja latencia:** Las distancias cortas reducen significativamente el tiempo de propagación.
-  - **Administración centralizada:** Normalmente, la red es gestionada por la propia organización o el propietario local, lo cual facilita su mantenimiento, seguridad y control.
+**Red de Área Local (LAN):**  Una LAN es una red de comunicación que abarca un espacio geográfico reducido (por ejemplo, un edificio, una oficina, un hogar o un campus). Surgen por la necesidad de compartir recursos dentro de la organización. 
+
+Se caracteriza por:
+
+- **Alta velocidad:** Uso de tecnologías como Ethernet y Wi-Fi.
+- **Baja latencia:** Las distancias cortas reducen significativamente el tiempo de propagación.
+- **Administración centralizada:** Normalmente, la red es gestionada por la propia organización o el propietario local, lo cual facilita su mantenimiento, seguridad y control.
 
 ---
 
 ## 2. Clasificación de Redes según su Ámbito de Aplicación
+
+La clasificación más común de las redes es en función de su ámbito de aplicación (extensión). Distinguimos:
 
 - **PAN (Personal Area Network):**
   - **Descripción:** Red personal que generalmente utiliza tecnologías como Bluetooth para conectar dispositivos cercanos (smartphones, auriculares, smartwatches, etc.).
@@ -183,14 +187,16 @@ T_t = T_p + T_p + T_{proc}
    ```
 
 2. **Retraso de Propagación:**
-   ```math
-   T_p = \frac{3\,000\,000 \, \text{m}}{2 \times 10^8 \, \text{m/s}} = 0.015 \, \text{segundos} \quad (15 \, \text{ms})
-  ```
+
+```math
+T_p = \frac{3\,000\,000 \, \text{m}}{2 \times 10^8 \, \text{m/s}} = 0.015 \, \text{segundos} \quad (15 \, \text{ms})
+```
 
 3. **Tiempo Total Sin Procesamiento Adicional:**
-  ```math
-   T_{total} \approx 0.933 \text{ms} + 15 \text{ms} \approx 15.933  \text{ms}
-  ```
+  
+```math
+T_{total} \approx 0.933 \text{ms} + 15 \text{ms} \approx 15.933  \text{ms}
+```
 
 **Respuesta:** El email se transmitiría en aproximadamente 16 ms.
 
@@ -213,4 +219,33 @@ $(5 \times 1 \text{ ms} = 5 \text{ ms})$
 **Respuesta:** Teniendo en cuenta los retardos en cada router, el tiempo total sería aproximadamente de 21 ms.
 
 ---
+
+### 4.2 Sistemas de representación de la información
+
+#### 4.2.1. Sistema Decimal
+
+El que usamos habitualmente. Los números se descomponen como sumas de potencias base 10.
+
+Así
+```math
+754 = 7 \times 10^2 + 5 \times 10^1 + 4 \times 10⁰ = 700 + 50 + 4
+```
+
+#### 4.2.2. Sistema Binario
+
+Fundamental en sistemas de computadores. Los números se descomponen como sumas de potencia base 2.
+
+Así
+```math
+1001 = 2^3 + 2^0 = 9 \text { en decimal}
+```
+
+En redes no es habitual trabajar con números binarios cuya representación decimal sea superior a 255 (1 octeto), por lo que sobre todo trabajaremos estos.
+
+
+#### 4.2.3. Sistema Hexadecimal
+
+El sistema hexadecimal nos ayuda a representar de manera más cómoda números que en decimal serían excesivamente largos, dado que 1 carácter hexadecimal (nibble) equivale a un grupo de 4 bits.
+
+
 
