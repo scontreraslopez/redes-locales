@@ -63,7 +63,6 @@ Todo diseño de red empieza por elegir bien los componentes. Aquí tenéis un re
 ![Punto de acceso ejemplo para la cafetería](/assets/images/ubiquiti-ap.webp)
 
 
-
 ## 4. El Plan Maestro: Direccionamiento IP y VLANs (Paso a Paso)
 
 Esta parte parece la más difícil, pero es como un puzzle. Vamos a resolverlo siguiendo un procedimiento claro. El objetivo es que entendáis **cómo funciona**, no que hagáis cálculos de cabeza.
@@ -88,6 +87,33 @@ Sigue estos pasos para cada una de las 3 redes que tienes que crear:
 6.  **PASO 6:** **¡Enhorabuena\! Esa es la Dirección de Red.** (Recuerda: esta es la primera IP y no se puede asignar a ningún equipo).
 7.  **PASO 7:** Ahora, coge la dirección binaria original y cambia por unos (1) toda la parte de host. Vuelve a traducir a decimal. **Esa es la Dirección de Broadcast.** (Es la última IP y tampoco se puede usar).
 8.  **PASO 8:** Las direcciones IP que puedes usar para tus equipos son todas las que están entre la Dirección de Red y la de Broadcast.
+
+```mermaid
+graph TD
+    subgraph "Datos Iniciales"
+        A[IP y Máscara de Subred]
+    end
+
+    A --> B(Paso 1. Traducir octetos IP a Binario);
+    B --> C(Paso 2. Rellenar los octetos);
+    C --> D(Paso 3. Separar Parte de Red y Host);
+
+    subgraph "Calcular Dirección de Red"
+        D --> E(Paso 4. Poner Parte de Host a 0s);
+        E --> F(Paso 5. Traducir a Decimal);
+        F --> G((Resultado: Dirección de Red));
+    end
+
+    subgraph "Calcular Dirección de Broadcast"
+        G --> H(Paso 6. Poner Parte de Host a 1s);
+        H --> I(Paso 7. Traducir a Decimal);
+        I --> J((Resultado: Dirección de Broadcast));
+    end
+
+    subgraph "Resultado Final"
+        J --> K(Definir Rango de IPs Útiles)
+    end
+``` 
 
 -----
 
